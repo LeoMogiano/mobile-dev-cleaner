@@ -51,7 +51,6 @@ struct ReviewContent: View {
                         ],
                         startPoint: .topLeading, endPoint: .bottomTrailing),
                     in: RoundedRectangle(cornerRadius: 11, style: .continuous))
-                .shadow(color: Color(red: 80 / 255, green: 90 / 255, blue: 1).opacity(0.25), radius: 4, x: 0, y: 3)
             VStack(alignment: .leading, spacing: 2) {
                 Text("Vas a liberar \(totalText)")
                     .font(.system(size: 17, weight: .bold))

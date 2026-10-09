@@ -10,7 +10,7 @@ struct MDCToast: View {
             .padding(EdgeInsets(top: 7, leading: 14, bottom: 7, trailing: 14))
             .background(Color(nsColor: NSColor(srgbRed: 30/255, green: 30/255, blue: 34/255, alpha: 0.86)))
             .cornerRadius(999, antialiased: true)
-            .shadow(color: .black.opacity(0.25), radius: 10, x: 0, y: 6)
+            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
 

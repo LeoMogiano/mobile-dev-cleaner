@@ -54,7 +54,7 @@ struct MDCSelectionBar: View {
         .padding(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 6))
         .background(sheet, in: shape)
         .overlay(shape.strokeBorder(Color.mdcLine2, lineWidth: 0.5))
-        .shadow(color: .black.opacity(0.18), radius: 15, x: 0, y: 10)
+        .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 2)
         .transition(.opacity.animation(.easeOut(duration: 0.18)))
     }
 }

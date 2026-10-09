@@ -117,7 +117,6 @@ private struct SidebarWordmark: View {
                     ),
                     in: RoundedRectangle(cornerRadius: 7, style: .continuous)
                 )
-                .shadow(color: Color(red: 60 / 255, green: 80 / 255, blue: 1).opacity(0.3), radius: 3, y: 2)
                 .accessibilityHidden(true)
             Text("Mobile Dev Cleaner")
                 .font(.mont(13.5))

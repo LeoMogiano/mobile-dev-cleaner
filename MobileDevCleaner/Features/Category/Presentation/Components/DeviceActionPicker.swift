@@ -51,7 +51,6 @@ struct DeviceActionPicker: View {
             if segment.isOn {
                 shape
                     .fill(Color.mdcSegmentOn)
-                    .shadow(color: .black.opacity(0.14), radius: 1.5, x: 0, y: 1)
                     .overlay(shape.strokeBorder(tint, lineWidth: 1.5))
             }
         }

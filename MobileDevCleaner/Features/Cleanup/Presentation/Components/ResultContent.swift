@@ -70,7 +70,6 @@ struct ResultContent: View {
             .foregroundStyle(.white)
             .frame(width: 64, height: 64)
             .background(wasCancelled ? Color.mdcCost : Color.mdcRegen, in: Circle())
-            .shadow(color: Color(red: 52 / 255, green: 199 / 255, blue: 89 / 255).opacity(0.35), radius: 14, x: 0, y: 10)
             .scaleEffect(hasAppeared || reduceMotion ? 1 : 0.4)
             .opacity(hasAppeared || reduceMotion ? 1 : 0)
             .animation(reduceMotion ? nil : .spring(response: 0.45, dampingFraction: 0.55), value: hasAppeared)

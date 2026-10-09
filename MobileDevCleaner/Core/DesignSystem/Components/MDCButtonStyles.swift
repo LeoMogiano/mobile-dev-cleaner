@@ -35,9 +35,6 @@ struct MDCPrimaryButtonStyle: ButtonStyle {
                 cornerRadius: material.usesGlass ? 999 : 6,
                 style: .continuous
             ))
-            .shadow(color: Color(nsColor: NSColor(
-                srgbRed: 0, green: 0x7a / 255, blue: 1, alpha: 0.3
-            )), radius: 4, x: 0, y: 2)
             .opacity(configuration.isPressed ? 0.85 : (isEnabled ? 1 : 0.4))
     }
 }
