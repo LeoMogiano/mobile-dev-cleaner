@@ -25,7 +25,6 @@ struct CandidateGroupView: View {
                     .equatable()
                 }
             }
-            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             .mdcCard(radius: 10)
         }
     }

@@ -29,8 +29,9 @@ struct DeviceCard: View, Equatable {
         }
         .animation(.easeOut(duration: 0.2), value: card.chosen)
         .animation(.easeOut(duration: 0.2), value: card.isInspected)
-        .contentShape(Rectangle())
-        .onTapGesture(perform: onInspect)
+        .contextMenu {
+            Button("Ver detalles", action: onInspect)
+        }
         .accessibilityElement(children: .contain)
         .accessibilityLabel(card.accessibilityLabel)
     }
