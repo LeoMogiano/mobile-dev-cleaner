@@ -51,6 +51,7 @@ struct AppearanceSettingsView: View {
                         }
                     }
                     .pickerStyle(.menu)
+                    .labelsHidden()
                 }
                 Text("Algunos textos se actualizan al reiniciar la app.")
                     .font(.system(size: 11))
