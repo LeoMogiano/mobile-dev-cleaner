@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<script src="./mdc-icon.js"></script>
+<style>
+html,body{margin:0;padding:0;height:100%;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro","Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased;background:#c9b3ff}
+a{color:#007AFF;text-decoration:none}
+a:hover{text-decoration:underline}
+input,select,button{font-family:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid rgba(0,122,255,.5);outline-offset:1px}
+@keyframes mdcSpin{to{transform:rotate(360deg)}}
+@keyframes mdcPop{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.1);opacity:1}100%{transform:scale(1)}}
+@keyframes mdcIn{from{opacity:0;transform:translateY(-10px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes mdcFade{from{opacity:0}to{opacity:1}}
+@keyframes mdcPulse{0%,100%{opacity:.5}50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:fixed;inset:0;background:var(--desk);display:flex;align-items:center;justify-content:center;overflow:hidden;color:var(--t1);font-size:13px;letter-spacing:-0.006em;line-height:1.35">
+<div ref="{{ stageRef }}" style="position:relative;width:1100px;height:720px;flex-shrink:0;transform-origin:center center">
+<sc-if value="{{ isMain }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="App principal" style="position:absolute;inset:0;border-radius:var(--wr);overflow:hidden;background:var(--win);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--shWin);display:flex">
+  <div style="width:262px;flex-shrink:0;margin:var(--sideM);margin-right:0;border-radius:var(--sideR);background:var(--side);border:var(--sideBd);box-shadow:var(--sideSh);display:flex;flex-direction:column;min-height:0">
+    <div style="height:40px;display:flex;align-items:center;gap:8px;padding:0 14px;flex-shrink:0">
+      <div style="width:12px;height:12px;border-radius:6px;background:#ff5f57;box-shadow:inset 0 0 0 0.5px rgba(0,0,0,.15)"></div>
+      <div style="width:12px;height:12px;border-radius:6px;background:#febc2e;box-shadow:inset 0 0 0 0.5px rgba(0,0,0,.15)"></div>
+      <div style="width:12px;height:12px;border-radius:6px;background:#28c840;box-shadow:inset 0 0 0 0.5px rgba(0,0,0,.15)"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;padding:2px 16px 12px">
+      <div style="width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#3aa0ff 0%,#5b6cff 55%,#a35bff 100%);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 6px rgba(60,80,255,.3)"><mdc-icon name="trash" size="13" w="1.6"></mdc-icon></div>
+      <div style="font-family:var(--mont);font-weight:700;font-size:13.5px;letter-spacing:-0.02em;white-space:nowrap">Mobile Dev Cleaner</div>
+    </div>
+    <div style="flex:1;min-height:0;overflow-y:auto;padding-bottom:8px">
+      <div onClick="{{ navDash.onClick }}" style="display:flex;align-items:center;gap:8px;height:28px;padding:0 8px;margin:0 8px;border-radius:7px;cursor:default;background:{{ navDash.bg }};color:{{ navDash.fg }}" style-hover="background:{{ navDash.hov }}">
+        <span style="display:flex;color:{{ navDash.ic }}"><mdc-icon name="overview" size="15"></mdc-icon></span>
+        <span style="flex:1">Resumen</span>
+      </div>
+      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="2">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;padding:14px 18px 4px">
+          <span style="font-size:11px;font-weight:700;color:var(--t3)">{{ sec.title }}</span>
+          <span style="font-size:11px;font-weight:600;color:var(--t3);font-variant-numeric:tabular-nums">{{ sec.total }}</span>
+        </div>
+        <sc-for list="{{ sec.rows }}" as="r" hint-placeholder-count="8">
+          <div onClick="{{ r.onClick }}" title="{{ r.tip }}" style="display:flex;align-items:center;gap:8px;height:28px;padding:0 8px;margin:0 8px;border-radius:7px;cursor:default;background:{{ r.bg }};color:{{ r.fg }};opacity:{{ r.op }}" style-hover="background:{{ r.hov }}">
+            <span style="display:flex;color:{{ r.ic }}"><mdc-icon name="{{ r.icon }}" size="15"></mdc-icon></span>
+            <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span>
+            <span style="font-size:11px;color:{{ r.sc }};font-variant-numeric:tabular-nums;white-space:nowrap">{{ r.size }}</span>
+          </div>
+        </sc-for>
+        <sc-if value="{{ sec.hasMore }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ sec.toggleMore }}" style="display:flex;align-items:center;gap:8px;height:26px;padding:0 8px;margin:0 8px;border-radius:7px;color:var(--t2);font-size:12px;cursor:default" style-hover="background:var(--hover)">
+            <span style="display:flex;width:15px;justify-content:center"><mdc-icon name="{{ sec.moreIcon }}" size="11"></mdc-icon></span><span>{{ sec.moreLabel }}</span>
+          </div>
+        </sc-if>
+      </sc-for>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;padding:14px 18px 4px"><span style="font-size:11px;font-weight:700;color:var(--t3)">Flutter</span></div>
+      <div onClick="{{ flutterSoon }}" title="Proyectos Flutter: build/, .dart_tool y caché de pub" style="display:flex;align-items:center;gap:8px;height:28px;padding:0 8px;margin:0 8px;border-radius:7px;cursor:default;color:var(--t2)" style-hover="background:var(--hover)">
+        <span style="display:flex;color:var(--t3)"><mdc-icon name="layers" size="15"></mdc-icon></span>
+        <span style="flex:1;white-space:nowrap">Proyectos Flutter</span>
+        <span style="height:16px;padding:0 6px;border-radius:8px;background:var(--fill);color:var(--t2);font-size:10px;font-weight:600;display:inline-flex;align-items:center">Pronto</span>
+      </div>
+    </div>
+    <div style="border-top:0.5px solid var(--line);padding:8px 0 10px;display:flex;flex-direction:column;gap:1px">
+      <div onClick="{{ navHist.onClick }}" style="display:flex;align-items:center;gap:8px;height:28px;padding:0 8px;margin:0 8px;border-radius:7px;cursor:default;background:{{ navHist.bg }};color:{{ navHist.fg }}" style-hover="background:{{ navHist.hov }}">
+        <span style="display:flex;color:{{ navHist.ic }}"><mdc-icon name="history" size="15"></mdc-icon></span><span style="flex:1">Historial</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column;position:relative;background:var(--content)">
+    <div style="height:52px;flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 12px 0 20px;border-bottom:0.5px solid var(--line)">
+      <div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1">{{ title }}</div>
+      <button onClick="{{ rescan }}" title="Escanear de nuevo (⌘R)" aria-label="Escanear de nuevo" style="width:32px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);cursor:pointer;flex-shrink:0"><mdc-icon name="refresh" size="14"></mdc-icon></button>
+      <div style="display:flex;align-items:center;gap:6px;width:150px;height:28px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);flex-shrink:0;color:var(--t3)">
+        <mdc-icon name="search" size="13"></mdc-icon>
+        <input ref="{{ searchRef }}" value="{{ q }}" onChange="{{ onSearch }}" placeholder="Buscar" title="Buscar (⌘F)" aria-label="Buscar" style="border:0;outline:0;background:transparent;color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;font-size:13px;letter-spacing:-0.01em;width:100%;min-width:0">
+      </div>
+      <button onClick="{{ openSettings }}" title="Ajustes (⌘,)" aria-label="Ajustes" style="width:32px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);cursor:pointer;flex-shrink:0"><mdc-icon name="gear" size="15"></mdc-icon></button>
+    </div>
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:22px 24px 90px">
+<sc-if value="{{ isDash }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:14px;max-width:820px;margin:0 auto">
+  <sc-if value="{{ fdaBanner }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="display:flex;align-items:center;gap:10px;padding:10px 12px 10px 14px;border-radius:10px;background:var(--costBg);color:var(--t1)">
+      <span style="display:flex;color:var(--costInk)"><mdc-icon name="warn" size="16"></mdc-icon></span>
+      <div style="flex:1;min-width:0;font-size:12.5px;font-weight:500">Algunas carpetas no se pudieron medir.</div>
+      <button onClick="{{ openFda }}" style="height:26px;padding:0 12px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer">Dar acceso</button>
+      <button onClick="{{ hideBanner }}" aria-label="Descartar" style="width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--t2);cursor:pointer;border-radius:11px"><mdc-icon name="x" size="12"></mdc-icon></button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ dash.scanning }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:22px 24px;border-radius:14px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh)">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span>{{ spinner }}</span>
+        <div style="font-size:17px;font-weight:600;flex:1">Escaneando tu Mac…</div>
+        <div style="font-size:13px;color:var(--t2);font-variant-numeric:tabular-nums">{{ dash.pct }}</div>
+      </div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--t3);margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dash.scanPath }}</div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:18px">
+        <sc-if value="{{ dash.showXc }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600"><span style="display:flex;color:var(--xcode)"><mdc-icon name="hammer" size="13"></mdc-icon></span>Xcode<span style="flex:1"></span><span style="font-weight:400;color:var(--t2);font-variant-numeric:tabular-nums">{{ dash.xc.found }}</span></div>
+            <div style="height:5px;border-radius:3px;background:var(--fill);margin-top:7px;overflow:hidden"><div style="height:100%;width:{{ dash.xc.w }};background:var(--xcode);border-radius:3px;transition:width 200ms"></div></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ dash.showAn }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600"><span style="display:flex;color:var(--android)"><mdc-icon name="android" size="13"></mdc-icon></span>Android<span style="flex:1"></span><span style="font-weight:400;color:var(--t2);font-variant-numeric:tabular-nums">{{ dash.an.found }}</span></div>
+            <div style="height:5px;border-radius:3px;background:var(--fill);margin-top:7px;overflow:hidden"><div style="height:100%;width:{{ dash.an.w }};background:var(--android);border-radius:3px;transition:width 200ms"></div></div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div style="border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh);overflow:hidden">
+      <sc-for list="{{ dash.scanRows }}" as="sr" hint-placeholder-count="8">
+        <div style="display:flex;align-items:center;gap:10px;height:34px;padding:0 14px;border-bottom:0.5px solid var(--line)">
+          <sc-if value="{{ sr.found }}" hint-placeholder-val="{{ false }}">
+            <span style="display:flex;color:{{ sr.tint }};animation:mdcFade 260ms ease-out"><mdc-icon name="{{ sr.icon }}" size="14"></mdc-icon></span>
+            <span style="flex:1;animation:mdcFade 260ms ease-out">{{ sr.name }}</span>
+            <span style="font-size:12px;color:{{ sr.sc }};font-variant-numeric:tabular-nums;animation:mdcFade 260ms ease-out">{{ sr.size }}</span>
+          </sc-if>
+          <sc-if value="{{ sr.pending }}" hint-placeholder-val="{{ true }}">
+            <span style="width:14px;height:14px;border-radius:4px;background:var(--fill)"></span>
+            <span style="width:160px;height:9px;border-radius:5px;background:var(--fill)"></span>
+            <span style="flex:1"></span>
+            <span style="width:48px;height:9px;border-radius:5px;background:var(--fill)"></span>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ dash.clean }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:70px 20px 40px">
+      <div style="width:96px;height:96px;border-radius:48px;background:var(--regenBg);display:flex;align-items:center;justify-content:center;color:var(--regenInk)"><mdc-icon name="check" size="44" w="1.6"></mdc-icon></div>
+      <div style="font-family:var(--mont);font-weight:700;font-size:28px;letter-spacing:-0.03em;margin-top:22px">Tu Mac está ordenada.</div>
+      <div style="font-size:14px;color:var(--t2);margin-top:8px;max-width:380px;text-wrap:pretty">No hay nada que limpiar ahora mismo. Vuelve después de unas semanas de builds.</div>
+      <button onClick="{{ rescan }}" style="display:inline-flex;align-items:center;gap:6px;margin-top:22px;height:30px;padding:0 16px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:13px;font-weight:500;white-space:nowrap;cursor:pointer"><mdc-icon name="refresh" size="13"></mdc-icon>Escanear de nuevo</button>
+      <div style="font-size:11px;color:var(--t3);margin-top:28px">{{ dash.footer }}</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ dash.result }}" hint-placeholder-val="{{ true }}">
+    <div aria-label="{{ dash.heroAria }}" style="padding:22px 24px 20px;border-radius:16px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh)">
+      <div style="font-size:13px;color:var(--t2);font-weight:500">Puedes recuperar</div>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-top:4px;font-family:var(--mont);font-weight:700;color:var(--t1)">
+        <span style="font-size:60px;line-height:1;letter-spacing:-0.045em;font-variant-numeric:tabular-nums">{{ dash.heroNum }}</span>
+        <span style="font-size:26px;letter-spacing:-0.02em">{{ dash.heroUnit }}</span>
+      </div>
+      <div style="display:flex;height:12px;gap:2px;border-radius:6px;overflow:hidden;background:var(--fill);margin-top:18px">
+        <div style="width:{{ dash.regenW }};background:var(--regen)"></div>
+        <div style="width:{{ dash.costW }};background:var(--cost)"></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:10px;font-size:12px;color:var(--t2);align-items:center">
+        <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:9px;height:9px;border-radius:3px;background:var(--regen)"></span>Se regenera solo<b style="color:var(--t1);font-weight:600;font-variant-numeric:tabular-nums">{{ dash.regenL }}</b></span>
+        <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:9px;height:9px;border-radius:3px;background:var(--cost)"></span>Tiene costo<b style="color:var(--t1);font-weight:600;font-variant-numeric:tabular-nums">{{ dash.costL }}</b></span>
+      </div>
+    </div>
+
+    <sc-if value="{{ dash.rec.has }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:18px 20px;border-radius:14px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:38px;height:38px;border-radius:10px;background:var(--regenBg);color:var(--regenInk);display:flex;align-items:center;justify-content:center;flex-shrink:0"><mdc-icon name="regen" size="19"></mdc-icon></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:15px;font-weight:600">Limpieza recomendada</div>
+          <div style="font-size:13px;color:var(--t2);margin-top:2px;text-wrap:pretty"><b style="color:var(--t1);font-weight:600">{{ dash.rec.size }}</b> que Xcode y Gradle regeneran solos cuando los necesites.</div>
+        </div>
+        <button onClick="{{ dash.rec.go }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 18px;border-radius:var(--ctlR);border:0;background:var(--primary);box-shadow:var(--primarySh);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer;flex-shrink:0">Limpiar {{ dash.rec.size }}</button>
+      </div>
+      <div style="margin:14px 0 0 52px;border-radius:10px;background:var(--inner);overflow:hidden">
+        <sc-for list="{{ dash.rec.list }}" as="ri" hint-placeholder-count="5">
+          <div onClick="{{ ri.onClick }}" style="display:flex;align-items:center;gap:9px;height:30px;padding:0 12px;border-bottom:0.5px solid var(--line);cursor:pointer" style-hover="background:var(--hover)">
+            <span style="display:flex;color:var(--t2)"><mdc-icon name="{{ ri.icon }}" size="13"></mdc-icon></span>
+            <span style="flex:1;font-size:12.5px">{{ ri.name }}</span>
+            <span style="font-size:12px;color:var(--t2);font-variant-numeric:tabular-nums">{{ ri.size }}</span>
+          </div>
+        </sc-for>
+        <sc-if value="{{ dash.rec.more }}" hint-placeholder-val="{{ true }}">
+          <div onClick="{{ dash.rec.toggle }}" style="display:flex;align-items:center;gap:5px;height:28px;padding:0 12px;font-size:12px;color:var(--accent);cursor:pointer"><mdc-icon name="{{ dash.rec.moreIcon }}" size="11"></mdc-icon>{{ dash.rec.moreLabel }}</div>
+        </sc-if>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;margin:10px 0 0 52px;font-size:11.5px;color:var(--t3)"><mdc-icon name="regen" size="11"></mdc-icon>Esto volverá a crecer a medida que compiles. Es normal.</div>
+    </div>
+    </sc-if>
+
+
+    <sc-if value="{{ dash.hasDecide }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:16px 18px 8px;border-radius:14px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh)">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:30px;height:30px;border-radius:8px;background:var(--costBg);color:var(--costInk);display:flex;align-items:center;justify-content:center"><mdc-icon name="cost" size="16"></mdc-icon></div>
+        <div style="flex:1"><div style="font-size:14px;font-weight:600">Requiere tu decisión</div><div style="font-size:12px;color:var(--t2)">Tiene costo. Revísalo uno por uno.</div></div>
+      </div>
+      <div style="margin-top:8px">
+        <sc-for list="{{ dash.decide }}" as="dc" hint-placeholder-count="6">
+          <div onClick="{{ dc.onClick }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 6px 0 4px;border-top:0.5px solid var(--line);cursor:pointer;border-radius:6px" style-hover="background:var(--hover)">
+            <span style="display:flex;color:var(--t2);width:26px;justify-content:center"><mdc-icon name="{{ dc.icon }}" size="14"></mdc-icon></span>
+            <span style="flex:1;min-width:0;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dc.name }}</span>
+
+            <span style="font-size:12px;color:var(--t2);font-variant-numeric:tabular-nums;white-space:nowrap">{{ dc.size }}</span>
+            <span style="display:flex;color:var(--t3)"><mdc-icon name="chevr" size="12"></mdc-icon></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+    <div style="text-align:center;font-size:11px;color:var(--t3);padding:4px 0">{{ dash.footer }}</div>
+  </sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ showInspector }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px;max-width:860px;margin:0 auto">
+  <div style="display:flex;align-items:center;gap:14px">
+    <div style="width:46px;height:46px;border-radius:12px;background:{{ cv.tile }};color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)"><mdc-icon name="{{ cv.icon }}" size="23"></mdc-icon></div>
+    <div style="flex:1;min-width:0">
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cv.name }}</div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--t3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cv.sub }}</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0">
+      <div style="font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap">{{ cv.size }}</div>
+      <div style="display:flex;gap:5px">
+        <sc-for list="{{ cv.badges }}" as="b" hint-placeholder-count="1">
+          <span style="display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:10px;font-size:11px;font-weight:600;white-space:nowrap;background:{{ b.bg }};color:{{ b.ink }}"><mdc-icon name="{{ b.icon }}" size="11" w="1.6"></mdc-icon>{{ b.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ runtimesBanner }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px 12px 10px 14px;border-radius:10px;background:var(--costBg)">
+      <span style="display:flex;color:var(--costInk)"><mdc-icon name="warn" size="16"></mdc-icon></span>
+      <div style="flex:1;font-size:12.5px"><b style="font-weight:600">Algunas carpetas no se pudieron medir.</b> <span style="color:var(--t2)">Esta carpeta es del sistema y necesita Acceso total al disco.</span></div>
+      <button onClick="{{ openFda }}" style="height:26px;padding:0 12px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer">Dar acceso</button>
+    </div>
+  </sc-if>
+
+  <div style="border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh);overflow:hidden">
+    <div onClick="{{ cv.toggleExpl }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;cursor:pointer">
+      <span style="display:flex;color:var(--accent)"><mdc-icon name="info" size="14"></mdc-icon></span>
+      <span style="flex:1;font-size:12.5px;font-weight:500">¿Qué es y qué pasa si lo borro?</span>
+      
+      <span style="display:flex;color:var(--t3)"><sc-if value="{{ cv.explOpen }}" hint-placeholder-val="{{ true }}"><mdc-icon name="chevd" size="12"></mdc-icon></sc-if><sc-if value="{{ cv.explClosedF }}" hint-placeholder-val="{{ false }}"><mdc-icon name="chevr" size="12"></mdc-icon></sc-if></span>
+    </div>
+    <sc-if value="{{ cv.explOpen }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-top:0.5px solid var(--line)">
+        <div style="padding:12px 14px;background:var(--inner)"><div style="font-size:11px;font-weight:600;color:var(--t2)">¿Qué es?</div><div style="font-size:12.5px;margin-top:4px;text-wrap:pretty">{{ cv.what }}</div></div>
+        <div style="padding:12px 14px;background:var(--inner)"><div style="font-size:11px;font-weight:600;color:var(--t2)">¿Qué pasa si lo borro?</div><div style="font-size:12.5px;margin-top:4px;text-wrap:pretty">{{ cv.ifDel }}</div></div>
+        <div style="padding:12px 14px;background:var(--inner)"><div style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--t2)">¿Vuelve a aparecer?<mdc-icon name="regen" size="11"></mdc-icon></div><div style="font-size:12.5px;margin-top:4px;text-wrap:pretty">{{ cv.back }}</div></div>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ cv.empty }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 20px">
+      <div style="width:64px;height:64px;border-radius:32px;background:var(--fill);display:flex;align-items:center;justify-content:center;color:var(--t3)"><mdc-icon name="{{ cv.icon }}" size="28"></mdc-icon></div>
+      <div style="font-size:15px;font-weight:600;margin-top:14px">No encontrado</div>
+      <div style="font-size:12.5px;color:var(--t2);margin-top:4px;max-width:340px;text-wrap:pretty">No hay nada de esta categoría en tu Mac. </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}">
+  <sc-if value="{{ cv.hasContent }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="flex:1;font-size:12px;color:var(--t2)">{{ cv.countLine }}</div>
+      <button onClick="{{ cv.selAll }}" title="Marcar todo (⌘A)" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer">Marcar todo</button>
+      <button onClick="{{ cv.selNone }}" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer">Ninguno</button>
+    </div>
+    <sc-if value="{{ cv.noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:28px;text-align:center;font-size:12.5px;color:var(--t3)">Nada coincide con el filtro o la búsqueda.</div>
+    </sc-if>
+    <sc-for list="{{ cv.groups }}" as="g" hint-placeholder-count="2">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <sc-if value="{{ g.hasName }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:8px;padding:0 4px">
+            <span style="font-size:12px;font-weight:600;color:var(--t2)">{{ g.name }}</span>
+            <sc-if value="{{ g.orphan }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;height:18px;padding:0 7px;border-radius:9px;background:var(--fill);font-size:10.5px;font-weight:500;color:var(--t2)">{{ g.orphanLabel }}</span></sc-if>
+            <span style="flex:1"></span>
+            <span style="font-size:11px;color:var(--t3);font-variant-numeric:tabular-nums">{{ g.size }}</span>
+          </div>
+        </sc-if>
+        <div role="list" style="border-radius:10px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh);overflow:hidden">
+          <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+            <div role="listitem" aria-label="{{ r.aria }}" onClick="{{ r.onInspect }}" style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px 0 12px;background:{{ r.bg }};border-top:{{ r.bt }};cursor:default;opacity:{{ r.exOp }}" style-hover="background:{{ r.hov }}">
+              <div onClick="{{ r.onToggle }}" role="checkbox" title="Marcar (␣)" style="width:15px;height:15px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:{{ r.cbBg }};box-shadow:{{ r.cbSh }};color:#fff;cursor:pointer"><span style="display:flex;opacity:{{ r.cbOp }}"><mdc-icon name="check" size="11" w="2.1"></mdc-icon></span></div>
+              <span style="flex:1;min-width:0;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span>
+              <sc-if value="{{ r.showPath }}" hint-placeholder-val="{{ false }}"><span style="flex:2;min-width:0;font-family:var(--mono);font-size:11px;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.path }}</span></sc-if>
+              <sc-if value="{{ r.showBadge }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:4px;height:18px;padding:0 7px;border-radius:9px;font-size:10.5px;font-weight:600;white-space:nowrap;background:{{ r.badge.bg }};color:{{ r.badge.ink }}"><mdc-icon name="{{ r.badge.icon }}" size="10" w="1.6"></mdc-icon>{{ r.badge.label }}</span></sc-if>
+              <div style="width:90px;height:4px;border-radius:2px;background:var(--fill);flex-shrink:0"><div style="height:100%;width:{{ r.barW }};border-radius:2px;background:{{ r.barC }}"></div></div>
+              <span style="width:58px;text-align:right;font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap">{{ r.size }}</span>
+              <button onClick="{{ r.onFinder }}" title="Mostrar en Finder" aria-label="Mostrar en Finder" style="width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--accent);opacity:{{ r.finderOp }};cursor:pointer;border-radius:11px;flex-shrink:0"><mdc-icon name="finder" size="14"></mdc-icon></button>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </sc-if>
+  </sc-if>
+  <sc-if value="{{ isCont }}" hint-placeholder-val="{{ false }}">
+    <div style="font-size:12px;color:var(--t2)">{{ cv.countLine }}</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px">
+      <sc-for list="{{ cv.devices }}" as="d" hint-placeholder-count="3">
+        <div onClick="{{ d.onInspect }}" style="padding:16px;border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:{{ d.ring }};display:flex;flex-direction:column;gap:12px;transition:box-shadow 200ms">
+          <div style="display:flex;align-items:center;gap:11px">
+            <div style="width:38px;height:38px;border-radius:10px;background:var(--fill);color:var(--t1);display:flex;align-items:center;justify-content:center;flex-shrink:0"><mdc-icon name="{{ d.icon }}" size="20"></mdc-icon></div>
+            <div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.name }}</div><div style="font-size:11.5px;color:var(--t2)">{{ d.os }}</div></div>
+            <sc-if value="{{ d.running }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:3px;background:var(--accent)"></span>En uso</span></sc-if>
+            <div style="font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap">{{ d.size }}</div>
+          </div>
+          <div>
+            <div style="display:flex;gap:2px;height:7px;border-radius:4px;overflow:hidden;background:var(--fill)"><sc-for list="{{ d.bars }}" as="bb" hint-placeholder-count="3"><div style="width:{{ bb.w }};background:{{ bb.c }}"></div></sc-for></div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:7px;font-size:11px;color:var(--t2)">
+              <sc-for list="{{ d.legend }}" as="lg" hint-placeholder-count="3"><span style="display:inline-flex;align-items:center;gap:5px;white-space:nowrap"><span style="width:8px;height:8px;border-radius:2px;background:{{ lg.c }}"></span>{{ lg.l }} <span style="color:var(--t3);font-variant-numeric:tabular-nums">{{ lg.s }}</span></span></sc-for>
+            </div>
+          </div>
+          <div role="radiogroup" aria-label="Acción" title="{{ d.tip }}" style="display:flex;gap:2px;padding:2px;border-radius:9px;background:var(--seg);opacity:{{ d.op }}">
+            <sc-for list="{{ d.segs }}" as="sg2" hint-placeholder-count="3">
+              <button onClick="{{ sg2.onClick }}" role="radio" style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:1px;padding:5px 4px;border:0;border-radius:7px;background:{{ sg2.bg }};box-shadow:{{ sg2.sh }};color:{{ sg2.fg }};cursor:{{ sg2.cursor }}">
+                <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:3px;background:{{ sg2.dot }}"></span>{{ sg2.label }}</span>
+                <span style="font-size:10.5px;color:var(--t2);white-space:nowrap;font-variant-numeric:tabular-nums">{{ sg2.frees }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="font-size:11.5px;color:{{ d.descC }};min-height:16px">{{ d.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHist }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+  <div style="padding:20px 22px;border-radius:14px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh)">
+    <div style="display:flex;align-items:flex-end;gap:20px">
+      <div style="flex:1">
+        <div style="font-size:13px;color:var(--t2);font-weight:500">Espacio liberado en total</div>
+        <div style="font-family:var(--mont);font-weight:700;font-size:40px;letter-spacing:-0.04em;line-height:1.1;margin-top:2px">{{ hist.total }}</div>
+        <div style="font-size:12px;color:var(--t3);margin-top:4px">{{ hist.count }}</div>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:10px;height:110px">
+        <sc-for list="{{ hist.bars }}" as="hb" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%;width:44px">
+            <span style="font-size:10.5px;color:var(--t2);font-variant-numeric:tabular-nums;white-space:nowrap">{{ hb.v }}</span>
+            <div style="width:26px;height:{{ hb.h }};max-height:70px;min-height:4px;border-radius:5px 5px 2px 2px;background:var(--regen)"></div>
+            <span style="font-size:10.5px;color:var(--t3);white-space:nowrap">{{ hb.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:16px;padding-top:12px;border-top:0.5px solid var(--line);font-size:12px;color:var(--t2);text-wrap:pretty"><span style="display:flex;color:var(--regenInk);padding-top:1px"><mdc-icon name="regen" size="13"></mdc-icon></span>El espacio vuelve a crecer mientras desarrollas. Por eso conviene limpiar cada 2–4 semanas.</div>
+  </div>
+  <div style="border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh);overflow:hidden">
+    <sc-for list="{{ hist.rows }}" as="hr" hint-placeholder-count="4">
+      <div style="border-bottom:0.5px solid var(--line)">
+        <div onClick="{{ hr.toggle }}" style="display:flex;align-items:center;gap:10px;height:42px;padding:0 16px;cursor:pointer" style-hover="background:var(--hover)">
+          <span style="display:flex;color:var(--t3)"><mdc-icon name="{{ hr.icon }}" size="12"></mdc-icon></span>
+          <span style="width:130px;font-weight:600">{{ hr.date }}</span>
+          <span style="flex:1;font-size:12px;color:var(--t2)">{{ hr.count }}</span>
+          <span style="font-weight:600;font-variant-numeric:tabular-nums">{{ hr.freed }}</span>
+        </div>
+        <sc-if value="{{ hr.open }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:2px 16px 14px 38px;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ hr.bd }}" as="bd" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:10px;font-size:12px">
+                <span style="width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ bd.k }}</span>
+                <div style="flex:1;height:4px;border-radius:2px;background:var(--fill)"><div style="height:100%;width:{{ bd.w }};border-radius:2px;background:var(--accent)"></div></div>
+                <span style="width:60px;text-align:right;color:var(--t2);font-variant-numeric:tabular-nums">{{ bd.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+    </div>
+    <sc-if value="{{ selBar.show }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:6px 6px 6px 16px;border-radius:var(--ctlR2);background:var(--sheet);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:0 10px 30px rgba(0,0,0,.18),0 0 0 0.5px var(--line2);white-space:nowrap;z-index:20;animation:mdcFade 180ms ease-out">
+        <span style="font-weight:600">{{ selBar.count }}</span>
+        <span style="color:var(--t2);font-variant-numeric:tabular-nums">· {{ selBar.size }}</span>
+        <button onClick="{{ selBar.clear }}" style="height:28px;padding:0 10px;border:0;background:transparent;color:var(--accent);font-size:13px;cursor:pointer">Deseleccionar</button>
+        <button onClick="{{ selBar.review }}" title="Revisar y limpiar (⌫)" style="display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 16px;border-radius:var(--ctlR);border:0;background:var(--primary);box-shadow:var(--primarySh);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer">Revisar y limpiar</button>
+      </div>
+    </sc-if>
+  </div>
+
+<sc-if value="{{ showPanel }}" hint-placeholder-val="{{ false }}">
+<div style="width:248px;flex-shrink:0;background:var(--insp);border-left:0.5px solid var(--line);display:flex;flex-direction:column;min-height:0">
+  <div style="height:52px;flex-shrink:0;display:flex;align-items:center;padding:0 10px 0 18px;border-bottom:0.5px solid var(--line);font-size:13px;font-weight:600"><span style="flex:1">Detalles</span><button onClick="{{ closePanel }}" aria-label="Cerrar detalles" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;background:transparent;color:var(--t2);cursor:pointer"><mdc-icon name="x" size="12"></mdc-icon></button></div>
+  <div style="flex:1;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+    <sc-if value="{{ insp.has }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="font-size:15px;font-weight:600;word-break:break-word">{{ insp.name }}</div>
+        <div style="display:flex;gap:5px;margin-top:6px"><sc-for list="{{ insp.badges }}" as="b" hint-placeholder-count="1"><span style="display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:10px;font-size:11px;font-weight:600;background:{{ b.bg }};color:{{ b.ink }}"><mdc-icon name="{{ b.icon }}" size="11" w="1.6"></mdc-icon>{{ b.label }}</span></sc-for></div>
+      </div>
+      <sc-for list="{{ insp.fields }}" as="f" hint-placeholder-count="5">
+        <div>
+          <div style="font-size:11px;font-weight:600;color:var(--t3)">{{ f.k }}</div>
+          <div style="font-size:{{ f.fs }};font-family:{{ f.font }};margin-top:3px;word-break:break-word;line-height:1.45">{{ f.v }}</div>
+        </div>
+      </sc-for>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button onClick="{{ insp.onFinder }}" style="display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer"><mdc-icon name="finder" size="12"></mdc-icon>Mostrar en Finder</button>
+        <sc-if value="{{ insp.isItem }}" hint-placeholder-val="{{ false }}"><button onClick="{{ insp.onMark }}" style="height:26px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer">{{ insp.markLabel }}</button></sc-if>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ hasSheet }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(0,0,0,.1);z-index:40;animation:mdcFade 160ms ease-out">
+  <div style="position:absolute;top:58px;left:calc(50% - 260px);width:520px;max-height:600px;display:flex;flex-direction:column;border-radius:var(--sheetR);background:var(--sheet);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:0 0 0 0.5px rgba(0,0,0,.18),0 18px 50px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.35);overflow:hidden;animation:mdcIn 280ms cubic-bezier(.2,.9,.3,1.05)">
+
+  <sc-if value="{{ sReview }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ rv.blocked }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:24px 26px 6px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="width:52px;height:52px;border-radius:14px;background:var(--costBg);color:var(--costInk);display:flex;align-items:center;justify-content:center"><mdc-icon name="warn" size="26"></mdc-icon></div>
+        <div style="font-size:17px;font-weight:700;margin-top:12px">Cierra estas apps primero</div>
+        <div style="font-size:12.5px;color:var(--t2);margin-top:4px;max-width:380px;text-wrap:pretty">Limpiar mientras están abiertas puede corromper builds en curso o datos de un simulador.</div>
+      </div>
+      <div style="margin:14px 26px 4px;border-radius:10px;background:var(--inner);border:0.5px solid var(--line);overflow:hidden">
+        <sc-for list="{{ rv.apps }}" as="ap" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;height:42px;padding:0 14px;border-bottom:0.5px solid var(--line)">
+            <div style="width:26px;height:26px;border-radius:7px;background:var(--fill);color:{{ ap.tint }};display:flex;align-items:center;justify-content:center"><mdc-icon name="{{ ap.icon }}" size="15"></mdc-icon></div>
+            <div style="flex:1"><div style="font-weight:600;font-size:12.5px">{{ ap.name }}</div><div style="font-size:11px;color:var(--t3)">{{ ap.sub }}</div></div>
+            <span style="font-size:11px;font-weight:600;color:var(--costInk)">Abierta</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:8px;padding:16px 26px 20px">
+        <button onClick="{{ rv.cancel }}" style="height:28px;min-width:88px;padding:0 14px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:13px;white-space:nowrap;cursor:pointer">Cancelar</button>
+        <button onClick="{{ rv.recheck }}" style="display:inline-flex;align-items:center;justify-content:center;gap:7px;height:28px;min-width:88px;padding:0 16px;border-radius:var(--ctlR);border:0;background:var(--primary);box-shadow:var(--primarySh);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer"><sc-if value="{{ rv.rechecking }}" hint-placeholder-val="{{ false }}"><span>{{ spinner }}</span>Comprobando…</sc-if><sc-if value="{{ rv.notRechecking }}" hint-placeholder-val="{{ true }}">Volver a comprobar</sc-if></button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ rv.open }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:22px 24px 12px;display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,#3aa0ff 0%,#5b6cff 55%,#a35bff 100%);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 3px 8px rgba(80,90,255,.25)"><mdc-icon name="trash" size="22"></mdc-icon></div><div>
+        <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em">Vas a liberar {{ rv.total }}</div>
+        <div style="font-size:12px;color:var(--t2);margin-top:2px">{{ rv.count }}</div>
+      </div></div>
+      <div style="flex:1;min-height:0;overflow-y:auto;padding:4px 24px 8px;display:flex;flex-direction:column;gap:14px">
+        <sc-if value="{{ rv.showR }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--regenInk)"><mdc-icon name="regen" size="12" w="1.6"></mdc-icon>Se regenera solo<span style="font-weight:400;color:var(--t2)">· {{ rv.rHead }}</span></div>
+            <div style="margin-top:6px;border-radius:10px;background:var(--inner);border:0.5px solid var(--line);overflow:hidden">
+              <sc-for list="{{ rv.rRows }}" as="rr" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:9px;height:30px;padding:0 12px;border-bottom:0.5px solid var(--line);font-size:12.5px">
+                  <span style="display:flex;color:var(--t2)"><mdc-icon name="{{ rr.icon }}" size="13"></mdc-icon></span>
+                  <span style="flex:1">{{ rr.name }}</span><span style="font-size:11px;color:var(--t3)">{{ rr.n }}</span>
+                  <span style="width:62px;text-align:right;font-variant-numeric:tabular-nums">{{ rr.size }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rv.showC }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--costInk)"><mdc-icon name="cost" size="12" w="1.6"></mdc-icon>Tiene costo<span style="font-weight:400;color:var(--t2)">· {{ rv.cHead }}</span></div>
+            <div style="margin-top:6px;border-radius:10px;background:var(--inner);border:0.5px solid var(--line);overflow:hidden">
+              <sc-for list="{{ rv.cRows }}" as="cr" hint-placeholder-count="2">
+                <div style="padding:8px 12px;border-bottom:0.5px solid var(--line)">
+                  <div style="display:flex;gap:9px;font-size:12.5px"><span style="flex:1;font-weight:500">{{ cr.name }}</span><span style="font-size:11px;color:var(--t3)">{{ cr.cat }}</span><span style="width:62px;text-align:right;font-variant-numeric:tabular-nums">{{ cr.size }}</span></div>
+                  <div style="font-size:11.5px;color:var(--t2);margin-top:2px;text-wrap:pretty">{{ cr.note }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rv.showCmds }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--t2)">Comandos que se ejecutarán</div>
+            <div style="margin-top:6px;padding:8px 10px;border-radius:8px;background:var(--fill);font-family:var(--mono);font-size:10.5px;color:var(--t2);line-height:1.6;max-height:110px;overflow:auto">
+              <sc-for list="{{ rv.cmds }}" as="cm" hint-placeholder-count="3"><div style="white-space:nowrap">$ {{ cm.c }}</div></sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <div style="padding:10px 24px 0;display:flex;flex-direction:column;gap:8px;border-top:0.5px solid var(--line)">
+        <label onClick="{{ rv.toggleT }}" style="display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer">
+          <span style="width:15px;height:15px;border-radius:4px;display:flex;align-items:center;justify-content:center;background:{{ rv.tBg }};box-shadow:{{ rv.tSh }};color:#fff;flex-shrink:0"><span style="display:flex;opacity:{{ rv.tOp }}"><mdc-icon name="check" size="11" w="2.1"></mdc-icon></span></span>
+          Mover a la Papelera <span style="color:var(--t3)">(puedes recuperarlos)</span>
+        </label>
+        <sc-if value="{{ rv.needU }}" hint-placeholder-val="{{ false }}">
+          <label onClick="{{ rv.toggleU }}" style="display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer">
+            <span style="width:15px;height:15px;border-radius:4px;display:flex;align-items:center;justify-content:center;background:{{ rv.uBg }};box-shadow:{{ rv.uSh }};color:#fff;flex-shrink:0"><span style="display:flex;opacity:{{ rv.uOp }}"><mdc-icon name="check" size="11" w="2.1"></mdc-icon></span></span>
+            Entiendo que algunos se volverán a descargar o perderán datos
+          </label>
+        </sc-if>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:8px;padding:14px 24px 18px">
+        <button onClick="{{ rv.cancel }}" style="height:28px;min-width:88px;padding:0 14px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:13px;white-space:nowrap;cursor:pointer">Cancelar</button>
+        <button onClick="{{ rv.onPrimary }}" style="height:28px;min-width:88px;padding:0 18px;border-radius:var(--ctlR);border:0;background:var(--primary);box-shadow:var(--primarySh);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;cursor:{{ rv.pCur }};opacity:{{ rv.pOp }}">{{ rv.primary }}</button>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ sProgress }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:28px 26px 8px;display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="position:relative;width:104px;height:104px">
+        <svg width="104" height="104" viewBox="0 0 104 104" style="transform:rotate(-90deg)"><circle cx="52" cy="52" r="46" fill="none" stroke="var(--fill)" stroke-width="7"></circle><circle cx="52" cy="52" r="46" fill="none" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="{{ pg.off }}"></circle></svg>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums">{{ pg.pct }}</div>
+      </div>
+      <div style="font-size:15px;font-weight:600;margin-top:16px">Limpiando…</div>
+      <div style="font-size:24px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums;letter-spacing:-0.02em">{{ pg.freed }} <span style="font-size:13px;font-weight:400;color:var(--t2)">{{ pg.of }}</span></div>
+      <div style="font-size:12px;color:var(--t3);margin-top:8px;max-width:420px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ pg.step }} · {{ pg.cur }}</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:18px 24px 18px">
+      <div style="flex:1;font-size:11.5px;color:var(--t3)">Si cancelas, lo que ya se limpió queda limpio.</div>
+      <button onClick="{{ pg.cancel }}" style="height:28px;min-width:88px;padding:0 14px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:13px;white-space:nowrap;cursor:pointer">Cancelar</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ sResult }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:30px 30px 8px;display:flex;flex-direction:column;align-items:center;text-align:center">
+      <span>{{ rs.check }}</span>
+      <sc-if value="{{ rs.cancelled }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;font-weight:600;color:var(--t2);margin-top:14px">{{ rs.title }}</div></sc-if>
+      <div style="font-family:var(--mont);font-weight:700;font-size:30px;letter-spacing:-0.035em;margin-top:14px">Liberaste {{ rs.freed }}</div>
+      <div style="font-size:12px;color:var(--t3);margin-top:2px">{{ rs.count }}</div>
+      <div style="display:flex;gap:8px;text-align:left;margin-top:16px;padding:12px 14px;border-radius:10px;background:var(--regenBg);font-size:12.5px;line-height:1.45;text-wrap:pretty"><span style="display:flex;color:var(--regenInk);padding-top:1px"><mdc-icon name="regen" size="14"></mdc-icon></span><span>Parte de esto volverá a crecer mientras desarrollas. Es normal: así funcionan Xcode y Gradle. Te recomendamos revisar cada 2–4 semanas.</span></div>
+      <sc-if value="{{ rs.trash }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--t2);margin-top:10px"><mdc-icon name="trash" size="12"></mdc-icon>Está en la Papelera. El espacio se libera al vaciarla.</div></sc-if>
+    </div>
+    <sc-if value="{{ rs.hasErr }}" hint-placeholder-val="{{ false }}">
+      <div style="margin:10px 26px 0;border-radius:10px;border:0.5px solid var(--line);background:var(--inner);overflow:hidden">
+        <div onClick="{{ rs.toggleErr }}" style="display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;cursor:pointer;font-size:12.5px">
+          <span style="display:flex;color:var(--costInk)"><mdc-icon name="warn" size="14"></mdc-icon></span><span style="flex:1;font-weight:600">{{ rs.errHead }}</span><span style="display:flex;color:var(--t3)"><mdc-icon name="{{ rs.errIcon }}" size="12"></mdc-icon></span>
+        </div>
+        <sc-if value="{{ rs.errOpen }}" hint-placeholder-val="{{ false }}">
+          <sc-for list="{{ rs.errs }}" as="er" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:10px;padding:7px 12px;border-top:0.5px solid var(--line)">
+              <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:500">{{ er.name }}</div><div style="font-size:11.5px;color:var(--t2)">{{ er.why }}</div></div>
+              <button onClick="{{ er.finder }}" style="display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 9px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);color:var(--t1);font-size:11.5px;white-space:nowrap;cursor:pointer"><mdc-icon name="finder" size="11"></mdc-icon>Mostrar en Finder</button>
+            </div>
+          </sc-for>
+        </sc-if>
+      </div>
+    </sc-if>
+    <div style="display:flex;justify-content:flex-end;gap:8px;padding:18px 24px 20px">
+      <button onClick="{{ rs.hist }}" style="height:28px;min-width:88px;padding:0 14px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:13px;white-space:nowrap;cursor:pointer">Ver historial</button>
+      <button onClick="{{ rs.done }}" style="height:28px;min-width:88px;padding:0 22px;border-radius:var(--ctlR);border:0;background:var(--primary);box-shadow:var(--primarySh);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer">Listo</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ sFda }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:26px 28px 6px;display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="position:relative;width:64px;height:64px;border-radius:16px;background:var(--fill);color:var(--t1);display:flex;align-items:center;justify-content:center"><mdc-icon name="disk" size="32"></mdc-icon><div style="position:absolute;right:-6px;bottom:-6px;width:28px;height:28px;border-radius:14px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px var(--sheet)"><mdc-icon name="shield" size="16" w="1.6"></mdc-icon></div></div>
+      <div style="font-size:17px;font-weight:700;margin-top:16px">Permite el acceso total al disco</div>
+      <div style="font-size:12.5px;color:var(--t2);margin-top:6px;max-width:420px;text-wrap:pretty">Lo necesitamos para medir los runtimes de simulador y algunas carpetas de sistema. Solo leemos tamaños; nunca abrimos tus archivos ni enviamos nada fuera de tu Mac.</div>
+      <div style="margin-top:18px;width:400px;border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh);text-align:left;overflow:hidden;font-size:12.5px">
+        <div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 14px;border-bottom:0.5px solid var(--line)"><span style="width:20px;height:20px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span style="display:flex;color:var(--t2)"><mdc-icon name="gear" size="14"></mdc-icon></span><span>Abre <b style="font-weight:600">Ajustes del Sistema</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 14px;border-bottom:0.5px solid var(--line)"><span style="width:20px;height:20px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span style="display:flex;color:var(--t2)"><mdc-icon name="lock" size="14"></mdc-icon></span><span>Ve a <b style="font-weight:600">Privacidad y seguridad</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 14px;border-bottom:0.5px solid var(--line)"><span style="width:20px;height:20px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span style="display:flex;color:var(--t2)"><mdc-icon name="disk" size="14"></mdc-icon></span><span>Entra en <b style="font-weight:600">Acceso total al disco</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;height:40px;padding:0 14px"><span style="width:20px;height:20px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span><span style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#3aa0ff,#a35bff);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><mdc-icon name="trash" size="11"></mdc-icon></span><span style="flex:1">Activa <b style="font-weight:600">Mobile Dev Cleaner</b></span><span style="position:relative;width:32px;height:18px;border-radius:9px;background:{{ fda.tgBg }};transition:background 200ms;flex-shrink:0"><span style="position:absolute;top:2px;left:{{ fda.tgX }};width:14px;height:14px;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:left 200ms"></span></span></div>
+      </div>
+      <div style="height:22px;margin-top:12px;display:flex;align-items:center;gap:7px;font-size:12px">
+        <sc-if value="{{ fda.wait }}" hint-placeholder-val="{{ false }}"><span>{{ spinner }}</span><span style="color:var(--t2)">Esperando permiso…</span></sc-if>
+        <sc-if value="{{ fda.ok }}" hint-placeholder-val="{{ false }}"><span style="display:flex;color:var(--regenInk)"><mdc-icon name="check" size="14" w="2"></mdc-icon></span><span style="color:var(--regenInk);font-weight:600">Acceso concedido</span></sc-if>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;padding:12px 24px 20px">
+      <button onClick="{{ fda.later }}" style="height:28px;min-width:88px;padding:0 14px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:13px;white-space:nowrap;cursor:pointer">Ahora no</button>
+      <button onClick="{{ fda.grant }}" style="height:28px;min-width:88px;padding:0 16px;border-radius:var(--ctlR);border:0;background:var(--primary);box-shadow:var(--primarySh);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer">{{ fda.primary }}</button>
+    </div>
+  </sc-if>
+  </div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ isOnboarding }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Onboarding" style="position:absolute;left:180px;top:80px;width:740px;height:560px;border-radius:var(--wr);overflow:hidden;background:var(--sheet);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--shWin);display:flex;flex-direction:column;animation:mdcFade 240ms ease-out">
+  <div style="height:40px;display:flex;align-items:center;gap:8px;padding:0 14px;flex-shrink:0">
+    <div style="width:12px;height:12px;border-radius:6px;background:#ff5f57"></div><div style="width:12px;height:12px;border-radius:6px;background:var(--fill)"></div><div style="width:12px;height:12px;border-radius:6px;background:var(--fill)"></div>
+  </div>
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 56px">
+    <sc-if value="{{ ob.s0 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:36px;align-items:center;text-align:left;width:100%">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#3aa0ff 0%,#5b6cff 55%,#a35bff 100%);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 20px rgba(80,90,255,.3)"><mdc-icon name="trash" size="20" w="1.8"></mdc-icon></div>
+            <div style="font-family:var(--mont);font-weight:700;font-size:15px;letter-spacing:-0.02em">Mobile Dev Cleaner</div>
+          </div>
+          <div style="font-family:var(--mont);font-weight:700;font-size:36px;letter-spacing:-0.04em;line-height:1.08;margin-top:26px">Recupera espacio sin romper nada.</div>
+          <div style="font-size:14px;color:var(--t2);margin-top:14px;line-height:1.5;text-wrap:pretty">Encuentra lo que Xcode y Android Studio dejan atrás y te explica qué es antes de borrarlo.</div>
+          
+        </div>
+        <div style="border-radius:16px;background:var(--card);border:var(--cardBd);box-shadow:0 20px 50px rgba(60,40,120,.18),var(--cardSh);padding:16px 16px 10px;transform:rotate(1.5deg)">
+          <div style="font-size:11px;color:var(--t3);font-weight:500">En la Mac de un dev mobile</div>
+          <div style="display:flex;align-items:baseline;gap:5px;font-family:var(--mont);font-weight:700;margin-top:2px"><span style="font-size:34px;letter-spacing:-0.045em;line-height:1">37,7</span><span style="font-size:15px">GB</span></div>
+          <div style="display:flex;gap:2px;height:8px;border-radius:4px;overflow:hidden;margin-top:12px"><div style="width:48%;background:var(--regen)"></div><div style="width:52%;background:var(--cost)"></div></div>
+          <div style="margin-top:12px;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;gap:8px;height:32px;border-top:0.5px solid var(--line);font-size:12px"><span style="display:flex;color:var(--xcode)"><mdc-icon name="hammer" size="13"></mdc-icon></span><span style="flex:1">Builds de Xcode</span><span style="display:flex;color:var(--regenInk)"><mdc-icon name="regen" size="12" w="1.6"></mdc-icon></span><span style="width:44px;text-align:right;font-variant-numeric:tabular-nums;color:var(--t2)">6,1 GB</span></div>
+            <div style="display:flex;align-items:center;gap:8px;height:32px;border-top:0.5px solid var(--line);font-size:12px"><span style="display:flex;color:var(--android)"><mdc-icon name="box" size="13"></mdc-icon></span><span style="flex:1">Cachés de Gradle</span><span style="display:flex;color:var(--regenInk)"><mdc-icon name="regen" size="12" w="1.6"></mdc-icon></span><span style="width:44px;text-align:right;font-variant-numeric:tabular-nums;color:var(--t2)">7,4 GB</span></div>
+            <div style="display:flex;align-items:center;gap:8px;height:32px;border-top:0.5px solid var(--line);font-size:12px"><span style="display:flex;color:var(--xcode)"><mdc-icon name="iphone" size="13"></mdc-icon></span><span style="flex:1">Simuladores iOS</span><span style="display:flex;color:var(--costInk)"><mdc-icon name="cost" size="12" w="1.6"></mdc-icon></span><span style="width:44px;text-align:right;font-variant-numeric:tabular-nums;color:var(--t2)">3,8 GB</span></div>
+            <div style="display:flex;align-items:center;gap:8px;height:32px;border-top:0.5px solid var(--line);font-size:12px;color:var(--t3)"><span style="display:flex"><mdc-icon name="key" size="13"></mdc-icon></span><span style="flex:1">Keystores y certificados</span><span style="display:flex"><mdc-icon name="lock" size="12" w="1.6"></mdc-icon></span><span style="width:44px;text-align:right">—</span></div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ ob.s1 }}" hint-placeholder-val="{{ false }}">
+      <div style="font-family:var(--mont);font-weight:700;font-size:28px;letter-spacing:-0.03em">Cómo funciona</div>
+      <div style="font-size:13.5px;color:var(--t2);margin-top:8px">Todo lo que encontramos cae en una de estas tres cajas.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px;text-align:left;width:100%">
+        <div style="padding:16px;border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh)"><div style="width:36px;height:36px;border-radius:10px;background:var(--regenBg);color:var(--regenInk);display:flex;align-items:center;justify-content:center"><mdc-icon name="regen" size="19"></mdc-icon></div><div style="font-size:14px;font-weight:600;margin-top:12px">Se regenera solo</div><div style="font-size:12.5px;color:var(--t2);margin-top:4px;line-height:1.45;text-wrap:pretty">Casi todo se regenera solo cuando compilas.</div></div>
+        <div style="padding:16px;border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh)"><div style="width:36px;height:36px;border-radius:10px;background:var(--costBg);color:var(--costInk);display:flex;align-items:center;justify-content:center"><mdc-icon name="cost" size="19"></mdc-icon></div><div style="font-size:14px;font-weight:600;margin-top:12px">Tiene costo</div><div style="font-size:12.5px;color:var(--t2);margin-top:4px;line-height:1.45;text-wrap:pretty">Lo que tiene costo, te lo explicamos antes.</div></div>
+        <div style="padding:16px;border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh)"><div style="width:36px;height:36px;border-radius:10px;background:var(--protBg);color:var(--t2);display:flex;align-items:center;justify-content:center"><mdc-icon name="lock" size="19"></mdc-icon></div><div style="font-size:14px;font-weight:600;margin-top:12px">Nunca lo tocamos</div><div style="font-size:12.5px;color:var(--t2);margin-top:4px;line-height:1.45;text-wrap:pretty">Lo delicado ni siquiera lo escaneamos.</div></div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ ob.s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative;width:64px;height:64px;border-radius:17px;background:var(--fill);display:flex;align-items:center;justify-content:center"><mdc-icon name="disk" size="32"></mdc-icon><div style="position:absolute;right:-7px;bottom:-7px;width:30px;height:30px;border-radius:16px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px var(--sheet)"><mdc-icon name="shield" size="18" w="1.6"></mdc-icon></div></div>
+      <div style="font-family:var(--mont);font-weight:700;font-size:26px;letter-spacing:-0.03em;margin-top:20px">Permite el acceso total al disco</div>
+      <div style="font-size:13.5px;color:var(--t2);margin-top:10px;max-width:480px;line-height:1.5;text-wrap:pretty">Lo necesitamos para medir los runtimes de simulador y algunas carpetas de sistema. Solo leemos tamaños; nunca abrimos tus archivos ni enviamos nada fuera de tu Mac.</div>
+      <div style="margin-top:18px;width:400px;border-radius:12px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh);text-align:left;overflow:hidden;font-size:12.5px">
+        <div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 14px;border-bottom:0.5px solid var(--line)"><span style="width:20px;height:20px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span style="display:flex;color:var(--t2)"><mdc-icon name="gear" size="14"></mdc-icon></span><span>Abre <b style="font-weight:600">Ajustes del Sistema</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 14px;border-bottom:0.5px solid var(--line)"><span style="width:20px;height:20px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span style="display:flex;color:var(--t2)"><mdc-icon name="lock" size="14"></mdc-icon></span><span>Ve a <b style="font-weight:600">Privacidad y seguridad</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;height:36px;padding:0 14px;border-bottom:0.5px solid var(--line)"><span style="width:20px;height:20px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span style="display:flex;color:var(--t2)"><mdc-icon name="disk" size="14"></mdc-icon></span><span>Entra en <b style="font-weight:600">Acceso total al disco</b></span></div>
+        <div style="display:flex;align-items:center;gap:10px;height:40px;padding:0 14px"><span style="width:20px;height:20px;border-radius:10px;background:var(--accentBg);color:var(--accentInk);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span><span style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#3aa0ff,#a35bff);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><mdc-icon name="trash" size="11"></mdc-icon></span><span style="flex:1">Activa <b style="font-weight:600">Mobile Dev Cleaner</b></span><span style="position:relative;width:32px;height:18px;border-radius:9px;background:{{ ob.tgBg }};transition:background 200ms;flex-shrink:0"><span style="position:absolute;top:2px;left:{{ ob.tgX }};width:14px;height:14px;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:left 200ms"></span></span></div>
+      </div>
+      <div style="height:22px;margin-top:16px;display:flex;align-items:center;gap:7px;font-size:12.5px">
+        <sc-if value="{{ ob.fWait }}" hint-placeholder-val="{{ false }}"><span>{{ spinner }}</span><span style="color:var(--t2)">Esperando permiso…</span></sc-if>
+        <sc-if value="{{ ob.fOk }}" hint-placeholder-val="{{ false }}"><span style="display:flex;color:var(--regenInk)"><mdc-icon name="check" size="15" w="2"></mdc-icon></span><span style="color:var(--regenInk);font-weight:600">Acceso concedido</span></sc-if>
+      </div>
+    </sc-if>
+    <sc-if value="{{ ob.s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="width:76px;height:76px;border-radius:20px;background:linear-gradient(180deg,#ff6b5f,#ff3b30);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 28px rgba(255,59,48,.3)"><mdc-icon name="bell" size="36"></mdc-icon></div>
+      <div style="font-family:var(--mont);font-weight:700;font-size:28px;letter-spacing:-0.03em;margin-top:24px;max-width:460px;line-height:1.2;text-wrap:balance">¿Te avisamos cuando termine la limpieza?</div>
+      <div style="font-size:13.5px;color:var(--t2);margin-top:10px;max-width:440px;line-height:1.5;text-wrap:pretty">Así puedes seguir trabajando mientras limpiamos. Una sola notificación al terminar, con lo que liberaste. Nada más.</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:22px;padding:10px 14px;width:340px;border-radius:14px;background:var(--card);border:var(--cardBd);box-shadow:var(--cardSh);text-align:left">
+        <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#3aa0ff,#a35bff);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><mdc-icon name="trash" size="15"></mdc-icon></div>
+        <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600">Limpieza completada</div><div style="font-size:11.5px;color:var(--t2)">Liberaste 18,2 GB. Parte volverá a crecer al compilar.</div></div>
+        <span style="font-size:10.5px;color:var(--t3)">ahora</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ ob.s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="width:84px;height:84px;border-radius:42px;background:var(--regenBg);color:var(--regenInk);display:flex;align-items:center;justify-content:center"><mdc-icon name="shield" size="40"></mdc-icon></div>
+      <div style="font-family:var(--mont);font-weight:700;font-size:32px;letter-spacing:-0.035em;margin-top:24px">Todo listo.</div>
+      <div style="font-size:14px;color:var(--t2);margin-top:10px;max-width:440px;line-height:1.5;text-wrap:pretty">Todo ocurre en tu Mac. Sin telemetría, sin internet. Nada se borra sin que lo revises antes.</div>
+    </sc-if>
+  </div>
+  <div style="height:68px;flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 24px">
+    <div style="display:flex;gap:6px;align-items:center;flex:1">
+      <sc-for list="{{ ob.dots }}" as="od" hint-placeholder-count="5"><span style="height:7px;width:{{ od.w }};border-radius:4px;background:{{ od.bg }};transition:width 250ms"></span></sc-for>
+    </div>
+    <sc-if value="{{ ob.showBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ob.back }}" style="height:30px;padding:0 12px;border:0;background:transparent;color:var(--t2);font-size:13px;white-space:nowrap;cursor:pointer">Atrás</button></sc-if>
+    <sc-if value="{{ ob.showSec }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ob.onSec }}" style="height:30px;padding:0 16px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:13px;white-space:nowrap;cursor:pointer">{{ ob.sec }}</button></sc-if>
+    <button onClick="{{ ob.onPrimary }}" style="height:30px;padding:0 20px;border-radius:var(--ctlR);border:0;background:var(--primary);box-shadow:var(--primarySh);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer">{{ ob.primary }}</button>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ sg.open }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Ajustes" role="dialog" aria-label="Ajustes" style="position:absolute;left:250px;top:34px;width:620px;height:640px;border-radius:var(--wr);overflow:hidden;background:var(--panel);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:0 30px 90px rgba(0,0,0,.35),0 0 0 0.5px var(--line2);display:flex;flex-direction:column;z-index:60;animation:mdcFade 180ms ease-out">
+  <div style="flex-shrink:0;border-bottom:0.5px solid var(--line)">
+    <div style="height:34px;display:flex;align-items:center;padding:0 14px;position:relative">
+      <div style="display:flex;gap:8px">
+        <div onClick="{{ sg.close }}" title="Cerrar (Esc)" style="width:12px;height:12px;border-radius:6px;background:#ff5f57;cursor:pointer"></div><div style="width:12px;height:12px;border-radius:6px;background:var(--fill)"></div><div style="width:12px;height:12px;border-radius:6px;background:var(--fill)"></div>
+      </div>
+      <div style="position:absolute;left:0;right:0;text-align:center;font-size:13px;font-weight:600;color:var(--t2);pointer-events:none">{{ sg.tabName }}</div>
+    </div>
+    <div role="tablist" style="display:flex;justify-content:center;gap:4px;padding:2px 0 8px">
+      <sc-for list="{{ sg.tabs }}" as="tb" hint-placeholder-count="4">
+        <button role="tab" onClick="{{ tb.onClick }}" style="display:flex;flex-direction:column;align-items:center;gap:3px;width:84px;padding:6px 0;border:0;border-radius:8px;background:{{ tb.bg }};color:{{ tb.fg }};cursor:pointer"><mdc-icon name="{{ tb.icon }}" size="20"></mdc-icon><span style="font-size:11px;font-weight:500">{{ tb.label }}</span></button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="flex:1;min-height:0;overflow-y:auto;padding:18px 22px 24px;display:grid;align-content:start;grid-auto-rows:max-content;gap:18px">
+
+  <sc-if value="{{ sg.isScan }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="font-size:13px;font-weight:600;margin:0 0 7px 4px">Herramientas a escanear</div>
+      <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--line)"><div style="width:26px;height:26px;border-radius:7px;background:var(--xcode);color:#fff;display:flex;align-items:center;justify-content:center"><mdc-icon name="hammer" size="14"></mdc-icon></div><div style="flex:1"><div>Xcode</div><div style="font-size:11px;color:var(--t2)">Builds, simuladores, runtimes y cachés</div></div><div role="switch" aria-checked="{{ tg.xcode.aria }}" onClick="{{ tg.xcode.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.xcode.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.xcode.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--line)"><div style="width:26px;height:26px;border-radius:7px;background:var(--android);color:#fff;display:flex;align-items:center;justify-content:center"><mdc-icon name="android" size="14"></mdc-icon></div><div style="flex:1"><div>Android</div><div style="font-size:11px;color:var(--t2)">Gradle, SDK, emuladores y Android Studio</div></div><div role="switch" aria-checked="{{ tg.android.aria }}" onClick="{{ tg.android.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.android.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.android.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px"><div style="width:26px;height:26px;border-radius:7px;background:#027DFD;color:#fff;display:flex;align-items:center;justify-content:center;opacity:.55"><mdc-icon name="layers" size="14"></mdc-icon></div><div style="flex:1;opacity:.7"><div>Flutter</div><div style="font-size:11px;color:var(--t2)">build/, .dart_tool y caché de pub</div></div><span style="height:18px;padding:0 8px;border-radius:9px;background:var(--fill);color:var(--t2);font-size:10.5px;font-weight:600;display:inline-flex;align-items:center">Próximamente</span></div>
+      </div>
+    </div>
+    <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--line)"><div style="flex:1">Escanear al abrir la app</div><div role="switch" aria-checked="{{ tg.scanOnOpen.aria }}" onClick="{{ tg.scanOnOpen.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.scanOnOpen.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.scanOnOpen.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px"><div style="flex:1"><div>Mostrar categorías vacías en la barra lateral</div><div style="font-size:11px;color:var(--t2)">Aparecen atenuadas con “No encontrado”.</div></div><div role="switch" aria-checked="{{ tg.showEmpty.aria }}" onClick="{{ tg.showEmpty.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.showEmpty.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.showEmpty.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;margin:0 0 7px 4px">Notificaciones</div>
+      <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px"><span style="display:flex;color:var(--t2)"><mdc-icon name="bell" size="17"></mdc-icon></span><div style="flex:1"><div>Avisarme cuando termine la limpieza</div><div style="font-size:11px;color:var(--t2)">Una sola notificación con lo que liberaste. Nunca te avisamos para que limpies.</div></div><div role="switch" onClick="{{ tg.notif.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.notif.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.notif.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;margin:0 0 2px 4px">Carpetas excluidas</div>
+      <div style="font-size:11.5px;color:var(--t2);margin:0 0 7px 4px">Nunca se marcarán, ni siquiera en la limpieza recomendada. Útil para el proyecto en el que trabajas a diario.</div>
+      <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+        <sc-if value="{{ sg.exEmpty }}" hint-placeholder-val="{{ true }}"><div style="padding:14px;font-size:12px;color:var(--t3);text-align:center">No hay carpetas excluidas.</div></sc-if>
+        <sc-for list="{{ sg.excluded }}" as="ex" hint-placeholder-count="0">
+          <div onClick="{{ ex.on }}" style="display:flex;align-items:center;gap:10px;padding:7px 14px;border-bottom:0.5px solid var(--line);background:{{ ex.bg }};cursor:default"><span style="display:flex;color:var(--accent)"><mdc-icon name="hammer" size="13"></mdc-icon></span><div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:500">{{ ex.label }}</div><div style="font-family:var(--mono);font-size:10.5px;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ex.path }}</div></div></div>
+        </sc-for>
+        <div style="display:flex;border-top:0.5px solid var(--line);background:var(--fill)">
+          <button onClick="{{ sg.exAdd }}" aria-label="Añadir carpeta" style="width:30px;height:24px;border:0;border-right:0.5px solid var(--line);background:transparent;color:var(--t1);display:flex;align-items:center;justify-content:center;cursor:pointer"><mdc-icon name="plus" size="12"></mdc-icon></button>
+          <button onClick="{{ sg.exRemove }}" aria-label="Quitar carpeta" style="width:30px;height:24px;border:0;border-right:0.5px solid var(--line);background:transparent;color:var(--t1);display:flex;align-items:center;justify-content:center;cursor:pointer"><mdc-icon name="minus" size="12"></mdc-icon></button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ sg.isSafety }}" hint-placeholder-val="{{ false }}">
+    <div style="font-size:13px;font-weight:600;margin:4px 0 -11px 4px">Seguridad</div>
+    <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:0.5px solid var(--line)"><div style="flex:1"><div>Mover a la Papelera en vez de eliminar</div><div style="font-size:11px;color:var(--t2);margin-top:1px">Puedes recuperarlos desde la Papelera. El espacio se libera al vaciarla.</div></div><div role="switch" aria-checked="{{ tg.trash.aria }}" onClick="{{ tg.trash.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.trash.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.trash.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:0.5px solid var(--line)"><div style="flex:1"><div style="display:flex;align-items:center;gap:6px">Pedir confirmación extra para elementos con costo<span style="height:16px;padding:0 6px;border-radius:8px;background:var(--regenBg);color:var(--regenInk);font-size:10px;font-weight:600;display:inline-flex;align-items:center">Recomendado</span></div><div style="font-size:11px;color:var(--t2);margin-top:1px">Tendrás que marcar “Entiendo” antes de limpiar.</div></div><div role="switch" aria-checked="{{ tg.confirmCost.aria }}" onClick="{{ tg.confirmCost.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.confirmCost.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.confirmCost.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 14px"><div style="flex:1"><div style="display:flex;align-items:center;gap:6px">No limpiar si Xcode, Android Studio o un emulador están abiertos<span style="display:flex;color:var(--prot)"><mdc-icon name="lock" size="12"></mdc-icon></span></div><div style="font-size:11px;color:var(--t2);margin-top:1px">Evita corromper builds en curso. Siempre activo.</div></div><div role="switch" aria-checked="true" aria-disabled="true" onClick="{{ tg.blockOpen.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.blockOpen.bg }};cursor:not-allowed;flex-shrink:0;opacity:.5"><div style="position:absolute;top:2px;left:{{ tg.blockOpen.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3)"></div></div></div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;margin:0 0 7px 4px">Permisos</div>
+      <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--line)"><span style="display:flex;color:var(--t2)"><mdc-icon name="disk" size="17"></mdc-icon></span><div style="flex:1"><div>Acceso total al disco</div><div style="font-size:11px;color:var(--t2)">Necesario para medir runtimes y carpetas de sistema</div></div>
+          <sc-if value="{{ sg.fda }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--regenInk)"><mdc-icon name="check" size="12" w="2"></mdc-icon>Concedido</span></sc-if>
+          <sc-if value="{{ sg.noFda }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--costInk)"><mdc-icon name="warn" size="12" w="1.6"></mdc-icon>No concedido</span><button onClick="{{ sg.giveFda }}" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer">Dar acceso</button></sc-if>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px"><span style="display:flex;color:var(--t2)"><mdc-icon name="bell" size="17"></mdc-icon></span><div style="flex:1"><div>Notificaciones</div><div style="font-size:11px;color:var(--t2)">Para avisarte cuando termine una limpieza</div></div><div role="switch" onClick="{{ tg.notif.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.notif.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.notif.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ sg.isPrefs }}" hint-placeholder-val="{{ false }}">
+    <div style="border-radius:10px;background:var(--card);border:var(--cardBd);padding:14px">
+      <div style="font-size:13px;margin-bottom:10px">Apariencia</div>
+      <div style="display:flex;gap:16px">
+        <div onClick="{{ sg.apLight.on }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer"><div style="width:86px;height:56px;border-radius:9px;border:{{ sg.apLight.bd }};padding:2px;box-sizing:border-box"><div style="width:100%;height:100%;border-radius:6px;background:linear-gradient(135deg,#bcd4ff,#f5d6ea);display:flex;align-items:flex-end;justify-content:center;overflow:hidden"><div style="width:70%;height:70%;border-radius:4px 4px 0 0;background:#fff;display:flex"><div style="width:30%;background:#ececf0"></div></div></div></div><span style="font-size:11.5px;font-weight:{{ sg.apLight.fw }}">Claro</span></div>
+        <div onClick="{{ sg.apDark.on }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer"><div style="width:86px;height:56px;border-radius:9px;border:{{ sg.apDark.bd }};padding:2px;box-sizing:border-box"><div style="width:100%;height:100%;border-radius:6px;background:linear-gradient(135deg,#1e2a52,#52264a);display:flex;align-items:flex-end;justify-content:center;overflow:hidden"><div style="width:70%;height:70%;border-radius:4px 4px 0 0;background:#2c2c2e;display:flex"><div style="width:30%;background:#3a3a3c"></div></div></div></div><span style="font-size:11.5px;font-weight:{{ sg.apDark.fw }}">Oscuro</span></div>
+        <div onClick="{{ sg.apAuto.on }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer"><div style="width:86px;height:56px;border-radius:9px;border:{{ sg.apAuto.bd }};padding:2px;box-sizing:border-box"><div style="width:100%;height:100%;border-radius:6px;background:linear-gradient(90deg,#bcd4ff 50%,#1e2a52 50%);display:flex;align-items:flex-end;justify-content:center;overflow:hidden"><div style="width:70%;height:70%;border-radius:4px 4px 0 0;background:linear-gradient(90deg,#fff 50%,#2c2c2e 50%)"></div></div></div><span style="font-size:11.5px;font-weight:{{ sg.apAuto.fw }}">Automático</span></div>
+      </div>
+      <div style="height:0.5px;background:var(--line);margin:14px 0"></div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="flex:1"><div>Material</div><div style="font-size:11px;color:var(--t2)">Liquid Glass usa vidrio translúcido de macOS Tahoe. Clásico es el estilo de Sonoma y Sequoia.</div></div>
+        <div style="display:flex;padding:2px;gap:2px;border-radius:8px;background:var(--seg);flex-shrink:0">
+          <button onClick="{{ sg.matT.on }}" style="height:24px;padding:0 10px;border:0;border-radius:6px;background:{{ sg.matT.bg }};box-shadow:{{ sg.matT.sh }};color:{{ sg.matT.fg }};font-size:12px;white-space:nowrap;cursor:pointer">Liquid Glass (Tahoe)</button>
+          <button onClick="{{ sg.matC.on }}" style="height:24px;padding:0 10px;border:0;border-radius:6px;background:{{ sg.matC.bg }};box-shadow:{{ sg.matC.sh }};color:{{ sg.matC.fg }};font-size:12px;white-space:nowrap;cursor:pointer">Clásico</button>
+        </div>
+      </div>
+      <div style="height:0.5px;background:var(--line);margin:14px 0"></div>
+      <div style="display:flex;align-items:center;gap:12px"><span style="display:flex;color:var(--t2)"><mdc-icon name="globe" size="16"></mdc-icon></span><div style="flex:1">Idioma</div><select value="{{ sg.lang }}" onChange="{{ sg.onLang }}" style="height:24px;font-size:12.5px;border-radius:6px"><option value="es">Español</option><option value="en">English</option></select></div>
+    </div>
+
+    </sc-if>
+  <sc-if value="{{ sg.isAbout }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:14px;padding:4px 4px 0">
+      <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#3aa0ff 0%,#5b6cff 55%,#a35bff 100%);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 10px rgba(80,90,255,.25)"><mdc-icon name="trash" size="27"></mdc-icon></div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:var(--mont);font-weight:700;font-size:17px;letter-spacing:-0.02em">Mobile Dev Cleaner</div>
+        <div style="font-size:12px;color:var(--t2);margin-top:2px">Versión 1.0.2 · Licencia MIT · Sin telemetría</div>
+      </div>
+    </div>
+    <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+        <a href="https://github.com/LeoMogiano/mdc-cli" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:11px;height:44px;padding:0 12px 0 10px;color:var(--t1);text-decoration:none;border-bottom:0.5px solid var(--line)" style-hover="background:var(--hover);text-decoration:none">
+          <span style="width:26px;height:26px;border-radius:7px;background:{{ star.bg }};display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="display:flex;color:{{ star.fg }}"><mdc-icon name="star" size="15" w="1.6"></mdc-icon></span></span>
+          <span style="flex:1;min-width:0;font-size:13px">Dale una estrella en GitHub</span>
+          <span style="font-size:12px;color:var(--t3);white-space:nowrap">Ayuda a que más devs la encuentren</span>
+          <span style="display:flex;color:var(--t3)"><mdc-icon name="chevr" size="11"></mdc-icon></span>
+        </a>
+        <a href="https://github.com/LeoMogiano/mdc-cli/issues" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:11px;height:44px;padding:0 12px 0 10px;color:var(--t1);text-decoration:none" style-hover="background:var(--hover);text-decoration:none">
+          <span style="width:26px;height:26px;border-radius:7px;background:var(--fill);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="display:flex;color:var(--t2)"><mdc-icon name="warn" size="14"></mdc-icon></span></span>
+          <span style="flex:1;min-width:0;font-size:13px">Reportar un problema</span>
+          <span style="font-size:12px;color:var(--t3);white-space:nowrap">GitHub Issues</span>
+          <span style="display:flex;color:var(--t3)"><mdc-icon name="chevr" size="11"></mdc-icon></span>
+        </a>
+      </div>
+    <div style="font-size:13px;font-weight:600;margin:0 0 -11px 4px">Creador</div>
+    <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 12px 12px 10px;border-bottom:0.5px solid var(--line)">
+          <div style="width:44px;height:44px;border-radius:22px;background:radial-gradient(circle at 30% 25%,#8fd3ff 0%,#3a8bff 38%,#6b5cff 70%,#b45cff 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:17px;flex-shrink:0;box-shadow:inset 0 1px 1px rgba(255,255,255,.45),0 0 0 0.5px rgba(0,0,0,.12)">LM</div>
+          <div style="flex:1;min-width:0"><div style="font-family:var(--mont);font-weight:600;font-size:14px;letter-spacing:-0.01em">Leo Mogiano</div><div style="font-size:11.5px;color:var(--t2)">AI Mobile Dev Enthusiast · Hice esta app porque mi Mac se quedaba sin espacio cada semana.</div></div>
+        </div>
+        <a href="https://github.com/LeoMogiano" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:11px;height:44px;padding:0 12px 0 10px;color:var(--t1);text-decoration:none;border-bottom:0.5px solid var(--line)" style-hover="background:var(--hover);text-decoration:none">
+          <span style="width:26px;height:26px;border-radius:7px;background:#1b1f24;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="display:flex;color:#fff"><mdc-icon name="github" size="15"></mdc-icon></span></span>
+          <span style="flex:1;min-width:0;font-size:13px">GitHub</span>
+          <span style="font-size:12px;color:var(--t3);white-space:nowrap">LeoMogiano</span>
+          <span style="display:flex;color:var(--t3)"><mdc-icon name="chevr" size="11"></mdc-icon></span>
+        </a>
+        <a href="https://linkedin.com/in/leomogiano" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:11px;height:44px;padding:0 12px 0 10px;color:var(--t1);text-decoration:none;border-bottom:0.5px solid var(--line)" style-hover="background:var(--hover);text-decoration:none">
+          <span style="width:26px;height:26px;border-radius:7px;background:#0a66c2;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="display:flex;color:#fff"><mdc-icon name="linkedin" size="13"></mdc-icon></span></span>
+          <span style="flex:1;min-width:0;font-size:13px">LinkedIn</span>
+          <span style="font-size:12px;color:var(--t3);white-space:nowrap">leomogiano</span>
+          <span style="display:flex;color:var(--t3)"><mdc-icon name="chevr" size="11"></mdc-icon></span>
+        </a>
+        <a href="https://buymeacoffee.com/leomogiano" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:11px;height:44px;padding:0 12px 0 10px;color:var(--t1);text-decoration:none" style-hover="background:var(--hover);text-decoration:none">
+          <span style="width:26px;height:26px;border-radius:7px;background:linear-gradient(180deg,#ffe24a,#ffcc00);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="display:flex;color:#3d2b00"><mdc-icon name="coffee" size="15" w="1.8"></mdc-icon></span></span>
+          <span style="flex:1;min-width:0;font-size:13px">Invítame un café</span>
+          <span style="font-size:12px;color:var(--t3);white-space:nowrap">Si te ahorró espacio</span>
+          <span style="display:flex;color:var(--t3)"><mdc-icon name="chevr" size="11"></mdc-icon></span>
+        </a>
+      </div>
+  </sc-if>
+
+  <sc-if value="{{ sg.isAdv }}" hint-placeholder-val="{{ false }}">
+    <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--line)"><div style="flex:1"><div>Mostrar nombres técnicos y rutas completas</div><div style="font-size:11px;color:var(--t2)">“DerivedData” en vez de “Builds de Xcode”.</div></div><div role="switch" aria-checked="{{ tg.showTech.aria }}" onClick="{{ tg.showTech.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.showTech.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.showTech.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px"><div style="flex:1"><div>Mostrar comandos que se ejecutarán</div><div style="font-size:11px;color:var(--t2);font-family:var(--mono)">xcrun simctl erase &lt;UDID&gt; · avdmanager delete avd</div></div><div role="switch" aria-checked="{{ tg.showCmds.aria }}" onClick="{{ tg.showCmds.on }}" style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ tg.showCmds.bg }};cursor:pointer;flex-shrink:0;transition:background 200ms"><div style="position:absolute;top:2px;left:{{ tg.showCmds.x }};width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left 200ms"></div></div></div>
+    </div>
+    <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--line)"><div style="flex:1"><div>Caché de tamaños <span style="color:var(--t3);font-variant-numeric:tabular-nums">· {{ sg.sizeCache }}</span></div><div style="font-size:11px;color:var(--t2)">Hace que los re-escaneos sean casi instantáneos.</div></div><button onClick="{{ sg.clearCache }}" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer">Vaciar caché de tamaños</button></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px"><div style="flex:1"><div>Plan de limpieza</div><div style="font-size:11px;color:var(--t2)">JSON compatible con el CLI <span style="font-family:var(--mono)">mdc</span>.</div></div>
+        <button onClick="{{ sg.importPlan }}" style="display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer"><mdc-icon name="import" size="12"></mdc-icon>Importar</button>
+        <button onClick="{{ sg.exportPlan }}" style="display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer"><mdc-icon name="export" size="12"></mdc-icon>Exportar</button>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin:0 0 7px 4px"><span style="font-size:13px;font-weight:600">Integraciones</span><span style="height:17px;padding:0 7px;border-radius:9px;background:var(--accentBg);color:var(--accentInk);font-size:10.5px;font-weight:600;display:inline-flex;align-items:center">Próximamente</span></div>
+      <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:0.5px solid var(--line)">
+          <span style="width:28px;height:28px;border-radius:7px;background:linear-gradient(180deg,#e08a64,#c96442);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><mdc-icon name="sparkle" size="15" w="1.6"></mdc-icon></span>
+          <div style="flex:1;min-width:0"><div>Claude (servidor MCP)</div><div style="font-size:11px;color:var(--t2)">Pregúntale a Claude qué ocupa espacio y deja que proponga un plan. Tú siempre confirmas.</div></div>
+          <button onClick="{{ sg.notifyMe }}" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer">Avisarme</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:11px 14px">
+          <span style="width:28px;height:28px;border-radius:7px;background:var(--fill);color:var(--t2);display:flex;align-items:center;justify-content:center;flex-shrink:0"><mdc-icon name="plug" size="15"></mdc-icon></span>
+          <div style="flex:1;min-width:0"><div>Otros agentes y editores</div><div style="font-size:11px;color:var(--t2)">Cualquier cliente compatible con MCP podrá usar las mismas herramientas.</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="border-radius:10px;background:var(--card);border:var(--cardBd);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:0.5px solid var(--line)"><div style="flex:1">Mostrar el onboarding de nuevo</div><button onClick="{{ sg.reOnboard }}" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--t1);font-size:12px;white-space:nowrap;cursor:pointer">Mostrar</button></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px"><div style="flex:1"><div>Restablecer todos los ajustes</div><div style="font-size:11px;color:var(--t2)">No borra nada de tu disco.</div></div>
+        <sc-if value="{{ sg.resetAsk }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:var(--t2)">¿Seguro?</span><button onClick="{{ sg.cancelReset }}" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);color:var(--t1);font-size:12px;cursor:pointer">Cancelar</button><button onClick="{{ sg.doReset }}" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:0;background:var(--red);color:#fff;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer">Restablecer</button></sc-if>
+        <sc-if value="{{ sg.noResetAsk }}" hint-placeholder-val="{{ true }}"><button onClick="{{ sg.askReset }}" style="height:24px;padding:0 10px;border-radius:var(--ctlR);border:var(--ctlBd);background:var(--ctl);box-shadow:var(--ctlSh);color:var(--red);font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer">Restablecer…</button></sc-if>
+      </div>
+    </div>
+  </sc-if>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ notice.show }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ notice.close }}" style="position:absolute;top:10px;right:10px;width:330px;display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:16px;background:var(--sheet);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:0 12px 36px rgba(0,0,0,.22),0 0 0 0.5px var(--line2);z-index:150;animation:mdcIn 300ms cubic-bezier(.2,.9,.3,1.1);cursor:default">
+  <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#3aa0ff,#a35bff);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><mdc-icon name="trash" size="16"></mdc-icon></div>
+  <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600">Limpieza completada</div><div style="font-size:11.5px;color:var(--t2)">{{ notice.msg }}</div></div>
+  <span style="font-size:10.5px;color:var(--t3);align-self:flex-start">ahora</span>
+</div>
+</sc-if>
+<sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:50%;bottom:-38px;transform:translateX(-50%);padding:7px 14px;border-radius:999px;background:rgba(30,30,34,.86);color:#fff;font-size:12px;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:200;animation:mdcFade 160ms ease-out">{{ toast.msg }}</div>
+</sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Apariencia&quot;},&quot;material&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;tahoe&quot;,&quot;classic&quot;],&quot;default&quot;:&quot;tahoe&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Apariencia&quot;},&quot;starStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;azul&quot;,&quot;morado&quot;,&quot;naranja&quot;,&quot;suave&quot;],&quot;default&quot;:&quot;azul&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Apariencia&quot;},&quot;start&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;onboarding&quot;,&quot;dashboard&quot;,&quot;scanning&quot;,&quot;clean&quot;,&quot;noPermission&quot;],&quot;default&quot;:&quot;onboarding&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Escenario&quot;},&quot;appsOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Escenario&quot;},&quot;errors&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Escenario&quot;}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  stageRef = React.createRef();
+  searchRef = React.createRef();
+  state = this.initState(this.props);
+
+  fmt = (g) => g >= 1 ? g.toFixed(1).replace('.', ',') + ' GB' : Math.max(0, Math.round(g * 1000)) + ' MB';
+  devT = (d) => d.data + d.cache + d.snap + d.base;
+
+  defaultSet() {
+    return { xcode: true, android: true, scanOnOpen: true, showEmpty: false, threshold: '20 GB', every: '2 semanas', excluded: [],
+      trash: true, confirmCost: true, blockOpen: true, showTech: false, showCmds: false, sizeCache: '2,3 MB', lang: 'es', cli: false };
+  }
+
+  initState(p) {
+    const start = (p && p.start) || 'onboarding';
+    return {
+      screen: start === 'onboarding' ? 'onboarding' : 'main', obStep: 0, fdaState: 'idle',
+      fda: start !== 'onboarding' && start !== 'noPermission', notif: false, bannerHidden: false,
+      view: 'dashboard', inspect: null, scan: 1, count: 1, sel: {}, act: {}, filter: 'all', q: '',
+      sheet: null, understand: false, rechecking: false, prog: 0, ops: [], done: [], errs: [], cancelled: false, errOpen: false,
+      cats: start === 'clean' ? this.cleanData() : this.mkData(), history: this.mkHistory(),
+      recOpen: false, explClosed: {}, settingsOpen: false, tab: 'scan', set: this.defaultSet(),
+      theme: (p && p.theme) || 'light', material: (p && p.material) || 'tahoe', appsOpen: !!(p && p.appsOpen),
+      histOpen: null, exSel: null, resetAsk: false, toast: null, scanOnStart: start === 'scanning',
+    };
+  }
+
+  mkData() {
+    const it = (id, name, path, size, risk, o) => Object.assign({ id, name, path, size, risk }, o || {});
+    const X = '~/Library/Developer/Xcode', CS = '~/Library/Developer/CoreSimulator', G = '~/.gradle', SDK = '~/Library/Android/sdk';
+    return [
+      { id: 'builds', tool: 'xcode', name: 'Builds de Xcode', tech: 'DerivedData', path: X + '/DerivedData', icon: 'hammer',
+        what: 'Archivos intermedios que Xcode genera al compilar cada proyecto.', ifDel: 'El próximo build de ese proyecto tardará más: compila desde cero.', back: 'Sí. Xcode lo regenera en cuanto compilas.',
+        items: [
+          it('b1', 'ModuleCache', X + '/DerivedData/ModuleCache.noindex', 0.6, 'regen', { group: 'Caché compartido', mod: 'Hoy, 10:42' }),
+          it('b2', 'MyBankApp', X + '/DerivedData/MyBankApp-abcdqxrkztmvhp', 2.4, 'regen', { group: 'Tus proyectos', mod: 'Hoy, 09:15' }),
+          it('b3', 'EGXOne', X + '/DerivedData/EGXOne-efghmwpalvsnzc', 1.9, 'regen', { group: 'Tus proyectos', mod: 'Ayer, 18:03' }),
+          it('b4', 'old-prototype', X + '/DerivedData/old-prototype-ijklzzbeqwrt', 1.2, 'regen', { group: 'Proyectos que ya no existen', orphan: true, mod: '14 mar 2026', reason: 'El proyecto ya no existe en tu disco. Nadie lo va a regenerar.' }),
+        ] },
+      { id: 'caches', tool: 'xcode', name: 'Cachés y temporales', tech: 'Caches · tmp', path: '~/Library/Caches/com.apple.dt.Xcode', icon: 'tray',
+        what: 'Cachés de Xcode, del simulador y archivos temporales de compilación.', ifDel: 'Xcode puede tardar unos segundos más en abrir la primera vez.', back: 'Sí. Se recrean solos al usar Xcode.',
+        items: [ it('c1', 'Caché de Xcode', '~/Library/Caches/com.apple.dt.Xcode', 0.4, 'regen', { mod: 'Hoy' }), it('c2', 'Cachés del simulador', CS + '/Caches', 0.2, 'regen', { mod: 'Ayer' }) ] },
+      { id: 'tests', tool: 'xcode', name: 'Residuos de test', tech: 'Logs/Test · .xcresult', path: X + '/DerivedData/…/Logs/Test', icon: 'checklist',
+        what: 'Resultados y adjuntos de ejecuciones de tests (.xcresult).', ifDel: 'Pierdes el historial de resultados de tests anteriores.', back: 'Sí. Cada ejecución de tests genera nuevos.',
+        items: [ it('t1', 'MyBankApp · 42 ejecuciones', X + '/DerivedData/MyBankApp-abcd/Logs/Test', 0.2, 'regen', { mod: 'Hoy' }), it('t2', 'EGXOne · 18 ejecuciones', X + '/DerivedData/EGXOne-efgh/Logs/Test', 0.1, 'regen', { mod: 'Ayer' }) ] },
+      { id: 'sims', tool: 'xcode', kind: 'containers', name: 'Simuladores iOS', tech: 'CoreSimulator/Devices', path: CS + '/Devices', icon: 'iphone',
+        what: 'Cada simulador guarda sus apps instaladas, datos, cachés y snapshots.', ifDel: 'Depende de la acción: limpiar conserva tus apps; restablecer o eliminar las borra.', back: 'La caché sí. Los datos de tus apps no.',
+        devices: [
+          { id: 's1', name: 'iPhone 16 Pro', os: 'iOS 18.2', icon: 'iphone', ref: '5F2A9B3C-…-C91E', data: 1.3, cache: 0.4, snap: 0.15, base: 0.05, live: true },
+          { id: 's2', name: 'iPad Air', os: 'iOS 17.5', icon: 'ipad', ref: 'A81D44E0-…-0B47', data: 0.8, cache: 0.25, snap: 0.1, base: 0.05 },
+          { id: 's3', name: 'Apple Watch Series 10', os: 'watchOS 11.2', icon: 'watch', ref: '3C77F1A2-…-E2F0', data: 0.45, cache: 0.15, snap: 0.05, base: 0.05 },
+        ] },
+      { id: 'runtimes', tool: 'xcode', name: 'Runtimes de simulador', tech: 'CoreSimulator/Volumes', path: '/Library/Developer/CoreSimulator/Volumes', icon: 'cube', needsFda: true,
+        what: 'Sistemas operativos completos que usan los simuladores (iOS, watchOS…). Los que están en uso no aparecen.', ifDel: 'Si lo necesitas otra vez, Xcode lo vuelve a descargar (varios GB).', back: 'Solo si lo vuelves a descargar desde Xcode.',
+        items: [ it('r1', 'iOS 17.0 Runtime', '/Library/Developer/CoreSimulator/Volumes/iOS_21A328', 2.1, 'cost', { mod: '2 feb 2026', cost: 'Xcode lo volverá a descargar si creas un simulador con iOS 17.0 (~2,1 GB).' }) ] },
+      { id: 'devsup', tool: 'xcode', name: 'Soporte de iPhones', tech: 'iOS DeviceSupport', path: X + '/iOS DeviceSupport', icon: 'devlink',
+        what: 'Símbolos que Xcode copia de cada iPhone que conectas para depurar.', ifDel: 'La próxima vez que conectes ese iPhone, Xcode tardará unos minutos en prepararlo.', back: 'Sí. Se vuelve a copiar al conectar el dispositivo.',
+        items: [ it('d1', 'iPhone 15 · iOS 17.5', X + '/iOS DeviceSupport/iPhone15,2 17.5 (21F79)', 0.9, 'regen', { mod: '3 jun 2026' }), it('d2', 'iPhone 13 · iOS 16.4', X + '/iOS DeviceSupport/iPhone14,5 16.4 (20E247)', 0.7, 'regen', { mod: '11 ene 2026' }) ] },
+      { id: 'archives', tool: 'xcode', name: 'Archives', tech: 'Archives', path: X + '/Archives', icon: 'archive',
+        what: 'Versiones archivadas de tus apps (.xcarchive) con sus símbolos.', ifDel: 'Pierdes los símbolos para leer crashes de esas versiones.', back: 'No. Solo se crean al archivar una nueva versión.', items: [] },
+      { id: 'previews', tool: 'xcode', name: 'SwiftUI Previews', tech: 'UserData/Previews', path: X + '/UserData/Previews', icon: 'eye',
+        what: 'Simuladores y builds que Xcode crea para mostrar las previews de SwiftUI.', ifDel: 'La primera preview tardará un poco más.', back: 'Sí. Se regeneran al abrir una preview.',
+        items: [ it('p1', 'Previews de MyBankApp', X + '/UserData/Previews/Simulator Devices', 0.5, 'regen', { mod: 'Hoy' }) ] },
+      { id: 'pods', tool: 'xcode', name: 'CocoaPods · Carthage · Fastlane', tech: 'Pods · Carthage · fastlane', path: '~/Library/Caches/CocoaPods', icon: 'box',
+        what: 'Cachés de los gestores de dependencias y herramientas de iOS.', ifDel: 'El próximo pod install o carthage bootstrap descargará de nuevo.', back: 'Sí. Se rellenan al instalar dependencias.',
+        items: [ it('o1', 'Caché de CocoaPods', '~/Library/Caches/CocoaPods', 0.6, 'regen', { mod: 'Hace 3 días' }), it('o2', 'Caché de Carthage', '~/Library/Caches/org.carthage.CarthageKit', 0.2, 'regen', { mod: 'Hace 2 semanas' }) ] },
+      { id: 'gcache', tool: 'android', name: 'Cachés de Gradle', tech: 'caches/transforms · build-cache', path: G + '/caches', icon: 'box',
+        what: 'Resultados intermedios que Gradle guarda para compilar más rápido.', ifDel: 'El próximo build tardará más.', back: 'Sí. Gradle lo regenera al compilar.',
+        items: [ it('g1', 'transforms-4', G + '/caches/transforms-4', 4.1, 'regen', { mod: 'Hoy' }), it('g2', 'build-cache-1', G + '/caches/build-cache-1', 2.6, 'regen', { mod: 'Hoy' }), it('g3', 'kotlin-dsl', G + '/caches/kotlin-dsl', 0.7, 'regen', { mod: 'Ayer' }) ] },
+      { id: 'gdeps', tool: 'android', name: 'Dependencias de Gradle', tech: 'caches/modules-2', path: G + '/caches/modules-2', icon: 'stack',
+        what: 'Librerías descargadas (AndroidX, Kotlin, Firebase…) que usan tus proyectos.', ifDel: 'Gradle volverá a descargarlas en el próximo build (necesitas internet).', back: 'Sí, pero toca esperar la descarga.',
+        items: [ it('gd1', 'files-2.1', G + '/caches/modules-2/files-2.1', 4.6, 'cost', { mod: 'Hoy', cost: 'Gradle volverá a descargar ~4,6 GB en el próximo build.' }), it('gd2', 'metadata-2.106', G + '/caches/modules-2/metadata-2.106', 0.3, 'cost', { mod: 'Hoy', cost: 'Se reconstruye al resolver dependencias (~300 MB).' }) ] },
+      { id: 'gvers', tool: 'android', name: 'Versiones de Gradle', tech: 'wrapper/dists', path: G + '/wrapper/dists', icon: 'layers',
+        what: 'Distribuciones de Gradle que descarga el wrapper de cada proyecto.', ifDel: 'Un proyecto que use esa versión la descargará otra vez al abrirlo.', back: 'Sí, al abrir un proyecto que la use.',
+        items: [ it('gv1', 'Gradle 8.4', G + '/wrapper/dists/gradle-8.4-bin', 0.18, 'cost', { mod: 'feb 2026', cost: 'Se volverá a descargar la próxima vez que abras un proyecto que la use (~180 MB).' }), it('gv2', 'Gradle 7.6', G + '/wrapper/dists/gradle-7.6-all', 0.15, 'cost', { mod: 'oct 2025', cost: 'Se volverá a descargar si abres un proyecto que la use (~150 MB).' }) ] },
+      { id: 'jdks', tool: 'android', name: 'JDKs de Gradle', tech: 'jdks', path: G + '/jdks', icon: 'cube',
+        what: 'JDKs que Gradle descarga automáticamente (toolchains).', ifDel: 'Gradle los vuelve a descargar si un proyecto los pide.', back: 'Sí, al compilar un proyecto que los pida.', items: [] },
+      { id: 'glogs', tool: 'android', name: 'Logs de Gradle · Kotlin', tech: 'daemon · kotlin', path: G + '/daemon', icon: 'doc',
+        what: 'Logs del daemon de Gradle y del compilador de Kotlin.', ifDel: 'Nada. Solo pierdes logs viejos.', back: 'Sí. Se escriben con cada build.',
+        items: [ it('l1', 'Logs del daemon', G + '/daemon', 0.3, 'regen', { mod: 'Hoy' }), it('l2', 'Kotlin daemon', '~/Library/Application Support/kotlin/daemon', 0.1, 'regen', { mod: 'Hoy' }) ] },
+      { id: 'acache', tool: 'android', name: 'Cachés de Android', tech: '.android/cache', path: '~/.android/cache', icon: 'tray',
+        what: 'Cachés de Android Studio y de las herramientas del SDK.', ifDel: 'Android Studio puede tardar un poco más al indexar.', back: 'Sí. Se regeneran solos.',
+        items: [ it('a1', 'Caché de Android Studio', '~/Library/Caches/Google/AndroidStudio2024.2', 0.4, 'regen', { mod: 'Hoy' }), it('a2', 'Caché de herramientas', '~/.android/cache', 0.1, 'regen', { mod: 'Ayer' }) ] },
+      { id: 'avds', tool: 'android', kind: 'containers', name: 'Emuladores Android', tech: 'AVDs', path: '~/.android/avd', icon: 'phone',
+        what: 'Cada emulador guarda apps, datos, caché y snapshots de arranque rápido.', ifDel: 'Limpiar conserva tus apps; restablecer o eliminar las borra.', back: 'La caché y los snapshots sí. Los datos no.',
+        devices: [
+          { id: 'v1', name: 'Pixel 8', os: 'API 34 · Android 14', icon: 'phone', ref: 'Pixel_8_API_34', data: 1.4, cache: 0.4, snap: 0.25, base: 0.05, live: true, avd: true },
+          { id: 'v2', name: 'Pixel Tablet', os: 'API 33 · Android 13', icon: 'ipad', ref: 'Pixel_Tablet_API_33', data: 0.45, cache: 0.12, snap: 0.1, base: 0.03, avd: true },
+        ] },
+      { id: 'sysimg', tool: 'android', name: 'Imágenes de sistema', tech: 'system-images', path: SDK + '/system-images', icon: 'cube',
+        what: 'Sistemas Android que usan los emuladores para arrancar.', ifDel: 'Los emuladores que la usan no arrancarán hasta volver a descargarla.', back: 'Solo si la vuelves a descargar desde el SDK Manager.',
+        items: [
+          it('si1', 'Android 14 · API 34 · Google Play', SDK + '/system-images/android-34/google_apis_playstore', 1.6, 'cost', { group: 'Usadas por tus emuladores', mod: 'feb 2026', cost: 'Pixel 8 no arrancará hasta volver a descargarla (~1,6 GB).' }),
+          it('si2', 'Android 13 · API 33', SDK + '/system-images/android-33/google_apis', 1.2, 'cost', { group: 'Usadas por tus emuladores', mod: 'sep 2025', cost: 'Pixel Tablet no arrancará hasta volver a descargarla (~1,2 GB).' }),
+          it('si3', 'Android 11 · API 30', SDK + '/system-images/android-30/default', 0.8, 'cost', { group: 'Ningún emulador la usa', orphan: true, mod: 'mar 2025', cost: 'Ningún emulador la usa. Si la necesitas, se descarga de nuevo (~800 MB).' }),
+        ] },
+      { id: 'ndk', tool: 'android', name: 'NDK / cmake / build-tools', tech: 'ndk · cmake · build-tools', path: SDK, icon: 'wrench',
+        what: 'Herramientas nativas del SDK. Las versiones viejas suelen quedarse olvidadas.', ifDel: 'Un proyecto que fije esa versión la descargará de nuevo.', back: 'Sí, al compilar un proyecto que la pida.',
+        items: [ it('n1', 'NDK 25.1.8937393', SDK + '/ndk/25.1.8937393', 0.8, 'cost', { mod: 'nov 2024', cost: 'Se volverá a descargar si un proyecto usa NDK 25 (~800 MB).' }), it('n2', 'build-tools 30.0.3', SDK + '/build-tools/30.0.3', 0.1, 'cost', { mod: '2023', cost: 'Se descarga de nuevo si un proyecto la pide (~100 MB).' }) ] },
+      { id: 'studio', tool: 'android', name: 'Versiones viejas de Studio', tech: 'Application Support/Google', path: '~/Library/Application Support/Google', icon: 'clock',
+        what: 'Ajustes, plugins e índices de versiones de Android Studio que ya no usas.', ifDel: 'Pierdes los ajustes de esa versión. Tu versión actual no se toca.', back: 'No. Son de versiones que ya no tienes.',
+        items: [ it('st1', 'Android Studio Hedgehog 2023.1', '~/Library/Application Support/Google/AndroidStudio2023.1', 0.7, 'cost', { mod: 'ene 2024', cost: 'Pierdes los ajustes y plugins de Hedgehog. Tu versión actual no cambia.' }), it('st2', 'Android Studio Iguana 2023.2', '~/Library/Application Support/Google/AndroidStudio2023.2', 0.4, 'cost', { mod: 'abr 2024', cost: 'Pierdes los ajustes y plugins de Iguana.' }) ] },
+    ];
+  }
+  cleanData() {
+    return this.mkData().map(c => c.kind === 'containers' ? Object.assign({}, c, { devices: c.devices.map(d => Object.assign({}, d, { data: 0, cache: 0, snap: 0, base: 0 })) }) : Object.assign({}, c, { items: [] }));
+  }
+  mkHistory() {
+    return [
+      { id: 'h1', date: '12 sep 2026', freed: 21.0, count: 14, bd: [['Builds de Xcode', 8.2], ['Cachés de Gradle', 7.9], ['Simuladores iOS', 2.6], ['Otros', 2.3]] },
+      { id: 'h2', date: '27 ago 2026', freed: 17.6, count: 11, bd: [['Cachés de Gradle', 7.1], ['Builds de Xcode', 6.4], ['Soporte de iPhones', 2.2], ['Otros', 1.9]] },
+      { id: 'h3', date: '8 ago 2026', freed: 24.1, count: 19, bd: [['Builds de Xcode', 9.0], ['Dependencias de Gradle', 6.8], ['Imágenes de sistema', 4.4], ['Otros', 3.9]] },
+      { id: 'h4', date: '19 jul 2026', freed: 21.3, count: 15, bd: [['Cachés de Gradle', 8.8], ['Builds de Xcode', 7.7], ['Emuladores Android', 2.5], ['Otros', 2.3]] },
+    ];
+  }
+
+  componentDidMount() {
+    this.applyVars(); this.fit();
+    this._fit = () => this.fit(); window.addEventListener('resize', this._fit);
+    this._key = (e) => this.onKey(e); window.addEventListener('keydown', this._key);
+    if (this.state.scanOnStart) this.startScan();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._fit); window.removeEventListener('keydown', this._key);
+    clearInterval(this._scanT); clearInterval(this._progT);
+  }
+  componentDidUpdate(pp) {
+    const p = this.props, ch = {};
+    if (pp.theme !== p.theme && p.theme) ch.theme = p.theme;
+    if (pp.material !== p.material && p.material) ch.material = p.material;
+    if (pp.appsOpen !== p.appsOpen) ch.appsOpen = !!p.appsOpen;
+    if (pp.start !== p.start) { clearInterval(this._scanT); clearInterval(this._progT); this.setState(this.initState(p), () => { if (p.start === 'scanning') this.startScan(); }); return; }
+    if (Object.keys(ch).length) this.setState(ch);
+    this.applyVars();
+  }
+  fit() {
+    const el = this.stageRef.current; if (!el) return;
+    const s = Math.min(1, (window.innerWidth - 40) / 1100, (window.innerHeight - 70) / 720);
+    el.style.transform = 'scale(' + Math.max(0.3, s) + ')';
+  }
+  applyVars() {
+    const el = this.rootRef.current; if (!el) return;
+    const { theme, material } = this.state;
+    const dark = theme === 'dark' || (theme === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+    const tahoe = material === 'tahoe';
+    const key = dark + '|' + tahoe; if (this._vk === key) return; this._vk = key;
+    const d = (a, b) => dark ? b : a;
+    const V = {
+      accent: d('#007AFF', '#0A84FF'), regen: d('#34C759', '#30D158'), cost: d('#FF9F0A', '#FFB340'), prot: d('#8E8E93', '#98989D'), red: d('#FF3B30', '#FF453A'),
+      regenInk: d('#1A7F37', '#30D158'), costInk: d('#A35200', '#FFB340'), regenBg: d('rgba(52,199,89,.15)', 'rgba(48,209,88,.18)'), costBg: d('rgba(255,159,10,.17)', 'rgba(255,179,64,.18)'),
+      protBg: d('rgba(142,142,147,.16)', 'rgba(152,152,157,.2)'), accentBg: d('rgba(0,122,255,.12)', 'rgba(10,132,255,.24)'), accentInk: d('#0062CC', '#64B0FF'),
+      xcode: '#1575F9', android: d('#2DB86B', '#2FA66A'), snap: d('#AF52DE', '#BF5AF2'),
+      t1: d('rgba(0,0,0,.86)', 'rgba(255,255,255,.92)'), t2: d('rgba(0,0,0,.6)', 'rgba(255,255,255,.64)'), t3: d('rgba(0,0,0,.44)', 'rgba(255,255,255,.44)'),
+      line: d('rgba(0,0,0,.08)', 'rgba(255,255,255,.09)'), line2: d('rgba(0,0,0,.15)', 'rgba(255,255,255,.18)'), hover: d('rgba(0,0,0,.045)', 'rgba(255,255,255,.06)'), fill: d('rgba(0,0,0,.07)', 'rgba(255,255,255,.1)'),
+      segOn: d('#ffffff', 'rgba(255,255,255,.22)'), mont: "'Montserrat', -apple-system, sans-serif", mono: 'ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace',
+      primary: tahoe ? d('linear-gradient(180deg,#3d9bff,#007AFF)', 'linear-gradient(180deg,#3a9dff,#0A84FF)') : d('#007AFF', '#0A84FF'),
+      primarySh: tahoe ? 'inset 0 1px 0 rgba(255,255,255,.35), 0 2px 8px rgba(0,122,255,.3)' : 'none',
+      ctlR: tahoe ? '999px' : '6px', sheetR: tahoe ? '22px' : '12px', ctlR2: tahoe ? '12px' : '6px',
+    };
+    Object.assign(V, tahoe ? {
+      desk: d('radial-gradient(circle at 12% 28%,rgba(100,160,255,.5),transparent 42%),radial-gradient(circle at 85% 18%,rgba(255,120,180,.38),transparent 40%),radial-gradient(circle at 70% 88%,rgba(255,200,100,.4),transparent 45%),linear-gradient(120deg,#9ec4ff 0%,#c9b3ff 40%,#ffb3d9 70%,#ffd29e 100%)',
+        'radial-gradient(circle at 15% 25%,rgba(80,110,255,.35),transparent 45%),radial-gradient(circle at 85% 80%,rgba(255,120,80,.22),transparent 45%),linear-gradient(120deg,#1e2a52 0%,#3a1f52 40%,#52264a 70%,#52371f 100%)'),
+      win: d('rgba(255,255,255,.4)', 'rgba(28,28,34,.58)'), side: d('rgba(255,255,255,.44)', 'rgba(255,255,255,.07)'),
+      sideBd: d('0.5px solid rgba(255,255,255,.75)', '0.5px solid rgba(255,255,255,.12)'), sideSh: d('0 6px 24px rgba(60,40,120,.1), inset 0 1px 0 rgba(255,255,255,.6)', '0 6px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08)'),
+      sideM: '8px', sideR: '16px', content: 'transparent',
+      card: d('rgba(255,255,255,.6)', 'rgba(255,255,255,.08)'), cardBd: d('0.5px solid rgba(255,255,255,.85)', '0.5px solid rgba(255,255,255,.12)'),
+      cardSh: d('0 6px 20px rgba(60,40,120,.09), inset 0 1px 0 rgba(255,255,255,.9)', '0 6px 20px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.08)'),
+      inner: d('rgba(255,255,255,.55)', 'rgba(255,255,255,.05)'), insp: d('rgba(255,255,255,.2)', 'rgba(255,255,255,.035)'),
+      sheet: d('rgba(250,250,253,.9)', 'rgba(46,46,52,.92)'), panel: d('rgba(244,244,248,.97)', 'rgba(38,38,44,.97)'), blur: 'blur(40px) saturate(180%)', wr: '22px',
+      shWin: d('0 40px 100px rgba(60,40,120,.38), 0 0 0 0.5px rgba(255,255,255,.65), inset 0 1px 0 rgba(255,255,255,.75)', '0 40px 100px rgba(0,0,0,.6), 0 0 0 0.5px rgba(255,255,255,.16), inset 0 1px 0 rgba(255,255,255,.12)'),
+      ctl: d('rgba(255,255,255,.62)', 'rgba(255,255,255,.1)'), ctlBd: d('0.5px solid rgba(255,255,255,.9)', '0.5px solid rgba(255,255,255,.16)'),
+      ctlSh: d('0 1px 3px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.9)', '0 1px 3px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.1)'), seg: d('rgba(0,0,0,.06)', 'rgba(255,255,255,.08)'),
+    } : {
+      desk: d('linear-gradient(135deg,#d7e4f5 0%,#e8e1f2 50%,#f5e8e0 100%)', 'linear-gradient(135deg,#1a1f2e 0%,#2a1f2e 50%,#2e241a 100%)'),
+      win: d('#FFFFFF', '#1E1E1E'), side: d('#EDEDF0', '#28282B'), sideBd: 'none', sideSh: d('inset -0.5px 0 0 rgba(0,0,0,.12)', 'inset -0.5px 0 0 rgba(0,0,0,.6)'),
+      sideM: '0px', sideR: '0px', content: d('#FFFFFF', '#1E1E1E'),
+      card: d('#F5F5F7', '#2C2C2E'), cardBd: d('0.5px solid rgba(0,0,0,.06)', '0.5px solid rgba(255,255,255,.06)'), cardSh: 'none',
+      inner: d('#FFFFFF', '#323234'), insp: d('#FAFAFA', '#232325'), sheet: d('#FFFFFF', '#2C2C2E'), panel: d('#F2F2F5', '#262628'), blur: 'none', wr: '12px',
+      shWin: d('0 24px 60px rgba(0,0,0,.22), 0 0 0 0.5px rgba(0,0,0,.2)', '0 24px 60px rgba(0,0,0,.55), 0 0 0 0.5px rgba(255,255,255,.12)'),
+      ctl: d('#FFFFFF', '#48484A'), ctlBd: d('0.5px solid rgba(0,0,0,.16)', '0.5px solid rgba(255,255,255,.08)'), ctlSh: d('0 0.5px 1px rgba(0,0,0,.08)', '0 0.5px 1px rgba(0,0,0,.3)'), seg: d('rgba(0,0,0,.06)', 'rgba(255,255,255,.08)'),
+    });
+    for (const k in V) el.style.setProperty('--' + k, V[k]);
+    el.style.colorScheme = dark ? 'dark' : 'light';
+  }
+
+  toast(msg) { clearTimeout(this._toastT); this.setState({ toast: msg }); this._toastT = setTimeout(() => this.setState({ toast: null }), 2200); }
+  go(view) { this.setState({ view, inspect: null, q: '' }); }
+  upSet(patch) { this.setState(s => ({ set: Object.assign({}, s.set, patch) })); }
+
+  startScan() {
+    clearInterval(this._scanT); cancelAnimationFrame(this._raf);
+    this.setState({ scan: 0, count: 0, screen: 'main' });
+    this._scanT = setInterval(() => {
+      const ns = Math.min(1, this.state.scan + 0.017);
+      this.setState({ scan: ns });
+      if (ns >= 1) { clearInterval(this._scanT); this.countUp(); }
+    }, 40);
+  }
+  countUp() {
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { this.setState({ count: 1 }); return; }
+    const t0 = performance.now();
+    const step = (t) => { const k = Math.min(1, (t - t0) / 1100); this.setState({ count: 1 - Math.pow(1 - k, 3) }); if (k < 1) this._raf = requestAnimationFrame(step); };
+    this._raf = requestAnimationFrame(step);
+  }
+  toggle(id) { this.setState(s => { const sel = Object.assign({}, s.sel); if (sel[id]) delete sel[id]; else sel[id] = true; return { sel }; }); }
+  setAct(id, a) { this.setState(s => { const act = Object.assign({}, s.act); if (act[id] === a) delete act[id]; else act[id] = a; return { act, inspect: id }; }); }
+  selCat(cid, on) {
+    const c = this.state.cats.find(x => x.id === cid); if (!c || !c.items) return;
+    const ex = this.state.set.excluded.map(e => e.id);
+    this.setState(s => { const sel = Object.assign({}, s.sel); c.items.forEach(i => { if (on && !ex.includes(i.id)) sel[i.id] = true; else delete sel[i.id]; }); return { sel }; });
+  }
+  recommended() {
+    const sel = {}, ex = this.state.set.excluded.map(e => e.id);
+    this.state.cats.forEach(c => { if (!this.state.set[c.tool] || !c.items || (c.needsFda && !this.state.fda)) return; c.items.forEach(i => { if (i.risk === 'regen' && !ex.includes(i.id)) sel[i.id] = true; }); });
+    this.setState({ sel, act: {}, sheet: 'review', understand: false });
+  }
+  openReview() { this.setState({ sheet: 'review', understand: false }); }
+
+  buildOps() {
+    const S = this.state, ops = [], label = { clean: 'Limpiar', reset: 'Restablecer', delete: 'Eliminar' };
+    S.cats.forEach(c => {
+      if (!S.set[c.tool]) return;
+      if (c.kind === 'containers') {
+        c.devices.forEach(d => {
+          const a = S.act[d.id]; if (!a) return;
+          const size = a === 'clean' ? d.cache + d.snap : a === 'reset' ? d.data + d.cache + d.snap : this.devT(d);
+          const cmd = d.avd
+            ? (a === 'clean' ? 'rm -rf ~/.android/avd/' + d.ref + '.avd/{cache.img,snapshots}' : a === 'reset' ? 'emulator -avd ' + d.ref + ' -wipe-data -no-window' : 'avdmanager delete avd -n ' + d.ref)
+            : (a === 'clean' ? 'rm -rf …/Devices/' + d.ref + '/data/Library/Caches' : a === 'reset' ? 'xcrun simctl erase ' + d.ref : 'xcrun simctl delete ' + d.ref);
+          ops.push({ id: d.id, dev: true, a, cat: c, name: d.name + ' · ' + label[a], size, risk: a === 'clean' ? 'regen' : 'cost',
+            note: a === 'reset' ? d.name + ': quedará como recién creado. Se pierden sus apps y datos.' : a === 'delete' ? d.name + ': se borra el dispositivo completo. Podrás crearlo de nuevo.' : null, cmd });
+        });
+      } else {
+        c.items.forEach(i => { if (!S.sel[i.id]) return; ops.push({ id: i.id, cat: c, name: i.name, size: i.size, risk: i.risk, note: i.cost ? i.name + ': ' + i.cost.charAt(0).toLowerCase() + i.cost.slice(1) : null, cmd: (S.set.trash ? 'mv "' + i.path + '" ~/.Trash/' : 'rm -rf "' + i.path + '"') }); });
+      }
+    });
+    return ops;
+  }
+  confirmClean() {
+    const ops = this.buildOps();
+    this.setState({ sheet: 'progress', ops, prog: 0 });
+    clearInterval(this._progT);
+    this._progT = setInterval(() => {
+      const p = Math.min(1, this.state.prog + 0.015);
+      this.setState({ prog: p });
+      if (p >= 1) { clearInterval(this._progT); this.toResult(false); }
+    }, 50);
+  }
+  toResult(cancelled) {
+    clearInterval(this._progT);
+    const ops = this.state.ops; let done, errs = [];
+    if (cancelled) done = ops.slice(0, Math.floor(this.state.prog * ops.length));
+    else {
+      if (this.props.errors) {
+        const why = ['Lo está usando otro proceso (Xcode).', 'Permiso denegado: macOS protege este archivo.', 'La carpeta cambió durante la limpieza.'];
+        errs = ops.slice(-Math.min(3, ops.length)).map((o, i) => Object.assign({}, o, { why: why[i % 3] }));
+      }
+      done = ops.filter(o => !errs.find(e => e.id === o.id));
+    }
+    this.setState({ sheet: 'result', done, errs, cancelled, errOpen: false });
+    if (this.state.notif && !cancelled) { clearTimeout(this._nT); const f = done.reduce((a, o) => a + o.size, 0); this.setState({ notice: 'Liberaste ' + this.fmt(f) + (errs.length ? '. ' + errs.length + ' no se pudieron limpiar.' : '. Parte volverá a crecer al compilar.') }); this._nT = setTimeout(() => this.setState({ notice: null }), 5000); }
+  }
+  finish(toHist) {
+    const done = this.state.done, has = (id) => done.find(o => o.id === id);
+    const cats = this.state.cats.map(c => c.kind === 'containers'
+      ? Object.assign({}, c, { devices: c.devices.map(d => { const o = has(d.id); if (!o) return d; if (o.a === 'clean') return Object.assign({}, d, { cache: 0, snap: 0 }); if (o.a === 'reset') return Object.assign({}, d, { data: 0, cache: 0, snap: 0 }); return null; }).filter(Boolean) })
+      : Object.assign({}, c, { items: c.items.filter(i => !has(i.id)) }));
+    const freed = done.reduce((a, o) => a + o.size, 0), bdm = {};
+    done.forEach(o => { bdm[o.cat.name] = (bdm[o.cat.name] || 0) + o.size; });
+    const now = new Date(), hh = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+    const history = done.length ? [{ id: 'h' + Date.now(), date: 'Hoy, ' + hh, freed, count: done.length, bd: Object.entries(bdm).sort((a, b) => b[1] - a[1]) }].concat(this.state.history) : this.state.history;
+    this.setState({ cats, history, sel: {}, act: {}, sheet: null, view: toHist ? 'history' : 'dashboard', inspect: null, histOpen: toHist && done.length ? history[0].id : null });
+  }
+  recheck() {
+    this.setState({ rechecking: true });
+    setTimeout(() => this.setState({ rechecking: false, appsOpen: false }), 1500);
+  }
+  requestFda(fromOb) {
+    this.setState({ fdaState: 'wait' });
+    setTimeout(() => {
+      this.setState({ fdaState: 'ok', fda: true });
+      if (!fromOb) setTimeout(() => { this.setState({ sheet: null }); this.toast('Acceso total al disco concedido'); }, 900);
+    }, 2200);
+  }
+  openSettings(tab) { this.setState(s => ({ settingsOpen: true, tab: tab || s.tab, resetAsk: false })); }
+  exportPlan() {
+    const ops = this.buildOps().map(o => ({ id: o.id, name: o.name, category: o.cat.tech, sizeGB: +o.size.toFixed(2), action: o.a || (this.state.set.trash ? 'trash' : 'delete'), command: o.cmd }));
+    const blob = new Blob([JSON.stringify({ tool: 'mdc', version: '1.0.2', createdAt: new Date().toISOString(), ops }, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'mdc-plan.json'; a.click();
+    this.toast(ops.length ? 'Plan exportado: ' + ops.length + ' elementos' : 'Plan vacío exportado (no hay nada seleccionado)');
+  }
+
+  onKey(e) {
+    const S = this.state, tag = ((e.target && e.target.tagName) || '').toLowerCase(), typing = tag === 'input' || tag === 'select' || tag === 'textarea';
+    const m = e.metaKey || e.ctrlKey, k = (e.key || '').toLowerCase();
+    if (S.screen !== 'main') return;
+    const cur = S.cats.find(c => c.id === S.view);
+    if (m && k === ',') { e.preventDefault(); this.openSettings(); }
+    else if (m && k === 'r') { e.preventDefault(); this.startScan(); }
+    else if (m && k === 'f') { e.preventDefault(); this.searchRef.current && this.searchRef.current.focus(); }
+    else if (m && k === '1') { e.preventDefault(); this.go('builds'); }
+    else if (m && k === '2') { e.preventDefault(); this.go('gcache'); }
+    else if (m && k === 'a' && !typing && cur && cur.items) { e.preventDefault(); this.selCat(cur.id, true); }
+    else if (k === 'escape') { if (S.settingsOpen) this.setState({ settingsOpen: false }); else if (S.sheet === 'review' || S.sheet === 'fda') this.setState({ sheet: null }); }
+    else if (!typing && k === ' ' && S.inspect && cur && cur.items) { e.preventDefault(); this.toggle(S.inspect); }
+    else if (!typing && (k === 'backspace' || k === 'delete') && !S.sheet && this.buildOps().length) { e.preventDefault(); this.openReview(); }
+  }
+
+  renderVals() {
+    const S = this.state, set = S.set, fmt = this.fmt, devT = this.devT;
+    const sum = (arr, f) => arr.reduce((a, x) => a + f(x), 0);
+    const vis = S.cats.filter(c => set[c.tool]);
+    const scanning = S.scan < 1, n = vis.length;
+    const isFound = (c) => !scanning || S.scan >= (vis.indexOf(c) + 1) / (n + 1);
+    const meas = (c) => !(c.needsFda && !S.fda);
+    const size = (c) => c.kind === 'containers' ? sum(c.devices, devT) : sum(c.items, i => i.size);
+    const regenOf = (c) => c.kind === 'containers' ? 0 : sum(c.items.filter(i => i.risk === 'regen'), i => i.size);
+    const live = vis.filter(c => isFound(c) && meas(c));
+    const regen = sum(live, regenOf), total = sum(live, size), cost = Math.max(0, total - regen);
+    const exIds = set.excluded.map(e => e.id);
+    const badge = (r) => r === 'regen' ? { label: 'Se regenera solo', icon: 'regen', bg: 'var(--regenBg)', ink: 'var(--regenInk)', aria: 'se regenera solo' }
+      : r === 'cost' ? { label: 'Tiene costo', icon: 'cost', bg: 'var(--costBg)', ink: 'var(--costInk)', aria: 'tiene costo' }
+      : { label: 'Protegido', icon: 'lock', bg: 'var(--protBg)', ink: 'var(--t2)', aria: 'protegido' };
+    const toolColor = (t) => t === 'xcode' ? 'var(--xcode)' : 'var(--android)';
+
+    // sidebar
+    const nav = (id, name, icon, sz, o) => {
+      o = o || {}; const on = S.view === id;
+      return { id, name, icon, size: sz || '', dots: o.dots || [], tip: o.tip || name, bg: on ? 'var(--accent)' : 'transparent', hov: on ? 'var(--accent)' : 'var(--hover)',
+        fg: on ? '#fff' : 'var(--t1)', ic: on ? '#fff' : 'var(--accent)', sc: on ? 'rgba(255,255,255,.85)' : 'var(--t3)', op: o.dim ? 0.45 : 1, onClick: () => this.go(id) };
+    };
+    const sections = ['xcode', 'android'].filter(t => set[t]).map(t => {
+      const cs = vis.filter(c => c.tool === t);
+      const rows = cs.map(c => {
+        const f = isFound(c), m = meas(c), sz = size(c), empty = f && m && sz === 0;
+        if (empty && !set.showEmpty) return null;
+        const hasR = regenOf(c) > 0, hasC = sz - regenOf(c) > 0.001;
+        const lbl = !f ? '…' : !m ? 'Sin acceso' : empty ? 'No encontrado' : fmt(sz);
+        const dots = f && m && !empty ? [hasR && { c: 'var(--regen)' }, hasC && { c: 'var(--cost)' }].filter(Boolean) : [];
+        const r = nav(c.id, set.showTech ? c.tech : c.name, c.icon, lbl, { dots, dim: !f || empty, tip: c.name + ' · ' + c.tech });
+        r.small = f && m && sz < 1 && S.view !== c.id; return r;
+      }).filter(Boolean);
+      const smalls = allRows => allRows.filter(r => r.small).length;
+      const tsum = sum(cs.filter(c => isFound(c) && meas(c)), size);
+      const nSmall = scanning ? 0 : smalls(rows), open = !!(S.more && S.more[t]);
+      return { title: t === 'xcode' ? 'Xcode' : 'Android', total: scanning ? '' : fmt(tsum), rows: open || scanning ? rows : rows.filter(r => !r.small),
+        hasMore: nSmall > 0, moreLabel: open ? 'Menos' : nSmall + ' más pequeñas', moreIcon: open ? 'chevd' : 'chevr', toggleMore: () => this.setState(s => ({ more: Object.assign({}, s.more, { [t]: !(s.more && s.more[t]) }) })) };
+    });
+
+    const cur = S.cats.find(c => c.id === S.view) || null;
+    const isDash = S.view === 'dashboard', isNever = S.view === 'never', isHist = S.view === 'history';
+    const isList = !!cur && cur.kind !== 'containers', isCont = !!cur && cur.kind === 'containers';
+    const title = isDash ? 'Resumen' : isHist ? 'Historial' : cur ? (cur.tool === 'xcode' ? 'Xcode' : 'Android') : '';
+
+    // filter segmented
+    const filterSegs = [['all', 'Todo'], ['regen', 'Se regenera'], ['cost', 'Tiene costo']].map(([k, l]) => ({ label: l, bg: S.filter === k ? 'var(--segOn)' : 'transparent', sh: S.filter === k ? '0 1px 2px rgba(0,0,0,.12)' : 'none', fg: S.filter === k ? 'var(--t1)' : 'var(--t2)', onClick: () => this.setState({ filter: k }) }));
+
+    // category view
+    let cv = { badges: [], groups: [], devices: [] };
+    if (cur) {
+      const c = cur, m = meas(c), sz = size(c), rg = regenOf(c), q = S.q.trim().toLowerCase();
+      const badges = c.kind === 'containers' ? [badge('cost')] : [rg > 0 && badge('regen'), sz - rg > 0.001 && badge('cost')].filter(Boolean);
+      cv = { name: set.showTech ? c.tech : c.name, sub: set.showTech ? c.path : c.tech, icon: c.icon, tile: toolColor(c.tool), size: m ? fmt(sz) : '—', badges,
+        what: c.what, ifDel: c.ifDel, back: c.back, explOpen: !!S.explClosed[c.id], explClosedF: !S.explClosed[c.id], toggleExpl: () => this.setState(s => ({ explClosed: Object.assign({}, s.explClosed, { [c.id]: !s.explClosed[c.id] }) })),
+        notMeas: !m, empty: m && sz === 0, hasContent: m && sz > 0, groups: [], devices: [], noResults: false,
+        selAll: () => this.selCat(c.id, true), selNone: () => this.selCat(c.id, false) };
+      if (c.items) {
+        const items = c.items.filter(i => (S.filter === 'all' || i.risk === S.filter) && (!q || (i.name + ' ' + i.path).toLowerCase().includes(q)));
+        const max = Math.max(0.001, ...c.items.map(i => i.size)), groups = [];
+        items.forEach(i => {
+          let g = groups.find(x => x.name === (i.group || '')); if (!g) { g = { name: i.group || '', orphan: false, rows: [] }; groups.push(g); }
+          if (i.orphan) g.orphan = true;
+          const on = !!S.sel[i.id], ins = S.inspect === i.id, ex = exIds.includes(i.id);
+          g.rows.push({ id: i.id, name: i.name, showBadge: badges.length > 1, path: set.showTech ? i.path : '', showPath: set.showTech, size: fmt(i.size), badge: badge(i.risk), barW: Math.max(3, i.size / max * 100) + '%',
+            barC: i.risk === 'regen' ? 'var(--regen)' : 'var(--cost)', bg: ins ? 'var(--accentBg)' : 'transparent', hov: ins ? 'var(--accentBg)' : 'var(--hover)', bt: g.rows.length ? '0.5px solid var(--line)' : 'none',
+            cbBg: on ? 'var(--accent)' : 'var(--ctl)', cbSh: on ? 'none' : 'inset 0 0 0 1px var(--line2)', cbOp: on ? 1 : 0, ex, exOp: ex ? 0.5 : 1, finderOp: ins ? 1 : 0.4,
+            aria: i.name + ', ' + fmt(i.size) + ', ' + badge(i.risk).aria,
+            onToggle: (e) => { e.stopPropagation(); if (ex) { this.toast('Está en Carpetas excluidas (Ajustes › General)'); return; } this.toggle(i.id); },
+            onInspect: () => this.setState({ inspect: i.id }), onFinder: (e) => { e.stopPropagation(); this.toast('Mostrando en Finder: ' + i.path); } });
+        });
+        groups.forEach(g => { g.hasName = !!g.name; g.size = fmt(sum(c.items.filter(i => (i.group || '') === g.name), i => i.size)); g.orphanLabel = c.id === 'builds' ? 'Huérfano: seguro de borrar' : 'Sin uso'; });
+        cv.groups = groups; cv.noResults = m && sz > 0 && items.length === 0;
+        const selN = c.items.filter(i => S.sel[i.id]).length;
+        cv.countLine = c.items.length + (c.items.length === 1 ? ' elemento' : ' elementos') + (selN ? ' · ' + selN + ' marcado' + (selN > 1 ? 's' : '') : '');
+      }
+      if (c.devices) {
+        const descs = { clean: 'Borra la caché. Tus apps y datos quedan.', reset: 'Como recién creado. Se pierden apps y datos.', delete: 'Borra el dispositivo completo.' };
+        cv.devices = c.devices.map(d => {
+          const run = S.appsOpen && d.live, a = S.act[d.id], tot = Math.max(0.001, devT(d));
+          const opts = [['clean', 'Limpiar', d.cache + d.snap, 'regen'], ['reset', 'Restablecer', d.data + d.cache + d.snap, 'cost'], ['delete', 'Eliminar', devT(d), 'cost']];
+          return { id: d.id, name: d.name, os: d.os, icon: d.icon, size: fmt(devT(d)), running: run, op: run ? 0.5 : 1, tip: run ? 'Ciérralo para poder limpiarlo' : '',
+            ring: a ? '0 0 0 1.5px var(--accent), var(--cardSh)' : (S.inspect === d.id ? '0 0 0 1px var(--line2), var(--cardSh)' : 'var(--cardSh)'),
+            bars: [{ w: d.data / tot * 100 + '%', c: 'var(--accent)' }, { w: d.cache / tot * 100 + '%', c: 'var(--cost)' }, { w: d.snap / tot * 100 + '%', c: 'var(--snap)' }],
+            legend: [{ l: 'Datos de apps', s: fmt(d.data), c: 'var(--accent)' }, { l: 'Caché', s: fmt(d.cache), c: 'var(--cost)' }, { l: 'Snapshots', s: fmt(d.snap), c: 'var(--snap)' }],
+            segs: opts.map(([k, l, f, r]) => { const on = a === k; return { label: l, frees: 'Libera ' + fmt(f), dot: r === 'regen' ? 'var(--regen)' : 'var(--cost)',
+              bg: on ? 'var(--segOn)' : 'transparent', sh: on ? '0 1px 3px rgba(0,0,0,.14), inset 0 0 0 1.5px ' + (r === 'regen' ? 'var(--regen)' : 'var(--cost)') : 'none',
+              fg: on ? (r === 'regen' ? 'var(--regenInk)' : 'var(--costInk)') : 'var(--t1)', cursor: run ? 'not-allowed' : 'pointer',
+              onClick: (e) => { e.stopPropagation(); if (run) { this.toast('Ciérralo para poder limpiarlo'); return; } this.setAct(d.id, k); } }; }),
+            desc: a ? descs[a] : 'Nada elegido. Elige qué hacer con este dispositivo.', descC: a === 'delete' ? 'var(--red)' : a ? 'var(--t2)' : 'var(--t3)',
+            onInspect: () => this.setState({ inspect: d.id }) };
+        });
+        cv.countLine = c.devices.length + ' dispositivos · elige una acción por dispositivo';
+      }
+    }
+
+    // inspector
+    let insp = { has: false, none: true, fields: [], badges: [] };
+    if (cur && S.inspect) {
+      const i = cur.items && cur.items.find(x => x.id === S.inspect), d = cur.devices && cur.devices.find(x => x.id === S.inspect);
+      if (i) {
+        const f = [['Ruta completa', i.path, true], ['Tamaño', fmt(i.size)], ['Última modificación', i.mod || '—'], ['Por qué aparece', i.reason || cur.what], ['Qué pasa si lo borro', i.cost || cur.ifDel], ['¿Vuelve a aparecer?', cur.back]];
+        if (set.showCmds) f.push(['Comando', set.trash ? 'mv "' + i.path + '" ~/.Trash/' : 'rm -rf "' + i.path + '"', true]);
+        const on = !!S.sel[i.id];
+        insp = { has: true, none: false, name: i.name, badges: [badge(i.risk)], fields: f.map(([k, v, mono]) => ({ k, v, font: mono ? 'var(--mono)' : 'inherit', fs: mono ? '11px' : '12px' })),
+          markLabel: on ? 'Desmarcar' : 'Marcar', onMark: () => this.toggle(i.id), onFinder: () => this.toast('Mostrando en Finder: ' + i.path), isItem: true };
+      } else if (d) {
+        const a = S.act[d.id], lab = { clean: 'Limpiar', reset: 'Restablecer', delete: 'Eliminar' };
+        const f = [['Sistema', d.os], [d.avd ? 'Nombre del AVD' : 'UDID', d.ref, true], ['Tamaño total', fmt(devT(d))], ['Datos de apps', fmt(d.data)], ['Caché', fmt(d.cache)], ['Snapshots', fmt(d.snap)], ['Acción elegida', a ? lab[a] : 'Ninguna']];
+        if (S.appsOpen && d.live) f.unshift(['Estado', 'En uso: ciérralo para poder limpiarlo']);
+        if (a && set.showCmds) { const op = this.buildOps().find(o => o.id === d.id); if (op) f.push(['Comando', op.cmd, true]); }
+        insp = { has: true, none: false, name: d.name, badges: [a === 'clean' ? badge('regen') : badge('cost')], fields: f.map(([k, v, mono]) => ({ k, v, font: mono ? 'var(--mono)' : 'inherit', fs: mono ? '11px' : '12px' })),
+          markLabel: '', onMark: null, onFinder: () => this.toast('Mostrando en Finder: ' + cur.path + '/' + d.ref), isItem: false };
+      }
+    }
+
+    // ops / selection
+    const ops = this.buildOps(), opsSize = sum(ops, o => o.size);
+    const selBar = { show: S.screen === 'main' && ops.length > 0 && !S.sheet, count: ops.length + (ops.length === 1 ? ' seleccionado' : ' seleccionados'), size: fmt(opsSize),
+      clear: () => this.setState({ sel: {}, act: {} }), review: () => this.openReview() };
+
+    // dashboard
+    const recItems = []; live.forEach(c => { if (!c.items) return; const s = sum(c.items.filter(i => i.risk === 'regen' && !exIds.includes(i.id)), i => i.size); if (s > 0) recItems.push({ name: c.name, icon: c.icon, s, size: fmt(s), onClick: () => this.go(c.id) }); });
+    recItems.sort((a, b) => b.s - a.s);
+    const recSize = sum(recItems, r => r.s);
+    const hv = total * S.count;
+    const tools = ['xcode', 'android'].filter(t => set[t]).map(t => {
+      const cs = live.filter(c => c.tool === t && size(c) > 0).sort((a, b) => size(b) - size(a)), top = cs.slice(0, 3), mx = top.length ? size(top[0]) : 1;
+      return { name: t === 'xcode' ? 'Xcode' : 'Android', icon: t === 'xcode' ? 'hammer' : 'android', tint: toolColor(t), total: fmt(sum(cs, size)),
+        sub: cs.length + ' categorías con contenido', top: top.map(c => ({ name: c.name, size: fmt(size(c)), w: size(c) / mx * 100 + '%', onClick: () => this.go(c.id) })),
+        onOpen: () => this.go(cs[0] ? cs[0].id : (t === 'xcode' ? 'builds' : 'gcache')) };
+    });
+    const decide = live.filter(c => size(c) - regenOf(c) > 0.001).map(c => ({ name: c.name, icon: c.icon, size: fmt(size(c) - regenOf(c)), note: c.ifDel, onClick: () => this.go(c.id) }));
+    const curScan = vis[Math.min(n - 1, Math.floor(S.scan * (n + 1)))];
+    const toolProg = (t) => { const cs = vis.filter(c => c.tool === t); const f = cs.filter(isFound).length; return { w: (cs.length ? f / cs.length * 100 : 100) + '%', found: fmt(sum(cs.filter(c => isFound(c) && meas(c)), size)) }; };
+    const last = S.history[0];
+    const dash = {
+      scanning, clean: !scanning && total < 0.005, result: !scanning && total >= 0.005,
+      heroNum: total >= 1 ? hv.toFixed(1).replace('.', ',') : String(Math.round(hv * 1000)), heroUnit: total >= 1 ? 'GB' : 'MB',
+      regenW: (total ? regen / total * 100 : 0) + '%', costW: (total ? cost / total * 100 : 0) + '%', regenL: fmt(regen), costL: fmt(cost),
+      heroAria: 'Puedes recuperar ' + fmt(total) + ': ' + fmt(regen) + ' se regenera solo, ' + fmt(cost) + ' tiene costo',
+      rec: { size: fmt(recSize), has: recSize > 0, list: S.recOpen ? recItems : recItems.slice(0, 3), more: recItems.length > 3, moreLabel: S.recOpen ? 'Mostrar menos' : 'y ' + (recItems.length - 3) + ' más', moreIcon: S.recOpen ? 'chevd' : 'chevr', toggle: () => this.setState(s => ({ recOpen: !s.recOpen })), go: () => this.recommended() },
+      tools, decide, hasDecide: decide.length > 0,
+      footer: 'Último escaneo: hace 2 min' + (last ? ' · Última limpieza: ' + last.date.replace(/ 20\d\d$/, '') + ', liberaste ' + fmt(last.freed) : ''),
+      pct: Math.round(S.scan * 100) + '%', scanPath: curScan ? curScan.path : '', xc: toolProg('xcode'), an: toolProg('android'), showXc: set.xcode, showAn: set.android,
+      scanRows: vis.map(c => ({ name: c.name, icon: c.icon, found: isFound(c), pending: !isFound(c), size: !meas(c) ? 'Sin acceso' : size(c) === 0 ? 'No encontrado' : fmt(size(c)), sc: size(c) === 0 || !meas(c) ? 'var(--t3)' : 'var(--t1)', tint: toolColor(c.tool) })),
+    };
+    const fdaBanner = !S.fda && !S.bannerHidden && !scanning;
+
+    // review
+    const rOps = ops.filter(o => o.risk === 'regen'), cOps = ops.filter(o => o.risk === 'cost');
+    const byCat = []; rOps.forEach(o => { let g = byCat.find(x => x.name === o.cat.name); if (!g) { g = { name: o.cat.name, icon: o.cat.icon, n: 0, s: 0 }; byCat.push(g); } g.n++; g.s += o.size; });
+    const needU = cOps.length > 0 && set.confirmCost, canClean = !needU || S.understand;
+    const ess = (k) => k + (k === 1 ? ' elemento' : ' elementos');
+    const rv = {
+      total: fmt(opsSize), count: ess(ops.length), blocked: S.appsOpen && set.blockOpen, open: !(S.appsOpen && set.blockOpen),
+      showR: rOps.length > 0, rHead: ess(rOps.length) + ' · ' + fmt(sum(rOps, o => o.size)), rRows: byCat.map(g => ({ name: g.name, icon: g.icon, n: ess(g.n), size: fmt(g.s) })),
+      showC: cOps.length > 0, cHead: ess(cOps.length) + ' · ' + fmt(sum(cOps, o => o.size)), cRows: cOps.map(o => ({ name: o.name, cat: o.cat.name, size: fmt(o.size), note: o.note || '' })),
+      needU, uBg: S.understand ? 'var(--accent)' : 'var(--ctl)', uSh: S.understand ? 'none' : 'inset 0 0 0 1px var(--line2)', uOp: S.understand ? 1 : 0, toggleU: () => this.setState(s => ({ understand: !s.understand })),
+      tBg: set.trash ? 'var(--accent)' : 'var(--ctl)', tSh: set.trash ? 'none' : 'inset 0 0 0 1px var(--line2)', tOp: set.trash ? 1 : 0, toggleT: () => this.upSet({ trash: !set.trash }),
+      primary: needU ? 'Entiendo, limpiar' : 'Limpiar', pOp: canClean ? 1 : 0.4, pCur: canClean ? 'pointer' : 'not-allowed', onPrimary: () => { if (canClean) this.confirmClean(); },
+      showCmds: set.showCmds, cmds: ops.map(o => ({ c: o.cmd })), cancel: () => this.setState({ sheet: null }),
+      apps: [{ name: 'Xcode', sub: 'Compilando MyBankApp', icon: 'hammer', tint: 'var(--xcode)' }, { name: 'Simulator', sub: 'iPhone 16 Pro · iOS 18.2', icon: 'iphone', tint: 'var(--t2)' },
+        { name: 'Android Studio', sub: 'EGXOne-android', icon: 'android', tint: 'var(--android)' }, { name: 'Emulador Android', sub: 'Pixel 8 · API 34', icon: 'phone', tint: 'var(--android)' }],
+      rechecking: S.rechecking, notRechecking: !S.rechecking, recheck: () => this.recheck(),
+    };
+    // progress
+    const pn = S.ops.length, pIdx = Math.min(pn - 1, Math.floor(S.prog * pn)), pTot = sum(S.ops, o => o.size);
+    const pg = { freed: fmt(pTot * S.prog), of: 'de ' + fmt(pTot), cur: pn ? S.ops[Math.max(0, pIdx)].name : '', step: Math.min(pn, pIdx + 1) + ' de ' + pn, off: 289 * (1 - S.prog), pct: Math.round(S.prog * 100) + '%', cancel: () => this.toResult(true), trash: set.trash };
+    // result
+    const freed = sum(S.done, o => o.size);
+    const rs = { freed: fmt(freed), cancelled: S.cancelled, ok: !S.cancelled, title: S.cancelled ? 'Limpieza cancelada' : '', hasErr: S.errs.length > 0,
+      errHead: S.errs.length + (S.errs.length === 1 ? ' no se pudo limpiar' : ' no se pudieron limpiar'), errOpen: S.errOpen, errIcon: S.errOpen ? 'chevd' : 'chevr', toggleErr: () => this.setState(s => ({ errOpen: !s.errOpen })),
+      errs: S.errs.map(e => ({ name: e.name, why: e.why, finder: () => this.toast('Mostrando en Finder') })), trash: set.trash && freed > 0,
+      check: React.createElement('div', { style: { width: 64, height: 64, borderRadius: 32, background: S.cancelled ? 'var(--cost)' : 'var(--regen)', display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'mdcPop 560ms cubic-bezier(.2,.9,.3,1.3) both', boxShadow: '0 10px 28px rgba(52,199,89,.35)', color: '#fff' } }, React.createElement('mdc-icon', { name: S.cancelled ? 'minus' : 'check', size: '34', w: '2.6' })),
+      done: () => this.finish(false), hist: () => this.finish(true), count: ess(S.done.length) };
+
+    // history
+    const hmax = Math.max(1, ...S.history.map(h => h.freed));
+    const hist = { total: fmt(sum(S.history, h => h.freed)), count: S.history.length + ' limpiezas',
+      bars: S.history.slice().reverse().map(h => ({ h: (h.freed / hmax * 100) + '%', label: h.date.replace(/ 20\d\d$/, ''), v: fmt(h.freed) })),
+      rows: S.history.map(h => { const open = S.histOpen === h.id; return { date: h.date, freed: fmt(h.freed), count: ess(h.count), open, icon: open ? 'chevd' : 'chevr',
+        bd: h.bd.map(([k, v]) => ({ k, v: fmt(v), w: (v / h.freed * 100) + '%' })), toggle: () => this.setState({ histOpen: open ? null : h.id }) }; }) };
+
+    // onboarding
+    const st = S.obStep, nx = () => this.setState({ obStep: st + 1 });
+    const ob = { s0: st === 0, s1: st === 1, s2: st === 2, s3: st === 3, s4: st === 4, showBack: st > 0, back: () => this.setState({ obStep: st - 1 }),
+      dots: [0, 1, 2, 3, 4].map(i => ({ w: i === st ? '18px' : '7px', bg: i === st ? 'var(--accent)' : 'var(--line2)' })),
+      fIdle: S.fdaState === 'idle', fWait: S.fdaState === 'wait', fOk: S.fdaState === 'ok' || S.fda, fNotOk: !(S.fdaState === 'ok' || S.fda),
+      tgX: (S.fdaState === 'ok' || S.fda) ? '16px' : '2px', tgBg: (S.fdaState === 'ok' || S.fda) ? 'var(--regen)' : 'var(--line2)', showSec: false, sec: '', onSec: null };
+    if (st === 0) Object.assign(ob, { primary: 'Comenzar', onPrimary: nx });
+    else if (st === 1) Object.assign(ob, { primary: 'Continuar', onPrimary: nx });
+    else if (st === 2) {
+      if (ob.fOk) Object.assign(ob, { primary: 'Continuar', onPrimary: nx });
+      else Object.assign(ob, { primary: S.fdaState === 'wait' ? 'Esperando permiso…' : 'Abrir Ajustes del Sistema', onPrimary: () => { if (S.fdaState !== 'wait') this.requestFda(true); }, showSec: true, sec: 'Ahora no', onSec: () => this.setState({ obStep: 3, fdaState: 'idle' }) });
+    } else if (st === 3) Object.assign(ob, { primary: S.notif ? 'Continuar' : 'Permitir notificaciones', onPrimary: () => this.setState({ notif: true, obStep: 4 }), showSec: !S.notif, sec: 'No, gracias', onSec: nx });
+    else Object.assign(ob, { primary: 'Escanear mi Mac', onPrimary: () => this.setState({ screen: 'main', view: 'dashboard', bannerHidden: false }, () => this.startScan()) });
+
+    // settings
+    const tg = {};
+    ['xcode', 'android', 'scanOnOpen', 'showEmpty', 'trash', 'confirmCost', 'blockOpen', 'showTech', 'showCmds'].forEach(k => {
+      const on = !!set[k]; tg[k] = { bg: on ? 'var(--regen)' : 'var(--line2)', x: on ? '16px' : '2px', aria: on ? 'true' : 'false', on: () => { if (k === 'blockOpen') { this.toast('Siempre activo: evita corromper builds en curso'); return; } this.upSet({ [k]: !on }); } };
+    });
+    tg.notif = { bg: S.notif ? 'var(--regen)' : 'var(--line2)', x: S.notif ? '16px' : '2px', on: () => this.setState(s => ({ notif: !s.notif })) };
+    const tabs = [['scan', 'General', 'gear'], ['prefs', 'Apariencia', 'monitor'], ['adv', 'Avanzado', 'sliders'], ['about', 'Acerca de', 'info']].map(([k, l, ic]) => ({ label: l, icon: ic,
+      bg: S.tab === k ? 'var(--hover)' : 'transparent', fg: S.tab === k ? 'var(--accent)' : 'var(--t2)', onClick: () => this.setState({ tab: k, resetAsk: false }) }));
+    const pool = [{ id: 'b2', label: 'MyBankApp', path: '~/Library/Developer/Xcode/DerivedData/MyBankApp-abcd…' }, { id: 'b3', label: 'EGXOne', path: '~/Library/Developer/Xcode/DerivedData/EGXOne-efgh…' }, { id: 'g2', label: 'Gradle build-cache', path: '~/.gradle/caches/build-cache-1' }];
+    const appear = (k) => ({ bd: S.theme === k ? '2.5px solid var(--accent)' : '2.5px solid transparent', fw: S.theme === k ? '600' : '400', on: () => this.setState({ theme: k }) });
+    const matSeg = (k) => ({ bg: S.material === k ? 'var(--segOn)' : 'transparent', sh: S.material === k ? '0 1px 2px rgba(0,0,0,.12)' : 'none', fg: S.material === k ? 'var(--t1)' : 'var(--t2)', on: () => this.setState({ material: k }) });
+    const sg = {
+      open: S.settingsOpen, close: () => this.setState({ settingsOpen: false }), tabs, tabName: { scan: 'General', safety: 'General', prefs: 'Apariencia', adv: 'Avanzado', about: 'Acerca de' }[S.tab],
+      isScan: S.tab === 'scan' || S.tab === 'safety', isSafety: S.tab === 'scan' || S.tab === 'safety', isPrefs: S.tab === 'prefs', isAbout: S.tab === 'about', isAdv: S.tab === 'adv',
+      threshold: set.threshold, every: set.every, onThreshold: (e) => this.upSet({ threshold: e.target.value }), onEvery: (e) => this.upSet({ every: e.target.value }), thrOpts: ['10 GB', '20 GB', '30 GB', '50 GB'].map(v => ({ v, sel: v === set.threshold })), everyOpts: ['1 semana', '2 semanas', '1 mes'].map(v => ({ v, sel: v === set.every })),
+      needNotif: !S.notif, enableNotif: () => this.setState({ notif: true }),
+      excluded: set.excluded.map(x => ({ label: x.label, path: x.path, bg: S.exSel === x.id ? 'var(--accentBg)' : 'transparent', on: () => this.setState({ exSel: x.id }) })), exEmpty: set.excluded.length === 0,
+      exAdd: () => { const nx2 = pool.find(p => !exIds.includes(p.id)); if (!nx2) { this.toast('No hay más proyectos para excluir en esta demo'); return; } const sel = Object.assign({}, S.sel); delete sel[nx2.id]; this.setState({ sel, set: Object.assign({}, set, { excluded: set.excluded.concat([nx2]) }), exSel: nx2.id }); },
+      exRemove: () => { const id = S.exSel || (set.excluded[set.excluded.length - 1] || {}).id; if (!id) return; this.setState({ set: Object.assign({}, set, { excluded: set.excluded.filter(x => x.id !== id) }), exSel: null }); },
+      fda: S.fda, noFda: !S.fda, giveFda: () => this.setState({ settingsOpen: false, sheet: 'fda', fdaState: 'idle' }), notif: S.notif, noNotif: !S.notif,
+      goNever: () => this.setState({ settingsOpen: false, view: 'never', inspect: null }),
+      apLight: appear('light'), apDark: appear('dark'), apAuto: appear('auto'), matT: matSeg('tahoe'), matC: matSeg('classic'),
+      lang: set.lang, onLang: (e) => { this.upSet({ lang: e.target.value }); if (e.target.value === 'en') this.toast('English: en la próxima iteración del prototipo'); },
+      sizeCache: set.sizeCache, clearCache: () => { this.upSet({ sizeCache: '0 KB' }); this.toast('Caché de tamaños vaciada. El próximo escaneo será completo.'); },
+      exportPlan: () => this.exportPlan(), importPlan: () => this.toast('Elige un archivo mdc-plan.json…'),
+      cli: set.cli, noCli: !set.cli, notifyMe: () => this.toast('Te avisaremos cuando la integración con Claude esté lista'), copyCli: () => { try { navigator.clipboard.writeText('npm install -g mobile-dev-cleaner'); } catch (e) {} this.toast('Comando copiado'); },
+      reOnboard: () => this.setState({ settingsOpen: false, screen: 'onboarding', obStep: 0, fdaState: 'idle' }),
+      resetAsk: S.resetAsk, noResetAsk: !S.resetAsk, askReset: () => this.setState({ resetAsk: true }), cancelReset: () => this.setState({ resetAsk: false }),
+      doReset: () => { this.setState({ set: this.defaultSet(), resetAsk: false, theme: 'light', material: 'tahoe' }); this.toast('Ajustes restablecidos'); },
+      openCoffee: () => window.open('https://buymeacoffee.com/leomogiano', '_blank'),
+    };
+
+    return {
+      rootRef: this.rootRef, stageRef: this.stageRef, searchRef: this.searchRef,
+      isMain: S.screen === 'main', isOnboarding: S.screen === 'onboarding',
+      sections, navDash: nav('dashboard', 'Resumen', 'overview'), navHist: nav('history', 'Historial', 'history'),
+      title, filterSegs, q: S.q, onSearch: (e) => this.setState({ q: e.target.value }), rescan: () => this.startScan(), openSettings: () => this.openSettings(),
+      isDash, isList, isCont, isHist, showInspector: !!cur, showPanel: !!cur && insp.has, closePanel: () => this.setState({ inspect: null }), cv, insp, selBar, dash, fdaBanner,
+      hideBanner: () => this.setState({ bannerHidden: true }), openFda: () => this.setState({ sheet: 'fda', fdaState: 'idle' }),
+      runtimesBanner: !!cur && !!cur.needsFda && !S.fda,
+      hasSheet: !!S.sheet, sReview: S.sheet === 'review', sProgress: S.sheet === 'progress', sResult: S.sheet === 'result', sFda: S.sheet === 'fda',
+      rv, pg, rs, hist, ob, tg, sg,
+      fda: { idle: S.fdaState === 'idle', wait: S.fdaState === 'wait', ok: S.fdaState === 'ok', notOk: S.fdaState !== 'ok', grant: () => { if (S.fdaState === 'idle') this.requestFda(false); }, later: () => this.setState({ sheet: null }),
+        primary: S.fdaState === 'wait' ? 'Esperando permiso…' : 'Abrir Ajustes del Sistema', tgX: S.fdaState === 'ok' ? '16px' : '2px', tgBg: S.fdaState === 'ok' ? 'var(--regen)' : 'var(--line2)' },
+      spinner: React.createElement('div', { style: { width: 14, height: 14, borderRadius: '50%', border: '2px solid var(--line2)', borderTopColor: 'var(--accent)', animation: 'mdcSpin .8s linear infinite', flexShrink: 0 } }),
+      pulse: React.createElement('div', { style: { width: 8, height: 8, borderRadius: 4, background: 'var(--accent)', animation: 'mdcPulse 1.2s ease-in-out infinite', flexShrink: 0 } }),
+      star: ({ azul: { bg: 'linear-gradient(180deg,#4aa3ff,#007AFF)', fg: '#fff' }, morado: { bg: 'linear-gradient(135deg,#3aa0ff 0%,#5b6cff 55%,#a35bff 100%)', fg: '#fff' }, naranja: { bg: 'linear-gradient(180deg,#ffb340,#ff8a00)', fg: '#fff' }, suave: { bg: 'var(--costBg)', fg: 'var(--costInk)' } })[this.props.starStyle || 'azul'] || { bg: '#007AFF', fg: '#fff' },
+      flutterSoon: () => this.toast('Limpieza de proyectos Flutter (build/, .dart_tool, pub cache): llega pronto'),
+      toast: { show: !!S.toast, msg: S.toast || '' }, notice: { show: !!S.notice, msg: S.notice || '', close: () => this.setState({ notice: null }) },
+      closeEmpty: () => {},
+    };
+  }
+}
+</script>
+</body>
+</html>
