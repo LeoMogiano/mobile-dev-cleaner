@@ -33,7 +33,8 @@ struct MobileDevCleanerApp: App {
     var body: some Scene {
         WindowGroup {
             // The benchmark measures the scan alone; drawing the UI would skew it.
-            if !HeadlessScan.isRequested {
+            // As a test host the app must not scan the real disk either.
+            if !HeadlessScan.isRequested && !Self.isTestHost {
                 MainWindowContent()
                     .appEnvironment(self)
             }
@@ -47,6 +48,8 @@ struct MobileDevCleanerApp: App {
                 .appEnvironment(self)
         }
     }
+
+    private static let isTestHost = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
     fileprivate var colorScheme: ColorScheme? {
         switch settings.theme {
