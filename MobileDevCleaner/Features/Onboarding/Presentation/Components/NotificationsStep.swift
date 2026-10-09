@@ -11,8 +11,8 @@ struct NotificationsStep: View {
                         .init(color: Color(hex: 0xff6b5f), location: 0),
                         .init(color: Color(hex: 0xff3b30), location: 1)
                     ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+                    startPoint: .top,
+                    endPoint: .bottom
                 )
                 .frame(width: 76, height: 76)
                 .cornerRadius(20)
@@ -25,13 +25,18 @@ struct NotificationsStep: View {
             Text("¿Te avisamos cuando termine la limpieza?")
                 .font(.mont(28, weight: .bold))
                 .tracking(-0.84)
-                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 460)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 24)
 
             Text("Así puedes seguir trabajando mientras limpiamos. Una sola notificación al terminar, con lo que liberaste. Nada más.")
                 .font(.system(size: 13.5))
                 .foregroundStyle(Color.mdcText2)
-                .lineLimit(3)
+                .multilineTextAlignment(.center)
+                .lineSpacing(3)
+                .frame(maxWidth: 440)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 10)
 
             VStack(alignment: .leading, spacing: 10) {
@@ -67,7 +72,8 @@ struct NotificationsStep: View {
                         .font(.system(size: 10.5))
                         .foregroundStyle(Color.mdcText3)
                 }
-                .padding(10)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 14)
                 .mdcCard(radius: 14)
             }
             .frame(width: 340)
@@ -84,8 +90,6 @@ struct NotificationsStep: View {
                 }
                 .padding(.top, 14)
             }
-
-            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
