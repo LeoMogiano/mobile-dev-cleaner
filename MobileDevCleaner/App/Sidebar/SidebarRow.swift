@@ -59,6 +59,8 @@ struct SidebarSectionHeader: View {
         }
         .foregroundStyle(Color.mdcText3)
         .textCase(nil)
+        // Rows sit inside the selection inset; this lines the total up with row sizes.
+        .padding(.trailing, 14)
         .accessibilityElement(children: .combine)
     }
 }
