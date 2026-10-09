@@ -29,7 +29,6 @@ private struct SurfaceModifier: ViewModifier {
         let style = glass ? Self.glass[kind]! : Self.classic[kind]!
         content
             .background(style.fill, in: shape)
-            .modifier(GlassIfAvailable(enabled: glass && kind == .card, shape: shape))
             .overlay(shape.strokeBorder(style.border, lineWidth: 0.5))
             .shadow(color: style.shadow, radius: style.shadowRadius, x: 0, y: style.shadowY)
     }
@@ -43,10 +42,12 @@ private struct SurfaceModifier: ViewModifier {
     }
 
     private static let glass: [Kind: Style] = [
+        // Softer than the web mock: content cards stay calm and let the system glass
+        // (sidebar, toolbar) carry the Liquid Glass look, as in System Settings.
         .card: Style(
-            fill: Color(light: (0xFFFFFF, 0.6), dark: (0xFFFFFF, 0.08)),
-            border: Color(light: (0xFFFFFF, 0.85), dark: (0xFFFFFF, 0.12)),
-            shadow: Color(light: (0x3C2878, 0.09), dark: (0x000000, 0.22)), shadowRadius: 10, shadowY: 6
+            fill: Color(light: (0xFFFFFF, 0.5), dark: (0xFFFFFF, 0.05)),
+            border: Color(light: (0x000000, 0.05), dark: (0xFFFFFF, 0.07)),
+            shadow: Color(light: (0x3C2878, 0.04), dark: (0x000000, 0.12)), shadowRadius: 6, shadowY: 2
         ),
         .control: Style(
             fill: Color(light: (0xFFFFFF, 0.62), dark: (0xFFFFFF, 0.1)),
@@ -71,18 +72,5 @@ private struct SurfaceModifier: ViewModifier {
         ),
         .inner: Style(fill: Color(light: 0xFFFFFF, dark: 0x323234), border: .clear),
     ]
-}
-
-private struct GlassIfAvailable<S: Shape>: ViewModifier {
-    let enabled: Bool
-    let shape: S
-
-    func body(content: Content) -> some View {
-        if enabled, !MDCMaterial.isOffscreenRendering, #available(macOS 26, *) {
-            content.glassEffect(.regular, in: shape)
-        } else {
-            content
-        }
-    }
 }
 

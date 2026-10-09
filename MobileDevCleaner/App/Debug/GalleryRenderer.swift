@@ -3,7 +3,6 @@ import SwiftUI
 
 /// `MobileDevCleaner --render-gallery <dir>`: renders design-system components to PNGs
 /// (light/dark × glass/classic) so UI parity can be checked without screen capture.
-/// `glassEffect` only draws in a live window, so glass surfaces render without it here.
 enum GalleryRenderer {
     static var outputDirectory: URL? {
         let args = CommandLine.arguments
@@ -14,7 +13,6 @@ enum GalleryRenderer {
     @MainActor
     static func run(to directory: URL) -> Never {
         FontRegistrar.registerBundledFonts()
-        MDCMaterial.isOffscreenRendering = true
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         for scheme in [ColorScheme.light, .dark] {
             for material in MDCMaterial.allCases {
