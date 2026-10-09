@@ -267,4 +267,33 @@ struct CleanupRepositoryImplTests {
         let f = try Fixture(probe: MockProcessProbe(result: RunningApps(apps: [.androidStudio])))
         #expect(await f.repo.blockingApps(for: [.xcode]).isEmpty)
     }
+
+    @Test("command timeout is reported as failure")
+    func commandTimeout() async throws {
+        let runner = MockProcessRunner { _, _ in
+            throw ProcessRunnerError.timedOut(executable: "xcrun", after: .seconds(120))
+        }
+        let f = try Fixture(runner: runner)
+        let step = ExecutionStrategy.command(executable: "/usr/bin/xcrun", arguments: ["simctl", "delete", "UDID"])
+        let op = operation("sim", url: f.paths.coreSimulatorDevices.appending(path: "UDID"), steps: [step])
+        let events = await collect(f.repo.execute([op], movesToTrash: false, token: CancellationToken()))
+        let result = try #require(outcome(events))
+        #expect(result.done.isEmpty)
+        #expect(result.failures.count == 1)
+        #expect(result.failures.first?.reason.contains("tardó") == true || result.failures.first?.reason.contains("tiempo") == true)
+    }
+
+    @Test("process execution error is mapped to failure")
+    func processFailed() async throws {
+        let runner = MockProcessRunner { _, _ in
+            throw ProcessRunnerError.executableNotFound("xcrun")
+        }
+        let f = try Fixture(runner: runner)
+        let step = ExecutionStrategy.command(executable: "/usr/bin/xcrun", arguments: ["simctl", "erase", "UDID"])
+        let op = operation("sim", url: f.paths.coreSimulatorDevices.appending(path: "UDID"), steps: [step])
+        let events = await collect(f.repo.execute([op], movesToTrash: false, token: CancellationToken()))
+        let result = try #require(outcome(events))
+        #expect(result.done.isEmpty)
+        #expect(result.failures.count == 1)
+    }
 }

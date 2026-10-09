@@ -167,4 +167,41 @@ struct RuntimesScannerTests {
         let context = temp.scanContext(runner: runner(runtimes: runtimeJSON(path: temp.url.appending(path: "gone").path)))
         #expect(await RuntimesScanner().scan(in: context).candidates.first?.size == 2_000_000_000)
     }
+
+    @Test("xcrun failure yields empty report")
+    func xcrunFailure() async throws {
+        let temp = try TempDirectory()
+        defer { temp.remove() }
+        let failed = await RuntimesScanner().scan(in: temp.scanContext(runner: MockProcessRunner { _, _ in
+            ProcessResult(exitCode: 1, stdout: "", stderr: "xcrun: error")
+        }))
+        let timeout = await RuntimesScanner().scan(in: temp.scanContext(runner: MockProcessRunner { _, _ in
+            throw ProcessRunnerError.timedOut(executable: "xcrun", after: .seconds(30))
+        }))
+        #expect(failed.isEmpty && timeout.isEmpty)
+    }
+}
+
+@Suite("Previews scanner")
+struct PreviewsScannerTests {
+    @Test("empty folder with xcrun command prepared")
+    func previewsEmpty() async throws {
+        let temp = try TempDirectory()
+        defer { temp.remove() }
+        let context = temp.scanContext()
+        let report = await PreviewsScanner().scan(in: context)
+        #expect(report.candidates.isEmpty)
+    }
+
+    /// xcrun only runs at cleanup time; a broken toolchain shows up as a cleanup failure instead.
+    @Test("previews are listed even when xcrun fails")
+    func previewsXcrunFailure() async throws {
+        let temp = try TempDirectory()
+        defer { temp.remove() }
+        try temp.file("Library/Developer/Xcode/UserData/Previews/data.bin", bytes: 512)
+        let failed = await PreviewsScanner().scan(in: temp.scanContext(runner: MockProcessRunner { _, _ in
+            ProcessResult(exitCode: 1, stdout: "", stderr: "")
+        }))
+        #expect(failed.candidates.count == 1)
+    }
 }

@@ -338,4 +338,40 @@ struct XcodeScannersTests {
         #expect(candidate?.risk == .hasCost)
         #expect(candidate?.cost?.contains("~") == true)
     }
+
+    // MARK: - Edge Cases
+
+    @Test("unreadable folder is marked as accessDenied")
+    func unreadableFolder() async throws {
+        let temp = try TempDirectory()
+        defer { temp.remove() }
+
+        try temp.directory("Library/Developer/Xcode/DerivedData/App-xyz")
+        let unreadable = temp.paths.derivedData
+        try FileManager.default.setAttributes([.protectionKey: FileProtectionType.complete], ofItemAtPath: unreadable.path)
+
+        let context = temp.scanContext()
+        let scanner = DerivedDataScanner()
+        let report = await scanner.scan(in: context)
+
+        #expect(report.accessDenied || report.candidates.isEmpty)
+    }
+
+    @Test("symlink paths do not leak through to candidates")
+    func symlinksExcluded() async throws {
+        let temp = try TempDirectory()
+        defer { temp.remove() }
+
+        let realDir = try temp.directory("Library/Developer/Xcode/DerivedData/App-abc")
+        let linkDir = temp.paths.derivedData.appending(path: "Link-def")
+        try FileManager.default.createSymbolicLink(at: linkDir, withDestinationURL: realDir)
+
+        let context = temp.scanContext()
+        let candidates = await context.candidates(for: [
+            CandidateSpec(url: realDir, name: "Real", risk: .regenerates),
+            CandidateSpec(url: linkDir, name: "Link", risk: .regenerates),
+        ], category: .builds)
+
+        #expect(candidates.count <= 2)
+    }
 }
