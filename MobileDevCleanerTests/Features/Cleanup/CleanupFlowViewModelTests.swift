@@ -245,7 +245,7 @@ struct CleanupFlowViewModelTests {
         #expect(ctx.vm.stage == .blocked)
         let rows = ctx.vm.blockingApps
         #expect(rows.map(\.name) == ["Xcode", "Simulator", "Android Studio", "Emulador Android"])
-        #expect(rows.map(\.symbol) == ["hammer", "iphone", "cpu", "smartphone"])
+        #expect(rows.map(\.symbol) == ["hammer", "iphone", "android", "smartphone"])
         #expect(rows.map(\.tool) == [.xcode, nil, .android, .android])
         #expect(rows[0].detail == "Puede tener un build en curso")
         #expect(rows[1].detail == "Hay simuladores abiertos")

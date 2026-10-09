@@ -293,7 +293,7 @@ final class CleanupFlowViewModel {
         case .simulator:
             BlockingAppRow(id: .simulator, name: "Simulator", detail: L10n.string("Hay simuladores abiertos"), symbol: "iphone", tool: nil)
         case .androidStudio:
-            BlockingAppRow(id: .androidStudio, name: "Android Studio", detail: L10n.string("Puede tener un build en curso"), symbol: "cpu", tool: .android)
+            BlockingAppRow(id: .androidStudio, name: "Android Studio", detail: L10n.string("Puede tener un build en curso"), symbol: "android", tool: .android)
         case .androidEmulator:
             BlockingAppRow(
                 id: .androidEmulator, name: L10n.string("Emulador Android"),

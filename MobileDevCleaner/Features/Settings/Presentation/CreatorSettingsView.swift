@@ -5,25 +5,20 @@ struct CreatorSettingsView: View {
         Form {
             Section {
                 HStack(alignment: .center, spacing: 12) {
-                    ZStack(alignment: .center) {
-                        RadialGradient(
-                            gradient: Gradient(stops: [
-                                .init(color: Color(hex: 0x8fd3ff), location: 0),
-                                .init(color: Color(hex: 0x3a8bff), location: 0.38),
-                                .init(color: Color(hex: 0x6b5cff), location: 0.70),
-                                .init(color: Color(hex: 0xb45cff), location: 1)
-                            ]),
-                            center: .init(x: 0.30, y: 0.25),
-                            startRadius: 0,
-                            endRadius: 22
-                        )
-                        .frame(width: 44, height: 44)
-                        .cornerRadius(22)
-
-                        Text("LM")
-                            .font(.system(size: 17, weight: .semibold))
-                            .foregroundStyle(Color.white)
+                    Group {
+                        if let photo = Self.photo {
+                            Image(nsImage: photo).resizable().scaledToFill()
+                        } else {
+                            Text("LM")
+                                .font(.system(size: 17, weight: .semibold))
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(Color.mdcAccent)
+                        }
                     }
+                    .frame(width: 44, height: 44)
+                    .clipShape(Circle())
+                    .accessibilityHidden(true)
 
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Leo Mogiano")
@@ -68,4 +63,7 @@ struct CreatorSettingsView: View {
         }
         .formStyle(.grouped)
     }
+
+    private static let photo: NSImage? = Bundle.main.url(forResource: "creator", withExtension: "webp")
+        .flatMap(NSImage.init(contentsOf:))
 }

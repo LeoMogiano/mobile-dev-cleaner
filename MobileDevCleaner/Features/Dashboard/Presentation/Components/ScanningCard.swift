@@ -42,7 +42,7 @@ struct ScanningCard: View {
         let color = Color.mdcTool(item.tool)
         return VStack(spacing: 7) {
             HStack(spacing: 6) {
-                Image(systemName: item.tool == .xcode ? "hammer" : "cpu").font(.system(size: 13)).foregroundStyle(color)
+                MDCSymbol(name: item.tool == .xcode ? "hammer" : "android", size: 13).foregroundStyle(color)
                 Text(item.tool == .xcode ? "Xcode" : "Android").fontWeight(.semibold)
                 Spacer(minLength: 0)
                 Text(item.foundText).foregroundStyle(Color.mdcText2).monospacedDigit()

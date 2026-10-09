@@ -13,7 +13,7 @@ struct GeneralSettingsView: View {
                 ToolToggle(title: "Xcode", detail: "Builds, simuladores, runtimes y cachés",
                            symbol: "hammer", tint: .mdcXcode, isOn: $settings.scanXcode)
                 ToolToggle(title: "Android", detail: "Gradle, SDK, emuladores y Android Studio",
-                           symbol: "cpu", tint: .mdcAndroid, isOn: $settings.scanAndroid)
+                           symbol: "android", tint: .mdcAndroid, isOn: $settings.scanAndroid)
                 LabeledContent {
                     Text("Próximamente")
                         .font(.system(size: 10.5, weight: .semibold))
@@ -144,8 +144,7 @@ private struct ToolLabel: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: symbol)
-                .font(.system(size: 13))
+            MDCSymbol(name: symbol, size: 13)
                 .foregroundStyle(.white)
                 .frame(width: 24, height: 24)
                 .background(tint, in: RoundedRectangle(cornerRadius: 6, style: .continuous))
