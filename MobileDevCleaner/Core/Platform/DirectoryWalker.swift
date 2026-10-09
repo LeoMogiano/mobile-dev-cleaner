@@ -6,7 +6,7 @@ import Foundation
 enum DirectoryWalker {
     private static let bufferSize = 256 * 1024
 
-    static func allocatedSize(at url: URL) throws -> Int64 {
+    static func allocatedSize(at url: URL, token: CancellationToken? = nil) throws -> Int64 {
         let path = url.path(percentEncoded: false)
         var st = stat()
         guard lstat(path, &st) == 0 else { throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO) }
@@ -17,7 +17,7 @@ enum DirectoryWalker {
         }
         let rootFD = open(path, O_RDONLY | O_DIRECTORY | O_NOFOLLOW)
         guard rootFD >= 0 else { throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO) }
-        return try walk(rootFD: rootFD, rootPath: path, device: UInt32(bitPattern: st.st_dev))
+        return try walk(rootFD: rootFD, rootPath: path, device: UInt32(bitPattern: st.st_dev), token: token)
     }
 
     // MARK: - Walk
@@ -33,26 +33,26 @@ enum DirectoryWalker {
     }
 
     // Takes ownership of rootFD. Open fds on the stack are bounded by tree depth.
-    private static func walk(rootFD: Int32, rootPath: String, device: UInt32) throws -> Int64 {
+    private static func walk(rootFD: Int32, rootPath: String, device: UInt32, token: CancellationToken?) throws -> Int64 {
         let buffer = UnsafeMutableRawPointer.allocate(byteCount: bufferSize, alignment: 8)
         defer { buffer.deallocate() }
         var totals = Totals()
         var stack: [Frame] = []
         defer { for frame in stack { close(frame.fd) } }
 
-        switch try scan(fd: rootFD, buffer: buffer, device: device, totals: &totals) {
+        switch try scan(fd: rootFD, buffer: buffer, device: device, totals: &totals, token: token) {
         case .done(let pending):
             stack.append(Frame(fd: rootFD, pending: pending))
         case .unsupported:
             close(rootFD)
-            return try fallbackSize(path: rootPath)
+            return try fallbackSize(path: rootPath, token: token)
         case .failed(let code):
             close(rootFD)
             throw POSIXError(code)
         }
 
         while !stack.isEmpty {
-            if Task.isCancelled { throw CancellationError() }
+            if isCancelled(token) { throw CancellationError() }
             let top = stack.count - 1
             guard let name = stack[top].pending.popLast() else {
                 close(stack[top].fd)
@@ -61,11 +61,11 @@ enum DirectoryWalker {
             }
             let fd = openat(stack[top].fd, name, O_RDONLY | O_DIRECTORY | O_NOFOLLOW)
             guard fd >= 0 else { continue } // EACCES/EPERM or a race: skip silently
-            switch try scan(fd: fd, buffer: buffer, device: device, totals: &totals) {
+            switch try scan(fd: fd, buffer: buffer, device: device, totals: &totals, token: token) {
             case .done(let pending):
                 stack.append(Frame(fd: fd, pending: pending))
             case .unsupported:
-                if let path = path(of: fd) { totals.size += (try? fallbackSize(path: path)) ?? 0 }
+                if let path = path(of: fd) { totals.size += (try? fallbackSize(path: path, token: token)) ?? 0 }
                 close(fd)
             case .failed:
                 close(fd)
@@ -84,7 +84,7 @@ enum DirectoryWalker {
     private static let objDir: UInt32 = 2
 
     private static func scan(
-        fd: Int32, buffer: UnsafeMutableRawPointer, device: UInt32, totals: inout Totals
+        fd: Int32, buffer: UnsafeMutableRawPointer, device: UInt32, totals: inout Totals, token: CancellationToken?
     ) throws -> ScanOutcome {
         var list = attrlist()
         list.bitmapcount = UInt16(ATTR_BIT_MAP_COUNT)
@@ -95,7 +95,7 @@ enum DirectoryWalker {
         var pending: [String] = []
 
         while true {
-            if Task.isCancelled { throw CancellationError() }
+            if isCancelled(token) { throw CancellationError() }
             let count = getattrlistbulk(fd, &list, buffer, bufferSize, options)
             if count < 0 {
                 let code = errno
@@ -150,10 +150,14 @@ enum DirectoryWalker {
         return String(cString: buf)
     }
 
+    private static func isCancelled(_ token: CancellationToken?) -> Bool {
+        Task.isCancelled || token?.isCancelled == true
+    }
+
     // MARK: - Fallback
 
     // For volumes without getattrlistbulk support.
-    private static func fallbackSize(path: String) throws -> Int64 {
+    private static func fallbackSize(path: String, token: CancellationToken?) throws -> Int64 {
         let keys: [URLResourceKey] = [.totalFileAllocatedSizeKey, .isSymbolicLinkKey, .isRegularFileKey]
         guard let enumerator = FileManager.default.enumerator(
             at: URL(filePath: path), includingPropertiesForKeys: keys, options: [], errorHandler: { _, _ in true }
@@ -162,11 +166,50 @@ enum DirectoryWalker {
         var visited = 0
         for case let item as URL in enumerator {
             visited += 1
-            if visited % 512 == 0, Task.isCancelled { throw CancellationError() }
+            if visited % 512 == 0, isCancelled(token) { throw CancellationError() }
             guard let values = try? item.resourceValues(forKeys: Set(keys)),
                   values.isSymbolicLink != true, values.isRegularFile == true else { continue }
             total += Int64(values.totalFileAllocatedSize ?? 0)
         }
         return total
+    }
+}
+
+/// Cancellation for walks running outside Swift concurrency (on `SizeCalculator`'s queue).
+final class CancellationToken: @unchecked Sendable {
+    private let lock = NSLock()
+    private var cancelled = false
+
+    var isCancelled: Bool { lock.withLock { cancelled } }
+
+    func cancel() { lock.withLock { cancelled = true } }
+}
+
+/// Runs walks on a dedicated, width-limited queue. Walks are long blocking syscalls; on the
+/// cooperative pool they starve every other task (small categories would wait for big walks).
+final class WalkPool: Sendable {
+    static let shared = WalkPool(width: ProcessInfo.processInfo.activeProcessorCount)
+
+    private let queue: OperationQueue
+
+    init(width: Int) {
+        let queue = OperationQueue()
+        queue.name = "com.leomogiano.MobileDevCleaner.walk"
+        queue.qualityOfService = .userInitiated
+        queue.maxConcurrentOperationCount = max(1, width)
+        self.queue = queue
+    }
+
+    func allocatedSize(at url: URL) async throws -> Int64 {
+        let token = CancellationToken()
+        return try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { continuation in
+                queue.addOperation {
+                    continuation.resume(with: Result { try DirectoryWalker.allocatedSize(at: url, token: token) })
+                }
+            }
+        } onCancel: {
+            token.cancel()
+        }
     }
 }
