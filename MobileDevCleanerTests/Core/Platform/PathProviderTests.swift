@@ -64,7 +64,7 @@ struct PathProviderTests {
         let home = URL(filePath: "/Users/test", directoryHint: .isDirectory)
         let provider = PathProvider(home: home)
 
-        #expect(provider.sizeCacheFile.path == "/Users/test/Library/Caches/com.leomogiano.MobileDevCleaner/sizes.json")
+        #expect(provider.sizeCacheFile.path == "/Users/test/Library/Caches/com.mogiteam.mdc/sizes.json")
     }
 
     @Test("cocoapodsRepos is built from home")

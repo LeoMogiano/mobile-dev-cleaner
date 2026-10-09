@@ -44,9 +44,9 @@ struct PathProvider: Sendable, Equatable {
 
     var trash: URL { home.appending(path: ".Trash", directoryHint: .isDirectory) }
 
-    var appCacheDirectory: URL { caches.appending(path: "com.leomogiano.MobileDevCleaner", directoryHint: .isDirectory) }
+    var appCacheDirectory: URL { caches.appending(path: "com.mogiteam.mdc", directoryHint: .isDirectory) }
     var sizeCacheFile: URL { appCacheDirectory.appending(path: "sizes.json") }
 
-    var appSupportDirectory: URL { applicationSupport.appending(path: "com.leomogiano.MobileDevCleaner", directoryHint: .isDirectory) }
+    var appSupportDirectory: URL { applicationSupport.appending(path: "com.mogiteam.mdc", directoryHint: .isDirectory) }
     var historyFile: URL { appSupportDirectory.appending(path: "history.json") }
 }

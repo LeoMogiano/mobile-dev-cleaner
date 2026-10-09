@@ -195,7 +195,7 @@ final class WalkPool: Sendable {
 
     init(width: Int) {
         let queue = OperationQueue()
-        queue.name = "com.leomogiano.MobileDevCleaner.walk"
+        queue.name = "com.mogiteam.mdc.walk"
         queue.qualityOfService = .userInitiated
         queue.maxConcurrentOperationCount = max(1, width)
         self.queue = queue

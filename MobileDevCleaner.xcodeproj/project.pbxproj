@@ -1730,7 +1730,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.leomogiano.MobileDevCleanerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mogiteam.mdc.MobileDevCleanerTests;
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileDevCleaner.app/Contents/MacOS/MobileDevCleaner";
 			};
@@ -1751,7 +1751,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.leomogiano.MobileDevCleaner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mogiteam.mdc;
 				PRODUCT_NAME = MobileDevCleaner;
 				SDKROOT = macosx;
 			};
@@ -1772,7 +1772,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.leomogiano.MobileDevCleaner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mogiteam.mdc;
 				PRODUCT_NAME = MobileDevCleaner;
 				SDKROOT = macosx;
 			};
@@ -1860,7 +1860,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.leomogiano.MobileDevCleanerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mogiteam.mdc.MobileDevCleanerTests;
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileDevCleaner.app/Contents/MacOS/MobileDevCleaner";
 			};
