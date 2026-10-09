@@ -19,6 +19,7 @@ struct WelcomeStep: View {
                         .cornerRadius(11)
 
                         Image(systemName: "trash.fill")
+                            .accessibilityHidden(true)
                             .font(.system(size: 20))
                             .foregroundStyle(Color.white)
                     }
@@ -86,6 +87,7 @@ struct WelcomeStep: View {
     private func row(icon: String, color: Color, title: LocalizedStringKey, status: String, value: String, isDisabled: Bool = false) -> some View {
         HStack(spacing: 8) {
             Image(systemName: icon)
+                .accessibilityHidden(true)
                 .font(.system(size: 13))
                 .foregroundStyle(color)
                 .frame(width: 16)
@@ -95,6 +97,7 @@ struct WelcomeStep: View {
             Image(systemName: statusIcon(status))
                 .font(.system(size: 12))
                 .foregroundStyle(statusColor(status))
+                .accessibilityLabel(statusLabel(status))
             Text(value)
                 .font(.system(size: 12))
                 .monospacedDigit()
@@ -113,6 +116,15 @@ struct WelcomeStep: View {
         case "regen": "arrow.triangle.2.circlepath"
         case "cost": "clock.arrow.circlepath"
         case "lock": "lock.fill"
+        default: ""
+        }
+    }
+
+    private func statusLabel(_ status: String) -> String {
+        switch status {
+        case "regen": L10n.string("Se regenera solo")
+        case "cost": L10n.string("Tiene costo")
+        case "lock": L10n.string("Nunca lo tocamos")
         default: ""
         }
     }

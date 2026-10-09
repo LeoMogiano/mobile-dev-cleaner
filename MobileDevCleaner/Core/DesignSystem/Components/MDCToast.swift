@@ -11,6 +11,7 @@ struct MDCToast: View {
             .background(Color(nsColor: NSColor(srgbRed: 30/255, green: 30/255, blue: 34/255, alpha: 0.86)))
             .cornerRadius(999, antialiased: true)
             .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+            .onChange(of: message, initial: true) { MDCAnnounce.post(message) }
     }
 }
 

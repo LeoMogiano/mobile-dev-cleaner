@@ -18,6 +18,7 @@ struct CategoryHeader: View {
                     )
 
                 Image(systemName: info.symbol)
+                    .accessibilityHidden(true)
                     .font(.system(size: 23, weight: .semibold))
                     .foregroundColor(.white)
             }

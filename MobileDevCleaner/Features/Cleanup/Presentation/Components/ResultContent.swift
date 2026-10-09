@@ -47,9 +47,15 @@ struct ResultContent: View {
             .padding(EdgeInsets(top: 30, leading: 30, bottom: 8, trailing: 30))
 
             if !failures.isEmpty {
-                failureList
-                    .padding(.top, 10)
-                    .padding(.horizontal, 26)
+                ResultFailureList(
+                    header: failureHeader,
+                    failures: failures,
+                    isExpanded: isFailuresExpanded,
+                    onToggle: onToggleFailures,
+                    onShowInFinder: onShowInFinder
+                )
+                .padding(.top, 10)
+                .padding(.horizontal, 26)
             }
 
             HStack(spacing: 8) {
@@ -62,7 +68,10 @@ struct ResultContent: View {
             }
             .padding(EdgeInsets(top: 18, leading: 24, bottom: 20, trailing: 24))
         }
-        .onAppear { hasAppeared = true }
+        .onAppear {
+            hasAppeared = true
+            MDCAnnounce.post(L10n.string("Liberaste \(freedText)"))
+        }
     }
 
     private var check: some View {
@@ -83,6 +92,7 @@ struct ResultContent: View {
                 .font(.system(size: 14))
                 .foregroundStyle(Color.mdcRegenInk)
                 .padding(.top, 1)
+                .accessibilityHidden(true)
             Text("Parte de esto volverá a crecer mientras desarrollas. Es normal: así funcionan Xcode y Gradle. Te recomendamos revisar cada 2–4 semanas.")
                 .font(.system(size: 12.5))
                 .lineSpacing(2)
@@ -93,64 +103,5 @@ struct ResultContent: View {
         .padding(.horizontal, 14)
         .background(Color.mdcRegenBg, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
         .padding(.top, 16)
-    }
-
-    private var failureList: some View {
-        VStack(spacing: 0) {
-            Button(action: onToggleFailures) {
-                HStack(spacing: 8) {
-                    Image(systemName: "exclamationmark.triangle")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Color.mdcCostInk)
-                    Text(failureHeader)
-                        .font(.system(size: 12.5, weight: .semibold))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Image(systemName: isFailuresExpanded ? "chevron.down" : "chevron.right")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Color.mdcText3)
-                }
-                .padding(.horizontal, 12)
-                .frame(height: 34)
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            .accessibilityValue(isFailuresExpanded ? L10n.string("Expandido") : L10n.string("Contraído"))
-
-            if isFailuresExpanded {
-                ForEach(failures) { row in
-                    HStack(spacing: 10) {
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(row.name)
-                                .font(.system(size: 12.5, weight: .medium))
-                            Text(row.reason)
-                                .font(.system(size: 11.5))
-                                .foregroundStyle(Color.mdcText2)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        Button { onShowInFinder(row.id) } label: {
-                            Label("Mostrar en Finder", systemImage: "arrow.up.forward.circle")
-                                .labelStyle(SpacedLabelStyle(spacing: 4))
-                        }
-                        .buttonStyle(MDCSecondaryButtonStyle(height: 24, horizontalPadding: 9, fontSize: 11.5, weight: .regular))
-                    }
-                    .padding(.vertical, 7)
-                    .padding(.horizontal, 12)
-                    .overlay(alignment: .top) { Rectangle().fill(Color.mdcLine).frame(height: 0.5) }
-                }
-            }
-        }
-        .mdcInner(radius: 10)
-        .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).strokeBorder(Color.mdcLine, lineWidth: 0.5))
-    }
-}
-
-private struct SpacedLabelStyle: LabelStyle {
-    let spacing: CGFloat
-
-    func makeBody(configuration: Configuration) -> some View {
-        HStack(spacing: spacing) {
-            configuration.icon
-            configuration.title
-        }
     }
 }

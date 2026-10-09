@@ -9,6 +9,7 @@ struct DoneStep: View {
                     .frame(width: 84, height: 84)
 
                 Image(systemName: "checkmark.shield.fill")
+                    .accessibilityHidden(true)
                     .font(.system(size: 40))
                     .foregroundStyle(Color.mdcRegenInk)
             }

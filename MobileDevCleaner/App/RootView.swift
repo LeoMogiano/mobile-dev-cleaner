@@ -47,7 +47,10 @@ struct RootView: View {
             }
         }
         .onChange(of: scanStore.status) { _, status in
-            if case .finished = status { selection.prune(to: scanStore.reports) }
+            if case .finished = status {
+                selection.prune(to: scanStore.reports)
+                MDCAnnounce.post(L10n.string("Escaneo terminado"))
+            }
         }
     }
 

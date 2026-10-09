@@ -3,13 +3,14 @@ import SwiftUI
 /// The four numbered steps and the waiting/granted line (HTML lines 559-569).
 struct FullDiskAccessGuide: View {
     let status: FullDiskAccessViewModel.Status
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
-                row(1, icon: "gearshape", text: Text("Abre ") + bold("Ajustes del Sistema"))
-                row(2, icon: "lock", text: Text("Ve a ") + bold("Privacidad y seguridad"))
-                row(3, icon: "internaldrive", text: Text("Entra en ") + bold("Acceso total al disco"))
+                row(1, icon: "gearshape", text: Text("Abre \(bold("Ajustes del Sistema"))"))
+                row(2, icon: "lock", text: Text("Ve a \(bold("Privacidad y seguridad"))"))
+                row(3, icon: "internaldrive", text: Text("Entra en \(bold("Acceso total al disco"))"))
                 lastRow
             }
             .font(.system(size: 12.5))
@@ -36,7 +37,10 @@ struct FullDiskAccessGuide: View {
     private func row(_ n: Int, icon: String, text: Text) -> some View {
         HStack(spacing: 10) {
             badge(n)
-            Image(systemName: icon).font(.system(size: 14)).foregroundStyle(Color.mdcText2)
+            Image(systemName: icon)
+                .accessibilityHidden(true)
+                .font(.system(size: 14))
+                .foregroundStyle(Color.mdcText2)
             text
             Spacer(minLength: 0)
         }
@@ -50,6 +54,7 @@ struct FullDiskAccessGuide: View {
         HStack(spacing: 10) {
             badge(4)
             Image(systemName: "trash")
+                .accessibilityHidden(true)
                 .font(.system(size: 11))
                 .foregroundStyle(.white)
                 .frame(width: 20, height: 20)
@@ -58,7 +63,7 @@ struct FullDiskAccessGuide: View {
                         colors: [Color(light: 0x3AA0FF, dark: 0x3AA0FF), Color(light: 0xA35BFF, dark: 0xA35BFF)],
                         startPoint: .topLeading, endPoint: .bottomTrailing),
                     in: RoundedRectangle(cornerRadius: 6, style: .continuous))
-            (Text("Activa ") + bold("Mobile Dev Cleaner")).frame(maxWidth: .infinity, alignment: .leading)
+            Text("Activa \(bold("Mobile Dev Cleaner"))").frame(maxWidth: .infinity, alignment: .leading)
             toggle
         }
         .padding(.horizontal, 14)
@@ -73,7 +78,7 @@ struct FullDiskAccessGuide: View {
             .overlay(alignment: .leading) {
                 Circle().fill(.white).frame(width: 14, height: 14).offset(x: on ? 16 : 2)
             }
-            .animation(.easeInOut(duration: 0.2), value: on)
+            .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: on)
     }
 
     @ViewBuilder private var statusLine: some View {
@@ -86,7 +91,9 @@ struct FullDiskAccessGuide: View {
             .font(.system(size: 12))
         case .granted:
             HStack(spacing: 7) {
-                Image(systemName: "checkmark").font(.system(size: 14, weight: .bold))
+                Image(systemName: "checkmark")
+                    .accessibilityHidden(true)
+                    .font(.system(size: 14, weight: .bold))
                 Text("Acceso concedido").fontWeight(.semibold)
             }
             .font(.system(size: 12))
@@ -104,9 +111,14 @@ struct FullDiskAccessIcon: View {
         RoundedRectangle(cornerRadius: 16, style: .continuous)
             .fill(Color.mdcFill)
             .frame(width: size, height: size)
-            .overlay { Image(systemName: "internaldrive").font(.system(size: 32)) }
+            .overlay {
+                Image(systemName: "internaldrive")
+                    .accessibilityHidden(true)
+                    .font(.system(size: 32))
+            }
             .overlay(alignment: .bottomTrailing) {
                 Image(systemName: "checkmark.shield")
+                    .accessibilityHidden(true)
                     .font(.system(size: 16))
                     .foregroundStyle(.white)
                     .frame(width: 28, height: 28)

@@ -68,7 +68,7 @@ struct CandidateRow: View, Equatable {
         .accessibilityLabel(row.accessibilityLabel)
         .accessibilityAddTraits(.isToggle)
         .accessibilityValue(valueLabel)
-        .accessibilityAction(named: "Marcar", onToggle)
+        .accessibilityAction { onToggle() }
         .accessibilityAction(named: "Ver detalles", onInspect)
         .accessibilityAction(named: "Mostrar en Finder", onShowInFinder)
     }

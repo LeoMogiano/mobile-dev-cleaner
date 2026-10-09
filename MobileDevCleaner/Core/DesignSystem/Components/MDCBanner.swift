@@ -9,6 +9,7 @@ struct MDCBanner: View {
     var body: some View {
         HStack(spacing: 10) {
             Image(systemName: "exclamationmark.triangle.fill")
+                .accessibilityHidden(true)
                 .font(.system(size: 16))
                 .foregroundColor(.mdcCostInk)
 

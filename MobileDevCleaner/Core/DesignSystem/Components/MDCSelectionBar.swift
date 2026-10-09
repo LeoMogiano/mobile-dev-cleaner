@@ -7,6 +7,7 @@ struct MDCSelectionBar: View {
     let onReview: () -> Void
 
     @Environment(\.mdcMaterial) private var material
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var shape: RoundedRectangle {
         RoundedRectangle(cornerRadius: material.usesGlass ? 12 : 6, style: .continuous)
@@ -38,7 +39,7 @@ struct MDCSelectionBar: View {
                 onDeselect()
             }
             .font(.system(size: 13, weight: .regular))
-            .foregroundColor(.mdcAccent)
+            .foregroundColor(.mdcAccentInk)
             .frame(height: 28)
             .padding(.horizontal, 10)
             .buttonStyle(PlainButtonStyle())
@@ -54,7 +55,7 @@ struct MDCSelectionBar: View {
         .background(sheet, in: shape)
         .overlay(shape.strokeBorder(Color.mdcLine2, lineWidth: 0.5))
         .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 2)
-        .transition(.opacity.animation(.easeOut(duration: 0.18)))
+        .transition(.opacity.animation(reduceMotion ? nil : .easeOut(duration: 0.18)))
     }
 }
 

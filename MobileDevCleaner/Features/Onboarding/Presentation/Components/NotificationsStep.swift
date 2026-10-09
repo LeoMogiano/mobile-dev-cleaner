@@ -18,6 +18,7 @@ struct NotificationsStep: View {
                 .cornerRadius(20)
 
                 Image(systemName: "bell.fill")
+                    .accessibilityHidden(true)
                     .font(.system(size: 36))
                     .foregroundStyle(Color.white)
             }
@@ -55,6 +56,7 @@ struct NotificationsStep: View {
                         .cornerRadius(8)
 
                         Image(systemName: "trash.fill")
+                            .accessibilityHidden(true)
                             .font(.system(size: 15))
                             .foregroundStyle(Color.white)
                     }
@@ -82,6 +84,7 @@ struct NotificationsStep: View {
             if isAllowed {
                 HStack(spacing: 7) {
                     Image(systemName: "checkmark")
+                        .accessibilityHidden(true)
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundStyle(Color.mdcRegenInk)
                     Text("Notificaciones activadas")

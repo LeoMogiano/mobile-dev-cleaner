@@ -56,6 +56,7 @@ struct HowItWorksStep: View {
                     .cornerRadius(10)
 
                 Image(systemName: icon)
+                    .accessibilityHidden(true)
                     .font(.system(size: 19))
                     .foregroundStyle(iconColor)
             }
