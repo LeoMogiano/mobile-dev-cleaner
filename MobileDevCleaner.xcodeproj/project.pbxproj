@@ -45,6 +45,7 @@
 		28FC0D5A35A33B557F6C13EB /* SizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FFB85C636A4C6C32BFC48 /* SizeCalculator.swift */; };
 		292793B0D33053D3F06A1B14 /* HistoryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60573260717852AF4BF2356 /* HistoryRepositoryImpl.swift */; };
 		2A68A3A5509AAF06EB8DC6F2 /* CleanupFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCD0825E1C0CC2A26CC07B /* CleanupFlowViewModel.swift */; };
+		2AA01980114174F7440FBBB6 /* ResultFailureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B784F43C92DD4F22E5A83919 /* ResultFailureList.swift */; };
 		2C6DFAF1778789BE8730230E /* PlanTransferRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B945E3FF8ADB69D832B07F /* PlanTransferRepositoryImpl.swift */; };
 		2DCF9F9A72AC50BB457A5C36 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74776035CCF738A1505D8ECA /* DashboardViewModel.swift */; };
 		2DEAD19D37A169102321064F /* CategoryID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010FBF916B3696F1DC19EF5F /* CategoryID.swift */; };
@@ -128,6 +129,7 @@
 		8E59A627E1C1C5366F2548D1 /* Signposts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9648A14BE9C4DEC7FC0D9BF /* Signposts.swift */; };
 		8F79D5DB084B8E9170E08F0F /* FlutterSdkCacheScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF29A93B00246400E2B3684 /* FlutterSdkCacheScanner.swift */; };
 		91139C4CFD26651B7D2183DB /* MainWindowContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44CD22219F9F6412421DA4 /* MainWindowContent.swift */; };
+		917715F0F06528D7115E4110 /* MDCAnnounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFE3F46AECB0A036C882D3 /* MDCAnnounce.swift */; };
 		92AC1DA3DFA5ED836209C8DB /* MDCSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B15763BE49BD447B5A57E2 /* MDCSymbol.swift */; };
 		9353658AE07873742F5EEA77 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D4D4D8A4BED93B4022D1A /* OnboardingView.swift */; };
 		94693938C512C93AEAC58527 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569414432EDCF1CAD9B3016 /* AppLanguage.swift */; };
@@ -317,6 +319,7 @@
 		5696269288CA3787C933BDFF /* SimulatorsScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorsScannerTests.swift; sourceTree = "<group>"; };
 		57E5CDBF7CB4B2ABB72DE2DD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5C8993FFDC80DA28DAE5C48A /* AboutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsView.swift; sourceTree = "<group>"; };
+		5CDFE3F46AECB0A036C882D3 /* MDCAnnounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCAnnounce.swift; sourceTree = "<group>"; };
 		5DAAC25C929DAB6EF3ED95C1 /* GradleScannersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleScannersTests.swift; sourceTree = "<group>"; };
 		5FFA6286A78F9263BAD996F8 /* StudioVersionsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioVersionsScanner.swift; sourceTree = "<group>"; };
 		60848762B1A6CE57F3BD4629 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -398,6 +401,7 @@
 		B3747B285710E7E4352949E1 /* FailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureTests.swift; sourceTree = "<group>"; };
 		B5D6C8620CD6C3294A7ABCE8 /* MDCToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCToast.swift; sourceTree = "<group>"; };
 		B75754E21F78F2C39FB45639 /* ScanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRepository.swift; sourceTree = "<group>"; };
+		B784F43C92DD4F22E5A83919 /* ResultFailureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFailureList.swift; sourceTree = "<group>"; };
 		B8ABA8AC399190B8FAEB3875 /* CleanupOutcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupOutcome.swift; sourceTree = "<group>"; };
 		B945D8EC70AEAD3F91310CE8 /* DirectoryWalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryWalkerTests.swift; sourceTree = "<group>"; };
 		BA170B99DAD118BBCEB598A2 /* PathGuard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathGuard.swift; sourceTree = "<group>"; };
@@ -894,6 +898,7 @@
 				241D72FA688E924EF686CDBA /* BlockedContent.swift */,
 				F3FC0E8E7F30EC3DDA56AE38 /* ProgressContent.swift */,
 				3794F7F5BF48EED44CC24F8C /* ResultContent.swift */,
+				B784F43C92DD4F22E5A83919 /* ResultFailureList.swift */,
 				7BE5F43508E76FBCB255917E /* ReviewContent.swift */,
 				FE485BC9AF87D815A5547ECA /* ReviewSections.swift */,
 			);
@@ -926,6 +931,7 @@
 				53361A36F592ABCBCDB85BBB /* MDCSurfaces.swift */,
 				1EF03B3E834961BF944ED47B /* Tokens.swift */,
 				81E4167537E0FEA748AAFF45 /* Typography.swift */,
+				DB30095EF858913C1ACC5B8B /* Accessibility */,
 				9EBCDD3A7C988F7FABA36426 /* Components */,
 			);
 			path = DesignSystem;
@@ -1236,6 +1242,14 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		DB30095EF858913C1ACC5B8B /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				5CDFE3F46AECB0A036C882D3 /* MDCAnnounce.swift */,
+			);
+			path = Accessibility;
+			sourceTree = "<group>";
+		};
 		DC90774D758022F19EE17D27 /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -1453,8 +1467,12 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				de,
 				en,
 				es,
+				ja,
+				"pt-BR",
+				"zh-Hans",
 			);
 			mainGroup = CE17A3A519FB08B4742FEE80;
 			minimizedProjectReferenceProxies = 1;
@@ -1580,6 +1598,7 @@
 				24D3271102F4F31394945527 /* InspectorView.swift in Sources */,
 				8986755CD5EC149E85C4C421 /* L10n.swift in Sources */,
 				668038F0D1D5FDA59BD1E402 /* LoadHistoryUseCase.swift in Sources */,
+				917715F0F06528D7115E4110 /* MDCAnnounce.swift in Sources */,
 				BF9831C706425B3287425EC2 /* MDCBanner.swift in Sources */,
 				ABBCFDD84938134C04FB1FA1 /* MDCBreakdownBar.swift in Sources */,
 				205CF30E97F75A563975BB89 /* MDCButtonStyles.swift in Sources */,
@@ -1617,6 +1636,7 @@
 				867CD7A9791CCC697C193CCC /* RecommendedCard.swift in Sources */,
 				EC4D159B8B309265D3629CD9 /* RecordCleanupUseCase.swift in Sources */,
 				E93B6632F7673A5E159EF12D /* ResultContent.swift in Sources */,
+				2AA01980114174F7440FBBB6 /* ResultFailureList.swift in Sources */,
 				E88B3171CE4B6031688A8D93 /* ReviewContent.swift in Sources */,
 				13233A52ED2A63486FEF4732 /* ReviewSections.swift in Sources */,
 				C2E07F9E4BFDE1C6CDB5FC10 /* ReviewSheet.swift in Sources */,

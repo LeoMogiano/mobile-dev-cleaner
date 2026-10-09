@@ -3,16 +3,22 @@
 
 xcodebuild emits the keys but only the Xcode IDE writes them into the catalog; this script
 does that step from the command line. Existing translations are kept, stale keys are dropped.
+It then reports, per language, the keys without a translation and the translations whose
+format specifiers (%lld, %@, ...) differ from the key.
 
 Usage: scripts/sync_strings.py [derived-data-path] [--missing]
 """
 import glob
 import json
 import os
+import re
 import sys
+from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATALOG = os.path.join(ROOT, "MobileDevCleaner", "Resources", "Localizable.xcstrings")
+LANGS = ["en", "ja", "zh-Hans", "pt-BR", "de"]
+SPECIFIER = re.compile(r"%(?:\d+\$)?(?:lld|ld|d|@|%)")
 
 
 def extracted_keys(derived_data):
@@ -25,6 +31,23 @@ def extracted_keys(derived_data):
         for entry in data.get("tables", {}).get("Localizable", []):
             keys.add(entry["key"])
     return keys
+
+
+def translation_values(entry, lang):
+    """Strings for one language: the stringUnit, or every plural form when 'other' is set."""
+    localization = entry.get("localizations", {}).get(lang, {})
+    value = localization.get("stringUnit", {}).get("value")
+    if value:
+        return [value]
+    plural = localization.get("variations", {}).get("plural", {})
+    if plural.get("other", {}).get("stringUnit", {}).get("value"):
+        return [form["stringUnit"]["value"] for form in plural.values() if form.get("stringUnit", {}).get("value")]
+    return []
+
+
+def specifiers(text):
+    # Positional "%1$@" and "%@" count as the same specifier.
+    return Counter(re.sub(r"\d+\$", "", match) for match in SPECIFIER.findall(text))
 
 
 def main():
@@ -43,12 +66,28 @@ def main():
         json.dump(catalog, handle, ensure_ascii=False, indent=2, separators=(",", " : "))
         handle.write("\n")
 
-    missing = [k for k, v in catalog["strings"].items()
-               if not v.get("localizations", {}).get("en", {}).get("stringUnit", {}).get("value")]
-    print(f"{len(keys)} keys, {len(missing)} without English, {len(set(old) - keys)} stale removed")
+    missing = {lang: [] for lang in LANGS}
+    mismatches = []
+    for key, entry in catalog["strings"].items():
+        expected = specifiers(key)
+        for lang in LANGS:
+            values = translation_values(entry, lang)
+            if not values:
+                missing[lang].append(key)
+            for value in values:
+                if specifiers(value) != expected:
+                    mismatches.append((lang, key, value))
+
+    print(f"{len(keys)} keys, {len(set(old) - keys)} stale removed")
+    for lang in LANGS:
+        print(f"{lang}: {len(missing[lang])} missing")
+    for lang, key, value in mismatches:
+        print(f"{lang}: {key} -> {value}")
     if "--missing" in sys.argv:
-        for key in missing:
-            print(json.dumps(key, ensure_ascii=False))
+        for lang in LANGS:
+            print(f"\nMissing in {lang}:")
+            for key in missing[lang]:
+                print(json.dumps(key, ensure_ascii=False))
 
 
 if __name__ == "__main__":

@@ -139,7 +139,7 @@ final class DashboardViewModel {
     /// "Último escaneo: hace 2 min · Última limpieza: 12 sep, liberaste 21 GB".
     func footer(now: Date = .now) -> String {
         guard case .finished(let date) = scan.status else { return "" }
-        let formats = FooterFormats.shared
+        let formats = FooterFormats.current()
         let scanned = L10n.string("Último escaneo: \(formats.relative.localizedString(for: date, relativeTo: now))")
         guard let last = history?.entries.first else { return scanned }
         let day = formats.day.string(from: last.date)
@@ -190,13 +190,20 @@ final class DashboardViewModel {
 /// Formatters are costly to build; the footer re-renders with every scan update.
 @MainActor
 private final class FooterFormats {
-    static let shared = FooterFormats()
+    private static var cache: [String: FooterFormats] = [:]
+
+    static func current() -> FooterFormats {
+        let locale = AppLanguage.current.locale
+        if let cached = cache[locale.identifier] { return cached }
+        let formats = FooterFormats(locale: locale)
+        cache[locale.identifier] = formats
+        return formats
+    }
 
     let relative: RelativeDateTimeFormatter
     let day: DateFormatter
 
-    private init() {
-        let locale = AppLanguage.current.locale
+    private init(locale: Locale) {
         relative = RelativeDateTimeFormatter()
         relative.locale = locale
         relative.unitsStyle = .abbreviated
