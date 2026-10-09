@@ -36,7 +36,11 @@ extension Color {
     static let mdcSegmentOn = Color(light: (0xFFFFFF, 1), dark: (0xFFFFFF, 0.22))
 
     static func mdcTool(_ tool: Tool) -> Color {
-        tool == .xcode ? .mdcXcode : .mdcAndroid
+        switch tool {
+        case .xcode: .mdcXcode
+        case .android: .mdcAndroid
+        case .flutter: .mdcFlutter
+        }
     }
 }
 

@@ -30,11 +30,6 @@ struct SidebarView: View {
                     SidebarSectionHeader(title: section.title, total: section.total)
                 }
             }
-            Section {
-                flutterRow
-            } header: {
-                SidebarSectionHeader(title: "Flutter")
-            }
         }
         .listStyle(.sidebar)
         .navigationSplitViewColumnWidth(min: 262, ideal: 262, max: 340)
@@ -64,17 +59,6 @@ struct SidebarView: View {
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-    }
-
-    private var flutterRow: some View {
-        Button {
-            router.toast = L10n.string("Limpieza de proyectos Flutter (build/, .dart_tool, pub cache): llega pronto")
-        } label: {
-            SidebarRow(title: L10n.string("Proyectos Flutter"), symbol: "square.3.layers.3d", iconColor: .mdcText3, badge: L10n.string("Pronto"))
-        }
-        .buttonStyle(.plain)
-        .foregroundStyle(Color.mdcText2)
-        .help("Proyectos Flutter: build/, .dart_tool y caché de pub")
     }
 
     private var historyFooter: some View {

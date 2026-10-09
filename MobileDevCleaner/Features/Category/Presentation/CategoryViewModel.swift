@@ -91,6 +91,8 @@ final class CategoryViewModel {
                 case .orphanProjects: L10n.string("Proyectos que ya no existen")
                 case .usedByEmulators: L10n.string("Usadas por tus emuladores")
                 case .unusedByEmulators: L10n.string("Ningún emulador la usa")
+                case .usedByProjects: L10n.string("Usadas por tus proyectos")
+                case .unusedByProjects: L10n.string("Ningún proyecto la usa")
                 }
             }
 

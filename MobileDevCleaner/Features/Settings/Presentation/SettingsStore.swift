@@ -10,6 +10,7 @@ final class SettingsStore {
     enum Key {
         static let scanXcode = "general.scanXcode"
         static let scanAndroid = "general.scanAndroid"
+        static let scanFlutter = "general.scanFlutter"
         static let scanOnOpen = "general.scanOnOpen"
         static let showEmpty = "general.showEmpty"
         static let notifyOnFinish = "general.notifyOnFinish"
@@ -22,13 +23,13 @@ final class SettingsStore {
         static let onboardingCompleted = "onboarding.completed"
 
         static let all = [
-            scanXcode, scanAndroid, scanOnOpen, showEmpty, notifyOnFinish, excludedPaths, moveToTrash,
+            scanXcode, scanAndroid, scanFlutter, scanOnOpen, showEmpty, notifyOnFinish, excludedPaths, moveToTrash,
             confirmCost, theme, showTechnicalNames, showCommands, MDCMaterial.storageKey, AppLanguage.storageKey,
         ]
     }
 
     private static let registered: [String: Any] = [
-        Key.scanXcode: true, Key.scanAndroid: true, Key.scanOnOpen: true,
+        Key.scanXcode: true, Key.scanAndroid: true, Key.scanFlutter: true, Key.scanOnOpen: true,
         Key.moveToTrash: true, Key.confirmCost: true, Key.theme: AppTheme.auto.rawValue,
     ]
 
@@ -36,6 +37,7 @@ final class SettingsStore {
 
     var scanXcode: Bool { didSet { defaults.set(scanXcode, forKey: Key.scanXcode) } }
     var scanAndroid: Bool { didSet { defaults.set(scanAndroid, forKey: Key.scanAndroid) } }
+    var scanFlutter: Bool { didSet { defaults.set(scanFlutter, forKey: Key.scanFlutter) } }
     var scanOnOpen: Bool { didSet { defaults.set(scanOnOpen, forKey: Key.scanOnOpen) } }
     var showEmpty: Bool { didSet { defaults.set(showEmpty, forKey: Key.showEmpty) } }
     var notifyOnFinish: Bool { didSet { defaults.set(notifyOnFinish, forKey: Key.notifyOnFinish) } }
@@ -53,6 +55,7 @@ final class SettingsStore {
         defaults.register(defaults: Self.registered)
         scanXcode = defaults.bool(forKey: Key.scanXcode)
         scanAndroid = defaults.bool(forKey: Key.scanAndroid)
+        scanFlutter = defaults.bool(forKey: Key.scanFlutter)
         scanOnOpen = defaults.bool(forKey: Key.scanOnOpen)
         showEmpty = defaults.bool(forKey: Key.showEmpty)
         notifyOnFinish = defaults.bool(forKey: Key.notifyOnFinish)
@@ -69,6 +72,7 @@ final class SettingsStore {
         var tools: Set<Tool> = []
         if scanXcode { tools.insert(.xcode) }
         if scanAndroid { tools.insert(.android) }
+        if scanFlutter { tools.insert(.flutter) }
         return tools
     }
 
@@ -81,6 +85,7 @@ final class SettingsStore {
         Key.all.forEach(defaults.removeObject(forKey:))
         scanXcode = true
         scanAndroid = true
+        scanFlutter = true
         scanOnOpen = true
         showEmpty = false
         notifyOnFinish = false

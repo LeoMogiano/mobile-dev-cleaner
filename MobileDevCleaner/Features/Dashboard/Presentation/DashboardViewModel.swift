@@ -153,18 +153,20 @@ final class DashboardViewModel {
 
     var toolProgress: [ToolProgress] {
         Tool.allCases.filter(settings.enabledTools.contains).map { tool in
-            let found = scan.reports.values.filter { $0.id.tool == tool && !$0.accessDenied }.reduce(Int64(0)) { $0 + $1.totalSize }
+            let found = scan.reports.values.filter { $0.id.tool == tool && $0.isApplicable && !$0.accessDenied }.reduce(Int64(0)) { $0 + $1.totalSize }
             return ToolProgress(tool: tool, fraction: scan.progress(for: tool), foundText: Self.format(found))
         }
     }
 
     var scanRows: [ScanRow] {
         let ids = scan.scannedCategories.isEmpty ? CategoryID.allCases : scan.scannedCategories
-        return ids.map { id in
+        return ids.compactMap { id in
             let info = CategoryInfo.info(for: id)
             guard !scan.pending.contains(id), let report = scan.reports[id] else {
+                guard scan.reports[id]?.isApplicable != false else { return nil }
                 return ScanRow(id: id, name: info.name, symbol: info.symbol, tool: id.tool, isFound: false, sizeText: "", isDimmed: false)
             }
+            guard report.isApplicable else { return nil }
             let size = report.totalSize
             let text = report.accessDenied ? L10n.string("Sin acceso") : size == 0 ? L10n.string("No encontrado") : Self.format(size)
             return ScanRow(id: id, name: info.name, symbol: info.symbol, tool: id.tool, isFound: true, sizeText: text, isDimmed: report.accessDenied || size == 0)

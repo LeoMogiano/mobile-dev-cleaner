@@ -13,6 +13,8 @@ struct AppCommands: Commands {
                 .keyboardShortcut("1")
             Button("Ir a Android") { router.show(.category(.gcache)) }
                 .keyboardShortcut("2")
+            Button("Ir a Flutter") { router.show(.category(.fprojects)) }
+                .keyboardShortcut("3")
         }
     }
 }

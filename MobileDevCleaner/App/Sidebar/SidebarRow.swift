@@ -8,8 +8,6 @@ struct SidebarRow: View {
     var isSelected = false
     var isDimmed = false
     var iconColor: Color = .mdcAccent
-    var badge: String?
-
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: symbol)
@@ -27,14 +25,6 @@ struct SidebarRow: View {
                     .monospacedDigit()
                     .foregroundStyle(isSelected ? Color.white.opacity(0.85) : Color.mdcText3)
                     .lineLimit(1)
-            }
-            if let badge {
-                Text(badge)
-                    .font(.system(size: 10, weight: .semibold))
-                    .foregroundStyle(Color.mdcText2)
-                    .padding(.horizontal, 6)
-                    .frame(height: 16)
-                    .background(Color.mdcFill, in: Capsule())
             }
         }
         .frame(height: 28)

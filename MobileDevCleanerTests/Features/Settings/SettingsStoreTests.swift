@@ -108,13 +108,15 @@ struct SettingsStoreTests {
 
         store.scanXcode = true
         store.scanAndroid = false
+        store.scanFlutter = false
         #expect(store.enabledTools == [.xcode])
 
         store.scanAndroid = true
         #expect(store.enabledTools == [.xcode, .android])
 
         store.scanXcode = false
-        #expect(store.enabledTools == [.android])
+        store.scanFlutter = true
+        #expect(store.enabledTools == [.android, .flutter])
     }
 
     @Test("reset reverts to defaults without touching onboarding")
@@ -124,6 +126,7 @@ struct SettingsStoreTests {
 
         let store = SettingsStore(defaults: defaults)
         store.scanXcode = false
+        store.scanFlutter = false
         store.notifyOnFinish = true
         store.excludedPaths = ["/test"]
         store.theme = .dark
@@ -133,6 +136,7 @@ struct SettingsStoreTests {
 
         #expect(store.scanXcode == true)
         #expect(store.scanAndroid == true)
+        #expect(store.scanFlutter == true)
         #expect(store.notifyOnFinish == false)
         #expect(store.excludedPaths.isEmpty)
         #expect(store.theme == .auto)
