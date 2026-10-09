@@ -4,7 +4,7 @@ import SwiftUI
 struct MobileDevCleanerApp: App {
     @State fileprivate var scanStore: ScanStore
     @State fileprivate var historyStore: HistoryStore
-    @State fileprivate var router = AppRouter()
+    @State fileprivate var router: AppRouter
     @State fileprivate var selection = SelectionStore()
     @State fileprivate var settings: SettingsStore
     @AppStorage(MDCMaterial.storageKey) fileprivate var material: MDCMaterial = .liquidGlass
@@ -23,6 +23,9 @@ struct MobileDevCleanerApp: App {
         }
         let settings = SettingsStore()
         _settings = State(initialValue: settings)
+        let router = AppRouter()
+        router.isOnboardingPresented = !settings.onboardingCompleted
+        _router = State(initialValue: router)
         _scanStore = State(initialValue: ScanStore(scan: sl(), tools: { settings.enabledTools }))
         _historyStore = State(initialValue: HistoryStore(load: sl(), record: sl()))
     }
@@ -30,9 +33,9 @@ struct MobileDevCleanerApp: App {
     var body: some Scene {
         WindowGroup {
             // The benchmark measures the scan alone; drawing the UI would skew it.
-            if !HeadlessScan.isRequested {
-                RootView()
-                    .frame(minWidth: 900, minHeight: 600)
+            // As a test host the app must not scan the real disk either.
+            if !HeadlessScan.isRequested && !Self.isTestHost {
+                MainWindowContent()
                     .appEnvironment(self)
             }
         }
@@ -45,6 +48,8 @@ struct MobileDevCleanerApp: App {
                 .appEnvironment(self)
         }
     }
+
+    private static let isTestHost = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
     fileprivate var colorScheme: ColorScheme? {
         switch settings.theme {

@@ -81,7 +81,7 @@ struct SidebarSectionsTests {
     @Test("sections follow category order with tool totals")
     func orderAndTotals() {
         let reports = all([.builds: 2_000_000_000, .pods: 1_000_000_000, .gcache: 3_000_000_000])
-        let model = SidebarSections(reports: reports, pending: [], showEmpty: false, expanded: [])
+        let model = SidebarSections(reports: reports, pending: [], showEmpty: false, expanded: [], tools: [.xcode, .android])
         #expect(model.sections.map(\.title) == ["Xcode", "Android"])
         #expect(xcode(model).rows.map(\.id) == [.builds, .pods])
         #expect(xcode(model).total == ByteFormatter.string(3_000_000_000))
@@ -97,5 +97,22 @@ struct SidebarSectionsTests {
         #expect(xcode(model).hiddenCount == 5)
         #expect(xcode(model).rows.first { $0.id == .caches }?.sizeText == "…")
         #expect(xcode(model).rows.first { $0.id == .caches }?.state == .scanning)
+    }
+
+    @Test("non-applicable categories never show, even when showEmpty")
+    func nonApplicableHidden() {
+        /// Start with all xcode categories having 0 bytes
+        let allReports = all([.builds: 0])
+        var reports = allReports
+
+        /// Mark the .builds category as not applicable
+        var buildsReport = reports[.builds]!
+        buildsReport.isApplicable = false
+        reports[.builds] = buildsReport
+
+        let model = SidebarSections(reports: reports, pending: [], showEmpty: true, expanded: [.xcode], tools: [.xcode])
+        let xcodeSection = xcode(model)
+        /// Even though builds is not applicable, all other categories should still show
+        #expect(!xcodeSection.rows.contains { $0.id == .builds })
     }
 }

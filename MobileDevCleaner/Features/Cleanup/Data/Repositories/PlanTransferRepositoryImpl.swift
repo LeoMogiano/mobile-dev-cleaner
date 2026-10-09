@@ -117,6 +117,10 @@ struct PlanTransferRepositoryImpl: PlanTransferRepository {
         case .sysimg: "android_sdk_system_images"
         case .ndk: "android_sdk_versioned"
         case .studio: "android_studio_orphan"
+        case .fprojects: "flutter_projects"
+        case .pubcache: "pub_cache"
+        case .fsdk: "flutter_sdk_cache"
+        case .fvm: "fvm_versions"
         }
     }
 

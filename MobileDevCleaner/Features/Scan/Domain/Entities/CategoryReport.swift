@@ -6,6 +6,9 @@ struct CategoryReport: Sendable, Hashable {
     var devices: [DeviceCandidate] = []
     /// Some paths could not be read (Full Disk Access missing).
     var accessDenied = false
+    /// False when the tool behind the category is not installed (FVM): hidden everywhere,
+    /// even with "Mostrar categorías vacías".
+    var isApplicable = true
 
     var totalSize: Int64 {
         candidates.reduce(0) { $0 + $1.size } + devices.reduce(0) { $0 + $1.sizes.total }

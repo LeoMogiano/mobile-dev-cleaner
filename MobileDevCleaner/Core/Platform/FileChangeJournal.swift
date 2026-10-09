@@ -37,7 +37,7 @@ private final class Collector: @unchecked Sendable {
     private var finished = false
     private var stream: FSEventStreamRef?
     private let lock = NSLock()
-    private let queue = DispatchQueue(label: "com.leomogiano.MobileDevCleaner.fsevents")
+    private let queue = DispatchQueue(label: "com.mogiteam.mdc.fsevents")
 
     func start(since eventID: UInt64, roots: [String]) -> Bool {
         var context = FSEventStreamContext(

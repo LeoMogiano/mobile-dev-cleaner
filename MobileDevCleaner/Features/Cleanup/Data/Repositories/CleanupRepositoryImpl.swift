@@ -38,6 +38,7 @@ actor CleanupRepositoryImpl: CleanupRepository {
             switch tool {
             case .xcode: result.formUnion([.xcode, .simulator])
             case .android: result.formUnion([.androidStudio, .androidEmulator])
+            case .flutter: result.insert(.flutterTool)
             }
         }
         return DevApp.allCases.compactMap { app in

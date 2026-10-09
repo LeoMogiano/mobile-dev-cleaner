@@ -268,6 +268,25 @@ struct CleanupRepositoryImplTests {
         #expect(await f.repo.blockingApps(for: [.xcode]).isEmpty)
     }
 
+    @Test("flutter tool is returned when running and requested")
+    func blockingAppsFlutter() async throws {
+        let running = RunningApps(apps: [.flutterTool, .xcode])
+        let f = try Fixture(probe: MockProcessProbe(result: running))
+        let flutter = await f.repo.blockingApps(for: [.flutter])
+        #expect(flutter.map(\.app) == [.flutterTool])
+        let xcode = await f.repo.blockingApps(for: [.xcode])
+        #expect(xcode.map(\.app) == [.xcode])
+        #expect(await f.repo.blockingApps(for: [.flutter, .xcode]).count == 2)
+    }
+
+    @Test("flutter tool is not returned for other tools")
+    func blockingAppsFlutterNotWithAndroid() async throws {
+        let running = RunningApps(apps: [.flutterTool])
+        let f = try Fixture(probe: MockProcessProbe(result: running))
+        #expect(await f.repo.blockingApps(for: [.android]).isEmpty)
+        #expect(await f.repo.blockingApps(for: [.xcode]).isEmpty)
+    }
+
     @Test("command timeout is reported as failure")
     func commandTimeout() async throws {
         let runner = MockProcessRunner { _, _ in

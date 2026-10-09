@@ -9,6 +9,8 @@ struct SettingsView: View {
                 .tabItem { Label("Apariencia", systemImage: "display") }
             AdvancedSettingsView()
                 .tabItem { Label("Avanzado", systemImage: "slider.horizontal.3") }
+            CreatorSettingsView()
+                .tabItem { Label("Creador", systemImage: "person.crop.circle") }
             AboutSettingsView()
                 .tabItem { Label("Acerca de", systemImage: "info.circle") }
         }

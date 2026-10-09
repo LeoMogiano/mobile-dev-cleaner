@@ -42,8 +42,8 @@ struct ScanningCard: View {
         let color = Color.mdcTool(item.tool)
         return VStack(spacing: 7) {
             HStack(spacing: 6) {
-                Image(systemName: item.tool == .xcode ? "hammer" : "cpu").font(.system(size: 13)).foregroundStyle(color)
-                Text(item.tool == .xcode ? "Xcode" : "Android").fontWeight(.semibold)
+                MDCSymbol(name: item.tool.symbolName, size: 13).foregroundStyle(color)
+                Text(item.tool.displayName).fontWeight(.semibold)
                 Spacer(minLength: 0)
                 Text(item.foundText).foregroundStyle(Color.mdcText2).monospacedDigit()
             }
@@ -56,7 +56,7 @@ struct ScanningCard: View {
             .background(Color.mdcFill, in: Capsule())
             .clipShape(Capsule())
         }
-        .frame(maxWidth: .infinity)
+        .frame(minWidth: 0, maxWidth: .infinity)
     }
 
     private var rowsCard: some View {
@@ -96,5 +96,15 @@ struct ScanningCard: View {
 
     private func block(_ width: CGFloat, _ height: CGFloat, radius: CGFloat) -> some View {
         RoundedRectangle(cornerRadius: radius, style: .continuous).fill(Color.mdcFill).frame(width: width, height: height)
+    }
+}
+
+extension Tool {
+    var symbolName: String {
+        switch self {
+        case .xcode: "hammer"
+        case .android: "android"
+        case .flutter: "square.stack"
+        }
     }
 }

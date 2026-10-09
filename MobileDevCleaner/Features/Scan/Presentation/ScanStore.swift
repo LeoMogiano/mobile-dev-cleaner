@@ -46,14 +46,14 @@ final class ScanStore {
 
     func report(for id: CategoryID) -> CategoryReport? { reports[id] }
 
-    var totalSize: Int64 { reports.values.reduce(0) { $0 + $1.totalSize } }
-    var regeneratesSize: Int64 { reports.values.reduce(0) { $0 + $1.regeneratesSize } }
+    var totalSize: Int64 { reports.values.filter(\.isApplicable).reduce(0) { $0 + $1.totalSize } }
+    var regeneratesSize: Int64 { reports.values.filter(\.isApplicable).reduce(0) { $0 + $1.regeneratesSize } }
     var hasCostSize: Int64 { totalSize - regeneratesSize }
 
-    var progress: Double { progress(of: scannedCategories) }
+    var progress: Double { progress(of: scannedCategories.filter { reports[$0]?.isApplicable != false }) }
 
     func progress(for tool: Tool) -> Double {
-        progress(of: scannedCategories.filter { $0.tool == tool })
+        progress(of: scannedCategories.filter { $0.tool == tool && reports[$0]?.isApplicable != false })
     }
 
     /// Root path of the first category still being measured.

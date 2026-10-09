@@ -1,6 +1,6 @@
 name: MobileDevCleaner
 options:
-  bundleIdPrefix: com.leomogiano
+  bundleIdPrefix: com.mogiteam
   deploymentTarget:
     macOS: "14.0"
   createIntermediateGroups: true
@@ -39,7 +39,7 @@ targets:
         NSHumanReadableCopyright: © 2026 Leo Mogiano. MIT License.
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.leomogiano.MobileDevCleaner
+        PRODUCT_BUNDLE_IDENTIFIER: com.mogiteam.mdc
         PRODUCT_NAME: MobileDevCleaner
         ENABLE_HARDENED_RUNTIME: YES
         CODE_SIGN_STYLE: Automatic
@@ -56,6 +56,7 @@ targets:
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.mogiteam.mdc.MobileDevCleanerTests
 schemes:
   MobileDevCleaner:
     build:

@@ -19,10 +19,14 @@ struct OnboardingView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 56)
+            // The traffic lights sit in this strip (HTML: 40 px title bar).
+            .padding(.top, 40)
             .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: viewModel?.step)
             if let viewModel { footer(viewModel) }
         }
         .frame(width: 740, height: 560)
+        .ignoresSafeArea()
+        .background(Color(nsColor: .windowBackgroundColor).ignoresSafeArea())
         .task {
             guard viewModel == nil else { return }
             let model = OnboardingViewModel(

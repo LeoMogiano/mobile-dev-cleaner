@@ -64,7 +64,7 @@ struct PathProviderTests {
         let home = URL(filePath: "/Users/test", directoryHint: .isDirectory)
         let provider = PathProvider(home: home)
 
-        #expect(provider.sizeCacheFile.path == "/Users/test/Library/Caches/com.leomogiano.MobileDevCleaner/sizes.json")
+        #expect(provider.sizeCacheFile.path == "/Users/test/Library/Caches/com.mogiteam.mdc/sizes.json")
     }
 
     @Test("cocoapodsRepos is built from home")
@@ -73,5 +73,14 @@ struct PathProviderTests {
         let provider = PathProvider(home: home)
 
         #expect(provider.cocoapodsRepos.path == "/Users/test/.cocoapods/repos")
+    }
+
+    @Test("pubCache, fvm and fvmVersions are built from home")
+    func flutterPaths() {
+        let provider = PathProvider(home: URL(filePath: "/Users/test", directoryHint: .isDirectory))
+
+        #expect(provider.pubCache.path == "/Users/test/.pub-cache")
+        #expect(provider.fvm.path == "/Users/test/fvm")
+        #expect(provider.fvmVersions.path == "/Users/test/fvm/versions")
     }
 }

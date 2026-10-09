@@ -60,8 +60,7 @@ struct BlockedContent: View {
         VStack(spacing: 0) {
             ForEach(apps) { app in
                 HStack(spacing: 10) {
-                    Image(systemName: app.symbol)
-                        .font(.system(size: 15))
+                    MDCSymbol(name: app.symbol, size: 15)
                         .foregroundStyle(app.tool.map(Color.mdcTool) ?? .mdcText2)
                         .frame(width: 26, height: 26)
                         .background(Color.mdcFill, in: RoundedRectangle(cornerRadius: 7, style: .continuous))

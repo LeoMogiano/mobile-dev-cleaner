@@ -34,11 +34,15 @@ struct PathGuard: Sendable {
             Root(url: paths.home.appending(path: ".kotlin", directoryHint: .isDirectory)),
             Root(url: paths.home.appending(path: ".cocoapods", directoryHint: .isDirectory)),
             Root(url: paths.home.appending(path: ".fastlane", directoryHint: .isDirectory), includesRoot: true),
+            Root(url: paths.pubCache, includesRoot: true),
+            Root(url: paths.fvmVersions),
         ]
     }
 
     func isRemovable(_ url: URL) -> Bool {
         guard let target = Self.resolvedComponents(url) else { return false }
+        if isFlutterProjectArtifact(target) || isFlutterSdkCache(target) { return true }
+
         return roots.contains { root in
             let base = Self.components(of: root.url.resolvingSymlinksInPath())
             guard !base.isEmpty, target.count >= base.count, Array(target.prefix(base.count)) == base else { return false }
@@ -93,5 +97,30 @@ struct PathGuard: Sendable {
 
     private static func components(of url: URL) -> [String] {
         url.path.split(separator: "/").map(String.init)
+    }
+
+    /// `build/` or `.dart_tool/` next to a `pubspec.yaml`, in a project under home (not Library).
+    private func isFlutterProjectArtifact(_ target: [String]) -> Bool {
+        guard let name = target.last, name == "build" || name == ".dart_tool" else { return false }
+        let project = Array(target.dropLast())
+        let home = Self.components(of: paths.home.resolvingSymlinksInPath())
+        let library = home + ["Library"]
+        guard project.count > home.count, Array(project.prefix(home.count)) == home,
+              Array(project.prefix(library.count)) != library else { return false }
+        return FileManager.default.fileExists(atPath: Self.path(project + ["pubspec.yaml"]))
+    }
+
+    /// `<sdk>/bin/cache` or anything inside it, when `<sdk>/bin/flutter` exists. The SDK may live
+    /// outside home (Homebrew), so the `flutter` launcher is the proof.
+    private func isFlutterSdkCache(_ target: [String]) -> Bool {
+        guard let cache = target.indices.dropFirst().first(where: { target[$0 - 1] == "bin" && target[$0] == "cache" })
+        else { return false }
+        var isDirectory: ObjCBool = false
+        let launcher = Self.path(Array(target.prefix(cache)) + ["flutter"])
+        return FileManager.default.fileExists(atPath: launcher, isDirectory: &isDirectory) && !isDirectory.boolValue
+    }
+
+    private static func path(_ components: [String]) -> String {
+        "/" + components.joined(separator: "/")
     }
 }

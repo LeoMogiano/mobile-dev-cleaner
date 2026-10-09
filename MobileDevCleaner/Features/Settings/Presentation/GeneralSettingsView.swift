@@ -13,18 +13,9 @@ struct GeneralSettingsView: View {
                 ToolToggle(title: "Xcode", detail: "Builds, simuladores, runtimes y cachés",
                            symbol: "hammer", tint: .mdcXcode, isOn: $settings.scanXcode)
                 ToolToggle(title: "Android", detail: "Gradle, SDK, emuladores y Android Studio",
-                           symbol: "cpu", tint: .mdcAndroid, isOn: $settings.scanAndroid)
-                LabeledContent {
-                    Text("Próximamente")
-                        .font(.system(size: 10.5, weight: .semibold))
-                        .foregroundStyle(Color.mdcText2)
-                        .padding(.horizontal, 8)
-                        .frame(height: 18)
-                        .background(Color.mdcFill, in: Capsule())
-                } label: {
-                    ToolLabel(title: "Flutter", detail: "build/, .dart_tool y caché de pub", symbol: "square.stack", tint: .mdcFlutter)
-                }
-                .opacity(0.6)
+                           symbol: "android", tint: .mdcAndroid, isOn: $settings.scanAndroid)
+                ToolToggle(title: "Flutter", detail: "Proyectos, caché de pub, SDK y FVM",
+                           symbol: "square.stack", tint: .mdcFlutter, isOn: $settings.scanFlutter)
             }
             Section {
                 Toggle("Escanear al abrir la app", isOn: $settings.scanOnOpen)
@@ -66,7 +57,7 @@ struct GeneralSettingsView: View {
                     Text("Tendrás que marcar “Entiendo” antes de limpiar.")
                 }
                 Toggle(isOn: .constant(true)) {
-                    Label("No limpiar si Xcode, Android Studio o un emulador están abiertos", systemImage: "lock.fill")
+                    Label("No limpiar si Xcode, Android Studio, Flutter o un emulador están abiertos", systemImage: "lock.fill")
                         .labelStyle(.titleAndIcon)
                     Text("Evita corromper builds en curso. Siempre activo.")
                 }
@@ -144,8 +135,7 @@ private struct ToolLabel: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: symbol)
-                .font(.system(size: 13))
+            MDCSymbol(name: symbol, size: 13)
                 .foregroundStyle(.white)
                 .frame(width: 24, height: 24)
                 .background(tint, in: RoundedRectangle(cornerRadius: 6, style: .continuous))

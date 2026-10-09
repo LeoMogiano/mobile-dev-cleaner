@@ -28,7 +28,7 @@ struct DetailView: View {
         switch router.selection {
         case .overview: L10n.string("Resumen")
         case .history: L10n.string("Historial")
-        case .category(let id): id.tool == .xcode ? "Xcode" : "Android"
+        case .category(let id): id.tool.displayName
         }
     }
 }

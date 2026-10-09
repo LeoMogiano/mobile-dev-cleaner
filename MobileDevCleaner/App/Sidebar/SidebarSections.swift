@@ -51,6 +51,8 @@ struct SidebarSections: Equatable {
             for id in ids {
                 let info = CategoryInfo.info(for: id)
                 let report = reports[id]
+                /// Skip non-applicable categories (e.g., FVM not installed).
+                guard report?.isApplicable != false else { continue }
                 let state = Self.state(report, pending: pending.contains(id))
                 let size = report?.totalSize ?? 0
                 if state == .normal || state == .notFound { total += size }
@@ -73,7 +75,7 @@ struct SidebarSections: Equatable {
             let showAll = isOpen && !scanning
             var section = Section(
                 tool: tool,
-                title: tool == .xcode ? "Xcode" : "Android",
+                title: tool.displayName,
                 total: scanning ? "" : ByteFormatter.string(total),
                 rows: (showAll ? rows : rows.filter { shown.contains($0.row.id) }).map(\.row),
                 hiddenCount: showAll ? 0 : smalls,

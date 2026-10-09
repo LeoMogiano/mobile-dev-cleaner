@@ -31,6 +31,7 @@ struct SheetsGallery: View {
                         apps: [
                             BlockingAppRow(id: .xcode, name: "Xcode", detail: "Puede tener un build en curso", symbol: "hammer", tool: .xcode),
                             BlockingAppRow(id: .androidEmulator, name: "Emulador Android", detail: "Pixel_8_API_34", symbol: "smartphone", tool: .android),
+                            BlockingAppRow(id: .flutterTool, name: "Flutter", detail: "Puede tener una compilación en curso", symbol: "square.stack", tool: .flutter),
                         ],
                         isRechecking: false, onCancel: {}, onRecheck: {})
                 }

@@ -21,10 +21,11 @@ struct DoneStep: View {
             Text("Todo ocurre en tu Mac. Sin telemetría, sin internet. Nada se borra sin que lo revises antes.")
                 .font(.system(size: 14))
                 .foregroundStyle(Color.mdcText2)
-                .lineLimit(3)
+                .multilineTextAlignment(.center)
+                .lineSpacing(3)
+                .frame(maxWidth: 440)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 10)
-
-            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
