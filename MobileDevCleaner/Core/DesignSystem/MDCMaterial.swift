@@ -15,11 +15,6 @@ enum MDCMaterial: String, CaseIterable, Sendable {
     }
 }
 
-extension MDCMaterial {
-    /// Set by the debug gallery: ImageRenderer cannot draw glass.
-    nonisolated(unsafe) static var isOffscreenRendering = false
-}
-
 extension EnvironmentValues {
     @Entry var mdcMaterial: MDCMaterial = .liquidGlass
 }
