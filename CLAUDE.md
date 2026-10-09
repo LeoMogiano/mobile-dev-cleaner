@@ -98,6 +98,9 @@ xcodebuild -project MobileDevCleaner.xcodeproj -scheme MobileDevCleaner \
   -destination 'platform=macOS' -derivedDataPath build/dd test
 ```
 
+Traducciones: tras compilar, `scripts/sync_strings.py --missing` pasa las claves extraídas a
+`Localizable.xcstrings` (xcodebuild no lo hace) y lista las que faltan en inglés.
+
 Swift Testing (no XCTest). Mocks como `actor` que devuelven `Either`. Tests espejo de
 `Features/` y `Core/`.
 
