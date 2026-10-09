@@ -60,7 +60,7 @@ struct DevicesView: View {
                 .foregroundStyle(Color.mdcText3)
                 .padding(28)
         }
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 12)], spacing: 12) {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 12, alignment: .top)], spacing: 12) {
             ForEach(cards) { card in
                 DeviceCard(
                     card: card,

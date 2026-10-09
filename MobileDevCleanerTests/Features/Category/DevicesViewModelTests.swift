@@ -118,28 +118,6 @@ struct DevicesViewModelTests {
         #expect(ctx.vm.cards[1].symbol == "ipad")
     }
 
-    @Test("card legend shows data cache and snapshots")
-    func cardLegendItems() async {
-        let sizes = DeviceSizes(data: 100_000_000, cache: 50_000_000, snapshots: 25_000_000)
-        let device = makeDevice(id: "1", name: "iPhone 15", os: "iOS 18.2", kind: .iphone, sizes: sizes)
-        let report = CategoryReport(id: .sims, devices: [device])
-        let ctx = makeContext(report: report)
-
-        await waitUntil { ctx.vm.cards.count == 1 }
-        let card = ctx.vm.cards[0]
-        #expect(card.legend.count == 3)
-        #expect(card.legend[0].kind == .data)
-        #expect(card.legend[1].kind == .cache)
-        #expect(card.legend[2].kind == .snapshots)
-
-        let expectedData = ByteFormatter.string(sizes.data)
-        let expectedCache = ByteFormatter.string(sizes.cache)
-        let expectedSnapshots = ByteFormatter.string(sizes.snapshots)
-        #expect(card.legend[0].sizeText == expectedData)
-        #expect(card.legend[1].sizeText == expectedCache)
-        #expect(card.legend[2].sizeText == expectedSnapshots)
-    }
-
     @Test("segments show three actions with correct labels")
     func segmentLabels() async {
         let sizes = DeviceSizes(data: 100_000_000, cache: 50_000_000, snapshots: 25_000_000)
@@ -155,7 +133,7 @@ struct DevicesViewModelTests {
         #expect(card.segments[2].label == "Eliminar")
     }
 
-    @Test("action description shows default text when nothing chosen")
+    @Test("action description is empty when nothing is chosen")
     func actionDescriptionDefault() async {
         let sizes = DeviceSizes(data: 100_000_000, cache: 50_000_000, snapshots: 25_000_000)
         let device = makeDevice(id: "1", name: "iPhone 15", os: "iOS 18.2", kind: .iphone, sizes: sizes)
@@ -164,7 +142,7 @@ struct DevicesViewModelTests {
 
         await waitUntil { ctx.vm.cards.count == 1 }
         let card = ctx.vm.cards[0]
-        #expect(card.actionDescription == "Nada elegido. Elige qué hacer con este dispositivo.")
+        #expect(card.actionDescription == nil)
         #expect(card.chosen == nil)
     }
 
@@ -181,7 +159,7 @@ struct DevicesViewModelTests {
 
         let card = ctx.vm.cards[0]
         #expect(card.segments[0].isOn == true)
-        #expect(card.actionDescription == "Borra la caché. Tus apps y datos quedan.")
+        #expect(card.actionDescription == "Libera \(ByteFormatter.string(75_000_000)). Tus apps y datos quedan.")
         #expect(ctx.selection.action(for: device) == .clean)
     }
 
@@ -198,7 +176,7 @@ struct DevicesViewModelTests {
 
         let card = ctx.vm.cards[0]
         #expect(card.segments[1].isOn == true)
-        #expect(card.actionDescription == "Como recién creado. Se pierden apps y datos.")
+        #expect(card.actionDescription == "Libera \(ByteFormatter.string(175_000_000)). Se pierden apps y datos.")
     }
 
     @Test("setAction delete selects delete and updates description")
@@ -214,7 +192,7 @@ struct DevicesViewModelTests {
 
         let card = ctx.vm.cards[0]
         #expect(card.segments[2].isOn == true)
-        #expect(card.actionDescription == "Borra el dispositivo completo.")
+        #expect(card.actionDescription == "Libera \(ByteFormatter.string(sizes.total)). Se borra el dispositivo.")
     }
 
     @Test("tapping same action again clears it")
@@ -232,7 +210,7 @@ struct DevicesViewModelTests {
         await waitUntil { ctx.vm.cards[0].chosen == nil }
 
         let card = ctx.vm.cards[0]
-        #expect(card.actionDescription == "Nada elegido. Elige qué hacer con este dispositivo.")
+        #expect(card.actionDescription == nil)
     }
 
     @Test("running device shows in use and prevents action")

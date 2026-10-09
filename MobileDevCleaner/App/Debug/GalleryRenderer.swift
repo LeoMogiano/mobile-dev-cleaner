@@ -87,19 +87,13 @@ private struct Gallery: View {
                     card: DeviceCardModel(
                         id: "sim1", name: "iPhone 16 Pro", osVersion: "iOS 18.2", symbol: "iphone",
                         sizeText: "1,9 GB", isRunning: false,
-                        sizes: DeviceSizes(data: 1_300_000_000, cache: 400_000_000, snapshots: 150_000_000, other: 50_000_000),
-                        legend: [
-                            .init(kind: .data, label: "Datos de apps", sizeText: "1,3 GB"),
-                            .init(kind: .cache, label: "Caché", sizeText: "400 MB"),
-                            .init(kind: .snapshots, label: "Snapshots", sizeText: "150 MB")
-                        ],
                         segments: [
                             .init(id: .clean, label: "Limpiar", freesText: "Libera 550 MB", risk: .regenerates, isOn: true),
                             .init(id: .reset, label: "Restablecer", freesText: "Libera 1,9 GB", risk: .hasCost, isOn: false),
                             .init(id: .delete, label: "Eliminar", freesText: "Libera 1,9 GB", risk: .hasCost, isOn: false)
                         ],
                         chosen: .clean, isInspected: false,
-                        actionDescription: "Borra la caché. Tus apps y datos quedan.",
+                        actionDescription: "Libera 550 MB. Tus apps y datos quedan.",
                         accessibilityLabel: "iPhone 16 Pro, iOS 18.2, 1,9 GB"
                     ),
                     onSelectAction: { _ in },
@@ -110,19 +104,13 @@ private struct Gallery: View {
                     card: DeviceCardModel(
                         id: "emu1", name: "Pixel 8", osVersion: "API 34 · Android 14", symbol: "smartphone",
                         sizeText: "2,1 GB", isRunning: true,
-                        sizes: DeviceSizes(data: 1_400_000_000, cache: 400_000_000, snapshots: 250_000_000, other: 50_000_000),
-                        legend: [
-                            .init(kind: .data, label: "Datos de apps", sizeText: "1,4 GB"),
-                            .init(kind: .cache, label: "Caché", sizeText: "400 MB"),
-                            .init(kind: .snapshots, label: "Snapshots", sizeText: "250 MB")
-                        ],
                         segments: [
                             .init(id: .clean, label: "Limpiar", freesText: "Libera 650 MB", risk: .regenerates, isOn: false),
                             .init(id: .reset, label: "Restablecer", freesText: "Libera 2,1 GB", risk: .hasCost, isOn: false),
                             .init(id: .delete, label: "Eliminar", freesText: "Libera 2,1 GB", risk: .hasCost, isOn: false)
                         ],
                         chosen: nil, isInspected: false,
-                        actionDescription: "Nada elegido. Elige qué hacer con este dispositivo.",
+                        actionDescription: nil,
                         accessibilityLabel: "Pixel 8, API 34 Android 14, 2,1 GB, en uso"
                     ),
                     onSelectAction: { _ in },

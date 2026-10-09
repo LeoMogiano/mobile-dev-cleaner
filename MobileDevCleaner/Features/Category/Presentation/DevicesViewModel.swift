@@ -15,16 +15,6 @@ struct DeviceSegmentModel: Identifiable, Hashable {
     let isOn: Bool
 }
 
-struct DeviceLegendItem: Identifiable, Hashable {
-    enum Kind: Hashable { case data, cache, snapshots }
-
-    var id: Kind { kind }
-    let kind: Kind
-    /// "Datos de apps" / "Caché" / "Snapshots".
-    let label: String
-    let sizeText: String
-}
-
 struct DeviceCardModel: Identifiable, Hashable {
     let id: String
     let name: String
@@ -33,13 +23,11 @@ struct DeviceCardModel: Identifiable, Hashable {
     let sizeText: String
     /// Shows "En uso"; the action picker is dimmed and disabled.
     let isRunning: Bool
-    let sizes: DeviceSizes
-    let legend: [DeviceLegendItem]
     let segments: [DeviceSegmentModel]
     let chosen: DeviceAction?
     let isInspected: Bool
-    /// Text under the picker; depends on `chosen`.
-    let actionDescription: String
+    /// "Libera 550 MB. Tus apps y datos quedan."; nil until an action is chosen.
+    let actionDescription: String?
     let accessibilityLabel: String
 }
 
@@ -109,11 +97,6 @@ final class DevicesViewModel {
     private func makeCard(_ device: DeviceCandidate) -> DeviceCardModel {
         let chosen = selection.action(for: device)
         let sizeText = ByteFormatter.string(device.sizes.total)
-        let legend = [
-            DeviceLegendItem(kind: .data, label: "Datos de apps", sizeText: ByteFormatter.string(device.sizes.data)),
-            DeviceLegendItem(kind: .cache, label: "Caché", sizeText: ByteFormatter.string(device.sizes.cache)),
-            DeviceLegendItem(kind: .snapshots, label: "Snapshots", sizeText: ByteFormatter.string(device.sizes.snapshots))
-        ]
         let segments = DeviceAction.allCases.compactMap { action -> DeviceSegmentModel? in
             guard let plan = device.plan(for: action) else { return nil }
             let label: String = switch action {
@@ -130,9 +113,11 @@ final class DevicesViewModel {
         return DeviceCardModel(
             id: device.id, name: device.name, osVersion: device.osVersion,
             symbol: Self.symbol(for: device.kind), sizeText: sizeText,
-            isRunning: device.isRunning, sizes: device.sizes, legend: legend, segments: segments,
+            isRunning: device.isRunning, segments: segments,
             chosen: chosen, isInspected: router.inspectedID == device.id,
-            actionDescription: Self.description(for: chosen),
+            actionDescription: chosen.flatMap { action in
+                segments.first { $0.id == action }.map { "\($0.freesText). \(Self.consequence(of: action))" }
+            },
             accessibilityLabel: "\(device.name), \(device.osVersion), \(sizeText)" + (device.isRunning ? ", en uso" : "")
         )
     }
@@ -148,12 +133,11 @@ final class DevicesViewModel {
         }
     }
 
-    private static func description(for action: DeviceAction?) -> String {
+    private static func consequence(of action: DeviceAction) -> String {
         switch action {
-        case nil: "Nada elegido. Elige qué hacer con este dispositivo."
-        case .clean: "Borra la caché. Tus apps y datos quedan."
-        case .reset: "Como recién creado. Se pierden apps y datos."
-        case .delete: "Borra el dispositivo completo."
+        case .clean: L10n.string("Tus apps y datos quedan.")
+        case .reset: L10n.string("Se pierden apps y datos.")
+        case .delete: L10n.string("Se borra el dispositivo.")
         }
     }
 
