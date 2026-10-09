@@ -31,17 +31,18 @@ struct WelcomeStep: View {
                 Text("Recupera espacio sin romper nada.")
                     .font(.mont(36, weight: .bold))
                     .tracking(-1.44)
-                    .lineLimit(3)
+                    .lineSpacing(-2)
+                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.top, 26)
 
                 Text("Encuentra lo que Xcode y Android Studio dejan atrás y te explica qué es antes de borrarlo.")
                     .font(.system(size: 14))
                     .foregroundStyle(Color.mdcText2)
-                    .lineLimit(3)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.top, 14)
-
-                Spacer()
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(alignment: .leading, spacing: 0) {
                 Text("En la Mac de un dev mobile")
@@ -57,16 +58,13 @@ struct WelcomeStep: View {
                 }
                 .padding(.top, 2)
 
+                // HTML split: 48% regenerates, 52% has cost (of the 256 pt track).
                 HStack(spacing: 2) {
-                    Rectangle()
-                        .fill(Color.mdcRegen)
-                        .frame(maxWidth: .infinity)
-                    Rectangle()
-                        .fill(Color.mdcCost)
-                        .frame(maxWidth: .infinity)
+                    Rectangle().fill(Color.mdcRegen).frame(width: 123)
+                    Rectangle().fill(Color.mdcCost)
                 }
                 .frame(height: 8)
-                .cornerRadius(4)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
                 .padding(.top, 12)
 
                 VStack(spacing: 0) {
@@ -80,6 +78,7 @@ struct WelcomeStep: View {
             .padding(EdgeInsets(top: 16, leading: 16, bottom: 10, trailing: 16))
             .frame(width: 290)
             .mdcCard(radius: 16)
+            .rotationEffect(.degrees(1.5))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -89,6 +88,7 @@ struct WelcomeStep: View {
             Image(systemName: icon)
                 .font(.system(size: 13))
                 .foregroundStyle(color)
+                .frame(width: 16)
             Text(title)
                 .font(.system(size: 12))
             Spacer()
@@ -121,7 +121,7 @@ struct WelcomeStep: View {
         switch status {
         case "regen": Color.mdcRegenInk
         case "cost": Color.mdcCostInk
-        case "lock": Color.mdcText2
+        case "lock": Color.mdcText3
         default: Color.mdcText2
         }
     }
