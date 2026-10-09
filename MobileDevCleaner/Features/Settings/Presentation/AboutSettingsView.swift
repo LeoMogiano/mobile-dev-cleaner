@@ -56,6 +56,12 @@ struct AboutSettingsView: View {
                     url: "https://github.com/LeoMogiano/mdc-cli/issues"
                 )
             }
+
+            Section {
+                Text("Android es una marca de Google LLC. El robot de Android es una reproducción o modificación de una obra creada y compartida por Google, usada según los términos descritos en la licencia Creative Commons Attribution 3.0.")
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(Color.mdcText3)
+            }
         }
         .formStyle(.grouped)
     }
