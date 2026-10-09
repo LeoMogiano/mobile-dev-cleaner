@@ -1,6 +1,7 @@
 import Foundation
 
-/// Pure sidebar model: sections with totals, ≥ 1 GB rule and "N más pequeñas".
+/// Pure sidebar model: sections with totals; only the biggest `visibleLimit` rows show,
+/// the rest collapse into "N más pequeñas".
 struct SidebarSections: Equatable {
     enum RowState: Equatable {
         case normal, notFound, noAccess, scanning
@@ -30,7 +31,7 @@ struct SidebarSections: Equatable {
         fileprivate(set) var smallCount = 0
     }
 
-    static let smallThreshold: Int64 = 1_000_000_000
+    static let visibleLimit = 4
 
     let sections: [Section]
 
@@ -44,7 +45,7 @@ struct SidebarSections: Equatable {
         let scanning = !pending.isEmpty
         sections = Tool.allCases.map { tool in
             let ids = CategoryID.allCases.filter { $0.tool == tool }
-            var rows: [(Row, small: Bool)] = []
+            var rows: [(row: Row, size: Int64)] = []
             var total: Int64 = 0
             for id in ids {
                 let info = CategoryInfo.info(for: id)
@@ -58,21 +59,26 @@ struct SidebarSections: Equatable {
                     sizeText: Self.text(state, size), state: state,
                     tip: "\(info.name) · \(info.technicalName)"
                 )
-                let measured = state == .normal || state == .notFound
-                rows.append((row, measured && size < Self.smallThreshold && selected != id))
+                rows.append((row, size))
             }
-            let smalls = rows.filter(\.small).count
+            // While scanning sizes are unknown: keep the first rows so the list doesn't jump.
+            let ranked = scanning ? rows : rows.enumerated().sorted {
+                $0.element.size != $1.element.size ? $0.element.size > $1.element.size : $0.offset < $1.offset
+            }.map(\.element)
+            var shown = Set(ranked.prefix(Self.visibleLimit).map(\.row.id))
+            if let selected { shown.insert(selected) }
+            let smalls = rows.filter { !shown.contains($0.row.id) }.count
             let isOpen = expanded.contains(tool)
-            let showAll = isOpen || scanning
+            let showAll = isOpen && !scanning
             var section = Section(
                 tool: tool,
                 title: tool == .xcode ? "Xcode" : "Android",
                 total: scanning ? "" : ByteFormatter.string(total),
-                rows: (showAll ? rows : rows.filter { !$0.small }).map(\.0),
-                hiddenCount: scanning || isOpen ? 0 : smalls,
-                isExpanded: isOpen && !scanning
+                rows: (showAll ? rows : rows.filter { shown.contains($0.row.id) }).map(\.row),
+                hiddenCount: showAll ? 0 : smalls,
+                isExpanded: showAll
             )
-            section.smallCount = scanning ? 0 : smalls
+            section.smallCount = smalls
             return section
         }
     }

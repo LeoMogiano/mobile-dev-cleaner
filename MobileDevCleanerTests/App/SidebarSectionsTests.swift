@@ -23,29 +23,38 @@ struct SidebarSectionsTests {
 
     private func xcode(_ model: SidebarSections) -> SidebarSections.Section { model.sections[0] }
 
-    @Test("rows below 1 GB collapse into a count")
-    func collapsesSmallRows() {
-        let reports = all([.builds: 5_000_000_000, .caches: 200_000_000, .tests: 10_000_000])
+    @Test("only the 4 biggest rows show, in sidebar order; the rest collapse")
+    func showsFourBiggest() {
+        let reports = all([
+            .builds: 5_000_000_000, .caches: 200_000_000, .tests: 10_000_000,
+            .sims: 3_000_000_000, .devsup: 7_000_000_000, .archives: 900_000_000,
+        ])
         let model = SidebarSections(reports: reports, pending: [], showEmpty: false, expanded: [])
-        #expect(xcode(model).rows.map(\.id) == [.builds])
+        #expect(xcode(model).rows.map(\.id) == [.builds, .sims, .devsup, .archives])
         #expect(xcode(model).hiddenCount == 2)
         #expect(xcode(model).moreLabel == "2 más pequeñas")
     }
 
     @Test("expanded section shows every row and offers Menos")
     func expandedShowsAll() {
-        let reports = all([.builds: 5_000_000_000, .caches: 200_000_000])
+        let reports = all([
+            .builds: 5_000_000_000, .caches: 200_000_000, .sims: 3_000_000_000,
+            .devsup: 7_000_000_000, .archives: 900_000_000,
+        ])
         let model = SidebarSections(reports: reports, pending: [], showEmpty: false, expanded: [.xcode])
-        #expect(xcode(model).rows.map(\.id) == [.builds, .caches])
+        #expect(xcode(model).rows.map(\.id) == [.builds, .caches, .sims, .devsup, .archives])
         #expect(xcode(model).moreLabel == "Menos")
         #expect(xcode(model).hasMore)
     }
 
     @Test("selected small category stays visible")
     func selectedStaysVisible() {
-        let reports = all([.builds: 5_000_000_000, .caches: 200_000_000])
+        let reports = all([
+            .builds: 5_000_000_000, .caches: 200_000_000, .sims: 3_000_000_000,
+            .devsup: 7_000_000_000, .archives: 900_000_000,
+        ])
         let model = SidebarSections(reports: reports, pending: [], showEmpty: false, expanded: [], selected: .caches)
-        #expect(xcode(model).rows.map(\.id) == [.builds, .caches])
+        #expect(xcode(model).rows.map(\.id) == [.builds, .caches, .sims, .devsup, .archives])
     }
 
     @Test("empty categories hidden unless showEmpty")
@@ -79,12 +88,13 @@ struct SidebarSectionsTests {
         #expect(model.sections[1].total == ByteFormatter.string(3_000_000_000))
     }
 
-    @Test("scanning shows all rows, ellipsis and no totals")
+    @Test("scanning keeps the first 4 rows, ellipsis and no totals")
     func scanning() {
         let reports = [CategoryID.builds: report(.builds, bytes: 100)]
         let model = SidebarSections(reports: reports, pending: [.caches], showEmpty: false, expanded: [])
         #expect(xcode(model).total.isEmpty)
-        #expect(!xcode(model).hasMore)
+        #expect(xcode(model).rows.count == 4)
+        #expect(xcode(model).hiddenCount == 5)
         #expect(xcode(model).rows.first { $0.id == .caches }?.sizeText == "…")
         #expect(xcode(model).rows.first { $0.id == .caches }?.state == .scanning)
     }
