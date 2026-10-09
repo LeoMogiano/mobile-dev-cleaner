@@ -29,9 +29,12 @@ struct MobileDevCleanerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .frame(minWidth: 900, minHeight: 600)
-                .appEnvironment(self)
+            // The benchmark measures the scan alone; drawing the UI would skew it.
+            if !HeadlessScan.isRequested {
+                RootView()
+                    .frame(minWidth: 900, minHeight: 600)
+                    .appEnvironment(self)
+            }
         }
         .defaultSize(width: 1100, height: 720)
         .windowToolbarStyle(.unified)
