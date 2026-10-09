@@ -299,6 +299,8 @@ final class CleanupFlowViewModel {
                 id: .androidEmulator, name: L10n.string("Emulador Android"),
                 detail: app.details.isEmpty ? L10n.string("En ejecución") : app.details.joined(separator: ", "),
                 symbol: "smartphone", tool: .android)
+        case .flutterTool:
+            BlockingAppRow(id: .flutterTool, name: "Flutter", detail: L10n.string("Puede tener una compilación en curso"), symbol: "square.stack", tool: .flutter)
         }
     }
 }

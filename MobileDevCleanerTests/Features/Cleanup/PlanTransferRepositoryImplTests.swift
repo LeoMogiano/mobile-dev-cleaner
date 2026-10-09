@@ -228,4 +228,152 @@ struct PlanTransferRepositoryImplTests {
         }
         #expect(failure.type == .decoding)
     }
+
+    @Test("export Flutter candidate")
+    func exportFlutterCandidate() async {
+        let candidate = CleanupCandidate(
+            id: "/path/to/flutter/pubcache",
+            category: .pubcache,
+            name: "pub cache",
+            url: URL(fileURLWithPath: "/path/to/flutter/pubcache"),
+            size: 500,
+            risk: .regenerates,
+            group: nil,
+            isOrphan: false,
+            modifiedAt: nil,
+            reason: nil,
+            cost: nil,
+            execution: .remove(URL(fileURLWithPath: "/path/to/flutter/pubcache"))
+        )
+
+        let report = CategoryReport(id: .pubcache, candidates: [candidate])
+        let reports = [CategoryID.pubcache: report]
+
+        let result = await repo.export(
+            reports: reports,
+            candidateIDs: Set([candidate.id]),
+            deviceActions: [:]
+        )
+
+        guard case .right(let data) = result else {
+            Issue.record("Export should succeed")
+            return
+        }
+
+        let decoder = JSONDecoder()
+        let plan = try? decoder.decode(MdcPlanFile.self, from: data)
+        #expect(plan?.reports["flutter"] != nil)
+        #expect(plan?.reports["flutter"]?.candidates[0].category == "pub_cache")
+        #expect(plan?.reports["flutter"]?.candidates[0].tool == "flutter")
+    }
+
+    @Test("export mixed xcode and flutter selection")
+    func exportMixedSelection() async {
+        let xcodeCandidate = CleanupCandidate(
+            id: "/path/to/xcode/caches",
+            category: .caches,
+            name: "Xcode Caches",
+            url: URL(fileURLWithPath: "/path/to/xcode/caches"),
+            size: 100,
+            risk: .regenerates,
+            group: nil,
+            isOrphan: false,
+            modifiedAt: nil,
+            reason: nil,
+            cost: nil,
+            execution: .remove(URL(fileURLWithPath: "/path/to/xcode/caches"))
+        )
+
+        let flutterCandidate = CleanupCandidate(
+            id: "/path/to/flutter/pubcache",
+            category: .pubcache,
+            name: "pub cache",
+            url: URL(fileURLWithPath: "/path/to/flutter/pubcache"),
+            size: 300,
+            risk: .regenerates,
+            group: nil,
+            isOrphan: false,
+            modifiedAt: nil,
+            reason: nil,
+            cost: nil,
+            execution: .remove(URL(fileURLWithPath: "/path/to/flutter/pubcache"))
+        )
+
+        let xcodeReport = CategoryReport(id: .caches, candidates: [xcodeCandidate])
+        let flutterReport = CategoryReport(id: .pubcache, candidates: [flutterCandidate])
+        let reports = [CategoryID.caches: xcodeReport, CategoryID.pubcache: flutterReport]
+
+        let result = await repo.export(
+            reports: reports,
+            candidateIDs: Set([xcodeCandidate.id, flutterCandidate.id]),
+            deviceActions: [:]
+        )
+
+        guard case .right(let data) = result else {
+            Issue.record("Export should succeed")
+            return
+        }
+
+        let decoder = JSONDecoder()
+        let plan = try? decoder.decode(MdcPlanFile.self, from: data)
+        #expect(plan?.reports["xcode"] != nil)
+        #expect(plan?.reports["flutter"] != nil)
+        #expect(plan?.reports["xcode"]?.candidates.count == 1)
+        #expect(plan?.reports["flutter"]?.candidates.count == 1)
+    }
+
+    @Test("import Flutter candidate restores selection")
+    func importFlutterCandidate() async {
+        let flutterCandidate = CleanupCandidate(
+            id: "/path/to/flutter/pubcache",
+            category: .pubcache,
+            name: "pub cache",
+            url: URL(fileURLWithPath: "/path/to/flutter/pubcache"),
+            size: 500,
+            risk: .regenerates,
+            group: nil,
+            isOrphan: false,
+            modifiedAt: nil,
+            reason: nil,
+            cost: nil,
+            execution: .remove(URL(fileURLWithPath: "/path/to/flutter/pubcache"))
+        )
+
+        let report = CategoryReport(id: .pubcache, candidates: [flutterCandidate])
+
+        let planFile = MdcPlanFile(
+            scannedAt: ISO8601DateFormatter().string(from: Date()),
+            reports: ["flutter": MdcPlanFile.Report(
+                tool: "flutter",
+                candidates: [
+                    MdcPlanFile.Candidate(
+                        id: "/path/to/flutter/pubcache",
+                        path: "/path/to/flutter/pubcache",
+                        displayName: "pub cache",
+                        risk: "green",
+                        category: "pub_cache",
+                        tool: "flutter",
+                        size: 500,
+                        reason: "",
+                        execution: MdcPlanFile.Execution(kind: "remove", path: "/path/to/flutter/pubcache", executable: nil, args: nil, containerAction: nil),
+                        group: nil,
+                        selected: true
+                    )
+                ],
+                containers: []
+            )]
+        )
+
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(planFile)
+
+        let result = await repo.importPlan(data, reports: [CategoryID.pubcache: report])
+        guard case .right(let selection) = result else {
+            Issue.record("Import should succeed")
+            return
+        }
+
+        #expect(selection.candidateIDs.count == 1)
+        #expect(selection.candidateIDs.contains("/path/to/flutter/pubcache"))
+    }
 }

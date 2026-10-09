@@ -149,4 +149,89 @@ struct PathGuardTests {
             #expect(!guardrail.isAllowedCommand(executable: executable, arguments: arguments), "expected rejected: \(executable) \(arguments)")
         }
     }
+
+    @Test("pub-cache itself and contents are removable")
+    func pubCache() {
+        #expect(guardrail.isRemovable(paths.pubCache))
+        #expect(guardrail.isRemovable(paths.pubCache.appending(path: "hosted/pub.dev")))
+        #expect(guardrail.isRemovable(paths.pubCache.appending(path: "git/flutter_config-3e9faaaa")))
+    }
+
+    @Test("fvm versions children are removable")
+    func fvmVersions() {
+        #expect(guardrail.isRemovable(paths.fvmVersions.appending(path: "3.24.0")))
+        #expect(guardrail.isRemovable(paths.fvmVersions.appending(path: "stable")))
+        #expect(!guardrail.isRemovable(paths.fvmVersions))
+        #expect(!guardrail.isRemovable(paths.fvm))
+    }
+
+    @Test("Flutter project build artifact is removable with pubspec")
+    func flutterProjectBuild() throws {
+        let project = try temp.directory("Projects/my_app")
+        try FileManager.default.createDirectory(at: project, withIntermediateDirectories: true)
+        try Data().write(to: project.appending(path: "pubspec.yaml"))
+        let build = project.appending(path: "build")
+        #expect(guardrail.isRemovable(build))
+    }
+
+    @Test("Flutter project dart_tool is removable with pubspec")
+    func flutterProjectDartTool() throws {
+        let project = try temp.directory("Projects/my_app")
+        try FileManager.default.createDirectory(at: project, withIntermediateDirectories: true)
+        try Data().write(to: project.appending(path: "pubspec.yaml"))
+        let dartTool = project.appending(path: ".dart_tool")
+        #expect(guardrail.isRemovable(dartTool))
+    }
+
+    @Test("Flutter project build without pubspec is rejected")
+    func flutterProjectBuildNoPubspec() throws {
+        let project = try temp.directory("Projects/my_app")
+        try FileManager.default.createDirectory(at: project, withIntermediateDirectories: true)
+        let build = project.appending(path: "build")
+        #expect(!guardrail.isRemovable(build))
+    }
+
+    @Test("Flutter project build in Library is rejected")
+    func flutterProjectBuildInLibrary() throws {
+        let project = paths.library.appending(path: "Stuff/my_app")
+        try FileManager.default.createDirectory(at: project, withIntermediateDirectories: true)
+        try Data().write(to: project.appending(path: "pubspec.yaml"))
+        let build = project.appending(path: "build")
+        #expect(!guardrail.isRemovable(build))
+    }
+
+    @Test("Flutter SDK cache with bin/flutter is removable")
+    func flutterSDKCache() throws {
+        let sdk = try temp.directory("flutter/bin")
+        try FileManager.default.createDirectory(at: sdk, withIntermediateDirectories: true)
+        try Data().write(to: sdk.appending(path: "flutter"))
+        let cache = sdk.appending(path: "cache")
+        #expect(guardrail.isRemovable(cache))
+        #expect(guardrail.isRemovable(cache.appending(path: "dart-sdk")))
+    }
+
+    @Test("bin/cache without bin/flutter is rejected")
+    func flutterSDKCacheNoFlutter() throws {
+        let sdk = try temp.directory("flutter/bin")
+        try FileManager.default.createDirectory(at: sdk, withIntermediateDirectories: true)
+        let cache = sdk.appending(path: "cache")
+        try FileManager.default.createDirectory(at: cache, withIntermediateDirectories: true)
+        #expect(!guardrail.isRemovable(cache))
+    }
+
+    @Test("pubspec.yaml itself is rejected")
+    func pubspecRejected() throws {
+        let project = try temp.directory("Projects/my_app")
+        try FileManager.default.createDirectory(at: project, withIntermediateDirectories: true)
+        try Data().write(to: project.appending(path: "pubspec.yaml"))
+        #expect(!guardrail.isRemovable(project.appending(path: "pubspec.yaml")))
+    }
+
+    @Test("Flutter project folder itself is rejected")
+    func flutterProjectFolderRejected() throws {
+        let project = try temp.directory("Projects/my_app")
+        try FileManager.default.createDirectory(at: project, withIntermediateDirectories: true)
+        try Data().write(to: project.appending(path: "pubspec.yaml"))
+        #expect(!guardrail.isRemovable(project))
+    }
 }

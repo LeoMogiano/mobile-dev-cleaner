@@ -127,4 +127,42 @@ struct ProcessProbeTests {
 
         #expect(result.isEmpty)
     }
+
+    @Test("parse detects Flutter tools via flutter_tools.snapshot")
+    func parseFlutterToolsSnapshot() {
+        let psOutput = "/usr/bin/dartaotruntime /some/path/flutter_tools.snapshot build"
+        let result = ProcessProbe.parse(psOutput)
+
+        #expect(result.apps.contains(.flutterTool))
+    }
+
+    @Test("parse detects Flutter tools via dart and frontend_server")
+    func parseFlutterToolsFrontendServer() {
+        let psOutput = "/usr/bin/dart /flutter/bin/snapshots/frontend_server.dart.snapshot --aot"
+        let result = ProcessProbe.parse(psOutput)
+
+        #expect(result.apps.contains(.flutterTool))
+    }
+
+    @Test("parse ignores plain dart without frontend_server")
+    func parsePlainDart() {
+        let psOutput = "/usr/bin/dart my_script.dart"
+        let result = ProcessProbe.parse(psOutput)
+
+        #expect(!result.apps.contains(.flutterTool))
+    }
+
+    @Test("parse handles Flutter with other processes")
+    func parseFlutterWithOthers() {
+        let psOutput = """
+        /Applications/Xcode.app/Contents/MacOS/Xcode
+        /usr/bin/dartaotruntime /flutter/bin/cache/dart-sdk/bin/snapshots/flutter_tools.snapshot build
+        /Applications/Simulator.app/Contents/MacOS/Simulator
+        """
+        let result = ProcessProbe.parse(psOutput)
+
+        #expect(result.apps.contains(.xcode))
+        #expect(result.apps.contains(.flutterTool))
+        #expect(result.apps.contains(.simulator))
+    }
 }

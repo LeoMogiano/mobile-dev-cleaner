@@ -5,6 +5,7 @@ enum DevApp: String, Sendable, CaseIterable, Hashable {
     case simulator
     case androidStudio
     case androidEmulator
+    case flutterTool
 }
 
 struct RunningApps: Sendable, Equatable {
@@ -63,6 +64,11 @@ struct ProcessProbe: ProcessProbing {
                 if let avdName = extractAVDName(from: cmdLine) {
                     runningAVDs.insert(avdName)
                 }
+            }
+
+            if cmdLine.contains("flutter_tools.snapshot") ||
+               (cmdLine.contains("dart") && cmdLine.contains("frontend_server")) {
+                apps.insert(.flutterTool)
             }
         }
 
