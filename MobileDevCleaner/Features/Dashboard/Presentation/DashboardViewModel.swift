@@ -49,12 +49,14 @@ final class DashboardViewModel {
     @ObservationIgnored private let selection: SelectionStore
     @ObservationIgnored private let settings: SettingsStore
     @ObservationIgnored private let router: AppRouter
+    @ObservationIgnored private let history: HistoryStore?
 
-    init(scan: ScanStore, selection: SelectionStore, settings: SettingsStore, router: AppRouter) {
+    init(scan: ScanStore, selection: SelectionStore, settings: SettingsStore, router: AppRouter, history: HistoryStore? = nil) {
         self.scan = scan
         self.selection = selection
         self.settings = settings
         self.router = router
+        self.history = history
     }
 
     func handle(_ intent: DashboardIntent) {
@@ -134,13 +136,14 @@ final class DashboardViewModel {
 
     // MARK: Footer
 
+    /// "Último escaneo: hace 2 min · Última limpieza: 12 sep, liberaste 21 GB".
     func footer(now: Date = .now) -> String {
         guard case .finished(let date) = scan.status else { return "" }
-        let formatter = RelativeDateTimeFormatter()
-        formatter.locale = Locale(identifier: "es")
-        formatter.unitsStyle = .abbreviated
-        let when = formatter.localizedString(for: date, relativeTo: now)
-        return L10n.string("Último escaneo: \(when)")
+        let formats = FooterFormats.shared
+        let scanned = L10n.string("Último escaneo: \(formats.relative.localizedString(for: date, relativeTo: now))")
+        guard let last = history?.entries.first else { return scanned }
+        let day = formats.day.string(from: last.date)
+        return scanned + L10n.string(" · Última limpieza: \(day), liberaste \(ByteFormatter.string(last.freedBytes))")
     }
 
     // MARK: Scanning
@@ -179,5 +182,24 @@ final class DashboardViewModel {
     private static func row(_ id: CategoryID, bytes: Int64) -> CategoryRow {
         let info = CategoryInfo.info(for: id)
         return CategoryRow(id: id, name: info.name, symbol: info.symbol, sizeText: format(bytes))
+    }
+}
+
+/// Formatters are costly to build; the footer re-renders with every scan update.
+@MainActor
+private final class FooterFormats {
+    static let shared = FooterFormats()
+
+    let relative: RelativeDateTimeFormatter
+    let day: DateFormatter
+
+    private init() {
+        let locale = AppLanguage.current.locale
+        relative = RelativeDateTimeFormatter()
+        relative.locale = locale
+        relative.unitsStyle = .abbreviated
+        day = DateFormatter()
+        day.locale = locale
+        day.setLocalizedDateFormatFromTemplate("d MMM")
     }
 }

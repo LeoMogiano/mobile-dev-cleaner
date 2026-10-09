@@ -30,6 +30,7 @@ struct ResultContent: View {
                     .font(.mont(30, weight: .bold))
                     .tracking(-1.05)
                     .padding(.top, 14)
+                    .accessibilityAddTraits(.isHeader)
                 Text(countText)
                     .font(.system(size: 12))
                     .foregroundStyle(Color.mdcText3)
@@ -113,6 +114,7 @@ struct ResultContent: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityValue(isFailuresExpanded ? L10n.string("Expandido") : L10n.string("Contraído"))
 
             if isFailuresExpanded {
                 ForEach(failures) { row in

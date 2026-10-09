@@ -208,7 +208,7 @@ struct CategoryViewModelTests {
         await waitUntil { ctx.vm.groups.count > 0 }
 
         let row = ctx.vm.groups[0].rows[0]
-        #expect(row.accessibilityLabel == "Test, \(ByteFormatter.string(100)), se regenera solo")
+        #expect(row.accessibilityLabel == "Test, \(ByteFormatter.string(100)), Se regenera solo")
     }
 
     @Test("showTechnicalNames controls path display")

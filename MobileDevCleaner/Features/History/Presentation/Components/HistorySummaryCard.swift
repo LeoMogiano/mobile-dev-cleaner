@@ -45,6 +45,7 @@ struct HistorySummaryCard: View {
                                 .lineLimit(1)
                         }
                         .frame(width: 44)
+                        .accessibilityElement(children: .combine)
                     }
                 }
                 .frame(height: 110)

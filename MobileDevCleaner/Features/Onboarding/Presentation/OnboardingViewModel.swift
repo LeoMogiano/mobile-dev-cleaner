@@ -37,24 +37,24 @@ final class OnboardingViewModel {
     /// nil hides the secondary button.
     var secondaryTitle: String? {
         switch step {
-        case .fullDiskAccess: fullDiskAccess.isGranted ? nil : "Ahora no"
-        case .notifications: notificationsAllowed ? nil : "No, gracias"
+        case .fullDiskAccess: fullDiskAccess.isGranted ? nil : L10n.string("Ahora no")
+        case .notifications: notificationsAllowed ? nil : L10n.string("No, gracias")
         default: nil
         }
     }
 
     var primaryTitle: String {
         switch step {
-        case .welcome: "Comenzar"
-        case .howItWorks: "Continuar"
+        case .welcome: L10n.string("Comenzar")
+        case .howItWorks: L10n.string("Continuar")
         case .fullDiskAccess:
             switch fullDiskAccess.status {
-            case .granted: "Continuar"
-            case .waiting: "Esperando permiso…"
-            case .idle: "Abrir Ajustes del Sistema"
+            case .granted: L10n.string("Continuar")
+            case .waiting: L10n.string("Esperando permiso…")
+            case .idle: L10n.string("Abrir Ajustes del Sistema")
             }
-        case .notifications: notificationsAllowed ? "Continuar" : "Permitir notificaciones"
-        case .done: "Escanear mi Mac"
+        case .notifications: notificationsAllowed ? L10n.string("Continuar") : L10n.string("Permitir notificaciones")
+        case .done: L10n.string("Escanear mi Mac")
         }
     }
 

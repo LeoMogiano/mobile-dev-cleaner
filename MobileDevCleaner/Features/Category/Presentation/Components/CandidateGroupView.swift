@@ -49,6 +49,8 @@ struct CandidateGroupView: View {
                 .monospacedDigit()
         }
         .padding(.horizontal, 4)
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isHeader)
     }
 }
 

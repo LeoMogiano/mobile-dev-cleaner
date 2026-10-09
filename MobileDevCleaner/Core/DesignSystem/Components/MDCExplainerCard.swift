@@ -30,6 +30,7 @@ struct MDCExplainerCard: View {
                 .padding(.horizontal, 14)
             }
             .buttonStyle(PlainButtonStyle())
+            .accessibilityValue(isExpanded ? L10n.string("Expandido") : L10n.string("Contraído"))
 
             if isExpanded {
                 VStack(spacing: 0) {
@@ -68,7 +69,7 @@ struct MDCExplainerCard: View {
 }
 
 private struct ExplainerColumn: View {
-    let title: String
+    let title: LocalizedStringKey
     let content: String
     var hasIcon: Bool = false
 

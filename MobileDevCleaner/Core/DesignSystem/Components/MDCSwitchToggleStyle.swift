@@ -27,7 +27,7 @@ struct MDCSwitchToggleStyle: ToggleStyle {
                 value: configuration.isOn
             )
             .accessibilityElement()
-            .accessibilityValue(configuration.isOn ? "on" : "off")
+            .accessibilityValue(configuration.isOn ? L10n.string("Activado") : L10n.string("Desactivado"))
             .accessibilityAddTraits(.isToggle)
         }
     }

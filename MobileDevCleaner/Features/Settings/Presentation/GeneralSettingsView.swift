@@ -40,8 +40,8 @@ struct GeneralSettingsView: View {
                 )) {
                     Text("Avisarme cuando termine la limpieza")
                     Text(viewModel?.notificationsDenied == true
-                         ? "Están desactivadas en Ajustes del Sistema › Notificaciones."
-                         : "Una sola notificación con lo que liberaste. Nunca te avisamos para que limpies.")
+                         ? L10n.string("Están desactivadas en Ajustes del Sistema › Notificaciones.")
+                         : L10n.string("Una sola notificación con lo que liberaste. Nunca te avisamos para que limpies."))
                 }
             }
             Section {
@@ -117,7 +117,7 @@ struct GeneralSettingsView: View {
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
-        panel.prompt = String(localized: "Excluir")
+        panel.prompt = L10n.string("Excluir")
         return await panel.begin() == .OK ? panel.url : nil
     }
 }

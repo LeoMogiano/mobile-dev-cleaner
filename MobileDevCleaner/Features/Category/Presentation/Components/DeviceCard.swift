@@ -32,6 +32,7 @@ struct DeviceCard: View, Equatable {
         .contextMenu {
             Button("Ver detalles", action: onInspect)
         }
+        .accessibilityAction(named: "Ver detalles", onInspect)
         .accessibilityElement(children: .contain)
         .accessibilityLabel(card.accessibilityLabel)
     }

@@ -21,6 +21,7 @@ struct MDCSizeBar: View {
                 .frame(width: fillWidth)
         }
         .frame(width: width, height: height)
+        .accessibilityHidden(true)
     }
 }
 

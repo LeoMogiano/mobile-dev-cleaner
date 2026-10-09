@@ -18,6 +18,8 @@ struct InspectorHeader: View {
                     .font(.system(size: 12, weight: .semibold))
             }
             .buttonStyle(.plain)
+            .keyboardShortcut(.cancelAction)
+            .help("Cerrar")
             .accessibilityLabel("Cerrar")
         }
         .foregroundColor(.mdcText1)
@@ -28,7 +30,7 @@ struct InspectorHeader: View {
 }
 
 struct InspectorField: View {
-    let label: String
+    let label: LocalizedStringKey
     let value: String
     var isMono = false
 
@@ -42,6 +44,7 @@ struct InspectorField: View {
                 .foregroundColor(.mdcText1)
                 .lineLimit(nil)
         }
+        .accessibilityElement(children: .combine)
     }
 }
 

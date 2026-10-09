@@ -41,6 +41,7 @@ struct SidebarRow: View {
         .opacity(isDimmed ? 0.45 : 1)
         .contentShape(Rectangle())
         .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 

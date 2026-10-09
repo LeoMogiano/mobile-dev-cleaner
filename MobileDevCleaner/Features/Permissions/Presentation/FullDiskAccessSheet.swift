@@ -51,7 +51,7 @@ struct FullDiskAccessSheet: View {
                 Task { @MainActor in
                     try? await Task.sleep(for: .milliseconds(900))
                     router.isFullDiskAccessPresented = false
-                    router.toast = "Acceso total al disco concedido"
+                    router.toast = L10n.string("Acceso total al disco concedido")
                     scanStore.handle(.start)
                 }
             }

@@ -32,6 +32,10 @@ struct HistoryRow: View {
             .contentShape(Rectangle())
             .onTapGesture(perform: onToggle)
             .onHover { isHovered = $0 }
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isButton)
+            .accessibilityValue(row.isExpanded ? L10n.string("Expandido") : L10n.string("Contraído"))
+            .accessibilityAction(.default, onToggle)
 
             if row.isExpanded {
                 VStack(alignment: .leading, spacing: 8) {
@@ -56,6 +60,7 @@ struct HistoryRow: View {
                                 .monospacedDigit()
                                 .frame(width: 60, alignment: .trailing)
                         }
+                        .accessibilityElement(children: .combine)
                     }
                 }
                 .padding(EdgeInsets(top: 2, leading: 38, bottom: 14, trailing: 16))

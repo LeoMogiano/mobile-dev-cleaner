@@ -45,6 +45,7 @@ struct ExcludedFoldersSection: View {
                             .contentShape(Rectangle())
                         }
                         .buttonStyle(.plain)
+                        .accessibilityAddTraits(selected == path ? .isSelected : [])
                         .background(
                             selected == path
                                 ? Color.mdcAccentBg
@@ -68,6 +69,7 @@ struct ExcludedFoldersSection: View {
                 }
                 .frame(width: 30, height: 24)
                 .contentShape(Rectangle())
+                .help("Añadir carpeta")
                 .accessibilityLabel("Añadir carpeta")
 
                 Rectangle()
@@ -88,6 +90,7 @@ struct ExcludedFoldersSection: View {
                 .frame(width: 30, height: 24)
                 .contentShape(Rectangle())
                 .disabled(paths.isEmpty)
+                .help("Quitar carpeta")
                 .accessibilityLabel("Quitar carpeta")
             }
             .foregroundColor(.mdcText1)

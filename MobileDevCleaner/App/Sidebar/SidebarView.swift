@@ -12,7 +12,7 @@ struct SidebarView: View {
             expanded: expanded, selected: selectedCategory, tools: settings.enabledTools
         )
         List(selection: selection) {
-            SidebarRow(title: "Resumen", symbol: "square.grid.2x2", isSelected: router.selection == .overview)
+            SidebarRow(title: L10n.string("Resumen"), symbol: "square.grid.2x2", isSelected: router.selection == .overview)
                 .tag(SidebarItem.overview)
             ForEach(model.sections) { section in
                 Section {
@@ -68,9 +68,9 @@ struct SidebarView: View {
 
     private var flutterRow: some View {
         Button {
-            router.toast = "Limpieza de proyectos Flutter (build/, .dart_tool, pub cache): llega pronto"
+            router.toast = L10n.string("Limpieza de proyectos Flutter (build/, .dart_tool, pub cache): llega pronto")
         } label: {
-            SidebarRow(title: "Proyectos Flutter", symbol: "square.3.layers.3d", iconColor: .mdcText3, badge: "Pronto")
+            SidebarRow(title: L10n.string("Proyectos Flutter"), symbol: "square.3.layers.3d", iconColor: .mdcText3, badge: L10n.string("Pronto"))
         }
         .buttonStyle(.plain)
         .foregroundStyle(Color.mdcText2)
@@ -82,7 +82,7 @@ struct SidebarView: View {
             Divider()
             Button { router.show(.history) } label: {
                 SidebarRow(
-                    title: "Historial", symbol: "clock.arrow.circlepath",
+                    title: L10n.string("Historial"), symbol: "clock.arrow.circlepath",
                     isSelected: router.selection == .history
                 )
                 .padding(.horizontal, 8)

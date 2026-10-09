@@ -86,18 +86,18 @@ final class CategoryViewModel {
 
             let groupTitle = candidateGroup.map { group in
                 switch group {
-                case .sharedCache: "Caché compartido"
-                case .projects: "Tus proyectos"
-                case .orphanProjects: "Proyectos que ya no existen"
-                case .usedByEmulators: "Usadas por tus emuladores"
-                case .unusedByEmulators: "Ningún emulador la usa"
+                case .sharedCache: L10n.string("Caché compartido")
+                case .projects: L10n.string("Tus proyectos")
+                case .orphanProjects: L10n.string("Proyectos que ya no existen")
+                case .usedByEmulators: L10n.string("Usadas por tus emuladores")
+                case .unusedByEmulators: L10n.string("Ningún emulador la usa")
                 }
             }
 
             let groupTag: String? = {
                 switch candidateGroup {
-                case .orphanProjects: "Huérfano: seguro de borrar"
-                case .unusedByEmulators: "Sin uso"
+                case .orphanProjects: L10n.string("Huérfano: seguro de borrar")
+                case .unusedByEmulators: L10n.string("Sin uso")
                 default: nil
                 }
             }()
@@ -116,7 +116,7 @@ final class CategoryViewModel {
                     isSelected: selection.isSelected(candidate),
                     isExcluded: isExcl,
                     isInspected: router.inspectedID == candidate.id,
-                    accessibilityLabel: "\(candidate.name), \(ByteFormatter.string(candidate.size)), \(candidate.risk == .regenerates ? "se regenera solo" : "tiene costo")"
+                    accessibilityLabel: "\(candidate.name), \(ByteFormatter.string(candidate.size)), \(candidate.risk == .regenerates ? L10n.string("Se regenera solo") : L10n.string("Tiene costo"))"
                 )
             }
 
@@ -140,12 +140,11 @@ final class CategoryViewModel {
         let visibleCount = filteredCandidates.count
         let selectedCount = filteredCandidates.filter { selection.isSelected($0) }.count
 
-        let elementText = visibleCount == 1 ? "elemento" : "elementos"
-        let countPart = "\(visibleCount) \(elementText)"
+        let countPart = visibleCount == 1 ? L10n.string("1 elemento") : L10n.string("\(visibleCount) elementos")
 
         if selectedCount > 0 {
-            let selectedText = selectedCount == 1 ? "marcado" : "marcados"
-            return "\(countPart) · \(selectedCount) \(selectedText)"
+            let selectedText = selectedCount == 1 ? L10n.string("1 marcado") : L10n.string("\(selectedCount) marcados")
+            return "\(countPart) · \(selectedText)"
         }
         return countPart
     }
@@ -186,7 +185,7 @@ final class CategoryViewModel {
         case .toggle(let id):
             guard let report = scan.report(for: category), let candidate = report.candidates.first(where: { $0.id == id }) else { return }
             if settings.isExcluded(candidate.url.path) {
-                router.toast = "Está en Carpetas excluidas (Ajustes › General)"
+                router.toast = L10n.string("Está en Carpetas excluidas (Ajustes › General)")
             } else {
                 selection.toggle(candidate)
             }

@@ -9,12 +9,9 @@ struct AppearanceSettingsView: View {
         Form {
             Section {
                 HStack(spacing: 16) {
-                    themeButton(title: "Claro", theme: .light, isSelected: settings.theme == .light)
-                        .onTapGesture { settings.theme = .light }
-                    themeButton(title: "Oscuro", theme: .dark, isSelected: settings.theme == .dark)
-                        .onTapGesture { settings.theme = .dark }
-                    themeButton(title: "Automático", theme: .auto, isSelected: settings.theme == .auto)
-                        .onTapGesture { settings.theme = .auto }
+                    themeButton(title: "Claro", theme: .light)
+                    themeButton(title: "Oscuro", theme: .dark)
+                    themeButton(title: "Automático", theme: .auto)
                 }
                 .frame(height: 86)
                 .padding(.vertical, 8)
@@ -29,7 +26,7 @@ struct AppearanceSettingsView: View {
                             .foregroundStyle(Color.mdcText2)
                     }
                     Spacer()
-                    Picker("", selection: $material) {
+                    Picker("Material", selection: $material) {
                         Text("Liquid Glass (Tahoe)").tag(MDCMaterial.liquidGlass)
                         Text("Clásico").tag(MDCMaterial.classic)
                     }
@@ -45,7 +42,7 @@ struct AppearanceSettingsView: View {
                         .foregroundStyle(Color.mdcText2)
                     Text("Idioma")
                     Spacer()
-                    Picker("", selection: Binding(
+                    Picker("Idioma", selection: Binding(
                         get: { AppLanguage(rawValue: languageKey) ?? .system },
                         set: { languageKey = $0.rawValue }
                     )) {
@@ -65,8 +62,9 @@ struct AppearanceSettingsView: View {
         .formStyle(.grouped)
     }
 
-    private func themeButton(title: LocalizedStringKey, theme: AppTheme, isSelected: Bool) -> some View {
-        VStack(spacing: 6) {
+    private func themeButton(title: LocalizedStringKey, theme: AppTheme) -> some View {
+        let isSelected = settings.theme == theme
+        return VStack(spacing: 6) {
             ThemeThumbnail(theme: theme)
                 .padding(2)
                 .frame(width: 86, height: 56)
@@ -77,8 +75,10 @@ struct AppearanceSettingsView: View {
                 .font(.system(size: 11.5, weight: isSelected ? .semibold : .regular))
         }
         .contentShape(Rectangle())
+        .onTapGesture { settings.theme = theme }
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+        .accessibilityAction { settings.theme = theme }
     }
 }
 

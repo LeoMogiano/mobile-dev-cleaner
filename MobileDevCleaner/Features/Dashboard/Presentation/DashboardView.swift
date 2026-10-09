@@ -5,6 +5,7 @@ struct DashboardView: View {
     @Environment(SelectionStore.self) private var selection
     @Environment(SettingsStore.self) private var settings
     @Environment(AppRouter.self) private var router
+    @Environment(HistoryStore.self) private var history
     @State private var model: DashboardViewModel?
 
     var body: some View {
@@ -18,7 +19,8 @@ struct DashboardView: View {
         }
         .task {
             if model == nil {
-                model = DashboardViewModel(scan: scan, selection: selection, settings: settings, router: router)
+                model = DashboardViewModel(
+                    scan: scan, selection: selection, settings: settings, router: router, history: history)
             }
         }
     }

@@ -84,7 +84,7 @@ struct WelcomeStep: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    private func row(icon: String, color: Color, title: String, status: String, value: String, isDisabled: Bool = false) -> some View {
+    private func row(icon: String, color: Color, title: LocalizedStringKey, status: String, value: String, isDisabled: Bool = false) -> some View {
         HStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 13))
@@ -103,6 +103,7 @@ struct WelcomeStep: View {
                 .frame(minWidth: 44, alignment: .trailing)
         }
         .frame(height: 32)
+        .accessibilityElement(children: .combine)
         .overlay(Rectangle().frame(height: 0.5).foregroundStyle(Color.mdcLine), alignment: .top)
         .foregroundStyle(isDisabled ? Color.mdcText3 : Color.mdcText1)
     }

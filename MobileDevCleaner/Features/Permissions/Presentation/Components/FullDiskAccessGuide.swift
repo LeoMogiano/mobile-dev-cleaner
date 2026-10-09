@@ -42,6 +42,7 @@ struct FullDiskAccessGuide: View {
         }
         .padding(.horizontal, 14)
         .frame(height: 36)
+        .accessibilityElement(children: .combine)
         .overlay(alignment: .bottom) { Rectangle().fill(Color.mdcLine).frame(height: 0.5) }
     }
 

@@ -12,7 +12,7 @@ struct DeviceInspector: View {
         action == .clean ? .regenerates : .hasCost
     }
 
-    private var idLabel: String {
+    private var idLabel: LocalizedStringKey {
         device.category == .avds ? "Nombre del AVD" : "UDID"
     }
 
@@ -33,7 +33,7 @@ struct DeviceInspector: View {
             ScrollView {
                 VStack(spacing: 14) {
                     if device.isRunning {
-                        InspectorField(label: "Estado", value: "En uso: ciérralo para poder limpiarlo")
+                        InspectorField(label: "Estado", value: L10n.string("En uso: ciérralo para poder limpiarlo"))
                     }
                     InspectorField(label: "Sistema", value: device.osVersion)
                     InspectorField(label: idLabel, value: device.id, isMono: true)
@@ -42,8 +42,8 @@ struct DeviceInspector: View {
                     InspectorField(label: "Caché", value: ByteFormatter.string(device.sizes.cache))
                     InspectorField(label: "Snapshots", value: ByteFormatter.string(device.sizes.snapshots))
                     let actionLabel: String = {
-                        guard let action else { return "Ninguna" }
-                        return action == .clean ? "Limpiar" : action == .reset ? "Restablecer" : "Eliminar"
+                        guard let action else { return L10n.string("Ninguna") }
+                        return action == .clean ? L10n.string("Limpiar") : action == .reset ? L10n.string("Restablecer") : L10n.string("Eliminar")
                     }()
                     InspectorField(label: "Acción elegida", value: actionLabel)
                     if let cmd = commandValue {

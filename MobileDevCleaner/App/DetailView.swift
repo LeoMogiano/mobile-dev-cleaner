@@ -26,8 +26,8 @@ struct DetailView: View {
 
     private var title: String {
         switch router.selection {
-        case .overview: "Resumen"
-        case .history: "Historial"
+        case .overview: L10n.string("Resumen")
+        case .history: L10n.string("Historial")
         case .category(let id): id.tool == .xcode ? "Xcode" : "Android"
         }
     }

@@ -20,8 +20,7 @@ struct MDCSelectionBar: View {
     private static let classicSheet = Color(light: 0xFFFFFF, dark: 0x2C2C2E)
 
     private var countLabel: String {
-        let plural = count == 1 ? "" : "s"
-        return "\(count) seleccionado\(plural)"
+        count == 1 ? L10n.string("1 seleccionado") : L10n.string("\(count) seleccionados")
     }
 
     var body: some View {

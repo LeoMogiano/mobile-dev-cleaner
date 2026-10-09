@@ -29,6 +29,7 @@ struct CategoryHeader: View {
                     .font(.system(size: 22, weight: .bold, design: .default))
                     .tracking(-0.44)
                     .lineLimit(1)
+                    .accessibilityAddTraits(.isHeader)
 
                 Text(info.technicalName)
                     .font(.system(size: 11, weight: .regular, design: .monospaced))

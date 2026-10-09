@@ -131,8 +131,8 @@ private struct LinkRow: View {
     let icon: String
     let iconColor: Color
     let backgroundColor: Color
-    let title: String
-    let detail: String
+    let title: LocalizedStringKey
+    let detail: LocalizedStringKey
     let url: String
 
     var body: some View {

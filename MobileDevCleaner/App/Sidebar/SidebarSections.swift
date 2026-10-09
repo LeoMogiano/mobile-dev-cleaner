@@ -26,7 +26,7 @@ struct SidebarSections: Equatable {
         let isExpanded: Bool
         var id: Tool { tool }
         var hasMore: Bool { smallCount > 0 }
-        var moreLabel: String { isExpanded ? "Menos" : "\(hiddenCount) más pequeñas" }
+        var moreLabel: String { isExpanded ? L10n.string("Menos") : L10n.string("\(hiddenCount) más pequeñas") }
         var moreSymbol: String { isExpanded ? "chevron.down" : "chevron.right" }
         fileprivate(set) var smallCount = 0
     }
@@ -93,8 +93,8 @@ struct SidebarSections: Equatable {
     private static func text(_ state: RowState, _ size: Int64) -> String {
         switch state {
         case .scanning: "…"
-        case .noAccess: "Sin acceso"
-        case .notFound: "No encontrado"
+        case .noAccess: L10n.string("Sin acceso")
+        case .notFound: L10n.string("No encontrado")
         case .normal: ByteFormatter.string(size)
         }
     }

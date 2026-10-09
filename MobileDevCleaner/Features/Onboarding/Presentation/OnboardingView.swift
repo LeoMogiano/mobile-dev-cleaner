@@ -5,6 +5,7 @@ struct OnboardingView: View {
     @Environment(AppRouter.self) private var router
     @Environment(ScanStore.self) private var scanStore
     @State private var viewModel: OnboardingViewModel?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         VStack(spacing: 0) {
@@ -18,7 +19,7 @@ struct OnboardingView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 56)
-            .animation(.easeInOut(duration: 0.2), value: viewModel?.step)
+            .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: viewModel?.step)
             if let viewModel { footer(viewModel) }
         }
         .frame(width: 740, height: 560)
@@ -70,7 +71,9 @@ struct OnboardingView: View {
                         .frame(width: step == model.step ? 18 : 7, height: 7)
                 }
             }
-            .animation(.easeInOut(duration: 0.25), value: model.step)
+            .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: model.step)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(L10n.string("Paso \(model.step.rawValue + 1) de \(OnboardingViewModel.Step.allCases.count)"))
             .frame(maxWidth: .infinity, alignment: .leading)
 
             if model.showsBack {
@@ -81,10 +84,10 @@ struct OnboardingView: View {
                 .buttonStyle(.plain)
             }
             if let title = model.secondaryTitle {
-                Button(LocalizedStringKey(title)) { model.handle(.skip) }
+                Button(title) { model.handle(.skip) }
                     .buttonStyle(MDCSecondaryButtonStyle(height: 30, horizontalPadding: 16, fontSize: 13, weight: .regular))
             }
-            Button(LocalizedStringKey(model.primaryTitle)) { model.handle(.next) }
+            Button(model.primaryTitle) { model.handle(.next) }
                 .buttonStyle(MDCPrimaryButtonStyle(height: 30, horizontalPadding: 20))
                 .keyboardShortcut(.defaultAction)
                 .disabled(!model.isPrimaryEnabled)

@@ -8,12 +8,13 @@ struct ReviewSheet: View {
     @Environment(HistoryStore.self) private var history
     @Environment(AppRouter.self) private var router
     @State private var viewModel: CleanupFlowViewModel?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         Group {
             if let viewModel {
                 content(viewModel)
-                    .animation(.easeOut(duration: 0.2), value: viewModel.stage)
+                    .animation(reduceMotion ? nil : .easeOut(duration: 0.2), value: viewModel.stage)
                     .interactiveDismissDisabled(viewModel.stage == .progress)
             } else {
                 checking

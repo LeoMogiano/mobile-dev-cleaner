@@ -69,7 +69,8 @@ final class DevicesViewModel {
     var countText: String {
         guard let report = scan.report(for: category) else { return "" }
         let count = report.devices.count
-        return "\(count) \(count == 1 ? "dispositivo" : "dispositivos") · elige una acción por dispositivo"
+        let noun = count == 1 ? L10n.string("1 dispositivo") : L10n.string("\(count) dispositivos")
+        return "\(noun) · " + L10n.string("elige una acción por dispositivo")
     }
 
     var isEmpty: Bool {
@@ -85,7 +86,7 @@ final class DevicesViewModel {
         case .setAction(let id, let action):
             guard let device = scan.report(for: category)?.devices.first(where: { $0.id == id }) else { return }
             if device.isRunning {
-                router.toast = "Ciérralo para poder limpiarlo"
+                router.toast = L10n.string("Ciérralo para poder limpiarlo")
             } else {
                 selection.setAction(action, for: device)
             }
@@ -100,13 +101,13 @@ final class DevicesViewModel {
         let segments = DeviceAction.allCases.compactMap { action -> DeviceSegmentModel? in
             guard let plan = device.plan(for: action) else { return nil }
             let label: String = switch action {
-            case .clean: "Limpiar"
-            case .reset: "Restablecer"
-            case .delete: "Eliminar"
+            case .clean: L10n.string("Limpiar")
+            case .reset: L10n.string("Restablecer")
+            case .delete: L10n.string("Eliminar")
             }
             return DeviceSegmentModel(
                 id: action, label: label,
-                freesText: "Libera " + ByteFormatter.string(plan.freedBytes),
+                freesText: L10n.string("Libera \(ByteFormatter.string(plan.freedBytes))"),
                 risk: plan.risk, isOn: chosen == action
             )
         }
@@ -118,7 +119,7 @@ final class DevicesViewModel {
             actionDescription: chosen.flatMap { action in
                 segments.first { $0.id == action }.map { "\($0.freesText). \(Self.consequence(of: action))" }
             },
-            accessibilityLabel: "\(device.name), \(device.osVersion), \(sizeText)" + (device.isRunning ? ", en uso" : "")
+            accessibilityLabel: "\(device.name), \(device.osVersion), \(sizeText)" + (device.isRunning ? ", " + L10n.string("en uso") : "")
         )
     }
 

@@ -32,7 +32,7 @@ struct DeviceActionPicker: View {
         .background(Color.mdcSegment, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
         .opacity(isDisabled ? 0.5 : 1)
         // Not `.disabled`: the tap must still reach the view model, which explains why.
-        .help(isDisabled ? "Ciérralo para poder limpiarlo" : "")
+        .help(isDisabled ? L10n.string("Ciérralo para poder limpiarlo") : "")
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Acción")
     }

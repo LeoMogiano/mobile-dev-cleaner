@@ -36,7 +36,7 @@ struct CandidateInspector: View {
             }
             .frame(maxWidth: .infinity)
             InspectorFooter(
-                markLabel: isSelected ? "Desmarcar" : "Marcar",
+                markLabel: isSelected ? L10n.string("Desmarcar") : L10n.string("Marcar"),
                 onShowInFinder: onShowInFinder,
                 onMark: onToggle
             )

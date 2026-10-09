@@ -46,8 +46,8 @@ struct HowItWorksStep: View {
         backgroundColor: Color,
         iconColor: Color,
         icon: String,
-        title: String,
-        description: String
+        title: LocalizedStringKey,
+        description: LocalizedStringKey
     ) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .center) {

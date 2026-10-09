@@ -67,8 +67,15 @@ struct CandidateRow: View, Equatable {
         .accessibilityElement(children: .combine)
         .accessibilityLabel(row.accessibilityLabel)
         .accessibilityAddTraits(.isToggle)
-        .accessibilityValue(row.isSelected ? "Marcado" : "Sin marcar")
+        .accessibilityValue(valueLabel)
         .accessibilityAction(named: "Marcar", onToggle)
+        .accessibilityAction(named: "Ver detalles", onInspect)
+        .accessibilityAction(named: "Mostrar en Finder", onShowInFinder)
+    }
+
+    private var valueLabel: String {
+        if row.isExcluded { return L10n.string("Excluido") }
+        return row.isSelected ? L10n.string("Marcado") : L10n.string("Sin marcar")
     }
 
     private var background: Color {

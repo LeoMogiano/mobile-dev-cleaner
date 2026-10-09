@@ -45,7 +45,7 @@ final class HistoryViewModel {
 
     var countText: String {
         let count = store.entries.count
-        return count == 1 ? "1 limpieza" : "\(count) limpiezas"
+        return count == 1 ? L10n.string("1 limpieza") : L10n.string("\(count) limpiezas")
     }
 
     var bars: [HistoryBar] {
@@ -67,17 +67,17 @@ final class HistoryViewModel {
 
     var rows: [HistoryRowModel] {
         let locale = AppLanguage.current.locale
-        let dateFormatter = Self.dateFormatterCache.dateFormatter(locale: locale)
+        let dateFormatter = Self.dateFormatterCache.fullDateFormatter(locale: locale)
         let timeFormatter = Self.dateFormatterCache.timeFormatter(locale: locale)
 
         return store.entries.map { entry in
             let isToday = Calendar.current.isDateInToday(entry.date)
             let isYesterday = Calendar.current.isDateInYesterday(entry.date)
-            let dateText = isToday ? "Hoy, \(timeFormatter.string(from: entry.date))" :
-                           isYesterday ? "Ayer, \(timeFormatter.string(from: entry.date))" :
+            let dateText = isToday ? L10n.string("Hoy, \(timeFormatter.string(from: entry.date))") :
+                           isYesterday ? L10n.string("Ayer, \(timeFormatter.string(from: entry.date))") :
                            dateFormatter.string(from: entry.date)
 
-            let countText = entry.itemCount == 1 ? "1 elemento" : "\(entry.itemCount) elementos"
+            let countText = entry.itemCount == 1 ? L10n.string("1 elemento") : L10n.string("\(entry.itemCount) elementos")
             let freedText = ByteFormatter.string(entry.freedBytes, locale: AppLanguage.current.locale)
             let isExpanded = expandedID == entry.id
 
@@ -101,7 +101,7 @@ final class HistoryViewModel {
                 fullBreakdown = Array(breakdown) + [
                     HistorySliceModel(
                         id: "\(entry.id)_others",
-                        name: "Otros",
+                        name: L10n.string("Otros"),
                         valueText: ByteFormatter.string(others, locale: AppLanguage.current.locale),
                         fraction: othersFraction
                     )
@@ -133,27 +133,24 @@ enum HistoryViewIntent: Sendable {
     case toggle(UUID)
 }
 
+/// Locale-aware templates ("12 sep" / "Sep 12"); built once per locale and template.
 private final class DateFormatterCache {
-    private var dateFormatters: [String: DateFormatter] = [:]
-    private var timeFormatters: [String: DateFormatter] = [:]
+    private var formatters: [String: DateFormatter] = [:]
 
-    func dateFormatter(locale: Locale) -> DateFormatter {
-        let id = locale.identifier
-        if let cached = dateFormatters[id] { return cached }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d MMM"
-        formatter.locale = locale
-        dateFormatters[id] = formatter
-        return formatter
-    }
+    /// Short day for chart labels.
+    func dateFormatter(locale: Locale) -> DateFormatter { formatter("d MMM", locale) }
+    /// Day with year for history rows.
+    func fullDateFormatter(locale: Locale) -> DateFormatter { formatter("d MMM y", locale) }
+    /// Follows the user's 12/24-hour setting.
+    func timeFormatter(locale: Locale) -> DateFormatter { formatter("jm", locale) }
 
-    func timeFormatter(locale: Locale) -> DateFormatter {
-        let id = locale.identifier
-        if let cached = timeFormatters[id] { return cached }
+    private func formatter(_ template: String, _ locale: Locale) -> DateFormatter {
+        let key = template + "|" + locale.identifier
+        if let cached = formatters[key] { return cached }
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
         formatter.locale = locale
-        timeFormatters[id] = formatter
+        formatter.setLocalizedDateFormatFromTemplate(template)
+        formatters[key] = formatter
         return formatter
     }
 }

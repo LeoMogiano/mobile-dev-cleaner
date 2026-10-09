@@ -20,7 +20,7 @@ struct RootView: View {
                         .inspectorColumnWidth(248)
                 }
         }
-        .searchable(text: $router.searchQuery, placement: .toolbar, prompt: "Buscar")
+        .searchable(text: $router.searchQuery, placement: .toolbar, prompt: Text("Buscar"))
         .toolbar {
             ToolbarItem {
                 Button { scanStore.handle(.start) } label: {
