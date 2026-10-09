@@ -26,7 +26,7 @@ struct OnboardingView: View {
         }
         .frame(width: 740, height: 560)
         .ignoresSafeArea()
-        .background(OnboardingBackground())
+        .background(Color(nsColor: .windowBackgroundColor).ignoresSafeArea())
         .task {
             guard viewModel == nil else { return }
             let model = OnboardingViewModel(
@@ -100,29 +100,3 @@ struct OnboardingView: View {
         .frame(height: 68)
     }
 }
-
-/// Liquid Glass: the window blurs the desktop behind it like the HTML sheet; Clásico stays solid.
-private struct OnboardingBackground: View {
-    @Environment(\.mdcMaterial) private var material
-
-    var body: some View {
-        if material.usesGlass {
-            BehindWindowBlur().ignoresSafeArea()
-        } else {
-            Color(nsColor: .windowBackgroundColor).ignoresSafeArea()
-        }
-    }
-}
-
-private struct BehindWindowBlur: NSViewRepresentable {
-    func makeNSView(context: Context) -> NSVisualEffectView {
-        let view = NSVisualEffectView()
-        view.material = .underWindowBackground
-        view.blendingMode = .behindWindow
-        view.state = .active
-        return view
-    }
-
-    func updateNSView(_ view: NSVisualEffectView, context: Context) {}
-}
-
