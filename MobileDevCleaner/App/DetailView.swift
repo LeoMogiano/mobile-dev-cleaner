@@ -20,7 +20,7 @@ struct DetailView: View {
             CategoryView(category: id)
                 .id(id)
         case .history:
-            ContentUnavailableView("Historial", systemImage: "clock.arrow.circlepath")
+            HistoryView()
         }
     }
 

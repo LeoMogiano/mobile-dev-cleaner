@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(ScanStore.self) private var scanStore
+    @Environment(HistoryStore.self) private var historyStore
     @Environment(AppRouter.self) private var router
     @Environment(SelectionStore.self) private var selection
     @Environment(\.openSettings) private var openSettings
@@ -38,6 +39,7 @@ struct RootView: View {
         .mdcToast($router.toast)
         .sheet(isPresented: $router.isReviewPresented) { ReviewSheet() }
         .task {
+            historyStore.handle(.load)
             if scanStore.status == .idle { scanStore.handle(.start) }
         }
         .onChange(of: scanStore.status) { _, status in

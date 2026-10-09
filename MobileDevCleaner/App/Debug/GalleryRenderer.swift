@@ -14,24 +14,30 @@ enum GalleryRenderer {
     static func run(to directory: URL) -> Never {
         FontRegistrar.registerBundledFonts()
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        render(Gallery(), page: "gallery", to: directory)
+        render(SheetsGallery(), page: "sheets", to: directory)
+        exit(0)
+    }
+
+    @MainActor
+    private static func render<Page: View>(_ page: Page, page name: String, to directory: URL) {
         for scheme in [ColorScheme.light, .dark] {
             for material in MDCMaterial.allCases {
-                let name = "gallery-\(scheme == .light ? "light" : "dark")-\(material.rawValue).png"
+                let file = "\(name)-\(scheme == .light ? "light" : "dark")-\(material.rawValue).png"
                 let appearance = NSAppearance(named: scheme == .light ? .aqua : .darkAqua)
                 appearance?.performAsCurrentDrawingAppearance {
-                    let renderer = ImageRenderer(content: Gallery()
+                    let renderer = ImageRenderer(content: page
                         .environment(\.mdcMaterial, material)
                         .environment(\.colorScheme, scheme))
                     renderer.scale = 2
                     if let image = renderer.nsImage,
                        let tiff = image.tiffRepresentation,
                        let png = NSBitmapImageRep(data: tiff)?.representation(using: .png, properties: [:]) {
-                        try? png.write(to: directory.appending(path: name))
+                        try? png.write(to: directory.appending(path: file))
                     }
                 }
             }
         }
-        exit(0)
     }
 }
 

@@ -3,6 +3,7 @@ import SwiftUI
 @main
 struct MobileDevCleanerApp: App {
     @State private var scanStore: ScanStore
+    @State private var historyStore: HistoryStore
     @State private var router = AppRouter()
     @State private var selection = SelectionStore()
     @State private var settings = SettingsStore()
@@ -20,12 +21,14 @@ struct MobileDevCleanerApp: App {
             Task { await HeadlessScan.run() }
         }
         _scanStore = State(initialValue: ScanStore(scan: sl()))
+        _historyStore = State(initialValue: HistoryStore(load: sl(), record: sl()))
     }
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(scanStore)
+                .environment(historyStore)
                 .environment(router)
                 .environment(selection)
                 .environment(settings)
