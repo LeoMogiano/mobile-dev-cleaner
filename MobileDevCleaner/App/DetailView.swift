@@ -13,9 +13,12 @@ struct DetailView: View {
         switch router.selection {
         case .overview:
             DashboardView()
-        case .category(let id):
+        case .category(let id) where id.holdsDevices:
             let info = CategoryInfo.info(for: id)
             ContentUnavailableView(info.name, systemImage: info.symbol)
+        case .category(let id):
+            CategoryView(category: id)
+                .id(id)
         case .history:
             ContentUnavailableView("Historial", systemImage: "clock.arrow.circlepath")
         }

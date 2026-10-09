@@ -4,6 +4,8 @@ import SwiftUI
 struct MobileDevCleanerApp: App {
     @State private var scanStore: ScanStore
     @State private var router = AppRouter()
+    @State private var selection = SelectionStore()
+    @State private var settings = SettingsStore()
     @AppStorage(MDCMaterial.storageKey) private var material: MDCMaterial = .liquidGlass
 
     init() {
@@ -25,6 +27,8 @@ struct MobileDevCleanerApp: App {
             RootView()
                 .environment(scanStore)
                 .environment(router)
+                .environment(selection)
+                .environment(settings)
                 .environment(\.mdcMaterial, material)
                 .frame(minWidth: 900, minHeight: 600)
         }

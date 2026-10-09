@@ -3,12 +3,12 @@ import SwiftUI
 struct SidebarView: View {
     @Environment(ScanStore.self) private var store
     @Environment(AppRouter.self) private var router
-    @AppStorage("general.showEmpty") private var showEmpty = false
+    @Environment(SettingsStore.self) private var settings
     @State private var expanded: Set<Tool> = []
 
     var body: some View {
         let model = SidebarSections(
-            reports: store.reports, pending: store.pending, showEmpty: showEmpty,
+            reports: store.reports, pending: store.pending, showEmpty: settings.showEmpty,
             expanded: expanded, selected: selectedCategory
         )
         List(selection: selection) {
