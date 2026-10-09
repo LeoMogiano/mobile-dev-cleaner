@@ -48,10 +48,11 @@ struct MDCSecondaryButtonStyle: ButtonStyle {
     var height: CGFloat = 26
     var horizontalPadding: CGFloat = 12
     var fontSize: CGFloat = 12
+    var weight: Font.Weight = .medium
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: fontSize, weight: .medium))
+            .font(.system(size: fontSize, weight: weight))
             .foregroundColor(.mdcText1)
             .frame(height: height)
             .padding(.horizontal, horizontalPadding)

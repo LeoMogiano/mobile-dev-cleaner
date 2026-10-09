@@ -5,25 +5,20 @@ struct MDCCheckbox: View {
     var isEnabled = true
     let action: () -> Void
 
-    @Environment(\.colorScheme) var colorScheme
+    private static let offFill = Color(light: (0xFFFFFF, 1), dark: (0xFFFFFF, 0.1))
 
     var body: some View {
         Button(action: action) {
+            let shape = RoundedRectangle(cornerRadius: 4, style: .continuous)
             ZStack {
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(isOn ? Color.mdcAccent : (colorScheme == .dark ? Color.mdcText3 : Color.white))
-                    .frame(width: 14, height: 14)
-
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .strokeBorder(Color.mdcLine2, lineWidth: 0.5)
-                    .frame(width: 14, height: 14)
-
-                if isOn {
-                    Image(systemName: "checkmark")
-                        .font(.system(size: 9, weight: .bold))
-                        .foregroundColor(.white)
-                }
+                shape.fill(isOn ? Color.mdcAccent : Self.offFill)
+                if !isOn { shape.strokeBorder(Color.mdcLine2, lineWidth: 1) }
+                Image(systemName: "checkmark")
+                    .font(.system(size: 9, weight: .bold))
+                    .foregroundStyle(.white)
+                    .opacity(isOn ? 1 : 0)
             }
+            .frame(width: 15, height: 15)
         }
         .buttonStyle(.plain)
         .disabled(!isEnabled)

@@ -8,20 +8,21 @@ enum MDCBadgeKind: Hashable {
 
 struct MDCRiskBadge: View {
     let kind: MDCBadgeKind
+    /// Row variant: 18 high, 10.5 pt (category rows); default is the 20 pt header badge.
+    var compact = false
 
     var body: some View {
         HStack(spacing: 4) {
             Image(systemName: iconName)
-                .font(.system(size: 11, weight: .regular))
-                .imageScale(.medium)
+                .font(.system(size: compact ? 10 : 11))
             Text(label)
-                .font(.system(size: 11, weight: .semibold))
+                .font(.system(size: compact ? 10.5 : 11, weight: .semibold))
         }
-        .foregroundColor(foregroundColor)
-        .frame(height: 20)
-        .padding(.horizontal, 8)
-        .background(backgroundColor)
-        .cornerRadius(10)
+        .foregroundStyle(foregroundColor)
+        .frame(height: compact ? 18 : 20)
+        .padding(.horizontal, compact ? 7 : 8)
+        .background(backgroundColor, in: Capsule())
+        .accessibilityElement(children: .ignore)
         .accessibilityLabel(label)
     }
 
