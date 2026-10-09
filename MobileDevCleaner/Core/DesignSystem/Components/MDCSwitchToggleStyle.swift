@@ -17,7 +17,7 @@ struct MDCSwitchToggleStyle: ToggleStyle {
                         .fill(Color.white)
                         .frame(width: 16, height: 16)
                         .offset(x: configuration.isOn ? 18 : 2, y: 0)
-                        .shadow(color: Color.black.opacity(0.3), radius: 1, x: 0, y: 1)
+                        .shadow(color: Color.black.opacity(0.15), radius: 0.5, x: 0, y: 0.5)
                 }
             }
             .buttonStyle(.plain)
@@ -27,7 +27,7 @@ struct MDCSwitchToggleStyle: ToggleStyle {
                 value: configuration.isOn
             )
             .accessibilityElement()
-            .accessibilityValue(configuration.isOn ? "on" : "off")
+            .accessibilityValue(configuration.isOn ? L10n.string("Activado") : L10n.string("Desactivado"))
             .accessibilityAddTraits(.isToggle)
         }
     }

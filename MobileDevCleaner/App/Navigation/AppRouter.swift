@@ -8,6 +8,8 @@ final class AppRouter {
     /// Candidate path or device id shown in the inspector.
     var inspectedID: String?
     var isReviewPresented = false
+    var isFullDiskAccessPresented = false
+    var isOnboardingPresented = false
     var toast: String?
 
     func show(_ item: SidebarItem) {

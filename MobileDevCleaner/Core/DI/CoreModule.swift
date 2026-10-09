@@ -11,6 +11,9 @@ enum CoreModule {
         }
         sl.registerLazySingleton((any TrashServicing).self) { TrashService() }
         sl.registerLazySingleton((any PlistReading).self) { PlistReader() }
+        sl.registerLazySingleton((any CleanupNotifying).self) { NotificationService() }
+        sl.registerLazySingleton((any NotificationAuthorizing).self) { NotificationService() }
+        sl.registerLazySingleton((any FullDiskAccessChecking).self) { FullDiskAccessChecker() }
         sl.registerLazySingleton((any ProcessProbing).self) {
             let runner: any ProcessRunning = sl()
             return ProcessProbe(runner: runner)

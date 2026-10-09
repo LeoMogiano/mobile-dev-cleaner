@@ -14,24 +14,31 @@ enum GalleryRenderer {
     static func run(to directory: URL) -> Never {
         FontRegistrar.registerBundledFonts()
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        render(Gallery(), page: "gallery", to: directory)
+        render(SheetsGallery(), page: "sheets", to: directory)
+        render(OnboardingGallery(), page: "onboarding", to: directory)
+        exit(0)
+    }
+
+    @MainActor
+    private static func render<Page: View>(_ page: Page, page name: String, to directory: URL) {
         for scheme in [ColorScheme.light, .dark] {
             for material in MDCMaterial.allCases {
-                let name = "gallery-\(scheme == .light ? "light" : "dark")-\(material.rawValue).png"
+                let file = "\(name)-\(scheme == .light ? "light" : "dark")-\(material.rawValue).png"
                 let appearance = NSAppearance(named: scheme == .light ? .aqua : .darkAqua)
                 appearance?.performAsCurrentDrawingAppearance {
-                    let renderer = ImageRenderer(content: Gallery()
+                    let renderer = ImageRenderer(content: page
                         .environment(\.mdcMaterial, material)
                         .environment(\.colorScheme, scheme))
                     renderer.scale = 2
                     if let image = renderer.nsImage,
                        let tiff = image.tiffRepresentation,
                        let png = NSBitmapImageRep(data: tiff)?.representation(using: .png, properties: [:]) {
-                        try? png.write(to: directory.appending(path: name))
+                        try? png.write(to: directory.appending(path: file))
                     }
                 }
             }
         }
-        exit(0)
     }
 }
 
@@ -75,6 +82,43 @@ private struct Gallery: View {
             MDCSelectionBar(count: 3, bytes: 4_200_000_000, onDeselect: {}, onReview: {})
             MDCToast(message: "Está en Carpetas excluidas (Ajustes › General)")
             MDCEmptyState(symbol: "checkmark", title: "Tu Mac está ordenada.", message: "No hay nada que limpiar ahora mismo.")
+            Divider().padding(.vertical, 8)
+            HStack(spacing: 16) {
+                DeviceCard(
+                    card: DeviceCardModel(
+                        id: "sim1", name: "iPhone 16 Pro", osVersion: "iOS 18.2", symbol: "iphone",
+                        sizeText: "1,9 GB", isRunning: false,
+                        segments: [
+                            .init(id: .clean, label: "Limpiar", freesText: "Libera 550 MB", risk: .regenerates, isOn: true),
+                            .init(id: .reset, label: "Restablecer", freesText: "Libera 1,9 GB", risk: .hasCost, isOn: false),
+                            .init(id: .delete, label: "Eliminar", freesText: "Libera 1,9 GB", risk: .hasCost, isOn: false)
+                        ],
+                        chosen: .clean, isInspected: false,
+                        actionDescription: "Libera 550 MB. Tus apps y datos quedan.",
+                        accessibilityLabel: "iPhone 16 Pro, iOS 18.2, 1,9 GB"
+                    ),
+                    onSelectAction: { _ in },
+                    onInspect: {}
+                )
+                .frame(width: 320)
+                DeviceCard(
+                    card: DeviceCardModel(
+                        id: "emu1", name: "Pixel 8", osVersion: "API 34 · Android 14", symbol: "smartphone",
+                        sizeText: "2,1 GB", isRunning: true,
+                        segments: [
+                            .init(id: .clean, label: "Limpiar", freesText: "Libera 650 MB", risk: .regenerates, isOn: false),
+                            .init(id: .reset, label: "Restablecer", freesText: "Libera 2,1 GB", risk: .hasCost, isOn: false),
+                            .init(id: .delete, label: "Eliminar", freesText: "Libera 2,1 GB", risk: .hasCost, isOn: false)
+                        ],
+                        chosen: nil, isInspected: false,
+                        actionDescription: nil,
+                        accessibilityLabel: "Pixel 8, API 34 Android 14, 2,1 GB, en uso"
+                    ),
+                    onSelectAction: { _ in },
+                    onInspect: {}
+                )
+                .frame(width: 320)
+            }
         }
         .font(.system(size: 13))
         .foregroundStyle(Color.mdcText1)

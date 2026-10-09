@@ -27,6 +27,7 @@ struct MDCBreakdownBar: View {
         .frame(height: height)
         .background(Color.mdcFill)
         .clipShape(Capsule())
+        .accessibilityHidden(true)
     }
 }
 

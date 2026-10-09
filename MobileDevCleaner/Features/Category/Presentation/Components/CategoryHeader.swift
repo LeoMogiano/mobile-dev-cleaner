@@ -12,7 +12,6 @@ struct CategoryHeader: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
                     .fill(Color.mdcTool(info.id.tool))
-                    .shadow(color: Color.black.opacity(0.3), radius: 0, x: 0, y: 1)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .strokeBorder(Color.white.opacity(0.3), lineWidth: 1)
@@ -30,6 +29,7 @@ struct CategoryHeader: View {
                     .font(.system(size: 22, weight: .bold, design: .default))
                     .tracking(-0.44)
                     .lineLimit(1)
+                    .accessibilityAddTraits(.isHeader)
 
                 Text(info.technicalName)
                     .font(.system(size: 11, weight: .regular, design: .monospaced))

@@ -3,9 +3,9 @@ import SwiftUI
 struct MDCEmptyState: View {
     let symbol: String
     var tint: Color = .mdcRegen
-    let title: String
-    let message: String
-    var actionTitle: String?
+    let title: LocalizedStringKey
+    let message: LocalizedStringKey
+    var actionTitle: LocalizedStringKey?
     var action: (() -> Void)?
 
     var body: some View {

@@ -7,6 +7,8 @@ enum Injection {
     static func setup() {
         CoreModule.register()
         ScanModule.register()
+        CleanupModule.register()
+        HistoryModule.register()
     }
 
     static func reset() {

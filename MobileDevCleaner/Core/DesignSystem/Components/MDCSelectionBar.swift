@@ -20,8 +20,7 @@ struct MDCSelectionBar: View {
     private static let classicSheet = Color(light: 0xFFFFFF, dark: 0x2C2C2E)
 
     private var countLabel: String {
-        let plural = count == 1 ? "" : "s"
-        return "\(count) seleccionado\(plural)"
+        count == 1 ? L10n.string("1 seleccionado") : L10n.string("\(count) seleccionados")
     }
 
     var body: some View {
@@ -45,16 +44,16 @@ struct MDCSelectionBar: View {
             .buttonStyle(PlainButtonStyle())
 
             Button(action: onReview) {
-                Text("Revisar y limpiar")
+                Text("Revisar")
             }
             .buttonStyle(MDCPrimaryButtonStyle(height: 30, horizontalPadding: 16))
             .keyboardShortcut(.delete, modifiers: [])
-            .help("Revisar y limpiar (⌫)")
+            .help("Revisar (⌫)")
         }
         .padding(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 6))
         .background(sheet, in: shape)
         .overlay(shape.strokeBorder(Color.mdcLine2, lineWidth: 0.5))
-        .shadow(color: .black.opacity(0.18), radius: 15, x: 0, y: 10)
+        .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 2)
         .transition(.opacity.animation(.easeOut(duration: 0.18)))
     }
 }

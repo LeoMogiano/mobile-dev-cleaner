@@ -2,11 +2,13 @@ import SwiftUI
 
 @main
 struct MobileDevCleanerApp: App {
-    @State private var scanStore: ScanStore
-    @State private var router = AppRouter()
-    @State private var selection = SelectionStore()
-    @State private var settings = SettingsStore()
-    @AppStorage(MDCMaterial.storageKey) private var material: MDCMaterial = .liquidGlass
+    @State fileprivate var scanStore: ScanStore
+    @State fileprivate var historyStore: HistoryStore
+    @State fileprivate var router = AppRouter()
+    @State fileprivate var selection = SelectionStore()
+    @State fileprivate var settings: SettingsStore
+    @AppStorage(MDCMaterial.storageKey) fileprivate var material: MDCMaterial = .liquidGlass
+    @AppStorage(AppLanguage.storageKey) fileprivate var language: AppLanguage = .system
 
     init() {
         FontRegistrar.registerBundledFonts()
@@ -19,26 +21,49 @@ struct MobileDevCleanerApp: App {
         if HeadlessScan.isRequested {
             Task { await HeadlessScan.run() }
         }
-        _scanStore = State(initialValue: ScanStore(scan: sl()))
+        let settings = SettingsStore()
+        _settings = State(initialValue: settings)
+        _scanStore = State(initialValue: ScanStore(scan: sl(), tools: { settings.enabledTools }))
+        _historyStore = State(initialValue: HistoryStore(load: sl(), record: sl()))
     }
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environment(scanStore)
-                .environment(router)
-                .environment(selection)
-                .environment(settings)
-                .environment(\.mdcMaterial, material)
-                .frame(minWidth: 900, minHeight: 600)
+            // The benchmark measures the scan alone; drawing the UI would skew it.
+            if !HeadlessScan.isRequested {
+                RootView()
+                    .frame(minWidth: 900, minHeight: 600)
+                    .appEnvironment(self)
+            }
         }
         .defaultSize(width: 1100, height: 720)
         .windowToolbarStyle(.unified)
         .commands { AppCommands(store: scanStore, router: router) }
 
         Settings {
-            Text("Ajustes")
-                .frame(width: 620, height: 640)
+            SettingsView()
+                .appEnvironment(self)
         }
+    }
+
+    fileprivate var colorScheme: ColorScheme? {
+        switch settings.theme {
+        case .light: .light
+        case .dark: .dark
+        case .auto: nil
+        }
+    }
+}
+
+private extension View {
+    func appEnvironment(_ app: MobileDevCleanerApp) -> some View {
+        environment(app.scanStore)
+            .environment(app.historyStore)
+            .environment(app.router)
+            .environment(app.selection)
+            .environment(app.settings)
+            .environment(\.mdcMaterial, app.material)
+            .environment(\.locale, app.language.locale)
+            .preferredColorScheme(app.colorScheme)
     }
 }

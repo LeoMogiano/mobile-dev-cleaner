@@ -101,4 +101,41 @@ struct SettingsStoreTests {
             #expect(store.excludedPaths == ["/path/1", "/path/2"])
         }
     }
+
+    @Test("enabledTools reflects scan flags")
+    func testEnabledTools() {
+        let store = SettingsStore(defaults: UserDefaults(suiteName: UUID().uuidString)!)
+
+        store.scanXcode = true
+        store.scanAndroid = false
+        #expect(store.enabledTools == [.xcode])
+
+        store.scanAndroid = true
+        #expect(store.enabledTools == [.xcode, .android])
+
+        store.scanXcode = false
+        #expect(store.enabledTools == [.android])
+    }
+
+    @Test("reset reverts to defaults without touching onboarding")
+    func testResetWithoutOnboarding() {
+        let suite = UUID().uuidString
+        let defaults = UserDefaults(suiteName: suite)!
+
+        let store = SettingsStore(defaults: defaults)
+        store.scanXcode = false
+        store.notifyOnFinish = true
+        store.excludedPaths = ["/test"]
+        store.theme = .dark
+        store.onboardingCompleted = true
+
+        store.reset()
+
+        #expect(store.scanXcode == true)
+        #expect(store.scanAndroid == true)
+        #expect(store.notifyOnFinish == false)
+        #expect(store.excludedPaths.isEmpty)
+        #expect(store.theme == .auto)
+        #expect(store.onboardingCompleted == true)
+    }
 }

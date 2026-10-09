@@ -25,7 +25,6 @@ struct CandidateGroupView: View {
                     .equatable()
                 }
             }
-            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             .mdcCard(radius: 10)
         }
     }
@@ -50,6 +49,8 @@ struct CandidateGroupView: View {
                 .monospacedDigit()
         }
         .padding(.horizontal, 4)
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isHeader)
     }
 }
 

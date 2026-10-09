@@ -30,29 +30,23 @@ private struct SurfaceModifier: ViewModifier {
         content
             .background(style.fill, in: shape)
             .overlay(shape.strokeBorder(style.border, lineWidth: 0.5))
-            .shadow(color: style.shadow, radius: style.shadowRadius, x: 0, y: style.shadowY)
     }
 
     private struct Style {
         let fill: Color
         let border: Color
-        var shadow: Color = .clear
-        var shadowRadius: CGFloat = 0
-        var shadowY: CGFloat = 0
     }
 
     private static let glass: [Kind: Style] = [
-        // Softer than the web mock: content cards stay calm and let the system glass
-        // (sidebar, toolbar) carry the Liquid Glass look, as in System Settings.
+        // Flatter than the web mock: no shadows; a faint fill and hairline separate surfaces,
+        // and the system glass (sidebar, toolbar) carries the Liquid Glass look.
         .card: Style(
             fill: Color(light: (0xFFFFFF, 0.5), dark: (0xFFFFFF, 0.05)),
-            border: Color(light: (0x000000, 0.05), dark: (0xFFFFFF, 0.07)),
-            shadow: Color(light: (0x3C2878, 0.04), dark: (0x000000, 0.12)), shadowRadius: 6, shadowY: 2
+            border: Color(light: (0x000000, 0.05), dark: (0xFFFFFF, 0.07))
         ),
         .control: Style(
             fill: Color(light: (0xFFFFFF, 0.62), dark: (0xFFFFFF, 0.1)),
-            border: Color(light: (0xFFFFFF, 0.9), dark: (0xFFFFFF, 0.16)),
-            shadow: Color(light: (0x000000, 0.08), dark: (0x000000, 0.3)), shadowRadius: 1.5, shadowY: 1
+            border: Color(light: (0x000000, 0.1), dark: (0xFFFFFF, 0.16))
         ),
         .inner: Style(
             fill: Color(light: (0xFFFFFF, 0.55), dark: (0xFFFFFF, 0.05)),
@@ -67,8 +61,7 @@ private struct SurfaceModifier: ViewModifier {
         ),
         .control: Style(
             fill: Color(light: 0xFFFFFF, dark: 0x48484A),
-            border: Color(light: (0x000000, 0.16), dark: (0xFFFFFF, 0.08)),
-            shadow: Color(light: (0x000000, 0.08), dark: (0x000000, 0.3)), shadowRadius: 0.5, shadowY: 0.5
+            border: Color(light: (0x000000, 0.16), dark: (0xFFFFFF, 0.08))
         ),
         .inner: Style(fill: Color(light: 0xFFFFFF, dark: 0x323234), border: .clear),
     ]

@@ -21,6 +21,7 @@ struct ScanningCard: View {
                 ProgressView().controlSize(.small)
                 Text("Escaneando tu Mac…").font(.system(size: 17, weight: .semibold)).frame(maxWidth: .infinity, alignment: .leading)
                 Text(percentText).font(.system(size: 13)).monospacedDigit().foregroundStyle(Color.mdcText2)
+                    .accessibilityLabel("Progreso del escaneo")
             }
             Text(currentPath)
                 .font(.mdcMono(11))
@@ -88,6 +89,7 @@ struct ScanningCard: View {
                 block(48, 9, radius: 5)
             }
         }
+        .accessibilityElement(children: .combine)
         .transition(reduceMotion ? .identity : .opacity.animation(.easeOut(duration: 0.26)))
         .animation(reduceMotion ? nil : .easeOut(duration: 0.26), value: row.isFound)
     }

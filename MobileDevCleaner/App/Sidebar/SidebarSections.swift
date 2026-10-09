@@ -26,7 +26,7 @@ struct SidebarSections: Equatable {
         let isExpanded: Bool
         var id: Tool { tool }
         var hasMore: Bool { smallCount > 0 }
-        var moreLabel: String { isExpanded ? "Menos" : "\(hiddenCount) más pequeñas" }
+        var moreLabel: String { isExpanded ? L10n.string("Menos") : L10n.string("\(hiddenCount) más pequeñas") }
         var moreSymbol: String { isExpanded ? "chevron.down" : "chevron.right" }
         fileprivate(set) var smallCount = 0
     }
@@ -40,10 +40,11 @@ struct SidebarSections: Equatable {
         pending: Set<CategoryID>,
         showEmpty: Bool,
         expanded: Set<Tool>,
-        selected: CategoryID? = nil
+        selected: CategoryID? = nil,
+        tools: Set<Tool> = Set(Tool.allCases)
     ) {
         let scanning = !pending.isEmpty
-        sections = Tool.allCases.map { tool in
+        sections = Tool.allCases.filter(tools.contains).map { tool in
             let ids = CategoryID.allCases.filter { $0.tool == tool }
             var rows: [(row: Row, size: Int64)] = []
             var total: Int64 = 0
@@ -92,8 +93,8 @@ struct SidebarSections: Equatable {
     private static func text(_ state: RowState, _ size: Int64) -> String {
         switch state {
         case .scanning: "…"
-        case .noAccess: "Sin acceso"
-        case .notFound: "No encontrado"
+        case .noAccess: L10n.string("Sin acceso")
+        case .notFound: L10n.string("No encontrado")
         case .normal: ByteFormatter.string(size)
         }
     }

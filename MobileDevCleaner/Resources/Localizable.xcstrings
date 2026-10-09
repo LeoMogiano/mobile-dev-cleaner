@@ -1,12 +1,1242 @@
 {
   "sourceLanguage" : "es",
   "strings" : {
+    " " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        }
+      }
+    },
+    " (no disponible)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " (unavailable)"
+          }
+        }
+      }
+    },
+    " (preferencias)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " (preferences)"
+          }
+        }
+      }
+    },
+    " que Xcode y Gradle regeneran solos cuando los necesites." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " that Xcode and Gradle regenerate on their own when you need them."
+          }
+        }
+      }
+    },
+    " · %lld ya no existen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " · %lld no longer exist"
+          }
+        }
+      }
+    },
+    " · Última limpieza: %@, liberaste %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " · Last cleanup: %@, freed %@"
+          }
+        }
+      }
+    },
+    "$ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "$ %@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ %@"
+          }
+        }
+      }
+    },
+    "%@ no arrancará hasta volver a descargarla (%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ won't start until you download it again (%@)."
+          }
+        }
+      }
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, %@"
+          }
+        }
+      }
+    },
+    "%@: quedará como recién creado. Se pierden sus apps y datos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: will be reset to new. You'll lose your apps and data."
+          }
+        }
+      }
+    },
+    "%@: se borra el dispositivo completo. Podrás crearlo de nuevo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: the device will be erased completely. You can create it again."
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld de %lld · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld of %lld · %@"
+          }
+        }
+      }
+    },
+    "%lld dispositivos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld devices"
+          }
+        }
+      }
+    },
+    "%lld elementos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld items"
+          }
+        }
+      }
+    },
+    "%lld limpiezas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld cleanups"
+          }
+        }
+      }
+    },
+    "%lld marcados" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld checked"
+          }
+        }
+      }
+    },
+    "%lld más pequeñas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld smaller"
+          }
+        }
+      }
+    },
+    "%lld no se pudieron limpiar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld couldn't be cleaned"
+          }
+        }
+      }
+    },
+    "%lld seleccionados" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld selected"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
+          }
+        }
+      }
+    },
+    "(puedes recuperarlos)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(you can recover them)"
+          }
+        }
+      }
+    },
+    ".android/cache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".android/cache"
+          }
+        }
+      }
+    },
+    "1 dispositivo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 device"
+          }
+        }
+      }
+    },
+    "1 elemento" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 item"
+          }
+        }
+      }
+    },
+    "1 limpieza" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 cleanup"
+          }
+        }
+      }
+    },
+    "1 marcado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 checked"
+          }
+        }
+      }
+    },
+    "1 no se pudo limpiar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 couldn't be cleaned"
+          }
+        }
+      }
+    },
+    "1 seleccionado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 selected"
+          }
+        }
+      }
+    },
+    "18,2 GB que Xcode y Gradle regeneran solos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18.2 GB that Xcode and Gradle regenerate on their own."
+          }
+        }
+      }
+    },
+    "37,7" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "37.7"
+          }
+        }
+      }
+    },
+    "AI Mobile Dev Enthusiast · Hice esta app porque mi Mac se quedaba sin espacio cada semana." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI Mobile Dev Enthusiast · I built this app because my Mac ran out of space every week."
+          }
+        }
+      }
+    },
+    "AVDs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AVDs"
+          }
+        }
+      }
+    },
+    "Abierta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        }
+      }
+    },
+    "Abre " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open "
+          }
+        }
+      }
+    },
+    "Abrir Ajustes del Sistema" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open System Settings"
+          }
+        }
+      }
+    },
+    "Acceso concedido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access granted"
+          }
+        }
+      }
+    },
+    "Acceso total al disco" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Disk Access"
+          }
+        }
+      }
+    },
+    "Acceso total al disco concedido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Disk Access granted"
+          }
+        }
+      }
+    },
+    "Acción" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Action"
+          }
+        }
+      }
+    },
+    "Acción elegida" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Action chosen"
+          }
+        }
+      }
+    },
+    "Acerca de" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "Activa " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable "
+          }
+        }
+      }
+    },
+    "Activado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled"
+          }
+        }
+      }
+    },
+    "Ahora no" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not now"
+          }
+        }
+      }
+    },
     "Ajustes" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Ajustes (⌘,)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings (⌘,)"
+          }
+        }
+      }
+    },
+    "Ajustes del Sistema" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Settings"
+          }
+        }
+      }
+    },
+    "Ajustes restablecidos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings reset"
+          }
+        }
+      }
+    },
+    "Ajustes, plugins e índices de versiones de Android Studio que ya no usas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings, plugins, and version indexes for Android Studio versions you don't use anymore."
+          }
+        }
+      }
+    },
+    "Algunas carpetas no se pudieron medir." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some folders couldn't be measured."
+          }
+        }
+      }
+    },
+    "Algunas carpetas no se pudieron medir. " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some folders couldn't be measured. "
+          }
+        }
+      }
+    },
+    "Algunos textos se actualizan al reiniciar la app." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some text updates when you restart the app."
+          }
+        }
+      }
+    },
+    "Android" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android"
+          }
+        }
+      }
+    },
+    "Android Studio puede tardar un poco más al indexar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android Studio may take a bit longer to index."
+          }
+        }
+      }
+    },
+    "Aparecen atenuadas con “No encontrado”." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They appear faded with \"Not found\"."
+          }
+        }
+      }
+    },
+    "Apariencia" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "Application Support/Google" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Application Support/Google"
+          }
+        }
+      }
+    },
+    "Aquí verás cuánto espacio liberas en cada limpieza." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You'll see how much space you free with each cleanup."
+          }
+        }
+      }
+    },
+    "Archives" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archives"
+          }
+        }
+      }
+    },
+    "Archivos intermedios que Xcode genera al compilar cada proyecto." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intermediate files Xcode generates when building each project."
+          }
+        }
+      }
+    },
+    "Así puedes seguir trabajando mientras limpiamos. Una sola notificación al terminar, con lo que liberaste. Nada más." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This way you can keep working while we clean. A single notification when done, showing what you freed up. Nothing more."
+          }
+        }
+      }
+    },
+    "Atrás" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
+    },
+    "Automático" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic"
+          }
+        }
+      }
+    },
+    "Avanzado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced"
+          }
+        }
+      }
+    },
+    "Avisarme cuando termine la limpieza" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me when cleanup is done"
+          }
+        }
+      }
+    },
+    "Avisos de Gradle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle warnings"
+          }
+        }
+      }
+    },
+    "Ayer, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yesterday, %@"
+          }
+        }
+      }
+    },
+    "Ayuda a que más devs la encuentren" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help more devs find it"
+          }
+        }
+      }
+    },
+    "Añadir carpeta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add folder"
+          }
+        }
+      }
+    },
+    "Aún no has limpiado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You haven't cleaned yet"
+          }
+        }
+      }
+    },
+    "Binarios nativos de Gradle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle native binaries"
+          }
+        }
+      }
+    },
+    "Build cache de Android" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android build cache"
+          }
+        }
+      }
+    },
+    "Builds de Xcode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode Builds"
+          }
+        }
+      }
+    },
+    "Builds, simuladores, runtimes y cachés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Builds, simulators, runtimes, and caches"
+          }
+        }
+      }
+    },
+    "Buscar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "Caches · tmp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caches · tmp"
+          }
+        }
+      }
+    },
+    "Caché" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache"
+          }
+        }
+      }
+    },
+    "Caché compartido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shared cache"
+          }
+        }
+      }
+    },
+    "Caché de Android Studio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android Studio cache"
+          }
+        }
+      }
+    },
+    "Caché de Carthage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carthage cache"
+          }
+        }
+      }
+    },
+    "Caché de CocoaPods" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CocoaPods cache"
+          }
+        }
+      }
+    },
+    "Caché de Studio %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache for Studio %@"
+          }
+        }
+      }
+    },
+    "Caché de Swift Package Manager" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swift Package Manager cache"
+          }
+        }
+      }
+    },
+    "Caché de Transporter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transporter cache"
+          }
+        }
+      }
+    },
+    "Caché de Xcode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode cache"
+          }
+        }
+      }
+    },
+    "Caché de fastlane" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fastlane cache"
+          }
+        }
+      }
+    },
+    "Caché de herramientas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tools cache"
+          }
+        }
+      }
+    },
+    "Caché de tamaños " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Size cache "
+          }
+        }
+      }
+    },
+    "Caché de tamaños vaciada. El próximo escaneo será completo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Size cache cleared. Next scan will be complete."
+          }
+        }
+      }
+    },
+    "Cachés de Android" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android caches"
+          }
+        }
+      }
+    },
+    "Cachés de Android Studio y de las herramientas del SDK." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caches for Android Studio and SDK tools."
+          }
+        }
+      }
+    },
+    "Cachés de Gradle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle caches"
+          }
+        }
+      }
+    },
+    "Cachés de Xcode, del simulador y archivos temporales de compilación." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caches for Xcode, simulator, and build temp files."
+          }
+        }
+      }
+    },
+    "Cachés de los gestores de dependencias y herramientas de iOS." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caches for iOS dependency managers and tools."
+          }
+        }
+      }
+    },
+    "Cachés del simulador" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator caches"
+          }
+        }
+      }
+    },
+    "Cachés y temporales" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caches & temp"
+          }
+        }
+      }
+    },
+    "Cada emulador guarda apps, datos, caché y snapshots de arranque rápido." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each emulator stores apps, data, cache, and quick-boot snapshots."
+          }
+        }
+      }
+    },
+    "Cada simulador guarda sus apps instaladas, datos, cachés y snapshots." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each simulator stores its installed apps, data, caches, and snapshots."
+          }
+        }
+      }
+    },
+    "Cancelar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Carpetas excluidas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluded folders"
+          }
+        }
+      }
+    },
+    "Casi todo se regenera solo cuando compilas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost everything regenerates on its own when you build."
+          }
+        }
+      }
+    },
+    "Cerrar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "Cierra estas apps primero" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close these apps first"
+          }
+        }
+      }
+    },
+    "Ciérralo para poder limpiarlo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close it to clean it"
+          }
+        }
+      }
+    },
+    "Claro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
+    "Clásico" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classic"
+          }
+        }
+      }
+    },
+    "CocoaPods · Carthage · Fastlane" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CocoaPods · Carthage · Fastlane"
+          }
+        }
+      }
+    },
+    "Comando" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command"
+          }
+        }
+      }
+    },
+    "Comando no permitido." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command not allowed."
+          }
+        }
+      }
+    },
+    "Comandos que se ejecutarán" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commands that will run"
+          }
+        }
+      }
+    },
+    "Comenzar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
+    },
+    "Comprobando…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checking…"
+          }
+        }
+      }
+    },
+    "Concedido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Granted"
+          }
+        }
+      }
+    },
+    "Continuar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
+    },
+    "Contraído" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collapsed"
+          }
+        }
+      }
+    },
+    "CoreSimulator/Devices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CoreSimulator/Devices"
+          }
+        }
+      }
+    },
+    "CoreSimulator/Runtimes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CoreSimulator/Runtimes"
+          }
+        }
+      }
+    },
+    "Creador" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creator"
+          }
+        }
+      }
+    },
+    "Cómo funciona" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How it works"
+          }
+        }
+      }
+    },
+    "Dale una estrella en GitHub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Star it on GitHub"
+          }
+        }
+      }
+    },
+    "Dar acceso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grant access"
+          }
+        }
+      }
+    },
+    "Datos de apps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App data"
           }
         }
       }
@@ -21,12 +1251,2182 @@
         }
       }
     },
+    "Depende de la acción: limpiar conserva tus apps; restablecer o eliminar las borra." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It depends on the action: clean keeps your apps; reset or delete removes them."
+          }
+        }
+      }
+    },
+    "Dependencias de Gradle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle dependencies"
+          }
+        }
+      }
+    },
+    "DerivedData" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DerivedData"
+          }
+        }
+      }
+    },
+    "Desactivado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled"
+          }
+        }
+      }
+    },
+    "Descargas de Xcode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode downloads"
+          }
+        }
+      }
+    },
+    "Descartar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discard"
+          }
+        }
+      }
+    },
+    "Deseleccionar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deselect"
+          }
+        }
+      }
+    },
+    "Desmarcado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unchecked"
+          }
+        }
+      }
+    },
+    "Desmarcar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uncheck"
+          }
+        }
+      }
+    },
+    "Disabled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled"
+          }
+        }
+      }
+    },
+    "Dispositivos de Playgrounds" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playground devices"
+          }
+        }
+      }
+    },
+    "Dispositivos de test" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test devices"
+          }
+        }
+      }
+    },
+    "Distribuciones de Gradle que descarga el wrapper de cada proyecto." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle distributions downloaded by each project's wrapper."
+          }
+        }
+      }
+    },
+    "DocSets antiguos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Old DocSets"
+          }
+        }
+      }
+    },
+    "El comando falló (código %d)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command failed (code %d)."
+          }
+        }
+      }
+    },
+    "El espacio vuelve a crecer mientras desarrollas. Por eso conviene limpiar cada 2–4 semanas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Space grows again as you develop. That's why it's good to clean every 2–4 weeks."
+          }
+        }
+      }
+    },
+    "El proyecto ya no existe en tu disco. Nadie lo va a regenerar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The project no longer exists on your disk. Nobody will regenerate it."
+          }
+        }
+      }
+    },
+    "El próximo build de ese proyecto tardará más: compila desde cero." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The next build of that project will take longer: it compiles from scratch."
+          }
+        }
+      }
+    },
+    "El próximo build tardará más." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next build will take longer."
+          }
+        }
+      }
+    },
+    "El próximo pod install o carthage bootstrap descargará de nuevo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The next pod install or carthage bootstrap will download again."
+          }
+        }
+      }
+    },
+    "Eliminar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Emulador Android" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android Emulator"
+          }
+        }
+      }
+    },
+    "Emuladores Android" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android Emulators"
+          }
+        }
+      }
+    },
+    "En ejecución" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running"
+          }
+        }
+      }
+    },
+    "En la Mac de un dev mobile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On a mobile dev's Mac"
+          }
+        }
+      }
+    },
+    "En uso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In use"
+          }
+        }
+      }
+    },
+    "En uso: ciérralo para poder limpiarlo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In use: close it to clean it"
+          }
+        }
+      }
+    },
+    "Encuentra lo que Xcode y Android Studio dejan atrás y te explica qué es antes de borrarlo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finds what Xcode and Android Studio leave behind and explains what it is before deleting it."
+          }
+        }
+      }
+    },
+    "Entiendo que algunos se volverán a descargar o perderán datos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I understand some will re-download or lose data"
+          }
+        }
+      }
+    },
+    "Entiendo, limpiar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I understand, clean"
+          }
+        }
+      }
+    },
+    "Entra en " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to "
+          }
+        }
+      }
+    },
+    "Escaneando tu Mac…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanning your Mac…"
+          }
+        }
+      }
+    },
+    "Escanear al abrir la app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan when opening the app"
+          }
+        }
+      }
+    },
+    "Escanear de nuevo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan again"
+          }
+        }
+      }
+    },
+    "Escanear de nuevo (⌘R)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan again (⌘R)"
+          }
+        }
+      }
+    },
+    "Escanear mi Mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan my Mac"
+          }
+        }
+      }
+    },
+    "Espacio liberado en total" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total space freed"
+          }
+        }
+      }
+    },
+    "Esperando permiso…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting for permission…"
+          }
+        }
+      }
+    },
+    "Esta carpeta es del sistema y necesita Acceso total al disco." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is a system folder and needs Full Disk Access."
+          }
+        }
+      }
+    },
+    "Estado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
+    },
+    "Esto volverá a crecer a medida que compiles. Es normal." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will grow again as you build. That's normal."
+          }
+        }
+      }
+    },
+    "Está en Carpetas excluidas (Ajustes › General)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's in Excluded folders (Settings › General)"
+          }
+        }
+      }
+    },
+    "Está en la Papelera. El espacio se libera al vaciarla." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's in the Trash. Space is freed when you empty it."
+          }
+        }
+      }
+    },
+    "Está fuera de las carpetas que limpiamos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's outside the folders we clean."
+          }
+        }
+      }
+    },
+    "Están desactivadas en Ajustes del Sistema › Notificaciones." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They're disabled in System Settings › Notifications."
+          }
+        }
+      }
+    },
+    "Evita corromper builds en curso. Siempre activo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prevents breaking builds in progress. Always on."
+          }
+        }
+      }
+    },
+    "Excluido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluded"
+          }
+        }
+      }
+    },
+    "Excluir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exclude"
+          }
+        }
+      }
+    },
+    "Expandido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expanded"
+          }
+        }
+      }
+    },
+    "Exportar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export"
+          }
+        }
+      }
+    },
+    "Flutter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flutter"
+          }
+        }
+      }
+    },
+    "GB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GB"
+          }
+        }
+      }
+    },
+    "General" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        }
+      }
+    },
+    "GitHub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        }
+      }
+    },
+    "GitHub Issues" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub Issues"
+          }
+        }
+      }
+    },
+    "Gradle lo reconstruye en el próximo build (~%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle rebuilds it in the next build (~%@)."
+          }
+        }
+      }
+    },
+    "Gradle lo volverá a descargar si un proyecto lo pide (~%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle will download it again if a project asks (~%@)."
+          }
+        }
+      }
+    },
+    "Gradle los vuelve a descargar si un proyecto los pide." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle re-downloads them if a project asks."
+          }
+        }
+      }
+    },
+    "Gradle volverá a descargar ~%@ en el próximo build." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle will download ~%@ in the next build."
+          }
+        }
+      }
+    },
+    "Gradle volverá a descargarlas en el próximo build (necesitas internet)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle will download them again in the next build (you need internet)."
+          }
+        }
+      }
+    },
+    "Gradle, SDK, emuladores y Android Studio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle, SDK, emulators, and Android Studio"
+          }
+        }
+      }
+    },
+    "Hace que los re-escaneos sean casi instantáneos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makes re-scans almost instant."
+          }
+        }
+      }
+    },
+    "Hay simuladores abiertos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulators are open"
+          }
+        }
+      }
+    },
+    "Herramientas a escanear" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tools to scan"
+          }
+        }
+      }
+    },
+    "Herramientas nativas del SDK. Las versiones viejas suelen quedarse olvidadas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SDK native tools. Old versions often get left behind."
+          }
+        }
+      }
+    },
+    "Historial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
+          }
+        }
+      }
+    },
+    "Historial del editor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editor history"
+          }
+        }
+      }
+    },
+    "Hoy, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today, %@"
+          }
+        }
+      }
+    },
+    "Huérfano: seguro de borrar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orphaned: safe to delete"
+          }
+        }
+      }
+    },
+    "Idioma" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
+    "Importar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import"
+          }
+        }
+      }
+    },
+    "Imágenes de disco de desarrollo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Development disk images"
+          }
+        }
+      }
+    },
+    "Imágenes de sistema" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System images"
+          }
+        }
+      }
+    },
+    "Invítame un café" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy me a coffee"
+          }
+        }
+      }
+    },
+    "Ir a Android" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Android"
+          }
+        }
+      }
+    },
+    "Ir a Xcode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Xcode"
+          }
+        }
+      }
+    },
+    "JDKs de Gradle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle JDKs"
+          }
+        }
+      }
+    },
+    "JDKs que Gradle descarga automáticamente (toolchains)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JDKs that Gradle automatically downloads (toolchains)."
+          }
+        }
+      }
+    },
+    "JSON compatible con el CLI " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON compatible with the CLI "
+          }
+        }
+      }
+    },
+    "Keystores y certificados" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keystores and certificates"
+          }
+        }
+      }
+    },
+    "Kotlin daemon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kotlin daemon"
+          }
+        }
+      }
+    },
+    "Kotlin daemon (Application Support)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kotlin daemon (Application Support)"
+          }
+        }
+      }
+    },
+    "LM" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LM"
+          }
+        }
+      }
+    },
+    "La caché sí. Los datos de tus apps no." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The cache yes. Your app data no."
+          }
+        }
+      }
+    },
+    "La caché y los snapshots sí. Los datos no." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The cache and snapshots yes. The data no."
+          }
+        }
+      }
+    },
+    "La carpeta cambió durante la limpieza." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The folder changed during cleanup."
+          }
+        }
+      }
+    },
+    "La operación tardó demasiado." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The operation took too long."
+          }
+        }
+      }
+    },
+    "La primera preview tardará un poco más." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The first preview will take a bit longer."
+          }
+        }
+      }
+    },
+    "La próxima vez que conectes ese iPhone, Xcode tardará unos minutos en prepararlo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next time you connect that iPhone, Xcode will take a few minutes to prepare it."
+          }
+        }
+      }
+    },
+    "Leo Mogiano" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leo Mogiano"
+          }
+        }
+      }
+    },
+    "LeoMogiano" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LeoMogiano"
+          }
+        }
+      }
+    },
+    "Libera %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free %@"
+          }
+        }
+      }
+    },
+    "Liberaste %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You freed %@"
+          }
+        }
+      }
+    },
+    "Liberaste %@. %lld no se pudieron limpiar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You freed %@. %lld couldn't be cleaned."
+          }
+        }
+      }
+    },
+    "Liberaste %@. 1 no se pudo limpiar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You freed %@. 1 couldn't be cleaned."
+          }
+        }
+      }
+    },
+    "Liberaste %@. Parte volverá a crecer al compilar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You freed %@. Some will grow again as you build."
+          }
+        }
+      }
+    },
+    "Liberaste 18,2 GB. Parte volverá a crecer al compilar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You freed 18.2 GB. Some will grow again as you build."
+          }
+        }
+      }
+    },
+    "Librerías descargadas (AndroidX, Kotlin, Firebase…) que usan tus proyectos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloaded libraries (AndroidX, Kotlin, Firebase…) your projects use."
+          }
+        }
+      }
+    },
+    "Limpiando" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cleaning"
+          }
+        }
+      }
+    },
+    "Limpiando…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cleaning…"
+          }
+        }
+      }
+    },
+    "Limpiar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean"
+          }
+        }
+      }
+    },
+    "Limpiar %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean %@"
+          }
+        }
+      }
+    },
+    "Limpiar 18,2 GB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean 18.2 GB"
+          }
+        }
+      }
+    },
+    "Limpiar conserva tus apps; restablecer o eliminar las borra." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean keeps your apps; reset or delete removes them."
+          }
+        }
+      }
+    },
+    "Limpiar mientras están abiertas puede corromper builds en curso o datos de un simulador." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cleaning while open can corrupt builds in progress or simulator data."
+          }
+        }
+      }
+    },
+    "Limpieza cancelada" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cleanup cancelled"
+          }
+        }
+      }
+    },
+    "Limpieza completada" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cleanup complete"
+          }
+        }
+      }
+    },
+    "Limpieza de proyectos Flutter (build/, .dart_tool, pub cache): llega pronto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flutter project cleanup (build/, .dart_tool, pub cache): coming soon"
+          }
+        }
+      }
+    },
+    "Limpieza recomendada" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recommended cleanup"
+          }
+        }
+      }
+    },
+    "LinkedIn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LinkedIn"
+          }
+        }
+      }
+    },
+    "Liquid Glass (Tahoe)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquid Glass (Tahoe)"
+          }
+        }
+      }
+    },
+    "Liquid Glass usa vidrio translúcido de macOS Tahoe. Clásico es el estilo de Sonoma y Sequoia." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquid Glass uses translucent glass from macOS Tahoe. Classic is the style from Sonoma and Sequoia."
+          }
+        }
+      }
+    },
+    "Listo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Lo delicado ni siquiera lo escaneamos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We don't even scan sensitive stuff."
+          }
+        }
+      }
+    },
+    "Lo está usando otro proceso (%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another process is using it (%@)."
+          }
+        }
+      }
+    },
+    "Lo está usando otro proceso." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another process is using it."
+          }
+        }
+      }
+    },
+    "Lo necesitamos para medir los runtimes de simulador y algunas carpetas de sistema. Solo leemos tamaños; nunca abrimos tus archivos ni enviamos nada fuera de tu Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We need it to measure simulator runtimes and some system folders. We only read sizes; we never open your files or send anything outside your Mac."
+          }
+        }
+      }
+    },
+    "Lo que tiene costo, te lo explicamos antes." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anything with a cost is explained first."
+          }
+        }
+      }
+    },
+    "Logs de Android Studio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android Studio logs"
+          }
+        }
+      }
+    },
+    "Logs de Gradle · Kotlin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle · Kotlin logs"
+          }
+        }
+      }
+    },
+    "Logs de Studio %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logs for Studio %@"
+          }
+        }
+      }
+    },
+    "Logs del daemon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daemon logs"
+          }
+        }
+      }
+    },
+    "Logs del daemon de Gradle y del compilador de Kotlin." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logs for the Gradle daemon and Kotlin compiler."
+          }
+        }
+      }
+    },
+    "Logs del simulador" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator logs"
+          }
+        }
+      }
+    },
+    "Los emuladores que la usan no arrancarán hasta volver a descargarla." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emulators using it won't start until you download it again."
+          }
+        }
+      }
+    },
+    "Marcado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checked"
+          }
+        }
+      }
+    },
+    "Marcar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check"
+          }
+        }
+      }
+    },
+    "Marcar (␣)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check (␣)"
+          }
+        }
+      }
+    },
+    "Marcar todo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check all"
+          }
+        }
+      }
+    },
+    "Marcar todo (⌘A)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check all (⌘A)"
+          }
+        }
+      }
+    },
+    "Material" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Material"
+          }
+        }
+      }
+    },
+    "Menos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Less"
+          }
+        }
+      }
+    },
+    "Mobile Dev Cleaner" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mobile Dev Cleaner"
+          }
+        }
+      }
+    },
+    "Mostrar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show"
+          }
+        }
+      }
+    },
+    "Mostrar categorías vacías en la barra lateral" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show empty categories in the sidebar"
+          }
+        }
+      }
+    },
+    "Mostrar comandos que se ejecutarán" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show commands that will run"
+          }
+        }
+      }
+    },
+    "Mostrar el onboarding de nuevo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show onboarding again"
+          }
+        }
+      }
+    },
+    "Mostrar en Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show in Finder"
+          }
+        }
+      }
+    },
+    "Mostrar menos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show less"
+          }
+        }
+      }
+    },
+    "Mostrar nombres técnicos y rutas completas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show technical names and full paths"
+          }
+        }
+      }
+    },
+    "Mover a la Papelera" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Trash"
+          }
+        }
+      }
+    },
+    "Mover a la Papelera " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Trash "
+          }
+        }
+      }
+    },
+    "Mover a la Papelera en vez de eliminar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Trash instead of delete"
+          }
+        }
+      }
+    },
+    "Métricas de Android" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android metrics"
+          }
+        }
+      }
+    },
+    "NDK %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NDK %@"
+          }
+        }
+      }
+    },
+    "NDK / cmake / build-tools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NDK / cmake / build-tools"
+          }
+        }
+      }
+    },
+    "Nada coincide con el filtro o la búsqueda." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing matches the filter or search."
+          }
+        }
+      }
+    },
+    "Nada. Solo pierdes logs viejos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing. You just lose old logs."
+          }
+        }
+      }
+    },
+    "Necesario para medir runtimes y carpetas de sistema" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Needed to measure runtimes and system folders"
+          }
+        }
+      }
+    },
+    "Ninguna" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
+    "Ninguno" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
+    "Ningún emulador la usa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No emulator uses it"
+          }
+        }
+      }
+    },
+    "Ningún emulador la usa. Si la necesitas, se descarga de nuevo (%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No emulator uses it. If you need it, it downloads again (%@)."
+          }
+        }
+      }
+    },
+    "No borra nada de tu disco." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It doesn't erase anything on your disk."
+          }
+        }
+      }
+    },
+    "No concedido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not granted"
+          }
+        }
+      }
+    },
+    "No encontrado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not found"
+          }
+        }
+      }
+    },
+    "No encontramos %@ en tu Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We didn't find %@ on your Mac."
+          }
+        }
+      }
+    },
+    "No hay carpetas excluidas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No excluded folders."
+          }
+        }
+      }
+    },
+    "No hay nada de esta categoría en tu Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing from this category on your Mac."
+          }
+        }
+      }
+    },
+    "No hay nada que limpiar ahora mismo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing to clean right now."
+          }
+        }
+      }
+    },
+    "No hay nada que limpiar ahora mismo. Vuelve después de unas semanas de builds." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing to clean right now. Come back after a few weeks of building."
+          }
+        }
+      }
+    },
+    "No limpiar si Xcode, Android Studio o un emulador están abiertos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't clean if Xcode, Android Studio, or an emulator is open"
+          }
+        }
+      }
+    },
+    "No pudimos exportar el plan." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't export the plan."
+          }
+        }
+      }
+    },
+    "No pudimos leer el plan." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't read the plan."
+          }
+        }
+      }
+    },
+    "No pudimos leer los datos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't read the data."
+          }
+        }
+      }
+    },
+    "No pudimos leer o escribir en el disco." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't read or write to the disk."
+          }
+        }
+      }
+    },
+    "No, gracias" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No thanks"
+          }
+        }
+      }
+    },
+    "No. Solo se crean al archivar una nueva versión." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No. They're only created when archiving a new version."
+          }
+        }
+      }
+    },
+    "No. Son de versiones que ya no tienes." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No. They're from versions you don't have anymore."
+          }
+        }
+      }
+    },
+    "Nombre del AVD" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AVD name"
+          }
+        }
+      }
+    },
+    "Notificaciones" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
+    },
+    "Notificaciones activadas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications enabled"
+          }
+        }
+      }
+    },
+    "Nunca lo tocamos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never touched"
+          }
+        }
+      }
+    },
+    "Nunca se marcarán, ni siquiera en la limpieza recomendada. Útil para el proyecto en el que trabajas a diario." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They'll never be checked, not even in recommended cleanup. Useful for your daily project."
+          }
+        }
+      }
+    },
     "Ocurrió un error inesperado." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "An unexpected error occurred."
+          }
+        }
+      }
+    },
+    "Off" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Off"
+          }
+        }
+      }
+    },
+    "On" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On"
+          }
+        }
+      }
+    },
+    "Opción 1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Option 1"
+          }
+        }
+      }
+    },
+    "Opción 2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Option 2"
+          }
+        }
+      }
+    },
+    "Oscuro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
+    "Otros" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        }
+      }
+    },
+    "Paquetes descargados por Xcode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packages downloaded by Xcode"
+          }
+        }
+      }
+    },
+    "Parte de esto volverá a crecer mientras desarrollas. Es normal: así funcionan Xcode y Gradle. Te recomendamos revisar cada 2–4 semanas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some of this will grow again as you develop. That's normal: that's how Xcode and Gradle work. We recommend reviewing every 2–4 weeks."
+          }
+        }
+      }
+    },
+    "Paso %lld de %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step %lld of %lld"
+          }
+        }
+      }
+    },
+    "Pedir confirmación extra para elementos con costo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask for confirmation for items with a cost"
+          }
+        }
+      }
+    },
+    "Permiso denegado: macOS protege este archivo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permission denied: macOS protects this file."
+          }
+        }
+      }
+    },
+    "Permisos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permissions"
+          }
+        }
+      }
+    },
+    "Permite el acceso total al disco" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allows full disk access"
+          }
+        }
+      }
+    },
+    "Permitir notificaciones" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow notifications"
+          }
+        }
+      }
+    },
+    "Pierdes el historial de resultados de tests anteriores." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You lose the history of previous test results."
+          }
+        }
+      }
+    },
+    "Pierdes los ajustes de esa versión. Tu versión actual no se toca." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You lose that version's settings. Your current version is untouched."
+          }
+        }
+      }
+    },
+    "Pierdes los ajustes y plugins de %@. Tu versión actual no cambia." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You lose the settings and plugins for %@. Your current version doesn't change."
+          }
+        }
+      }
+    },
+    "Pierdes los símbolos para leer crashes de esas versiones." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You lose the symbols to read crashes from those versions."
+          }
+        }
+      }
+    },
+    "Pierdes los símbolos para leer crashes de esta versión." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You lose the symbols to read crashes from this version."
+          }
+        }
+      }
+    },
+    "Plan de limpieza" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cleanup plan"
+          }
+        }
+      }
+    },
+    "Plan exportado: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan exported: %@"
+          }
+        }
+      }
+    },
+    "Plan importado: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan imported: %@"
+          }
+        }
+      }
+    },
+    "Plan vacío exportado (no hay nada seleccionado)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty plan exported (nothing is selected)"
+          }
+        }
+      }
+    },
+    "Plataforma %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Platform %@"
+          }
+        }
+      }
+    },
+    "Pods · Carthage · fastlane" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pods · Carthage · fastlane"
+          }
+        }
+      }
+    },
+    "Por qué aparece" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why it appears"
+          }
+        }
+      }
+    },
+    "Previews de SwiftUI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftUI Previews"
+          }
+        }
+      }
+    },
+    "Primary Button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primary Button"
+          }
+        }
+      }
+    },
+    "Privacidad y seguridad" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy & Security"
+          }
+        }
+      }
+    },
+    "Probablemente es la versión que usas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's probably the version you use."
+          }
+        }
+      }
+    },
+    "Progreso del escaneo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan progress"
+          }
+        }
+      }
+    },
+    "Pronto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soon"
+          }
+        }
+      }
+    },
+    "Proyectos Flutter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flutter projects"
+          }
+        }
+      }
+    },
+    "Proyectos Flutter: build/, .dart_tool y caché de pub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flutter projects: build/, .dart_tool, and pub cache"
+          }
+        }
+      }
+    },
+    "Proyectos que ya no existen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Projects that no longer exist"
+          }
+        }
+      }
+    },
+    "Próximamente" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming soon"
+          }
+        }
+      }
+    },
+    "Puede tener un build en curso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It might have a build in progress"
+          }
+        }
+      }
+    },
+    "Puedes recuperar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can recover"
+          }
+        }
+      }
+    },
+    "Puedes recuperar %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can recover %@"
+          }
+        }
+      }
+    },
+    "Puedes recuperar %@: %@ se regenera solo, %@ tiene costo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can recover %@: %@ regenerates, %@ has a cost"
+          }
+        }
+      }
+    },
+    "Puedes recuperarlos desde la Papelera. El espacio se libera al vaciarla." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can recover them from the Trash. Space is freed when you empty it."
+          }
+        }
+      }
+    },
+    "Quitar carpeta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove folder"
+          }
+        }
+      }
+    },
+    "Qué pasa si lo borro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What happens if I delete it"
           }
         }
       }
@@ -41,12 +3441,1142 @@
         }
       }
     },
+    "Reportar un problema" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report a problem"
+          }
+        }
+      }
+    },
+    "Repositorios de specs de CocoaPods" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CocoaPods spec repositories"
+          }
+        }
+      }
+    },
+    "Requiere tu decisión" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requires your decision"
+          }
+        }
+      }
+    },
+    "Residuos de test" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test residue"
+          }
+        }
+      }
+    },
+    "Restablecer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        }
+      }
+    },
+    "Restablecer todos los ajustes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset all settings"
+          }
+        }
+      }
+    },
+    "Restablecer…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset…"
+          }
+        }
+      }
+    },
+    "Resultados intermedios que Gradle guarda para compilar más rápido." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intermediate results Gradle stores for faster building."
+          }
+        }
+      }
+    },
+    "Resultados y adjuntos de ejecuciones de tests (.xcresult)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test run results and attachments (.xcresult)."
+          }
+        }
+      }
+    },
     "Resumen" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Overview"
+          }
+        }
+      }
+    },
+    "Revisar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review"
+          }
+        }
+      }
+    },
+    "Revisar (⌫)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review (⌫)"
+          }
+        }
+      }
+    },
+    "Runtimes de simulador" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator runtimes"
+          }
+        }
+      }
+    },
+    "Ruta completa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full path"
+          }
+        }
+      }
+    },
+    "Se borra el dispositivo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The device is erased."
+          }
+        }
+      }
+    },
+    "Se canceló la operación." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The operation was cancelled."
+          }
+        }
+      }
+    },
+    "Se pierden apps y datos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You lose apps and data."
+          }
+        }
+      }
+    },
+    "Se reconstruye al resolver dependencias (~%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It rebuilds when resolving dependencies (~%@)."
+          }
+        }
+      }
+    },
+    "Se regenera solo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regenerates"
+          }
+        }
+      }
+    },
+    "Se volverá a descargar la próxima vez que abras un proyecto que la use (~%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It will download again next time you open a project that uses it (~%@)."
+          }
+        }
+      }
+    },
+    "Se volverá a descargar si un proyecto la pide (~%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It will download again if a project asks (~%@)."
+          }
+        }
+      }
+    },
+    "Secondary Button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secondary Button"
+          }
+        }
+      }
+    },
+    "Seguridad" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Security"
+          }
+        }
+      }
+    },
+    "Selecciona un elemento para ver sus detalles." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select an item to see its details."
+          }
+        }
+      }
+    },
+    "Si cancelas, lo que ya se limpió queda limpio." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you cancel, what's already cleaned stays clean."
+          }
+        }
+      }
+    },
+    "Si lo necesitas otra vez, Xcode lo vuelve a descargar (varios GB)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you need it again, Xcode downloads it again (several GB)."
+          }
+        }
+      }
+    },
+    "Si te ahorró espacio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If it saved you space"
+          }
+        }
+      }
+    },
+    "Simuladores iOS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS Simulators"
+          }
+        }
+      }
+    },
+    "Simuladores y builds que Xcode crea para mostrar las previews de SwiftUI." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulators and builds Xcode creates to show SwiftUI previews."
+          }
+        }
+      }
+    },
+    "Sin acceso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No access"
+          }
+        }
+      }
+    },
+    "Sin marcar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unchecked"
+          }
+        }
+      }
+    },
+    "Sin uso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unused"
+          }
+        }
+      }
+    },
+    "Sistema" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
+    "Sistemas Android que usan los emuladores para arrancar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Android systems emulators use to boot."
+          }
+        }
+      }
+    },
+    "Sistemas operativos completos que usan los simuladores (iOS, watchOS…). Los que están en uso no aparecen." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full operating systems that simulators use (iOS, watchOS…). In-use ones don't appear."
+          }
+        }
+      }
+    },
+    "Snapshots" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snapshots"
+          }
+        }
+      }
+    },
+    "Solo si la vuelves a descargar desde el SDK Manager." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only if you download it again from SDK Manager."
+          }
+        }
+      }
+    },
+    "Solo si lo vuelves a descargar desde Xcode." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only if you download it again from Xcode."
+          }
+        }
+      }
+    },
+    "Soporte de Interface Builder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interface Builder support"
+          }
+        }
+      }
+    },
+    "Soporte de iPhones" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone support"
+          }
+        }
+      }
+    },
+    "SwiftUI Previews" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftUI Previews"
+          }
+        }
+      }
+    },
+    "Sí, al abrir un proyecto que la use." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes, when you open a project that uses it."
+          }
+        }
+      }
+    },
+    "Sí, al compilar un proyecto que la pida." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes, when you build a project that asks for it."
+          }
+        }
+      }
+    },
+    "Sí, al compilar un proyecto que los pida." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes, when you build a project that asks for them."
+          }
+        }
+      }
+    },
+    "Sí, pero toca esperar la descarga." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes, but you have to wait for the download."
+          }
+        }
+      }
+    },
+    "Sí. Cada ejecución de tests genera nuevos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. Each test run generates new ones."
+          }
+        }
+      }
+    },
+    "Sí. Gradle lo regenera al compilar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. Gradle regenerates it when building."
+          }
+        }
+      }
+    },
+    "Sí. Se escriben con cada build." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. They're written with each build."
+          }
+        }
+      }
+    },
+    "Sí. Se recrean solos al usar Xcode." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. They recreate themselves when using Xcode."
+          }
+        }
+      }
+    },
+    "Sí. Se regeneran al abrir una preview." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. They regenerate when you open a preview."
+          }
+        }
+      }
+    },
+    "Sí. Se regeneran solos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. They regenerate themselves."
+          }
+        }
+      }
+    },
+    "Sí. Se rellenan al instalar dependencias." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. They're filled when installing dependencies."
+          }
+        }
+      }
+    },
+    "Sí. Se vuelve a copiar al conectar el dispositivo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. It's copied again when you connect the device."
+          }
+        }
+      }
+    },
+    "Sí. Xcode lo regenera en cuanto compilas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. Xcode regenerates it as soon as you build."
+          }
+        }
+      }
+    },
+    "Símbolos que Xcode copia de cada iPhone que conectas para depurar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbols Xcode copies from each iPhone you connect to debug."
+          }
+        }
+      }
+    },
+    "Tamaño" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Size"
+          }
+        }
+      }
+    },
+    "Tamaño total" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total size"
+          }
+        }
+      }
+    },
+    "Tendrás que marcar “Entiendo” antes de limpiar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You'll have to check \"I understand\" before cleaning."
+          }
+        }
+      }
+    },
+    "Tiene costo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Has a cost"
+          }
+        }
+      }
+    },
+    "Tiene costo. Revísalo uno por uno." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Has a cost. Review it one by one."
+          }
+        }
+      }
+    },
+    "Todo listo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All set."
+          }
+        }
+      }
+    },
+    "Todo lo que encontramos cae en una de estas tres cajas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything we find falls into one of these three boxes."
+          }
+        }
+      }
+    },
+    "Todo ocurre en tu Mac. Sin telemetría, sin internet. Nada se borra sin que lo revises antes." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything happens on your Mac. No telemetry, no internet. Nothing gets deleted without you reviewing it first."
+          }
+        }
+      }
+    },
+    "Tu Mac está ordenada." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Mac is tidy."
+          }
+        }
+      }
+    },
+    "Tus apps y datos quedan." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your apps and data stay."
+          }
+        }
+      }
+    },
+    "Tus proyectos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your projects"
+          }
+        }
+      }
+    },
+    "UDID" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UDID"
+          }
+        }
+      }
+    },
+    "Un proyecto que fije esa versión la descargará de nuevo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A project that pins that version will download it again."
+          }
+        }
+      }
+    },
+    "Un proyecto que use esa versión la descargará otra vez al abrirlo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A project that uses that version will download it again when you open it."
+          }
+        }
+      }
+    },
+    "Una sola notificación con lo que liberaste. Nunca te avisamos para que limpies." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A single notification with what you freed. We never nag you to clean."
+          }
+        }
+      }
+    },
+    "Usadas por tus emuladores" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Used by your emulators"
+          }
+        }
+      }
+    },
+    "UserData/Previews" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UserData/Previews"
+          }
+        }
+      }
+    },
+    "Vaciar caché de tamaños" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear size cache"
+          }
+        }
+      }
+    },
+    "Vas a liberar %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're going to free %@"
+          }
+        }
+      }
+    },
+    "Ve a " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to "
+          }
+        }
+      }
+    },
+    "Ver detalles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View details"
+          }
+        }
+      }
+    },
+    "Ver historial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View history"
+          }
+        }
+      }
+    },
+    "Versiones archivadas de tus apps (.xcarchive) con sus símbolos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archived versions of your apps (.xcarchive) with their symbols."
+          }
+        }
+      }
+    },
+    "Versiones de Gradle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gradle versions"
+          }
+        }
+      }
+    },
+    "Versiones viejas de Studio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Old Studio versions"
+          }
+        }
+      }
+    },
+    "Versión %@ · Licencia MIT · Sin telemetría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@ · MIT License · No telemetry"
+          }
+        }
+      }
+    },
+    "Volver a comprobar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check again"
+          }
+        }
+      }
+    },
+    "XCTestDevices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCTestDevices"
+          }
+        }
+      }
+    },
+    "Xcode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode"
+          }
+        }
+      }
+    },
+    "Xcode lo volverá a descargar si creas un simulador con %@ (%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode will download it again if you create a simulator with %@ (%@)."
+          }
+        }
+      }
+    },
+    "Xcode puede tardar unos segundos más en abrir la primera vez." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode may take a few extra seconds to open the first time."
+          }
+        }
+      }
+    },
+    "ahora" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "now"
+          }
+        }
+      }
+    },
+    "build/, .dart_tool y caché de pub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "build/, .dart_tool, and pub cache"
+          }
+        }
+      }
+    },
+    "caches/modules-2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "caches/modules-2"
+          }
+        }
+      }
+    },
+    "caches/transforms · build-cache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "caches/transforms · build-cache"
+          }
+        }
+      }
+    },
+    "daemon · kotlin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "daemon · kotlin"
+          }
+        }
+      }
+    },
+    "de %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "of %@"
+          }
+        }
+      }
+    },
+    "elige una acción por dispositivo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "choose an action per device"
+          }
+        }
+      }
+    },
+    "en uso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in use"
+          }
+        }
+      }
+    },
+    "iOS DeviceSupport" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS DeviceSupport"
+          }
+        }
+      }
+    },
+    "jdks" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jdks"
+          }
+        }
+      }
+    },
+    "leomogiano" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "leomogiano"
+          }
+        }
+      }
+    },
+    "mdc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mdc"
+          }
+        }
+      }
+    },
+    "ndk · cmake · build-tools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ndk · cmake · build-tools"
+          }
+        }
+      }
+    },
+    "pod install volverá a descargar los specs (~%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pod install will download the specs again (~%@)."
+          }
+        }
+      }
+    },
+    "system-images" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "system-images"
+          }
+        }
+      }
+    },
+    "wrapper/dists" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wrapper/dists"
+          }
+        }
+      }
+    },
+    "xcrun simctl erase <UDID> · avdmanager delete avd" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "xcrun simctl erase <UDID> · avdmanager delete avd"
+          }
+        }
+      }
+    },
+    "y %lld más" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and %lld more"
+          }
+        }
+      }
+    },
+    "· %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "· %@"
+          }
+        }
+      }
+    },
+    "¿Qué es y qué pasa si lo borro?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is it and what happens if I delete it?"
+          }
+        }
+      }
+    },
+    "¿Qué es?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is it?"
+          }
+        }
+      }
+    },
+    "¿Qué pasa si lo borro?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What happens if I delete it?"
+          }
+        }
+      }
+    },
+    "¿Seguro?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure?"
+          }
+        }
+      }
+    },
+    "¿Te avisamos cuando termine la limpieza?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Should we notify you when cleanup is done?"
+          }
+        }
+      }
+    },
+    "¿Vuelve a aparecer?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Does it come back?"
+          }
+        }
+      }
+    },
+    "Última modificación" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last modified"
+          }
+        }
+      }
+    },
+    "Último escaneo: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last scan: %@"
+          }
+        }
+      }
+    },
+    "“DerivedData” en vez de “Builds de Xcode”." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"DerivedData\" instead of \"Xcode Builds\"."
           }
         }
       }

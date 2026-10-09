@@ -10,7 +10,7 @@ struct MDCToast: View {
             .padding(EdgeInsets(top: 7, leading: 14, bottom: 7, trailing: 14))
             .background(Color(nsColor: NSColor(srgbRed: 30/255, green: 30/255, blue: 34/255, alpha: 0.86)))
             .cornerRadius(999, antialiased: true)
-            .shadow(color: .black.opacity(0.25), radius: 10, x: 0, y: 6)
+            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
 
@@ -23,6 +23,7 @@ extension View {
 private struct MDCToastModifier: ViewModifier {
     @Binding var message: String?
     @State private var toastTask: Task<Void, Never>?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     func body(content: Content) -> some View {
         ZStack(alignment: .bottom) {
@@ -32,7 +33,7 @@ private struct MDCToastModifier: ViewModifier {
             if let msg = message, !msg.isEmpty {
                 MDCToast(message: msg)
                     .padding(.bottom, 16)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
             }
         }
         .task(id: message) {
@@ -45,7 +46,7 @@ private struct MDCToastModifier: ViewModifier {
             toastTask = Task {
                 try? await Task.sleep(nanoseconds: 2_200_000_000)
                 if !Task.isCancelled {
-                    withAnimation {
+                    withAnimation(reduceMotion ? nil : .default) {
                         message = nil
                     }
                 }

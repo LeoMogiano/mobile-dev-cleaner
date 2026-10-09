@@ -32,6 +32,7 @@ extension Color {
     static let mdcLine2 = Color(light: (0x000000, 0.15), dark: (0xFFFFFF, 0.18))
     static let mdcHover = Color(light: (0x000000, 0.045), dark: (0xFFFFFF, 0.06))
     static let mdcFill = Color(light: (0x000000, 0.07), dark: (0xFFFFFF, 0.10))
+    static let mdcSegment = Color(light: (0x000000, 0.06), dark: (0xFFFFFF, 0.08))
     static let mdcSegmentOn = Color(light: (0xFFFFFF, 1), dark: (0xFFFFFF, 0.22))
 
     static func mdcTool(_ tool: Tool) -> Color {
@@ -40,6 +41,13 @@ extension Color {
 }
 
 extension Color {
+    /// Fixed sRGB color for illustrations (gradients, brand tiles) that don't follow the theme.
+    init(hex: UInt32) {
+        self.init(
+            .sRGB, red: Double((hex >> 16) & 0xFF) / 255, green: Double((hex >> 8) & 0xFF) / 255,
+            blue: Double(hex & 0xFF) / 255)
+    }
+
     init(light: UInt32, dark: UInt32) {
         self.init(light: (light, 1), dark: (dark, 1))
     }

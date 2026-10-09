@@ -45,7 +45,7 @@ struct CandidateRow: View, Equatable {
             }
             .buttonStyle(.plain)
             .foregroundStyle(Color.mdcAccent)
-            .opacity(row.isInspected ? 1 : 0.4)
+            .opacity(row.isInspected || isHovering ? 1 : 0.4)
             .help("Mostrar en Finder")
             .accessibilityLabel("Mostrar en Finder")
         }
@@ -54,16 +54,28 @@ struct CandidateRow: View, Equatable {
         .padding(.leading, 12)
         .padding(.trailing, 10)
         .frame(height: 34)
-        .background(background)
+        // Inset pill instead of clipping the whole list: clipping a long stack costs every scroll frame.
+        .background(background, in: RoundedRectangle(cornerRadius: 7, style: .continuous).inset(by: 3))
         .contentShape(Rectangle())
-        .onTapGesture(perform: onInspect)
+        .onTapGesture(perform: onToggle)
         .onHover { isHovering = $0 }
+        .contextMenu {
+            Button("Ver detalles", action: onInspect)
+            Button("Mostrar en Finder", action: onShowInFinder)
+        }
         .opacity(row.isExcluded ? 0.5 : 1)
         .accessibilityElement(children: .combine)
         .accessibilityLabel(row.accessibilityLabel)
         .accessibilityAddTraits(.isToggle)
-        .accessibilityValue(row.isSelected ? "Marcado" : "Sin marcar")
+        .accessibilityValue(valueLabel)
         .accessibilityAction(named: "Marcar", onToggle)
+        .accessibilityAction(named: "Ver detalles", onInspect)
+        .accessibilityAction(named: "Mostrar en Finder", onShowInFinder)
+    }
+
+    private var valueLabel: String {
+        if row.isExcluded { return L10n.string("Excluido") }
+        return row.isSelected ? L10n.string("Marcado") : L10n.string("Sin marcar")
     }
 
     private var background: Color {

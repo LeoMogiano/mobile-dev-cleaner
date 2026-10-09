@@ -21,14 +21,20 @@ final class ScanStore {
 
     @ObservationIgnored private let scan: ScanUseCase
     @ObservationIgnored private let flushInterval: Duration
+    @ObservationIgnored private let tools: @MainActor () -> Set<Tool>
     @ObservationIgnored private var scanTask: Task<Void, Never>?
     @ObservationIgnored private var flushTask: Task<Void, Never>?
     @ObservationIgnored private var buffer: [CategoryReport] = []
     @ObservationIgnored private var generation = 0
 
-    init(scan: ScanUseCase, flushInterval: Duration = .milliseconds(100)) {
+    /// `tools` is read on every scan, so toggling a tool in Ajustes applies to the next one.
+    init(
+        scan: ScanUseCase, flushInterval: Duration = .milliseconds(100),
+        tools: @escaping @MainActor () -> Set<Tool> = { Set(Tool.allCases) }
+    ) {
         self.scan = scan
         self.flushInterval = flushInterval
+        self.tools = tools
     }
 
     func handle(_ intent: ScanIntent) {
@@ -65,10 +71,13 @@ final class ScanStore {
         generation += 1
         let current = generation
         status = .scanning
-        scannedCategories = CategoryID.allCases
-        pending = Set(CategoryID.allCases)
+        let tools = tools()
+        let ids = CategoryID.allCases.filter { tools.contains($0.tool) }
+        reports = reports.filter { tools.contains($0.key.tool) }
+        scannedCategories = ids
+        pending = Set(ids)
         scanTask = Task { [scan] in
-            for await event in scan() {
+            for await event in scan(tools: tools) {
                 guard !Task.isCancelled, current == generation else { return }
                 consume(event)
             }

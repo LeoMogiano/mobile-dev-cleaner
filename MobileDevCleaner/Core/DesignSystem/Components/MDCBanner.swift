@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct MDCBanner: View {
-    let message: String
-    let actionTitle: String
+    let message: LocalizedStringKey
+    let actionTitle: LocalizedStringKey
     let onAction: () -> Void
     let onDismiss: () -> Void
 

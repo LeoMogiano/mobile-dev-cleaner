@@ -36,9 +36,9 @@ struct MDCRiskBadge: View {
 
     private var label: String {
         switch kind {
-        case .regenerates: "Se regenera solo"
-        case .hasCost: "Tiene costo"
-        case .protected: "Nunca lo tocamos"
+        case .regenerates: L10n.string("Se regenera solo")
+        case .hasCost: L10n.string("Tiene costo")
+        case .protected: L10n.string("Nunca lo tocamos")
         }
     }
 

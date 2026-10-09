@@ -14,20 +14,20 @@ struct DetailView: View {
         case .overview:
             DashboardView()
         case .category(let id) where id.holdsDevices:
-            let info = CategoryInfo.info(for: id)
-            ContentUnavailableView(info.name, systemImage: info.symbol)
+            DevicesView(category: id)
+                .id(id)
         case .category(let id):
             CategoryView(category: id)
                 .id(id)
         case .history:
-            ContentUnavailableView("Historial", systemImage: "clock.arrow.circlepath")
+            HistoryView()
         }
     }
 
     private var title: String {
         switch router.selection {
-        case .overview: "Resumen"
-        case .history: "Historial"
+        case .overview: L10n.string("Resumen")
+        case .history: L10n.string("Historial")
         case .category(let id): id.tool == .xcode ? "Xcode" : "Android"
         }
     }
