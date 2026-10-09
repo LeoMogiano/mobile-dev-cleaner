@@ -5,6 +5,7 @@ struct RootView: View {
     @Environment(HistoryStore.self) private var historyStore
     @Environment(AppRouter.self) private var router
     @Environment(SelectionStore.self) private var selection
+    @Environment(SettingsStore.self) private var settings
     @Environment(\.openSettings) private var openSettings
 
     var body: some View {
@@ -38,9 +39,18 @@ struct RootView: View {
         }
         .mdcToast($router.toast)
         .sheet(isPresented: $router.isReviewPresented) { ReviewSheet() }
+        .sheet(isPresented: $router.isFullDiskAccessPresented) { FullDiskAccessSheet() }
+        .sheet(isPresented: $router.isOnboardingPresented) {
+            OnboardingView()
+                .interactiveDismissDisabled()
+        }
         .task {
             historyStore.handle(.load)
-            if scanStore.status == .idle { scanStore.handle(.start) }
+            if !settings.onboardingCompleted {
+                router.isOnboardingPresented = true
+            } else if settings.scanOnOpen, scanStore.status == .idle {
+                scanStore.handle(.start)
+            }
         }
         .onChange(of: scanStore.status) { _, status in
             if case .finished = status { selection.prune(to: scanStore.reports) }

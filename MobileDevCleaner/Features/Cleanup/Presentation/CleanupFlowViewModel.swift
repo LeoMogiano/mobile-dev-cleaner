@@ -260,7 +260,7 @@ final class CleanupFlowViewModel {
         await history.record(result)
         selection.clear()
         scan.handle(.start)
-        if !result.wasCancelled {
+        if !result.wasCancelled, settings.notifyOnFinish {
             await notifier.notifyCleanupFinished(freedBytes: result.freedBytes, failureCount: result.failures.count)
         }
     }

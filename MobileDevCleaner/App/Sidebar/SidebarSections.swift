@@ -40,10 +40,11 @@ struct SidebarSections: Equatable {
         pending: Set<CategoryID>,
         showEmpty: Bool,
         expanded: Set<Tool>,
-        selected: CategoryID? = nil
+        selected: CategoryID? = nil,
+        tools: Set<Tool> = Set(Tool.allCases)
     ) {
         let scanning = !pending.isEmpty
-        sections = Tool.allCases.map { tool in
+        sections = Tool.allCases.filter(tools.contains).map { tool in
             let ids = CategoryID.allCases.filter { $0.tool == tool }
             var rows: [(row: Row, size: Int64)] = []
             var total: Int64 = 0

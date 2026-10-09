@@ -9,7 +9,7 @@ struct SidebarView: View {
     var body: some View {
         let model = SidebarSections(
             reports: store.reports, pending: store.pending, showEmpty: settings.showEmpty,
-            expanded: expanded, selected: selectedCategory
+            expanded: expanded, selected: selectedCategory, tools: settings.enabledTools
         )
         List(selection: selection) {
             SidebarRow(title: "Resumen", symbol: "square.grid.2x2", isSelected: router.selection == .overview)

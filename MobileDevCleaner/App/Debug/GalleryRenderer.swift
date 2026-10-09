@@ -16,6 +16,7 @@ enum GalleryRenderer {
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         render(Gallery(), page: "gallery", to: directory)
         render(SheetsGallery(), page: "sheets", to: directory)
+        render(OnboardingGallery(), page: "onboarding", to: directory)
         exit(0)
     }
 

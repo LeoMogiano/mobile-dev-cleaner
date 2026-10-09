@@ -293,6 +293,7 @@ struct CleanupFlowViewModelTests {
         let failingID = "/tmp/mdc/D"
         let ctx = await makeContext(
             script: { ops, _ in MockCleanupRepository.outcomeStream(ops, failing: [failingID]) })
+        ctx.settings.notifyOnFinish = true
         await open(ctx)
         ctx.vm.handle(.toggleUnderstands)
         let scansBefore = ctx.repo.log.scanCount
