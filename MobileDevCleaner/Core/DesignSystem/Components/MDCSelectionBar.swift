@@ -45,11 +45,11 @@ struct MDCSelectionBar: View {
             .buttonStyle(PlainButtonStyle())
 
             Button(action: onReview) {
-                Text("Revisar y limpiar")
+                Text("Revisar")
             }
             .buttonStyle(MDCPrimaryButtonStyle(height: 30, horizontalPadding: 16))
             .keyboardShortcut(.delete, modifiers: [])
-            .help("Revisar y limpiar (⌫)")
+            .help("Revisar (⌫)")
         }
         .padding(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 6))
         .background(sheet, in: shape)
