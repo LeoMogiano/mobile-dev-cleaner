@@ -241,6 +241,16 @@
         }
       }
     },
+    ".pub-cache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".pub-cache"
+          }
+        }
+      }
+    },
     "1 dispositivo" : {
       "localizations" : {
         "en" : {
@@ -901,6 +911,16 @@
         }
       }
     },
+    "Caché de pub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pub cache"
+          }
+        }
+      }
+    },
     "Caché de tamaños " : {
       "localizations" : {
         "en" : {
@@ -917,6 +937,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Size cache cleared. Next scan will be complete."
+          }
+        }
+      }
+    },
+    "Caché del SDK de Flutter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flutter SDK cache"
           }
         }
       }
@@ -1137,6 +1167,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Start"
+          }
+        }
+      }
+    },
+    "Compilaciones y archivos de herramientas que Flutter guarda dentro de cada proyecto." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Builds and tool files Flutter keeps inside each project."
           }
         }
       }
@@ -1447,6 +1487,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Next build will take longer."
+          }
+        }
+      }
+    },
+    "El próximo comando de flutter los descargará de nuevo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The next flutter command will download them again."
+          }
+        }
+      }
+    },
+    "El próximo flutter pub get descargará de nuevo los paquetes que uses." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The next flutter pub get will download the packages you use again."
           }
         }
       }
@@ -2011,6 +2071,16 @@
         }
       }
     },
+    "Ir a Flutter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Flutter"
+          }
+        }
+      }
+    },
     "Ir a Xcode" : {
       "localizations" : {
         "en" : {
@@ -2137,6 +2207,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The first preview will take a bit longer."
+          }
+        }
+      }
+    },
+    "La próxima compilación del proyecto tardará más. Tu código no se toca." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The project's next build will take longer. Your code is not touched."
           }
         }
       }
@@ -2327,16 +2407,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cleanup complete"
-          }
-        }
-      }
-    },
-    "Limpieza de proyectos Flutter (build/, .dart_tool, pub cache): llega pronto" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Flutter project cleanup (build/, .dart_tool, pub cache): coming soon"
           }
         }
       }
@@ -2661,6 +2731,16 @@
         }
       }
     },
+    "Motores y herramientas que el SDK de Flutter descarga para cada plataforma." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engines and tools the Flutter SDK downloads for each platform."
+          }
+        }
+      }
+    },
     "Mover a la Papelera" : {
       "localizations" : {
         "en" : {
@@ -2791,6 +2871,16 @@
         }
       }
     },
+    "Ningún proyecto la usa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No project uses it"
+          }
+        }
+      }
+    },
     "No borra nada de tu disco." : {
       "localizations" : {
         "en" : {
@@ -2871,12 +2961,12 @@
         }
       }
     },
-    "No limpiar si Xcode, Android Studio o un emulador están abiertos" : {
+    "No limpiar si Xcode, Android Studio, Flutter o un emulador están abiertos" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Don't clean if Xcode, Android Studio, or an emulator is open"
+            "value" : "Don't clean while Xcode, Android Studio, Flutter or an emulator is open"
           }
         }
       }
@@ -3321,32 +3411,12 @@
         }
       }
     },
-    "Pronto" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Soon"
-          }
-        }
-      }
-    },
     "Proyectos Flutter" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Flutter projects"
-          }
-        }
-      }
-    },
-    "Proyectos Flutter: build/, .dart_tool y caché de pub" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Flutter projects: build/, .dart_tool, and pub cache"
           }
         }
       }
@@ -3361,12 +3431,12 @@
         }
       }
     },
-    "Próximamente" : {
+    "Proyectos, caché de pub, SDK y FVM" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coming soon"
+            "value" : "Projects, pub cache, SDK and FVM"
           }
         }
       }
@@ -3377,6 +3447,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "It might have a build in progress"
+          }
+        }
+      }
+    },
+    "Puede tener una compilación en curso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "May have a build in progress"
           }
         }
       }
@@ -3591,6 +3671,16 @@
         }
       }
     },
+    "SDKs completos de Flutter instalados con FVM. Cada versión ocupa varios GB." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Flutter SDKs installed with FVM. Each version takes several GB."
+          }
+        }
+      }
+    },
     "Se borra el dispositivo." : {
       "localizations" : {
         "en" : {
@@ -3607,6 +3697,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The operation was cancelled."
+          }
+        }
+      }
+    },
+    "Se descargará de nuevo (%@) al usar flutter." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Will be downloaded again (%@) when you use flutter."
+          }
+        }
+      }
+    },
+    "Se descargará de nuevo (%@) con fvm install." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Will be downloaded again (%@) with fvm install."
+          }
+        }
+      }
+    },
+    "Se descargarán de nuevo los paquetes (%@) al hacer pub get." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packages will be downloaded again (%@) on pub get."
           }
         }
       }
@@ -3831,6 +3951,16 @@
         }
       }
     },
+    "Solo si un proyecto la vuelve a pedir." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only if a project asks for it again."
+          }
+        }
+      }
+    },
     "Soporte de Interface Builder" : {
       "localizations" : {
         "en" : {
@@ -3921,6 +4051,16 @@
         }
       }
     },
+    "Sí. Se descargan solos o con flutter precache." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. They download on their own or with flutter precache."
+          }
+        }
+      }
+    },
     "Sí. Se escriben con cada build." : {
       "localizations" : {
         "en" : {
@@ -3951,12 +4091,32 @@
         }
       }
     },
+    "Sí. Se regeneran al compilar o al correr flutter pub get." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. They regenerate when you build or run flutter pub get."
+          }
+        }
+      }
+    },
     "Sí. Se regeneran solos." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yes. They regenerate themselves."
+          }
+        }
+      }
+    },
+    "Sí. Se rellena al instalar dependencias." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes. It refills when you install dependencies."
           }
         }
       }
@@ -4081,6 +4241,16 @@
         }
       }
     },
+    "Todos los paquetes de Dart y Flutter que descargaste para tus proyectos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every Dart and Flutter package you downloaded for your projects."
+          }
+        }
+      }
+    },
     "Tu Mac está ordenada." : {
       "localizations" : {
         "en" : {
@@ -4121,6 +4291,16 @@
         }
       }
     },
+    "Un proyecto que fije esa versión la descargará de nuevo con fvm install." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A project pinned to that version will download it again with fvm install."
+          }
+        }
+      }
+    },
     "Un proyecto que fije esa versión la descargará de nuevo." : {
       "localizations" : {
         "en" : {
@@ -4157,6 +4337,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Used by your emulators"
+          }
+        }
+      }
+    },
+    "Usadas por tus proyectos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Used by your projects"
           }
         }
       }
@@ -4227,6 +4417,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Archived versions of your apps (.xcarchive) with their symbols."
+          }
+        }
+      }
+    },
+    "Versiones de Flutter (FVM)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flutter versions (FVM)"
           }
         }
       }
@@ -4321,12 +4521,12 @@
         }
       }
     },
-    "build/, .dart_tool y caché de pub" : {
+    "build/ · .dart_tool/" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "build/, .dart_tool, and pub cache"
+            "value" : "build/ · .dart_tool/"
           }
         }
       }
@@ -4387,6 +4587,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "in use"
+          }
+        }
+      }
+    },
+    "flutter/bin/cache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "flutter/bin/cache"
+          }
+        }
+      }
+    },
+    "fvm/versions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fvm/versions"
           }
         }
       }
