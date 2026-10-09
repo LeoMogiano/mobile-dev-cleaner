@@ -28,6 +28,8 @@ strings se escriben normal.
 - Tokens en `Core/DesignSystem/` (no inventes colores si existe token).
 
 ## Swift
+- Comentarios de código en **inglés** (solo el porqué). Mínimos y prolijos: nada que repita lo que el código dice, sin bloques largos, sin TODO sueltos. Tests en inglés: `@Suite("...")`, `@Test("...")`, mensajes.
+- Strings de UI en español (clave del String Catalog).
 - Swift 6, `SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated`, concurrencia estricta: tipos
   `Sendable`, ViewModels `@MainActor @Observable`.
 - Sin dependencias externas. Sin `AnyView`. `ForEach` con ids estables.
