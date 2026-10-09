@@ -147,7 +147,7 @@ struct ServiceLocatorTests {
         let sl = ServiceLocator()
         sl.registerFactory(TestService.self) { TestService() }
 
-        let instance: TestService = sl()
+        let _: TestService = sl()
         #expect(sl.isRegistered(TestService.self))
     }
 
@@ -157,7 +157,7 @@ struct ServiceLocatorTests {
         let sl = ServiceLocator()
         sl.registerFactory(TestService.self, name: "custom") { TestService() }
 
-        let instance: TestService = sl(name: "custom")
+        let _: TestService = sl(name: "custom")
         #expect(sl.isRegistered(TestService.self, name: "custom"))
     }
 
@@ -189,7 +189,7 @@ struct ServiceLocatorTests {
         sl.registerFactory(TestService.self) { TestService() }
 
         // This should work and not interfere with other tests
-        let instance: TestService = sl.resolve()
+        let _: TestService = sl.resolve()
         #expect(sl.isRegistered(TestService.self))
     }
 }
