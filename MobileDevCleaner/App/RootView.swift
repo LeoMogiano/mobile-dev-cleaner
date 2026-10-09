@@ -40,15 +40,9 @@ struct RootView: View {
         .mdcToast($router.toast)
         .sheet(isPresented: $router.isReviewPresented) { ReviewSheet() }
         .sheet(isPresented: $router.isFullDiskAccessPresented) { FullDiskAccessSheet() }
-        .sheet(isPresented: $router.isOnboardingPresented) {
-            OnboardingView()
-                .interactiveDismissDisabled()
-        }
         .task {
             historyStore.handle(.load)
-            if !settings.onboardingCompleted {
-                router.isOnboardingPresented = true
-            } else if settings.scanOnOpen, scanStore.status == .idle {
+            if settings.scanOnOpen, scanStore.status == .idle {
                 scanStore.handle(.start)
             }
         }
