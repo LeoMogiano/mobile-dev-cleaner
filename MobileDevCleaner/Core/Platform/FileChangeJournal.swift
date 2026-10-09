@@ -84,6 +84,7 @@ private final class Collector: @unchecked Sendable {
         guard let result else { return }
         // Torn down on the stream's queue (never inside its callback); `self` stays alive until then.
         if let stream {
+            nonisolated(unsafe) let stream = stream
             queue.async { [self] in
                 FSEventStreamStop(stream)
                 FSEventStreamInvalidate(stream)

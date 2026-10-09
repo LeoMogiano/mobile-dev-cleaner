@@ -2,12 +2,12 @@ import Foundation
 
 protocol PlistReading: Sendable {
     /// Reads XML or binary plist. Nonexistent file returns nil.
-    func dictionary(at url: URL) throws -> [String: any Sendable]?
+    func dictionary(at url: URL) throws -> [String: Any]?
     func string(forKey key: String, at url: URL) throws -> String?
 }
 
 struct PlistReader: PlistReading {
-    func dictionary(at url: URL) throws -> [String: any Sendable]? {
+    func dictionary(at url: URL) throws -> [String: Any]? {
         do {
             let data = try Data(contentsOf: url)
             let plist = try PropertyListSerialization.propertyList(
@@ -16,14 +16,7 @@ struct PlistReader: PlistReading {
                 format: nil
             )
 
-            guard let rawDict = plist as? [String: Any] else {
-                return nil
-            }
-
-            // PropertyListSerialization guarantees plist values are Sendable types
-            return rawDict.compactMapValues { value -> any Sendable in
-                value as! any Sendable
-            }
+            return plist as? [String: Any]
         } catch {
             let nsError = error as NSError
             if nsError.domain == NSCocoaErrorDomain && nsError.code == NSFileReadNoSuchFileError {

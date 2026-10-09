@@ -122,7 +122,8 @@ struct Failure: Error, Equatable, Sendable {
             }
         }
 
-        if let nsError = error as? NSError, nsError.domain == NSPOSIXErrorDomain {
+        let nsError = error as NSError
+        if nsError.domain == NSPOSIXErrorDomain {
             let code = POSIXError.Code(rawValue: Int32(nsError.code))
             if let code = code {
                 switch code {

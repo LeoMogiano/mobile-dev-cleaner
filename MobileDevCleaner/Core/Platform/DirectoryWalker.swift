@@ -147,7 +147,8 @@ enum DirectoryWalker {
     private static func path(of fd: Int32) -> String? {
         var buf = [CChar](repeating: 0, count: Int(PATH_MAX))
         guard fcntl(fd, F_GETPATH, &buf) == 0 else { return nil }
-        return String(cString: buf)
+        let bytes = buf.prefix { $0 != 0 }.map { UInt8(bitPattern: $0) }
+        return String(decoding: bytes, as: UTF8.self)
     }
 
     private static func isCancelled(_ token: CancellationToken?) -> Bool {
