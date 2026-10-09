@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00B10AD80328D6E389503724 /* SdkToolsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AACEDC893A67CA0BF3D4F49 /* SdkToolsScanner.swift */; };
+		03088834F2861B8DEC345A0B /* SettingsLinkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858A24EE8F3A490CCC919148 /* SettingsLinkRow.swift */; };
 		0352BA3DD33EE9EF94DC399D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D87308B30A6301CBF87A008 /* SettingsView.swift */; };
 		061F24F3DC5EEE64109CE11E /* CategoryReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1620CDF28CE25F0716B3FD /* CategoryReport.swift */; };
 		0751B5F3DA1EAF04A778B986 /* AdvancedSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C4E4DAD47E4D1139C3A6F6 /* AdvancedSettingsViewModel.swift */; };
@@ -80,6 +81,7 @@
 		5727587D0FD29B687EFD77B4 /* GeneralSettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D1BA9B6B76A941C0BCCA /* GeneralSettingsViewModelTests.swift */; };
 		5A4265BCFC26B968E233F920 /* CleanupOutcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ABA8AC399190B8FAEB3875 /* CleanupOutcome.swift */; };
 		5C852F466E90F1E153B07544 /* CleanupModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10062D339DD3AEAF9E510A3 /* CleanupModule.swift */; };
+		5CF3A132400F6DFE06198591 /* CreatorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D43FF6C938CF58639A223 /* CreatorSettingsView.swift */; };
 		5E0E62988A2C886F8B931AFB /* CategoryEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C388F05DC2E7D59C77C9F26 /* CategoryEmptyState.swift */; };
 		5E82A8815EFE0B298DBEB576 /* PlanTransferRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD19D7AB993D8ADCBA13FCD /* PlanTransferRepository.swift */; };
 		5FCB7D7FFE4A72179F826610 /* CleanupCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1D15989E37F888C9E09E /* CleanupCandidate.swift */; };
@@ -334,6 +336,7 @@
 		7BE5F43508E76FBCB255917E /* ReviewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewContent.swift; sourceTree = "<group>"; };
 		7FD74B2823CD0FF1904F7228 /* CategoryScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScanner.swift; sourceTree = "<group>"; };
 		81E4167537E0FEA748AAFF45 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		858A24EE8F3A490CCC919148 /* SettingsLinkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLinkRow.swift; sourceTree = "<group>"; };
 		8921D1BA9B6B76A941C0BCCA /* GeneralSettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewModelTests.swift; sourceTree = "<group>"; };
 		8A131EDF2717B4BC08793609 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		8B18DB67CA9215F2843297BC /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
@@ -425,6 +428,7 @@
 		F68FCF293D4A9AC0B304655C /* FullDiskAccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDiskAccessViewModel.swift; sourceTree = "<group>"; };
 		F6A5983A1F89CBEDE5A076F2 /* CleanupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupRepository.swift; sourceTree = "<group>"; };
 		F9648A14BE9C4DEC7FC0D9BF /* Signposts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signposts.swift; sourceTree = "<group>"; };
+		F98D43FF6C938CF58639A223 /* CreatorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorSettingsView.swift; sourceTree = "<group>"; };
 		FCAB751872C842DA3B1DFC42 /* FullDiskAccessSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDiskAccessSheet.swift; sourceTree = "<group>"; };
 		FDBC9ABBA40A55A5E40D4512 /* CleanupOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupOperation.swift; sourceTree = "<group>"; };
 		FE485BC9AF87D815A5547ECA /* ReviewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSections.swift; sourceTree = "<group>"; };
@@ -598,6 +602,7 @@
 				30E693524EBB0DB5855BEDB7 /* AdvancedSettingsView.swift */,
 				96C4E4DAD47E4D1139C3A6F6 /* AdvancedSettingsViewModel.swift */,
 				209D98D9F74EE9D9C7F4E44D /* AppearanceSettingsView.swift */,
+				F98D43FF6C938CF58639A223 /* CreatorSettingsView.swift */,
 				247729C974FCE951A65695EE /* GeneralSettingsView.swift */,
 				51E4B265068143FEC152B26E /* GeneralSettingsViewModel.swift */,
 				728ED20CD5FE71ED667800F6 /* SettingsStore.swift */,
@@ -925,6 +930,7 @@
 			isa = PBXGroup;
 			children = (
 				C4453DF7136208B00F60AB42 /* ExcludedFoldersSection.swift */,
+				858A24EE8F3A490CCC919148 /* SettingsLinkRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1481,6 +1487,7 @@
 				F3673E884A8789C9FF01F529 /* CleanupRepository.swift in Sources */,
 				D85EDEF4D9C2101E48F512FB /* CleanupRepositoryImpl.swift in Sources */,
 				6D3DA2E4E5B7DFFA880AB38A /* CoreModule.swift in Sources */,
+				5CF3A132400F6DFE06198591 /* CreatorSettingsView.swift in Sources */,
 				6423080C6ABFEBE3BFEC2F54 /* DashboardView.swift in Sources */,
 				2DCF9F9A72AC50BB457A5C36 /* DashboardViewModel.swift in Sources */,
 				BB8292CB92B3C0639EBE195A /* DecisionCard.swift in Sources */,
@@ -1582,6 +1589,7 @@
 				00B10AD80328D6E389503724 /* SdkToolsScanner.swift in Sources */,
 				88E1F374008F3B04D55DD5D0 /* SelectionStore.swift in Sources */,
 				C127C6955D2009C70221DFEC /* ServiceLocator.swift in Sources */,
+				03088834F2861B8DEC345A0B /* SettingsLinkRow.swift in Sources */,
 				8C53FCA7B0BB03A951118F27 /* SettingsStore.swift in Sources */,
 				0352BA3DD33EE9EF94DC399D /* SettingsView.swift in Sources */,
 				CD85AF900EF8651319EA4449 /* SheetsGallery.swift in Sources */,
