@@ -14,7 +14,6 @@ Promesa: **"Recupera espacio sin romper nada."** Debe sentirse como Ajustes del 
 |---|---|
 | UX, copy, riesgo, flujos, medidas | `docs/design/handoff/Mobile Dev Cleaner.dc.html` (código fuente, no capturas) + `README.md` |
 | Paths y comandos reales | `~/Workspace/Node/mobi-dev-clean/src/scanners/*`, `cleaner.ts` |
-| Alcance y heurísticas | `docs/cleanup-app-lista-maestra.md` |
 
 Si zip y Node difieren: zip manda en UX/riesgo/copy, Node en paths/comandos. Ver
 `docs/adr/006-design-vs-engine.md`.
@@ -22,7 +21,8 @@ Si zip y Node difieren: zip manda en UX/riesgo/copy, Node en paths/comandos. Ver
 ## Idioma del código
 
 - **Identificadores en inglés**.
-- **Comentarios en español**, solo para un porqué no obvio.
+- **Comentarios en inglés, mínimos y prolijos**: solo para un porqué no obvio. Nada que repita el código, sin bloques largos.
+- **Tests en inglés**: nombres de `@Suite`/`@Test`, mensajes de `Issue.record`.
 - **Strings de UI en español** en el código (clave base del String Catalog); inglés en
   `Localizable.xcstrings`. Fuera de SwiftUI: `L10n.string(...)`.
 
