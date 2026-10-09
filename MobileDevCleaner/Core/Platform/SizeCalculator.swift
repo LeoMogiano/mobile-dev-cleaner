@@ -11,6 +11,8 @@ protocol SizeCalculating: Sendable {
     func cacheFootprint() async -> Int64
     /// Writes the cache to disk if dirty; call when a scan finishes.
     func flush() async
+    /// Drops cached sizes touched since the last scan (FSEvents history). Call before a scan.
+    func syncWithFileChanges() async
 }
 
 actor SizeCalculator: SizeCalculating {
@@ -46,7 +48,7 @@ actor SizeCalculator: SizeCalculating {
                 let state = Signposts.size.beginInterval("measure", id: id)
                 defer { Signposts.size.endInterval("measure", state) }
                 do {
-                    let size = try DirectoryWalker.allocatedSize(at: url)
+                    let size = try await WalkPool.shared.allocatedSize(at: url)
                     await finish(path: path, size: size, mtime: mtime)
                     return size
                 } catch {
@@ -110,6 +112,25 @@ actor SizeCalculator: SizeCalculating {
             dirty = false
         } catch {
             // The cache is only an optimization; a failed save is not fatal.
+        }
+    }
+
+    func syncWithFileChanges() async {
+        ensureLoaded()
+        let now = FileChangeJournal.currentEventID
+        defer {
+            cache.eventID = now
+            dirty = true
+        }
+        guard let since = cache.eventID, !cache.entries.isEmpty else {
+            cache.removeAll()
+            return
+        }
+        let changes = await FileChangeJournal.changes(since: since, under: Array(cache.entries.keys))
+        if changes.isComplete {
+            cache.invalidate(changedPaths: changes.paths)
+        } else {
+            cache.removeAll()
         }
     }
 
