@@ -6,6 +6,7 @@ import Foundation
 enum Injection {
     static func setup() {
         CoreModule.register()
+        ScanModule.register()
     }
 
     static func reset() {

@@ -31,3 +31,23 @@ actor MockProcessRunner: ProcessRunning {
         return try handler(executable, arguments)
     }
 }
+
+// MARK: - MockProcessProbe
+
+struct MockProcessProbe: ProcessProbing {
+    var result = RunningApps()
+
+    func runningApps() async -> RunningApps { result }
+}
+
+// MARK: - ScanContext
+
+extension TempDirectory {
+    /// Real size calculator and plist reader over the temp home; CLIs and probe are mocked.
+    func scanContext(
+        runner: any ProcessRunning = MockProcessRunner(),
+        probe: any ProcessProbing = MockProcessProbe()
+    ) -> ScanContext {
+        ScanContext(paths: paths, sizes: SizeCalculator(cacheURL: nil), runner: runner, plist: PlistReader(), probe: probe)
+    }
+}
