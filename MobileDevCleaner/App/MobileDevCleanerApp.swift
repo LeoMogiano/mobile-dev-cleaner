@@ -2,6 +2,10 @@ import SwiftUI
 
 @main
 struct MobileDevCleanerApp: App {
+    init() {
+        Injection.setup()
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()
@@ -12,7 +16,7 @@ struct MobileDevCleanerApp: App {
 
         Settings {
             Text("Ajustes")
-                .frame(width: 480, height: 320)
+                .frame(width: 620, height: 640)
         }
     }
 }
