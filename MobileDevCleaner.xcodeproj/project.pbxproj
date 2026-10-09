@@ -7,43 +7,88 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00B10AD80328D6E389503724 /* SdkToolsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AACEDC893A67CA0BF3D4F49 /* SdkToolsScanner.swift */; };
+		061F24F3DC5EEE64109CE11E /* CategoryReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1620CDF28CE25F0716B3FD /* CategoryReport.swift */; };
+		0B38903A991CCA8154D712AC /* GradleDependenciesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7B192D4871E450F78FB64 /* GradleDependenciesScanner.swift */; };
+		129441CB7CC95009187F888E /* CategoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD7FBFE3D86B9B9D26E33D4 /* CategoryInfo.swift */; };
 		166B4BDB54D7EC5145E4B97F /* ByteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EC4A538BE704813C341205 /* ByteFormatter.swift */; };
+		1AB93298A707A022DD2129CD /* SimulatorsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F6AD62F2AB71962124C5B /* SimulatorsScanner.swift */; };
 		1BEB1B165022FE04E342CF3B /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541DA59A100BA044ED7AD8C5 /* Either.swift */; };
+		1C13CF1D0EBEE4AAD98DC60F /* CategoryScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD74B2823CD0FF1904F7228 /* CategoryScanner.swift */; };
+		1E513E55305EF862AE10BBD7 /* StudioVersionsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA6286A78F9263BAD996F8 /* StudioVersionsScanner.swift */; };
 		1E8D692A2DB377B4BD60B512 /* PathProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C593DAA32F51706A7B126 /* PathProviderTests.swift */; };
+		21AE3EEFDC4A9077F27D3354 /* CandidateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C83FC161A81B6B3A072AF /* CandidateGroup.swift */; };
 		221618B8EA48DC79914D923C /* FailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3747B285710E7E4352949E1 /* FailureTests.swift */; };
 		22EF993A943CD8B955CBD490 /* TempDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D354E2E4CFD63058FB96D /* TempDirectory.swift */; };
 		23C8A335C9088F9407EFF094 /* PlistReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38B9EBCD0C7B9C576576051 /* PlistReader.swift */; };
 		25C425B8271D6DDE8F8E10FF /* ProcessRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46721E4094FE42B9962CB365 /* ProcessRunnerTests.swift */; };
 		28FC0D5A35A33B557F6C13EB /* SizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FFB85C636A4C6C32BFC48 /* SizeCalculator.swift */; };
+		2DEAD19D37A169102321064F /* CategoryID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010FBF916B3696F1DC19EF5F /* CategoryID.swift */; };
 		323AD4C3C02007002C19BCE6 /* PlistReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1182A30A6B9B074D4E187FF1 /* PlistReaderTests.swift */; };
 		359B8FB1186A7BE0CB48A5BD /* AppLanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BFDBFEEA97D559A50550EA /* AppLanguageTests.swift */; };
+		393427E65F97392BEDF300C8 /* ScanModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD78624B469AB9D64DDC60B6 /* ScanModule.swift */; };
+		3967DF3DEB0C9AFD5A660F7A /* TestResiduesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC5E4C13555583C48E6789 /* TestResiduesScanner.swift */; };
+		3F3306444F33826C219260C2 /* DeviceCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258F4AD040FC206B68C3E26 /* DeviceCandidate.swift */; };
+		41742EDFE35DCA8D1DB97043 /* DeviceSupportScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F845F6D39FFDD8CC4A33CF /* DeviceSupportScanner.swift */; };
+		41FF78A4385842BDCBF01CBF /* XcodeCachesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9B7816457A099DD37322 /* XcodeCachesScanner.swift */; };
+		42891DFF1EF38B967AC616A9 /* SimulatorsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5696269288CA3787C933BDFF /* SimulatorsScannerTests.swift */; };
 		47354E012DDACB6923004A78 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9FFD09E60D6AE847F57394 /* Injection.swift */; };
 		4834B3414D2BDE05629906B2 /* ByteFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33019EB045C281765806C47 /* ByteFormatterTests.swift */; };
+		50BE0343AF7E97152406B66A /* FileChangeJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC7C25FAF38CD7A67A5608E /* FileChangeJournalTests.swift */; };
 		5625251A60A34B82D8CAB2A0 /* PathProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E364CFBEE7A4CB245B4DA66 /* PathProvider.swift */; };
+		5FCB7D7FFE4A72179F826610 /* CleanupCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF1D15989E37F888C9E09E /* CleanupCandidate.swift */; };
+		60FEFA78F2535346056201C8 /* AVDConfigReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BF8DBD554957E0605D556C /* AVDConfigReader.swift */; };
 		6316ECD6C5E53508BBE522A8 /* SizeCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C21736D1B3E195B2F8053 /* SizeCache.swift */; };
 		6A54A7AF9FA18993FAA8E038 /* SizeCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C045C8ECCCEFC2D1FB98E94 /* SizeCalculatorTests.swift */; };
+		6BD22AAAEB54B2385C9C1D7B /* HeadlessScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565343C53780D01C3D4699A /* HeadlessScan.swift */; };
+		6C510BDB268A44FA15145B08 /* ScanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651BD6D84A87F2D6406AF346 /* ScanUseCase.swift */; };
 		6D3DA2E4E5B7DFFA880AB38A /* CoreModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FAE3447C11D5548DE20F0F /* CoreModule.swift */; };
+		6DDB5A2E820391B473CACA51 /* AndroidToolsScannersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF0693ADBD33014109947D /* AndroidToolsScannersTests.swift */; };
 		70B8017EB6B052491C985106 /* TrashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB721AD18DDE7447CF74DE01 /* TrashService.swift */; };
 		72114693A386A1C4815CC614 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 57E5CDBF7CB4B2ABB72DE2DD /* Localizable.xcstrings */; };
 		746FC384018C2FD26624310D /* Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DF8B9D473A990F2D21D8F4 /* Failure.swift */; };
 		79A4EE1BAA0097FF2E330928 /* EitherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2578AC609D766C6C4AA29C19 /* EitherTests.swift */; };
 		7A72A07DB2066FEC5446E16C /* ProcessProbeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38046D1BAA219915C74A00EC /* ProcessProbeTests.swift */; };
 		7B79CF6AB84FAF22E80E8FCC /* Montserrat-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0EE55819703B4B36EFA70 /* Montserrat-Variable.ttf */; };
+		7CCEAA614B8D4154848E521F /* GradleVersionsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41243F3A11BEFAC367E4E33 /* GradleVersionsScanner.swift */; };
+		855EFD33F6E309F5BEE9433F /* GradleJdksScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353329772E53062B1350C1BA /* GradleJdksScanner.swift */; };
 		85D1905BB4FD5F133D8D6F6F /* ProcessProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274E5BFEF99BF077F486887 /* ProcessProbe.swift */; };
 		8986755CD5EC149E85C4C421 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90B0F776E53B1430CCB98E2 /* L10n.swift */; };
+		8BA0FBB0FAC8A07A31933818 /* GradleCachesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1834D3B5A3B39E853DB9D /* GradleCachesScanner.swift */; };
 		8BAC3262604B123289FCB155 /* SizeCalculatorPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD61424A5DF38E7C29D424 /* SizeCalculatorPerformanceTests.swift */; };
 		8E59A627E1C1C5366F2548D1 /* Signposts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9648A14BE9C4DEC7FC0D9BF /* Signposts.swift */; };
 		94693938C512C93AEAC58527 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569414432EDCF1CAD9B3016 /* AppLanguage.swift */; };
+		9482A0DBAF36F0E7A4F70F60 /* SystemImagesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9BA43F8E36C10D3614589 /* SystemImagesScanner.swift */; };
 		9C67F1FF9FCBD332895F610A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFFE58C5161EFF3E4B7196 /* DashboardView.swift */; };
+		A1459C3CBCA8999C15E287B9 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5BCC22A91E16C2CC8D34FE /* Tool.swift */; };
+		A299DFC49021FB6CCDD1A2F6 /* ScanRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA23A4C6BDAE498ED4103B /* ScanRepositoryImpl.swift */; };
+		A3142ED9987548C0E19259B8 /* ExecutionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCFB610C56464B378D8BEB4 /* ExecutionStrategy.swift */; };
+		A55D6770E29C0457390E2D64 /* GradleLogsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38572472367BFFC9F8138224 /* GradleLogsScanner.swift */; };
 		A69BF6ED9FDE8162D85582BF /* ServiceLocatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10274D89AACE4D7DD59275BE /* ServiceLocatorTests.swift */; };
 		A9F734F578572BD6ADF9C84D /* ProcessRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19773C3D83FACE55603FD0 /* ProcessRunner.swift */; };
 		ADE95116489FAB3CDC5FD5E7 /* DirectoryWalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B945D8EC70AEAD3F91310CE8 /* DirectoryWalkerTests.swift */; };
+		AEA4EC9E89CB823EEC7BA832 /* XcodeScannersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3C54AC636147A85BB4824 /* XcodeScannersTests.swift */; };
+		B0263427DEE22406B2774672 /* ScanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75754E21F78F2C39FB45639 /* ScanRepository.swift */; };
+		B3AB51C5483AC7F97EBCEA62 /* SizeCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16417EFBE52E596BD19FF969 /* SizeCacheTests.swift */; };
+		B59113840FF04C5CD4B93D6B /* EmulatorsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DD6EBD0548C9958F6FF7C /* EmulatorsScanner.swift */; };
 		B875B3A42A76F2ADC3FA0498 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D445771AD988A59C5C543679 /* Mocks.swift */; };
+		BF3A3BFFD8DF0C3D48F31812 /* RuntimesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0169B221E89B0623C2B3E3 /* RuntimesScanner.swift */; };
 		C127C6955D2009C70221DFEC /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F9D6130D45C41EEB7B2FC /* ServiceLocator.swift */; };
+		C154F7654CD084DBF73FC46D /* FileChangeJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28840F4A5D4F8FA305F2761F /* FileChangeJournal.swift */; };
+		C174B8C59FB1AA15B2D0C8F8 /* AndroidCachesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6160847ACFEDE1614EE09A0A /* AndroidCachesScanner.swift */; };
 		C26EFA094BE6354BEA8003C6 /* MobileDevCleanerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB11B525A890CB8AA4B0AE7 /* MobileDevCleanerApp.swift */; };
+		C2A5EB1CF7780924A901DC51 /* DependencyCachesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913E45D0680306C7CBC06E4 /* DependencyCachesScanner.swift */; };
+		C2CC90AE24AB4ADB8CFA12A6 /* GradleScannersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAAC25C929DAB6EF3ED95C1 /* GradleScannersTests.swift */; };
+		C4FB8B96C3693E066270DB7D /* SystemImagesScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64637CB2B8A8DF77D4A1FAA8 /* SystemImagesScannerTests.swift */; };
 		C575E058B23AA2558CE515EE /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60848762B1A6CE57F3BD4629 /* RootView.swift */; };
 		CA9D8D09D454D8FFB1B5BA42 /* DirectoryWalker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9025EC4E0A16006EB3F3A3 /* DirectoryWalker.swift */; };
+		CE9787612AE4ACF03D14C4AB /* ArchivesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115B367CBB2537C56383EAE /* ArchivesScanner.swift */; };
+		DBD161FF521BCEB3C436EFB7 /* PreviewsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972AB34D7946C66A78976174 /* PreviewsScanner.swift */; };
+		E3BE343F6A80802D36D20B6C /* EmulatorsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102DC2F65247D37FCEE5A97 /* EmulatorsScannerTests.swift */; };
 		E9F2ECCD0E026B83C670C222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C4A4B1929AA713C3BF89E6 /* Assets.xcassets */; };
+		F0DE3076BA2F2F4FA99682B8 /* DerivedDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C053E30F98C86E0F800172BB /* DerivedDataScanner.swift */; };
+		F3AA44CF1348DE95FD3EB279 /* CategoryInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EE75CBEBD74F77621684C7 /* CategoryInfoTests.swift */; };
+		F45029D123F608C90EC4B7C5 /* ScanRepositoryImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AA452E1556AB302EE7B16 /* ScanRepositoryImplTests.swift */; };
 		FB9F79D098F2D6DF928C0AA8 /* TrashServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F129ACF568BFB17481BAAE /* TrashServiceTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,46 +103,91 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010FBF916B3696F1DC19EF5F /* CategoryID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryID.swift; sourceTree = "<group>"; };
+		0115B367CBB2537C56383EAE /* ArchivesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivesScanner.swift; sourceTree = "<group>"; };
+		037F6AD62F2AB71962124C5B /* SimulatorsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorsScanner.swift; sourceTree = "<group>"; };
+		0CBF0693ADBD33014109947D /* AndroidToolsScannersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroidToolsScannersTests.swift; sourceTree = "<group>"; };
 		0E19773C3D83FACE55603FD0 /* ProcessRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessRunner.swift; sourceTree = "<group>"; };
 		10274D89AACE4D7DD59275BE /* ServiceLocatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocatorTests.swift; sourceTree = "<group>"; };
+		105C83FC161A81B6B3A072AF /* CandidateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateGroup.swift; sourceTree = "<group>"; };
 		1182A30A6B9B074D4E187FF1 /* PlistReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReaderTests.swift; sourceTree = "<group>"; };
 		1274E5BFEF99BF077F486887 /* ProcessProbe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessProbe.swift; sourceTree = "<group>"; };
 		1325089ABCA620119647B6BD /* MobileDevCleaner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobileDevCleaner.entitlements; sourceTree = "<group>"; };
+		1565343C53780D01C3D4699A /* HeadlessScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlessScan.swift; sourceTree = "<group>"; };
+		16417EFBE52E596BD19FF969 /* SizeCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCacheTests.swift; sourceTree = "<group>"; };
 		1C045C8ECCCEFC2D1FB98E94 /* SizeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculatorTests.swift; sourceTree = "<group>"; };
+		1DC7C25FAF38CD7A67A5608E /* FileChangeJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileChangeJournalTests.swift; sourceTree = "<group>"; };
+		24BF8DBD554957E0605D556C /* AVDConfigReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVDConfigReader.swift; sourceTree = "<group>"; };
 		2578AC609D766C6C4AA29C19 /* EitherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EitherTests.swift; sourceTree = "<group>"; };
+		28840F4A5D4F8FA305F2761F /* FileChangeJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileChangeJournal.swift; sourceTree = "<group>"; };
+		28F7B192D4871E450F78FB64 /* GradleDependenciesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleDependenciesScanner.swift; sourceTree = "<group>"; };
 		29F129ACF568BFB17481BAAE /* TrashServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashServiceTests.swift; sourceTree = "<group>"; };
+		2B3DD6EBD0548C9958F6FF7C /* EmulatorsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmulatorsScanner.swift; sourceTree = "<group>"; };
+		2BC9BA43F8E36C10D3614589 /* SystemImagesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImagesScanner.swift; sourceTree = "<group>"; };
 		2CAFFE58C5161EFF3E4B7196 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		3258F4AD040FC206B68C3E26 /* DeviceCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCandidate.swift; sourceTree = "<group>"; };
+		353329772E53062B1350C1BA /* GradleJdksScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleJdksScanner.swift; sourceTree = "<group>"; };
 		357F9D6130D45C41EEB7B2FC /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		38046D1BAA219915C74A00EC /* ProcessProbeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessProbeTests.swift; sourceTree = "<group>"; };
+		38572472367BFFC9F8138224 /* GradleLogsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleLogsScanner.swift; sourceTree = "<group>"; };
+		3AACEDC893A67CA0BF3D4F49 /* SdkToolsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SdkToolsScanner.swift; sourceTree = "<group>"; };
+		3D1620CDF28CE25F0716B3FD /* CategoryReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryReport.swift; sourceTree = "<group>"; };
+		43B1834D3B5A3B39E853DB9D /* GradleCachesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleCachesScanner.swift; sourceTree = "<group>"; };
 		45FAE3447C11D5548DE20F0F /* CoreModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModule.swift; sourceTree = "<group>"; };
 		46721E4094FE42B9962CB365 /* ProcessRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessRunnerTests.swift; sourceTree = "<group>"; };
 		4F9FFD09E60D6AE847F57394 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
+		4FDF1D15989E37F888C9E09E /* CleanupCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupCandidate.swift; sourceTree = "<group>"; };
 		541DA59A100BA044ED7AD8C5 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
+		5696269288CA3787C933BDFF /* SimulatorsScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorsScannerTests.swift; sourceTree = "<group>"; };
 		57E5CDBF7CB4B2ABB72DE2DD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5DAAC25C929DAB6EF3ED95C1 /* GradleScannersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleScannersTests.swift; sourceTree = "<group>"; };
+		5FFA6286A78F9263BAD996F8 /* StudioVersionsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioVersionsScanner.swift; sourceTree = "<group>"; };
 		60848762B1A6CE57F3BD4629 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		6160847ACFEDE1614EE09A0A /* AndroidCachesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroidCachesScanner.swift; sourceTree = "<group>"; };
+		64637CB2B8A8DF77D4A1FAA8 /* SystemImagesScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImagesScannerTests.swift; sourceTree = "<group>"; };
+		651BD6D84A87F2D6406AF346 /* ScanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanUseCase.swift; sourceTree = "<group>"; };
 		660C21736D1B3E195B2F8053 /* SizeCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCache.swift; sourceTree = "<group>"; };
+		66F845F6D39FFDD8CC4A33CF /* DeviceSupportScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSupportScanner.swift; sourceTree = "<group>"; };
+		6F5BCC22A91E16C2CC8D34FE /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		72BFDBFEEA97D559A50550EA /* AppLanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageTests.swift; sourceTree = "<group>"; };
 		73FD61424A5DF38E7C29D424 /* SizeCalculatorPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculatorPerformanceTests.swift; sourceTree = "<group>"; };
 		7445462D604B9E2536FC21C6 /* MobileDevCleanerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileDevCleanerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76DF8B9D473A990F2D21D8F4 /* Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
 		78ABB0E4F4B996FA72C2ED40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7FD74B2823CD0FF1904F7228 /* CategoryScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScanner.swift; sourceTree = "<group>"; };
+		8CCFB610C56464B378D8BEB4 /* ExecutionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionStrategy.swift; sourceTree = "<group>"; };
+		8D0169B221E89B0623C2B3E3 /* RuntimesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimesScanner.swift; sourceTree = "<group>"; };
 		91C4A4B1929AA713C3BF89E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92EC5E4C13555583C48E6789 /* TestResiduesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResiduesScanner.swift; sourceTree = "<group>"; };
+		972AB34D7946C66A78976174 /* PreviewsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewsScanner.swift; sourceTree = "<group>"; };
 		9AC0EE55819703B4B36EFA70 /* Montserrat-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Variable.ttf"; sourceTree = "<group>"; };
 		9BB11B525A890CB8AA4B0AE7 /* MobileDevCleanerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDevCleanerApp.swift; sourceTree = "<group>"; };
 		9E364CFBEE7A4CB245B4DA66 /* PathProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathProvider.swift; sourceTree = "<group>"; };
+		A15AA452E1556AB302EE7B16 /* ScanRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRepositoryImplTests.swift; sourceTree = "<group>"; };
 		A33019EB045C281765806C47 /* ByteFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteFormatterTests.swift; sourceTree = "<group>"; };
 		A7EC4A538BE704813C341205 /* ByteFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteFormatter.swift; sourceTree = "<group>"; };
 		AA1C593DAA32F51706A7B126 /* PathProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathProviderTests.swift; sourceTree = "<group>"; };
 		AA3FFB85C636A4C6C32BFC48 /* SizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculator.swift; sourceTree = "<group>"; };
 		B3747B285710E7E4352949E1 /* FailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureTests.swift; sourceTree = "<group>"; };
+		B75754E21F78F2C39FB45639 /* ScanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRepository.swift; sourceTree = "<group>"; };
 		B945D8EC70AEAD3F91310CE8 /* DirectoryWalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryWalkerTests.swift; sourceTree = "<group>"; };
 		BB9025EC4E0A16006EB3F3A3 /* DirectoryWalker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryWalker.swift; sourceTree = "<group>"; };
+		C053E30F98C86E0F800172BB /* DerivedDataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedDataScanner.swift; sourceTree = "<group>"; };
+		C102DC2F65247D37FCEE5A97 /* EmulatorsScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmulatorsScannerTests.swift; sourceTree = "<group>"; };
 		C17D354E2E4CFD63058FB96D /* TempDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDirectory.swift; sourceTree = "<group>"; };
+		C9DA23A4C6BDAE498ED4103B /* ScanRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRepositoryImpl.swift; sourceTree = "<group>"; };
+		CD78624B469AB9D64DDC60B6 /* ScanModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanModule.swift; sourceTree = "<group>"; };
+		CFC3C54AC636147A85BB4824 /* XcodeScannersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeScannersTests.swift; sourceTree = "<group>"; };
 		D39FCAE6CE4A9B9D10CEEA09 /* MobileDevCleaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileDevCleaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D41243F3A11BEFAC367E4E33 /* GradleVersionsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleVersionsScanner.swift; sourceTree = "<group>"; };
 		D445771AD988A59C5C543679 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		D90B0F776E53B1430CCB98E2 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		DB721AD18DDE7447CF74DE01 /* TrashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashService.swift; sourceTree = "<group>"; };
+		E1EE75CBEBD74F77621684C7 /* CategoryInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfoTests.swift; sourceTree = "<group>"; };
 		E569414432EDCF1CAD9B3016 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		E913E45D0680306C7CBC06E4 /* DependencyCachesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyCachesScanner.swift; sourceTree = "<group>"; };
+		E97B9B7816457A099DD37322 /* XcodeCachesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeCachesScanner.swift; sourceTree = "<group>"; };
+		EFD7FBFE3D86B9B9D26E33D4 /* CategoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfo.swift; sourceTree = "<group>"; };
 		F38B9EBCD0C7B9C576576051 /* PlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReader.swift; sourceTree = "<group>"; };
 		F9648A14BE9C4DEC7FC0D9BF /* Signposts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signposts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,10 +204,52 @@
 		1EF7D881C55936571025EF64 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1565343C53780D01C3D4699A /* HeadlessScan.swift */,
 				9BB11B525A890CB8AA4B0AE7 /* MobileDevCleanerApp.swift */,
 				60848762B1A6CE57F3BD4629 /* RootView.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		20EE95BB3E07CDCF7568DAC3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0CBF0693ADBD33014109947D /* AndroidToolsScannersTests.swift */,
+				C102DC2F65247D37FCEE5A97 /* EmulatorsScannerTests.swift */,
+				5DAAC25C929DAB6EF3ED95C1 /* GradleScannersTests.swift */,
+				A15AA452E1556AB302EE7B16 /* ScanRepositoryImplTests.swift */,
+				5696269288CA3787C933BDFF /* SimulatorsScannerTests.swift */,
+				64637CB2B8A8DF77D4A1FAA8 /* SystemImagesScannerTests.swift */,
+				CFC3C54AC636147A85BB4824 /* XcodeScannersTests.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		210AF9E0725E36C1E514CF48 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5C6AB68E788C44509DFCC0A9 /* Entities */,
+				31DD77A73D2DE0DC7E2AFFEB /* Repositories */,
+				5A475FC8082B15B053620366 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		243D6EB08D5DB36212963698 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				20EE95BB3E07CDCF7568DAC3 /* Data */,
+				D2BE120602CE11711EABB7C1 /* Domain */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		31DD77A73D2DE0DC7E2AFFEB /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				B75754E21F78F2C39FB45639 /* ScanRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		3364D29AB9E6BB06B120CF36 /* Mocks */ = {
@@ -126,6 +258,16 @@
 				D445771AD988A59C5C543679 /* Mocks.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		3F4E847031096F6BF585C668 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				CD78624B469AB9D64DDC60B6 /* ScanModule.swift */,
+				9ED4F3C34049F1482F638A5F /* Data */,
+				210AF9E0725E36C1E514CF48 /* Domain */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 		3F4F5DCE2BDC598282E951EB /* Localization */ = {
@@ -165,14 +307,34 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		519CE023D1A6C4162CD21FE4 /* Android */ = {
+			isa = PBXGroup;
+			children = (
+				6160847ACFEDE1614EE09A0A /* AndroidCachesScanner.swift */,
+				24BF8DBD554957E0605D556C /* AVDConfigReader.swift */,
+				2B3DD6EBD0548C9958F6FF7C /* EmulatorsScanner.swift */,
+				43B1834D3B5A3B39E853DB9D /* GradleCachesScanner.swift */,
+				28F7B192D4871E450F78FB64 /* GradleDependenciesScanner.swift */,
+				353329772E53062B1350C1BA /* GradleJdksScanner.swift */,
+				38572472367BFFC9F8138224 /* GradleLogsScanner.swift */,
+				D41243F3A11BEFAC367E4E33 /* GradleVersionsScanner.swift */,
+				3AACEDC893A67CA0BF3D4F49 /* SdkToolsScanner.swift */,
+				5FFA6286A78F9263BAD996F8 /* StudioVersionsScanner.swift */,
+				2BC9BA43F8E36C10D3614589 /* SystemImagesScanner.swift */,
+			);
+			path = Android;
+			sourceTree = "<group>";
+		};
 		58D8C9DC5B32993B42DB48A4 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
 				B945D8EC70AEAD3F91310CE8 /* DirectoryWalkerTests.swift */,
+				1DC7C25FAF38CD7A67A5608E /* FileChangeJournalTests.swift */,
 				AA1C593DAA32F51706A7B126 /* PathProviderTests.swift */,
 				1182A30A6B9B074D4E187FF1 /* PlistReaderTests.swift */,
 				38046D1BAA219915C74A00EC /* ProcessProbeTests.swift */,
 				46721E4094FE42B9962CB365 /* ProcessRunnerTests.swift */,
+				16417EFBE52E596BD19FF969 /* SizeCacheTests.swift */,
 				73FD61424A5DF38E7C29D424 /* SizeCalculatorPerformanceTests.swift */,
 				1C045C8ECCCEFC2D1FB98E94 /* SizeCalculatorTests.swift */,
 				29F129ACF568BFB17481BAAE /* TrashServiceTests.swift */,
@@ -180,10 +342,34 @@
 			path = Platform;
 			sourceTree = "<group>";
 		};
+		5A475FC8082B15B053620366 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				651BD6D84A87F2D6406AF346 /* ScanUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		5C6AB68E788C44509DFCC0A9 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				105C83FC161A81B6B3A072AF /* CandidateGroup.swift */,
+				010FBF916B3696F1DC19EF5F /* CategoryID.swift */,
+				EFD7FBFE3D86B9B9D26E33D4 /* CategoryInfo.swift */,
+				3D1620CDF28CE25F0716B3FD /* CategoryReport.swift */,
+				4FDF1D15989E37F888C9E09E /* CleanupCandidate.swift */,
+				3258F4AD040FC206B68C3E26 /* DeviceCandidate.swift */,
+				8CCFB610C56464B378D8BEB4 /* ExecutionStrategy.swift */,
+				6F5BCC22A91E16C2CC8D34FE /* Tool.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		67B5661CE799603C73A4B7AC /* Platform */ = {
 			isa = PBXGroup;
 			children = (
 				BB9025EC4E0A16006EB3F3A3 /* DirectoryWalker.swift */,
+				28840F4A5D4F8FA305F2761F /* FileChangeJournal.swift */,
 				9E364CFBEE7A4CB245B4DA66 /* PathProvider.swift */,
 				F38B9EBCD0C7B9C576576051 /* PlistReader.swift */,
 				1274E5BFEF99BF077F486887 /* ProcessProbe.swift */,
@@ -252,6 +438,15 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		9ED4F3C34049F1482F638A5F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EB6FF7A7390416DCD653C271 /* DataSources */,
+				FFC4E4964245A12BBAD0FA90 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		AE50BCE03EE79CF89B24B9FC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				3F60C0FE4B0A74209C546577 /* Dashboard */,
+				3F4E847031096F6BF585C668 /* Scan */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -300,6 +496,22 @@
 				E660206409300CC50CF92BD7 /* MobileDevCleanerTests */,
 				7F7DA5B987D53083E7B3064E /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		D2BE120602CE11711EABB7C1 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E1EE75CBEBD74F77621684C7 /* CategoryInfoTests.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		DC90774D758022F19EE17D27 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				243D6EB08D5DB36212963698 /* Scan */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 		DD7BEB9C865248830F705957 /* Resources */ = {
@@ -329,10 +541,21 @@
 			isa = PBXGroup;
 			children = (
 				498FDA3488A3D50424B48430 /* Core */,
+				DC90774D758022F19EE17D27 /* Features */,
 				3364D29AB9E6BB06B120CF36 /* Mocks */,
 				9CE9D236C761186466B5FA21 /* Support */,
 			);
 			path = MobileDevCleanerTests;
+			sourceTree = "<group>";
+		};
+		EB6FF7A7390416DCD653C271 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				7FD74B2823CD0FF1904F7228 /* CategoryScanner.swift */,
+				519CE023D1A6C4162CD21FE4 /* Android */,
+				FF545EE7F672DB539D76E384 /* Xcode */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		F5A8F68155D64AE8B1D13E2A /* Functional */ = {
@@ -349,6 +572,30 @@
 				541DA59A100BA044ED7AD8C5 /* Either.swift */,
 			);
 			path = Functional;
+			sourceTree = "<group>";
+		};
+		FF545EE7F672DB539D76E384 /* Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				0115B367CBB2537C56383EAE /* ArchivesScanner.swift */,
+				E913E45D0680306C7CBC06E4 /* DependencyCachesScanner.swift */,
+				C053E30F98C86E0F800172BB /* DerivedDataScanner.swift */,
+				66F845F6D39FFDD8CC4A33CF /* DeviceSupportScanner.swift */,
+				972AB34D7946C66A78976174 /* PreviewsScanner.swift */,
+				8D0169B221E89B0623C2B3E3 /* RuntimesScanner.swift */,
+				037F6AD62F2AB71962124C5B /* SimulatorsScanner.swift */,
+				92EC5E4C13555583C48E6789 /* TestResiduesScanner.swift */,
+				E97B9B7816457A099DD37322 /* XcodeCachesScanner.swift */,
+			);
+			path = Xcode;
+			sourceTree = "<group>";
+		};
+		FFC4E4964245A12BBAD0FA90 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C9DA23A4C6BDAE498ED4103B /* ScanRepositoryImpl.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +660,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				en,
 				es,
 			);
 			mainGroup = CE17A3A519FB08B4742FEE80;
@@ -446,26 +694,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60FEFA78F2535346056201C8 /* AVDConfigReader.swift in Sources */,
+				C174B8C59FB1AA15B2D0C8F8 /* AndroidCachesScanner.swift in Sources */,
 				94693938C512C93AEAC58527 /* AppLanguage.swift in Sources */,
+				CE9787612AE4ACF03D14C4AB /* ArchivesScanner.swift in Sources */,
 				166B4BDB54D7EC5145E4B97F /* ByteFormatter.swift in Sources */,
+				21AE3EEFDC4A9077F27D3354 /* CandidateGroup.swift in Sources */,
+				2DEAD19D37A169102321064F /* CategoryID.swift in Sources */,
+				129441CB7CC95009187F888E /* CategoryInfo.swift in Sources */,
+				061F24F3DC5EEE64109CE11E /* CategoryReport.swift in Sources */,
+				1C13CF1D0EBEE4AAD98DC60F /* CategoryScanner.swift in Sources */,
+				5FCB7D7FFE4A72179F826610 /* CleanupCandidate.swift in Sources */,
 				6D3DA2E4E5B7DFFA880AB38A /* CoreModule.swift in Sources */,
 				9C67F1FF9FCBD332895F610A /* DashboardView.swift in Sources */,
+				C2A5EB1CF7780924A901DC51 /* DependencyCachesScanner.swift in Sources */,
+				F0DE3076BA2F2F4FA99682B8 /* DerivedDataScanner.swift in Sources */,
+				3F3306444F33826C219260C2 /* DeviceCandidate.swift in Sources */,
+				41742EDFE35DCA8D1DB97043 /* DeviceSupportScanner.swift in Sources */,
 				CA9D8D09D454D8FFB1B5BA42 /* DirectoryWalker.swift in Sources */,
 				1BEB1B165022FE04E342CF3B /* Either.swift in Sources */,
+				B59113840FF04C5CD4B93D6B /* EmulatorsScanner.swift in Sources */,
+				A3142ED9987548C0E19259B8 /* ExecutionStrategy.swift in Sources */,
 				746FC384018C2FD26624310D /* Failure.swift in Sources */,
+				C154F7654CD084DBF73FC46D /* FileChangeJournal.swift in Sources */,
+				8BA0FBB0FAC8A07A31933818 /* GradleCachesScanner.swift in Sources */,
+				0B38903A991CCA8154D712AC /* GradleDependenciesScanner.swift in Sources */,
+				855EFD33F6E309F5BEE9433F /* GradleJdksScanner.swift in Sources */,
+				A55D6770E29C0457390E2D64 /* GradleLogsScanner.swift in Sources */,
+				7CCEAA614B8D4154848E521F /* GradleVersionsScanner.swift in Sources */,
+				6BD22AAAEB54B2385C9C1D7B /* HeadlessScan.swift in Sources */,
 				47354E012DDACB6923004A78 /* Injection.swift in Sources */,
 				8986755CD5EC149E85C4C421 /* L10n.swift in Sources */,
 				C26EFA094BE6354BEA8003C6 /* MobileDevCleanerApp.swift in Sources */,
 				5625251A60A34B82D8CAB2A0 /* PathProvider.swift in Sources */,
 				23C8A335C9088F9407EFF094 /* PlistReader.swift in Sources */,
+				DBD161FF521BCEB3C436EFB7 /* PreviewsScanner.swift in Sources */,
 				85D1905BB4FD5F133D8D6F6F /* ProcessProbe.swift in Sources */,
 				A9F734F578572BD6ADF9C84D /* ProcessRunner.swift in Sources */,
 				C575E058B23AA2558CE515EE /* RootView.swift in Sources */,
+				BF3A3BFFD8DF0C3D48F31812 /* RuntimesScanner.swift in Sources */,
+				393427E65F97392BEDF300C8 /* ScanModule.swift in Sources */,
+				B0263427DEE22406B2774672 /* ScanRepository.swift in Sources */,
+				A299DFC49021FB6CCDD1A2F6 /* ScanRepositoryImpl.swift in Sources */,
+				6C510BDB268A44FA15145B08 /* ScanUseCase.swift in Sources */,
+				00B10AD80328D6E389503724 /* SdkToolsScanner.swift in Sources */,
 				C127C6955D2009C70221DFEC /* ServiceLocator.swift in Sources */,
 				8E59A627E1C1C5366F2548D1 /* Signposts.swift in Sources */,
+				1AB93298A707A022DD2129CD /* SimulatorsScanner.swift in Sources */,
 				6316ECD6C5E53508BBE522A8 /* SizeCache.swift in Sources */,
 				28FC0D5A35A33B557F6C13EB /* SizeCalculator.swift in Sources */,
+				1E513E55305EF862AE10BBD7 /* StudioVersionsScanner.swift in Sources */,
+				9482A0DBAF36F0E7A4F70F60 /* SystemImagesScanner.swift in Sources */,
+				3967DF3DEB0C9AFD5A660F7A /* TestResiduesScanner.swift in Sources */,
+				A1459C3CBCA8999C15E287B9 /* Tool.swift in Sources */,
 				70B8017EB6B052491C985106 /* TrashService.swift in Sources */,
+				41FF78A4385842BDCBF01CBF /* XcodeCachesScanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,21 +756,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DDB5A2E820391B473CACA51 /* AndroidToolsScannersTests.swift in Sources */,
 				359B8FB1186A7BE0CB48A5BD /* AppLanguageTests.swift in Sources */,
 				4834B3414D2BDE05629906B2 /* ByteFormatterTests.swift in Sources */,
+				F3AA44CF1348DE95FD3EB279 /* CategoryInfoTests.swift in Sources */,
 				ADE95116489FAB3CDC5FD5E7 /* DirectoryWalkerTests.swift in Sources */,
 				79A4EE1BAA0097FF2E330928 /* EitherTests.swift in Sources */,
+				E3BE343F6A80802D36D20B6C /* EmulatorsScannerTests.swift in Sources */,
 				221618B8EA48DC79914D923C /* FailureTests.swift in Sources */,
+				50BE0343AF7E97152406B66A /* FileChangeJournalTests.swift in Sources */,
+				C2CC90AE24AB4ADB8CFA12A6 /* GradleScannersTests.swift in Sources */,
 				B875B3A42A76F2ADC3FA0498 /* Mocks.swift in Sources */,
 				1E8D692A2DB377B4BD60B512 /* PathProviderTests.swift in Sources */,
 				323AD4C3C02007002C19BCE6 /* PlistReaderTests.swift in Sources */,
 				7A72A07DB2066FEC5446E16C /* ProcessProbeTests.swift in Sources */,
 				25C425B8271D6DDE8F8E10FF /* ProcessRunnerTests.swift in Sources */,
+				F45029D123F608C90EC4B7C5 /* ScanRepositoryImplTests.swift in Sources */,
 				A69BF6ED9FDE8162D85582BF /* ServiceLocatorTests.swift in Sources */,
+				42891DFF1EF38B967AC616A9 /* SimulatorsScannerTests.swift in Sources */,
+				B3AB51C5483AC7F97EBCEA62 /* SizeCacheTests.swift in Sources */,
 				8BAC3262604B123289FCB155 /* SizeCalculatorPerformanceTests.swift in Sources */,
 				6A54A7AF9FA18993FAA8E038 /* SizeCalculatorTests.swift in Sources */,
+				C4FB8B96C3693E066270DB7D /* SystemImagesScannerTests.swift in Sources */,
 				22EF993A943CD8B955CBD490 /* TempDirectory.swift in Sources */,
 				FB9F79D098F2D6DF928C0AA8 /* TrashServiceTests.swift in Sources */,
+				AEA4EC9E89CB823EEC7BA832 /* XcodeScannersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

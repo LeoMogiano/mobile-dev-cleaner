@@ -4,6 +4,9 @@ import SwiftUI
 struct MobileDevCleanerApp: App {
     init() {
         Injection.setup()
+        if HeadlessScan.isRequested {
+            Task { await HeadlessScan.run() }
+        }
     }
 
     var body: some Scene {
