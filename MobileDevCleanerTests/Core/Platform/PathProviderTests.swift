@@ -74,4 +74,13 @@ struct PathProviderTests {
 
         #expect(provider.cocoapodsRepos.path == "/Users/test/.cocoapods/repos")
     }
+
+    @Test("pubCache, fvm and fvmVersions are built from home")
+    func flutterPaths() {
+        let provider = PathProvider(home: URL(filePath: "/Users/test", directoryHint: .isDirectory))
+
+        #expect(provider.pubCache.path == "/Users/test/.pub-cache")
+        #expect(provider.fvm.path == "/Users/test/fvm")
+        #expect(provider.fvmVersions.path == "/Users/test/fvm/versions")
+    }
 }

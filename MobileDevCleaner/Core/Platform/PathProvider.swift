@@ -36,6 +36,10 @@ struct PathProvider: Sendable, Equatable {
     var android: URL { home.appending(path: ".android", directoryHint: .isDirectory) }
     var avd: URL { android.appending(path: "avd", directoryHint: .isDirectory) }
     var androidSdk: URL { library.appending(path: "Android/sdk", directoryHint: .isDirectory) }
+    var pubCache: URL { home.appending(path: ".pub-cache", directoryHint: .isDirectory) }
+    var fvm: URL { home.appending(path: "fvm", directoryHint: .isDirectory) }
+    var fvmVersions: URL { fvm.appending(path: "versions", directoryHint: .isDirectory) }
+
     var kotlinDaemon: URL { home.appending(path: ".kotlin/daemon", directoryHint: .isDirectory) }
 
     var trash: URL { home.appending(path: ".Trash", directoryHint: .isDirectory) }

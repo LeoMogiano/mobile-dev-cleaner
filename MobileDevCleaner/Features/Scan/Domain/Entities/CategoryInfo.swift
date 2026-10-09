@@ -245,6 +245,54 @@ extension CategoryInfo {
                 comesBack: L10n.string("No. Son de versiones que ya no tienes."),
                 needsFullDiskAccess: false
             )
+        case .fprojects:
+            return CategoryInfo(
+                id: .fprojects,
+                name: L10n.string("Proyectos Flutter"),
+                technicalName: L10n.string("build/ · .dart_tool/"),
+                displayPath: "~/…/pubspec.yaml",
+                symbol: "square.stack",
+                whatIsIt: L10n.string("Compilaciones y archivos de herramientas que Flutter guarda dentro de cada proyecto."),
+                ifDeleted: L10n.string("La próxima compilación del proyecto tardará más. Tu código no se toca."),
+                comesBack: L10n.string("Sí. Se regeneran al compilar o al correr flutter pub get."),
+                needsFullDiskAccess: false
+            )
+        case .pubcache:
+            return CategoryInfo(
+                id: .pubcache,
+                name: L10n.string("Caché de pub"),
+                technicalName: L10n.string(".pub-cache"),
+                displayPath: "~/.pub-cache",
+                symbol: "shippingbox",
+                whatIsIt: L10n.string("Todos los paquetes de Dart y Flutter que descargaste para tus proyectos."),
+                ifDeleted: L10n.string("El próximo flutter pub get descargará de nuevo los paquetes que uses."),
+                comesBack: L10n.string("Sí. Se rellena al instalar dependencias."),
+                needsFullDiskAccess: false
+            )
+        case .fsdk:
+            return CategoryInfo(
+                id: .fsdk,
+                name: L10n.string("Caché del SDK de Flutter"),
+                technicalName: L10n.string("flutter/bin/cache"),
+                displayPath: "flutter/bin/cache",
+                symbol: "tray",
+                whatIsIt: L10n.string("Motores y herramientas que el SDK de Flutter descarga para cada plataforma."),
+                ifDeleted: L10n.string("El próximo comando de flutter los descargará de nuevo."),
+                comesBack: L10n.string("Sí. Se descargan solos o con flutter precache."),
+                needsFullDiskAccess: false
+            )
+        case .fvm:
+            return CategoryInfo(
+                id: .fvm,
+                name: L10n.string("Versiones de Flutter (FVM)"),
+                technicalName: L10n.string("fvm/versions"),
+                displayPath: "~/fvm/versions",
+                symbol: "square.on.square",
+                whatIsIt: L10n.string("SDKs completos de Flutter instalados con FVM. Cada versión ocupa varios GB."),
+                ifDeleted: L10n.string("Un proyecto que fije esa versión la descargará de nuevo con fvm install."),
+                comesBack: L10n.string("Solo si un proyecto la vuelve a pedir."),
+                needsFullDiskAccess: false
+            )
         }
     }
 }

@@ -7,4 +7,6 @@ enum CandidateGroup: String, Sendable, Codable, CaseIterable, Hashable {
     case orphanProjects
     case usedByEmulators
     case unusedByEmulators
+    case usedByProjects
+    case unusedByProjects
 }

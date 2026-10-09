@@ -25,6 +25,8 @@ struct ScanContext: Sendable {
     let runner: any ProcessRunning
     let plist: any PlistReading
     let probe: any ProcessProbing
+    /// Shared `pubspec.yaml` discovery for the Flutter scanners (one walk per scan).
+    var flutter: any FlutterProjectLocating = NoFlutterProjects()
 
     /// Direct children (files and folders, hidden included), sorted by name. Missing → [].
     func contents(of url: URL) -> [URL] {

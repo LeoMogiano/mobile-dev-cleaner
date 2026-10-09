@@ -58,6 +58,7 @@
 		393427E65F97392BEDF300C8 /* ScanModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD78624B469AB9D64DDC60B6 /* ScanModule.swift */; };
 		3967DF3DEB0C9AFD5A660F7A /* TestResiduesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC5E4C13555583C48E6789 /* TestResiduesScanner.swift */; };
 		3B88783384474AEC7C5EE8D2 /* FullDiskAccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68FCF293D4A9AC0B304655C /* FullDiskAccessViewModel.swift */; };
+		3C846519E4EDB32E4759EEE2 /* PubCacheScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E6C0120CA3EC17A76069 /* PubCacheScanner.swift */; };
 		3F3306444F33826C219260C2 /* DeviceCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258F4AD040FC206B68C3E26 /* DeviceCandidate.swift */; };
 		3F401B36524F2AE89B881A4B /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE5C18DCCF920C4C6AD70E /* SettingsStoreTests.swift */; };
 		41742EDFE35DCA8D1DB97043 /* DeviceSupportScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F845F6D39FFDD8CC4A33CF /* DeviceSupportScanner.swift */; };
@@ -79,6 +80,7 @@
 		5625251A60A34B82D8CAB2A0 /* PathProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E364CFBEE7A4CB245B4DA66 /* PathProvider.swift */; };
 		56EDA63435FD4CCDE62964A2 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5BECDB3251F12D938CD569 /* SidebarView.swift */; };
 		5727587D0FD29B687EFD77B4 /* GeneralSettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D1BA9B6B76A941C0BCCA /* GeneralSettingsViewModelTests.swift */; };
+		5734285665E427EA680D0919 /* FlutterProjectsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6205832C329F15ED67F4DF /* FlutterProjectsScanner.swift */; };
 		5A4265BCFC26B968E233F920 /* CleanupOutcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ABA8AC399190B8FAEB3875 /* CleanupOutcome.swift */; };
 		5C852F466E90F1E153B07544 /* CleanupModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10062D339DD3AEAF9E510A3 /* CleanupModule.swift */; };
 		5CF3A132400F6DFE06198591 /* CreatorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D43FF6C938CF58639A223 /* CreatorSettingsView.swift */; };
@@ -119,10 +121,12 @@
 		8BA0FBB0FAC8A07A31933818 /* GradleCachesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1834D3B5A3B39E853DB9D /* GradleCachesScanner.swift */; };
 		8BAC3262604B123289FCB155 /* SizeCalculatorPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD61424A5DF38E7C29D424 /* SizeCalculatorPerformanceTests.swift */; };
 		8C31FE91BF9DB6ADDF854045 /* MDCMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52949F0FC398D8891B96E7C /* MDCMaterial.swift */; };
+		8C3DBF17B045C1A88AA03059 /* FlutterProjectFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D218165C8C50861457067B /* FlutterProjectFinder.swift */; };
 		8C53FCA7B0BB03A951118F27 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728ED20CD5FE71ED667800F6 /* SettingsStore.swift */; };
 		8C6B443818D89623869DC8B1 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005C406150C46C2D4F871E0 /* OnboardingViewModel.swift */; };
 		8D66C284C8B914262BA93BC6 /* NotificationsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61779FA97D2990187E628B36 /* NotificationsStep.swift */; };
 		8E59A627E1C1C5366F2548D1 /* Signposts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9648A14BE9C4DEC7FC0D9BF /* Signposts.swift */; };
+		8F79D5DB084B8E9170E08F0F /* FlutterSdkCacheScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF29A93B00246400E2B3684 /* FlutterSdkCacheScanner.swift */; };
 		91139C4CFD26651B7D2183DB /* MainWindowContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44CD22219F9F6412421DA4 /* MainWindowContent.swift */; };
 		92AC1DA3DFA5ED836209C8DB /* MDCSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B15763BE49BD447B5A57E2 /* MDCSymbol.swift */; };
 		9353658AE07873742F5EEA77 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D4D4D8A4BED93B4022D1A /* OnboardingView.swift */; };
@@ -130,6 +134,7 @@
 		9482A0DBAF36F0E7A4F70F60 /* SystemImagesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9BA43F8E36C10D3614589 /* SystemImagesScanner.swift */; };
 		949520A0396FBF1D2771B49F /* FullDiskAccessSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAB751872C842DA3B1DFC42 /* FullDiskAccessSheet.swift */; };
 		96A9EE3A332AC8E18D52CEB4 /* MDCExplainerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59684CF77590B1C00826E3 /* MDCExplainerCard.swift */; };
+		995A3310423E9C82E48124C5 /* FlutterProjectFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA3A0ECB211A7BA7B151C2 /* FlutterProjectFinderTests.swift */; };
 		997D1AEEF3C3DCB5E9932145 /* HistorySummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD79F9F911374DDAFEFE05A /* HistorySummaryCard.swift */; };
 		99F0125AE9F5C62F7ED12B01 /* MDCSizeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20860020DBA16B2C0B0A3D17 /* MDCSizeBar.swift */; };
 		9C6C2CE6BFBCB3EB8C5D6B04 /* HistoryModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ACE4004664DF6BC0D7A951 /* HistoryModule.swift */; };
@@ -165,6 +170,7 @@
 		C127C6955D2009C70221DFEC /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F9D6130D45C41EEB7B2FC /* ServiceLocator.swift */; };
 		C154F7654CD084DBF73FC46D /* FileChangeJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28840F4A5D4F8FA305F2761F /* FileChangeJournal.swift */; };
 		C174B8C59FB1AA15B2D0C8F8 /* AndroidCachesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6160847ACFEDE1614EE09A0A /* AndroidCachesScanner.swift */; };
+		C1B96A40A25A3378A135DBCE /* FlutterScannersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC7A51E9D9BB63EB15E13E /* FlutterScannersTests.swift */; };
 		C26EFA094BE6354BEA8003C6 /* MobileDevCleanerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB11B525A890CB8AA4B0AE7 /* MobileDevCleanerApp.swift */; };
 		C2A5EB1CF7780924A901DC51 /* DependencyCachesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913E45D0680306C7CBC06E4 /* DependencyCachesScanner.swift */; };
 		C2CA7D548D1561AC4DE0A2F2 /* SidebarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E9BB7390BB9E0167EA128 /* SidebarRow.swift */; };
@@ -180,6 +186,7 @@
 		C7E9169FA640E226557AE546 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247729C974FCE951A65695EE /* GeneralSettingsView.swift */; };
 		C8088C90850A40F7415B7FD6 /* HistoryLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84724C5E6C9418C25257C5 /* HistoryLocalDataSource.swift */; };
 		CA9D8D09D454D8FFB1B5BA42 /* DirectoryWalker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9025EC4E0A16006EB3F3A3 /* DirectoryWalker.swift */; };
+		CCBE02486841B929854DAB22 /* FvmVersionsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F462917523B55804941A7 /* FvmVersionsScanner.swift */; };
 		CD85AF900EF8651319EA4449 /* SheetsGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DF94C07B628915D4E47D6 /* SheetsGallery.swift */; };
 		CE9787612AE4ACF03D14C4AB /* ArchivesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115B367CBB2537C56383EAE /* ArchivesScanner.swift */; };
 		D39CFD02673D7D7423C6D27E /* CategoryAccessBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39291261253B3CD30410A05 /* CategoryAccessBanner.swift */; };
@@ -256,8 +263,10 @@
 		1C388F05DC2E7D59C77C9F26 /* CategoryEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEmptyState.swift; sourceTree = "<group>"; };
 		1DC7C25FAF38CD7A67A5608E /* FileChangeJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileChangeJournalTests.swift; sourceTree = "<group>"; };
 		1EF03B3E834961BF944ED47B /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		1FE3E6C0120CA3EC17A76069 /* PubCacheScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubCacheScanner.swift; sourceTree = "<group>"; };
 		20860020DBA16B2C0B0A3D17 /* MDCSizeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCSizeBar.swift; sourceTree = "<group>"; };
 		209D98D9F74EE9D9C7F4E44D /* AppearanceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingsView.swift; sourceTree = "<group>"; };
+		226F462917523B55804941A7 /* FvmVersionsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FvmVersionsScanner.swift; sourceTree = "<group>"; };
 		241D72FA688E924EF686CDBA /* BlockedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedContent.swift; sourceTree = "<group>"; };
 		2427CF1FEC410739BFE1A398 /* RecommendedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCard.swift; sourceTree = "<group>"; };
 		247729C974FCE951A65695EE /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
@@ -295,6 +304,7 @@
 		46721E4094FE42B9962CB365 /* ProcessRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessRunnerTests.swift; sourceTree = "<group>"; };
 		4B320BBBD311510CA4384C6D /* RecordCleanupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCleanupUseCase.swift; sourceTree = "<group>"; };
 		4BB57369CFB95EAA63BF815F /* CleanupRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupRepositoryImpl.swift; sourceTree = "<group>"; };
+		4D6205832C329F15ED67F4DF /* FlutterProjectsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterProjectsScanner.swift; sourceTree = "<group>"; };
 		4F451874011BD57CA73D72A3 /* AdvancedSettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsViewModelTests.swift; sourceTree = "<group>"; };
 		4F9FFD09E60D6AE847F57394 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		4FDF1D15989E37F888C9E09E /* CleanupCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupCandidate.swift; sourceTree = "<group>"; };
@@ -339,8 +349,10 @@
 		7A738C37718DEC73106A625A /* DeviceActionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActionPicker.swift; sourceTree = "<group>"; };
 		7BE5F43508E76FBCB255917E /* ReviewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewContent.swift; sourceTree = "<group>"; };
 		7FD74B2823CD0FF1904F7228 /* CategoryScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScanner.swift; sourceTree = "<group>"; };
+		80D218165C8C50861457067B /* FlutterProjectFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterProjectFinder.swift; sourceTree = "<group>"; };
 		81E4167537E0FEA748AAFF45 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		858A24EE8F3A490CCC919148 /* SettingsLinkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLinkRow.swift; sourceTree = "<group>"; };
+		86EA3A0ECB211A7BA7B151C2 /* FlutterProjectFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterProjectFinderTests.swift; sourceTree = "<group>"; };
 		8921D1BA9B6B76A941C0BCCA /* GeneralSettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewModelTests.swift; sourceTree = "<group>"; };
 		8A131EDF2717B4BC08793609 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		8B18DB67CA9215F2843297BC /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
@@ -411,6 +423,7 @@
 		D39FCAE6CE4A9B9D10CEEA09 /* MobileDevCleaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileDevCleaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41243F3A11BEFAC367E4E33 /* GradleVersionsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleVersionsScanner.swift; sourceTree = "<group>"; };
 		D445771AD988A59C5C543679 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		D4CC7A51E9D9BB63EB15E13E /* FlutterScannersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterScannersTests.swift; sourceTree = "<group>"; };
 		D633D44FB9BBFD5E4B943149 /* DecisionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionCard.swift; sourceTree = "<group>"; };
 		D90B0F776E53B1430CCB98E2 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		DAFFDCAF90ECDAE1037374C0 /* BuildCleanupPlanUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildCleanupPlanUseCaseTests.swift; sourceTree = "<group>"; };
@@ -423,6 +436,7 @@
 		E913E45D0680306C7CBC06E4 /* DependencyCachesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyCachesScanner.swift; sourceTree = "<group>"; };
 		E97B9B7816457A099DD37322 /* XcodeCachesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeCachesScanner.swift; sourceTree = "<group>"; };
 		EB4D69D81D042373FB6B8ADB /* TransferPlanUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPlanUseCases.swift; sourceTree = "<group>"; };
+		EDF29A93B00246400E2B3684 /* FlutterSdkCacheScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterSdkCacheScanner.swift; sourceTree = "<group>"; };
 		EFD7FBFE3D86B9B9D26E33D4 /* CategoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfo.swift; sourceTree = "<group>"; };
 		F0F63AF06B5643F59C094327 /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
 		F2B945E3FF8ADB69D832B07F /* PlanTransferRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTransferRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -549,6 +563,8 @@
 			children = (
 				0CBF0693ADBD33014109947D /* AndroidToolsScannersTests.swift */,
 				C102DC2F65247D37FCEE5A97 /* EmulatorsScannerTests.swift */,
+				86EA3A0ECB211A7BA7B151C2 /* FlutterProjectFinderTests.swift */,
+				D4CC7A51E9D9BB63EB15E13E /* FlutterScannersTests.swift */,
 				5DAAC25C929DAB6EF3ED95C1 /* GradleScannersTests.swift */,
 				A15AA452E1556AB302EE7B16 /* ScanRepositoryImplTests.swift */,
 				5696269288CA3787C933BDFF /* SimulatorsScannerTests.swift */,
@@ -648,6 +664,18 @@
 				1925167E9E81D1413F0BCF57 /* HistoryEntry.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		3A13FF2795F5331DF495DE22 /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				80D218165C8C50861457067B /* FlutterProjectFinder.swift */,
+				4D6205832C329F15ED67F4DF /* FlutterProjectsScanner.swift */,
+				EDF29A93B00246400E2B3684 /* FlutterSdkCacheScanner.swift */,
+				226F462917523B55804941A7 /* FvmVersionsScanner.swift */,
+				1FE3E6C0120CA3EC17A76069 /* PubCacheScanner.swift */,
+			);
+			path = Flutter;
 			sourceTree = "<group>";
 		};
 		3C9978909676DD7BA17A62D3 /* Debug */ = {
@@ -1283,6 +1311,7 @@
 			children = (
 				7FD74B2823CD0FF1904F7228 /* CategoryScanner.swift */,
 				519CE023D1A6C4162CD21FE4 /* Android */,
+				3A13FF2795F5331DF495DE22 /* Flutter */,
 				FF545EE7F672DB539D76E384 /* Xcode */,
 			);
 			path = DataSources;
@@ -1517,10 +1546,14 @@
 				A3142ED9987548C0E19259B8 /* ExecutionStrategy.swift in Sources */,
 				746FC384018C2FD26624310D /* Failure.swift in Sources */,
 				C154F7654CD084DBF73FC46D /* FileChangeJournal.swift in Sources */,
+				8C3DBF17B045C1A88AA03059 /* FlutterProjectFinder.swift in Sources */,
+				5734285665E427EA680D0919 /* FlutterProjectsScanner.swift in Sources */,
+				8F79D5DB084B8E9170E08F0F /* FlutterSdkCacheScanner.swift in Sources */,
 				F6BA55BFFEF2E7E7FF968AEA /* FullDiskAccess.swift in Sources */,
 				C5E07C0926345AADFB5B578C /* FullDiskAccessGuide.swift in Sources */,
 				949520A0396FBF1D2771B49F /* FullDiskAccessSheet.swift in Sources */,
 				3B88783384474AEC7C5EE8D2 /* FullDiskAccessViewModel.swift in Sources */,
+				CCBE02486841B929854DAB22 /* FvmVersionsScanner.swift in Sources */,
 				EB8ECEEDE7A82BC8F50BFC82 /* GalleryRenderer.swift in Sources */,
 				C7E9169FA640E226557AE546 /* GeneralSettingsView.swift in Sources */,
 				FEEE12E78EC8AB37F52AEA37 /* GeneralSettingsViewModel.swift in Sources */,
@@ -1580,6 +1613,7 @@
 				85D1905BB4FD5F133D8D6F6F /* ProcessProbe.swift in Sources */,
 				A9F734F578572BD6ADF9C84D /* ProcessRunner.swift in Sources */,
 				3725DC7DA7E329BBECA868AA /* ProgressContent.swift in Sources */,
+				3C846519E4EDB32E4759EEE2 /* PubCacheScanner.swift in Sources */,
 				867CD7A9791CCC697C193CCC /* RecommendedCard.swift in Sources */,
 				EC4D159B8B309265D3629CD9 /* RecordCleanupUseCase.swift in Sources */,
 				E93B6632F7673A5E159EF12D /* ResultContent.swift in Sources */,
@@ -1642,6 +1676,8 @@
 				E3BE343F6A80802D36D20B6C /* EmulatorsScannerTests.swift in Sources */,
 				221618B8EA48DC79914D923C /* FailureTests.swift in Sources */,
 				50BE0343AF7E97152406B66A /* FileChangeJournalTests.swift in Sources */,
+				995A3310423E9C82E48124C5 /* FlutterProjectFinderTests.swift in Sources */,
+				C1B96A40A25A3378A135DBCE /* FlutterScannersTests.swift in Sources */,
 				ED13D6FE3BC4A013BAF4A6B8 /* FullDiskAccessViewModelTests.swift in Sources */,
 				5727587D0FD29B687EFD77B4 /* GeneralSettingsViewModelTests.swift in Sources */,
 				C2CC90AE24AB4ADB8CFA12A6 /* GradleScannersTests.swift in Sources */,

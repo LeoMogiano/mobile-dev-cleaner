@@ -46,8 +46,16 @@ extension TempDirectory {
     /// Real size calculator and plist reader over the temp home; CLIs and probe are mocked.
     func scanContext(
         runner: any ProcessRunning = MockProcessRunner(),
-        probe: any ProcessProbing = MockProcessProbe()
+        probe: any ProcessProbing = MockProcessProbe(),
+        flutter: any FlutterProjectLocating = NoFlutterProjects()
     ) -> ScanContext {
-        ScanContext(paths: paths, sizes: SizeCalculator(cacheURL: nil), runner: runner, plist: PlistReader(), probe: probe)
+        ScanContext(
+            paths: paths, sizes: SizeCalculator(cacheURL: nil), runner: runner,
+            plist: PlistReader(), probe: probe, flutter: flutter)
     }
+}
+
+struct MockFlutterProjects: FlutterProjectLocating {
+    var list: [FlutterProject] = []
+    func projects() async -> [FlutterProject] { list }
 }
