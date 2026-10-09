@@ -34,6 +34,12 @@ final class SelectionStore {
         deviceActions[device.id] = deviceActions[device.id] == action ? nil : action
     }
 
+    /// Replaces the selection with an imported plan.
+    func apply(_ plan: PlanSelection) {
+        candidateIDs = plan.candidateIDs
+        deviceActions = plan.deviceActions
+    }
+
     func clear() {
         candidateIDs.removeAll()
         deviceActions.removeAll()
