@@ -1,12 +1,27 @@
 import Foundation
 import UserNotifications
 
+protocol NotificationAuthorizing: Sendable {
+    func isAuthorized() async -> Bool
+    /// Shows the system prompt the first time; returns whether notifications are allowed.
+    func requestAuthorization() async -> Bool
+}
+
 protocol CleanupNotifying: Sendable {
     /// Posts "Limpieza completada" only if the user already allowed notifications.
     func notifyCleanupFinished(freedBytes: Int64, failureCount: Int) async
 }
 
-struct NotificationService: CleanupNotifying {
+struct NotificationService: CleanupNotifying, NotificationAuthorizing {
+    func isAuthorized() async -> Bool {
+        let status = await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
+        return status == .authorized || status == .provisional
+    }
+
+    func requestAuthorization() async -> Bool {
+        (try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])) ?? false
+    }
+
     func notifyCleanupFinished(freedBytes: Int64, failureCount: Int) async {
         let settings = await UNUserNotificationCenter.current().notificationSettings()
         guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional else {

@@ -33,7 +33,7 @@ struct DevicesView: View {
         return VStack(spacing: 14) {
             CategoryHeader(category: category, sizeText: vm.sizeText, badges: vm.badges)
             if vm.showsAccessBanner {
-                CategoryAccessBanner()
+                CategoryAccessBanner { router.isFullDiskAccessPresented = true }
             }
             MDCExplainerCard(
                 whatIsIt: vm.info.whatIsIt, ifDeleted: vm.info.ifDeleted, comesBack: vm.info.comesBack,

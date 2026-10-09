@@ -66,10 +66,7 @@ final class DashboardViewModel {
         case .openCategory(let id): router.show(.category(id))
         case .toggleRecommendedList: isRecommendedExpanded.toggle()
         case .dismissBanner: isBannerDismissed = true
-        case .grantAccess:
-            if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles") {
-                NSWorkspace.shared.open(url)
-            }
+        case .grantAccess: router.isFullDiskAccessPresented = true
         }
     }
 
@@ -152,7 +149,7 @@ final class DashboardViewModel {
     var currentPath: String { scan.currentPath ?? "" }
 
     var toolProgress: [ToolProgress] {
-        Tool.allCases.map { tool in
+        Tool.allCases.filter(settings.enabledTools.contains).map { tool in
             let found = scan.reports.values.filter { $0.id.tool == tool && !$0.accessDenied }.reduce(Int64(0)) { $0 + $1.totalSize }
             return ToolProgress(tool: tool, fraction: scan.progress(for: tool), foundText: Self.format(found))
         }
