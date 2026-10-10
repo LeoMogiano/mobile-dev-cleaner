@@ -200,6 +200,7 @@
 		DEB2C176EC2DF872C3CA9011 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DBEFEFDFEA485C23F6E5F2 /* AppRouter.swift */; };
 		E22395B7B67E2E8741F57676 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4D98FA012E76AF1AFDCC6 /* NotificationService.swift */; };
 		E252A6B0CDA6EEF7551F517E /* CandidateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA40EFB823CD26EA82BBBA2B /* CandidateGroupView.swift */; };
+		E381C33A749CBEDF5928F0AF /* SidebarWordmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4414EA2ECB9CC530A80D72C3 /* SidebarWordmark.swift */; };
 		E3BE343F6A80802D36D20B6C /* EmulatorsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102DC2F65247D37FCEE5A97 /* EmulatorsScannerTests.swift */; };
 		E7494A5E96B7BE8DD9425A84 /* SidebarSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB6A80AAFE6DAA584C6CF8 /* SidebarSectionsTests.swift */; };
 		E7D86D116C121613892732AA /* MDCSwitchToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56192C0AC16533F72178BB30 /* MDCSwitchToggleStyle.swift */; };
@@ -300,6 +301,7 @@
 		3F44CD22219F9F6412421DA4 /* MainWindowContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowContent.swift; sourceTree = "<group>"; };
 		407BC0EE01DDB9A507AAE342 /* creator.webp */ = {isa = PBXFileReference; path = creator.webp; sourceTree = "<group>"; };
 		43B1834D3B5A3B39E853DB9D /* GradleCachesScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradleCachesScanner.swift; sourceTree = "<group>"; };
+		4414EA2ECB9CC530A80D72C3 /* SidebarWordmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarWordmark.swift; sourceTree = "<group>"; };
 		447DE4323D28EA5C92B0623E /* MDCEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCEmptyState.swift; sourceTree = "<group>"; };
 		44C481AEA343255DF964F0B7 /* HistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRow.swift; sourceTree = "<group>"; };
 		45FAE3447C11D5548DE20F0F /* CoreModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModule.swift; sourceTree = "<group>"; };
@@ -1170,6 +1172,7 @@
 				9B1E9BB7390BB9E0167EA128 /* SidebarRow.swift */,
 				907F381D9B0172CFCEE5002E /* SidebarSections.swift */,
 				9E5BECDB3251F12D938CD569 /* SidebarView.swift */,
+				4414EA2ECB9CC530A80D72C3 /* SidebarWordmark.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -1659,6 +1662,7 @@
 				C2CA7D548D1561AC4DE0A2F2 /* SidebarRow.swift in Sources */,
 				4E825C5D46A5FF48B1435317 /* SidebarSections.swift in Sources */,
 				56EDA63435FD4CCDE62964A2 /* SidebarView.swift in Sources */,
+				E381C33A749CBEDF5928F0AF /* SidebarWordmark.swift in Sources */,
 				8E59A627E1C1C5366F2548D1 /* Signposts.swift in Sources */,
 				1AB93298A707A022DD2129CD /* SimulatorsScanner.swift in Sources */,
 				6316ECD6C5E53508BBE522A8 /* SizeCache.swift in Sources */,
