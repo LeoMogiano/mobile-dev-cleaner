@@ -4,13 +4,13 @@ enum ByteFormatter {
     private static let formatterCache = NumberFormatterCache()
     private static let decimalBase: Int64 = 1_000_000_000
 
-    static func string(_ bytes: Int64, locale: Locale = .current) -> String {
+    static func string(_ bytes: Int64, locale: Locale = AppLanguage.current.locale) -> String {
         let (value, unit) = parts(bytes, locale: locale)
         return "\(value) \(unit)"
     }
 
     /// Returns formatted number and unit separately (for hero display with different font sizes).
-    static func parts(_ bytes: Int64, locale: Locale = .current) -> (value: String, unit: String) {
+    static func parts(_ bytes: Int64, locale: Locale = AppLanguage.current.locale) -> (value: String, unit: String) {
         let megaBase: Int64 = 1_000_000
 
         if bytes >= decimalBase {

@@ -65,3 +65,7 @@ schemes:
     test:
       targets:
         - MobileDevCleanerTests
+      # Tests assert Spanish copy; pin the language so the user's in-app choice can't leak in.
+      commandLineArguments:
+        "-appLanguage es": true
+        "-AppleLanguages (es)": true
