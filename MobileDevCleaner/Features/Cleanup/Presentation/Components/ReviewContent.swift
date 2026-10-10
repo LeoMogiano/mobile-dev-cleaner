@@ -38,20 +38,12 @@ struct ReviewContent: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            Image(systemName: "trash")
-                .font(.system(size: 22))
+            Image(systemName: "trash.fill")
+                .font(.system(size: 20, weight: .medium))
                 .foregroundStyle(.white)
                 .frame(width: 44, height: 44)
                 .accessibilityHidden(true)
-                .background(
-                    LinearGradient(
-                        stops: [
-                            .init(color: Color(red: 0x3A / 255, green: 0xA0 / 255, blue: 1), location: 0),
-                            .init(color: Color(red: 0x5B / 255, green: 0x6C / 255, blue: 1), location: 0.55),
-                            .init(color: Color(red: 0xA3 / 255, green: 0x5B / 255, blue: 1), location: 1),
-                        ],
-                        startPoint: .topLeading, endPoint: .bottomTrailing),
-                    in: RoundedRectangle(cornerRadius: 11, style: .continuous))
+                .background(Color.mdcAccent, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
             VStack(alignment: .leading, spacing: 2) {
                 Text("Vas a liberar \(totalText)")
                     .font(.system(size: 17, weight: .bold))

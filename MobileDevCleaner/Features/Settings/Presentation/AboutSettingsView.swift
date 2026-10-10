@@ -5,23 +5,7 @@ struct AboutSettingsView: View {
         Form {
             Section {
                 HStack(alignment: .center, spacing: 14) {
-                    ZStack(alignment: .center) {
-                        LinearGradient(
-                            gradient: Gradient(stops: [
-                                .init(color: Color(hex: 0x3aa0ff), location: 0),
-                                .init(color: Color(hex: 0x5b6cff), location: 0.55),
-                                .init(color: Color(hex: 0xa35bff), location: 1)
-                            ]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                        .frame(width: 56, height: 56)
-                        .cornerRadius(14)
-
-                        Image(systemName: "trash.fill")
-                            .font(.system(size: 27))
-                            .foregroundStyle(Color.white)
-                    }
+                    MDCAppIcon(size: 56)
 
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Mobile Dev Cleaner")

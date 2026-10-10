@@ -5,24 +5,7 @@ struct WelcomeStep: View {
         HStack(spacing: 36) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 10) {
-                    ZStack(alignment: .center) {
-                        LinearGradient(
-                            gradient: Gradient(stops: [
-                                .init(color: Color(hex: 0x3aa0ff), location: 0),
-                                .init(color: Color(hex: 0x5b6cff), location: 0.55),
-                                .init(color: Color(hex: 0xa35bff), location: 1)
-                            ]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                        .frame(width: 40, height: 40)
-                        .cornerRadius(11)
-
-                        Image(systemName: "trash.fill")
-                            .accessibilityHidden(true)
-                            .font(.system(size: 20))
-                            .foregroundStyle(Color.white)
-                    }
+                    MDCAppIcon(size: 40)
 
                     Text("Mobile Dev Cleaner")
                         .font(.mont(15, weight: .bold))
