@@ -28,7 +28,7 @@ struct AboutSettingsView: View {
                         colors: [Color(hex: 0x4aa3ff), Color(hex: 0x007aff)], startPoint: .top, endPoint: .bottom)),
                     title: "Dale una estrella en GitHub",
                     detail: "Ayuda a que más devs la encuentren",
-                    url: "https://github.com/LeoMogiano/mdc-cli"
+                    url: "https://github.com/LeoMogiano/mobile-dev-cleaner"
                 )
 
                 SettingsLinkRow(
@@ -37,7 +37,7 @@ struct AboutSettingsView: View {
                     background: AnyShapeStyle(Color.mdcFill),
                     title: "Reportar un problema",
                     detail: "GitHub Issues",
-                    url: "https://github.com/LeoMogiano/mdc-cli/issues"
+                    url: "https://github.com/LeoMogiano/mobile-dev-cleaner/issues"
                 )
             }
 
