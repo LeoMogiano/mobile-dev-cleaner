@@ -23,7 +23,7 @@ extension CategoryInfo {
                 name: L10n.string("Builds de Xcode"),
                 technicalName: L10n.string("DerivedData"),
                 displayPath: "~/Library/Developer/Xcode/DerivedData",
-                symbol: "hammer",
+                symbol: "gearshape.2",
                 whatIsIt: L10n.string("Archivos intermedios que Xcode genera al compilar cada proyecto."),
                 ifDeleted: L10n.string("El próximo build de ese proyecto tardará más: compila desde cero."),
                 comesBack: L10n.string("Sí. Xcode lo regenera en cuanto compilas."),

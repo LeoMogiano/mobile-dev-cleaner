@@ -26,10 +26,12 @@ struct MDCSwitchToggleStyle: ToggleStyle {
                 !reduceMotion ? .spring(response: 0.2, dampingFraction: 1, blendDuration: 0) : .none,
                 value: configuration.isOn
             )
-            .accessibilityElement()
-            .accessibilityValue(configuration.isOn ? L10n.string("Activado") : L10n.string("Desactivado"))
-            .accessibilityAddTraits(.isToggle)
         }
+        // Combined so the switch takes its name from the label and VoiceOver can press it.
+        .accessibilityElement(children: .combine)
+        .accessibilityValue(configuration.isOn ? L10n.string("Activado") : L10n.string("Desactivado"))
+        .accessibilityAddTraits(.isToggle)
+        .accessibilityAction { configuration.isOn.toggle() }
     }
 }
 

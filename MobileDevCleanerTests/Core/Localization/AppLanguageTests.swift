@@ -105,7 +105,7 @@ struct AppLanguageTests {
 
     @Test("all cases count")
     func allCasesCount() {
-        #expect(AppLanguage.allCases.count == 3)
+        #expect(AppLanguage.allCases.count == 7)
     }
 
     @Test("all cases contains expected values")
@@ -114,5 +114,97 @@ struct AppLanguageTests {
         #expect(cases.contains("system"))
         #expect(cases.contains("es"))
         #expect(cases.contains("en"))
+        #expect(cases.contains("ja"))
+        #expect(cases.contains("zh-Hans"))
+        #expect(cases.contains("pt-BR"))
+        #expect(cases.contains("de"))
+    }
+
+    @Test("ja locale identifier")
+    func jaLocaleIdentifier() {
+        #expect(AppLanguage.ja.locale.identifier == "ja")
+    }
+
+    @Test("ja bundle code")
+    func jaBundleCode() {
+        #expect(AppLanguage.ja.bundleCode == "ja")
+    }
+
+    @Test("ja display name")
+    func jaDisplayName() {
+        #expect(AppLanguage.ja.displayName == "日本語")
+    }
+
+    @Test("ja raw value round-trip")
+    func jaRawValueRoundTrip() {
+        #expect(AppLanguage(rawValue: "ja") == .ja)
+        #expect(AppLanguage.ja.rawValue == "ja")
+    }
+
+    @Test("zh-Hans locale is simplified Chinese")
+    func zhHansLocaleIdentifier() {
+        let language = AppLanguage.zhHans.locale.language
+        #expect(language.languageCode == .chinese)
+        #expect(language.script == .hanSimplified)
+    }
+
+    @Test("zh-Hans bundle code")
+    func zhHansBundleCode() {
+        #expect(AppLanguage.zhHans.bundleCode == "zh-Hans")
+    }
+
+    @Test("zh-Hans display name")
+    func zhHansDisplayName() {
+        #expect(AppLanguage.zhHans.displayName == "简体中文")
+    }
+
+    @Test("zh-Hans raw value round-trip")
+    func zhHansRawValueRoundTrip() {
+        #expect(AppLanguage(rawValue: "zh-Hans") == .zhHans)
+        #expect(AppLanguage.zhHans.rawValue == "zh-Hans")
+    }
+
+    @Test("pt-BR locale is Brazilian Portuguese")
+    func ptBRLocaleIdentifier() {
+        let language = AppLanguage.ptBR.locale.language
+        #expect(language.languageCode == .portuguese)
+        #expect(language.region == .brazil)
+    }
+
+    @Test("pt-BR bundle code")
+    func ptBRBundleCode() {
+        #expect(AppLanguage.ptBR.bundleCode == "pt-BR")
+    }
+
+    @Test("pt-BR display name")
+    func ptBRDisplayName() {
+        #expect(AppLanguage.ptBR.displayName == "Português (Brasil)")
+    }
+
+    @Test("pt-BR raw value round-trip")
+    func ptBRRawValueRoundTrip() {
+        #expect(AppLanguage(rawValue: "pt-BR") == .ptBR)
+        #expect(AppLanguage.ptBR.rawValue == "pt-BR")
+    }
+
+    @Test("de locale identifier")
+    func deLocaleIdentifier() {
+        #expect(AppLanguage.de.locale.identifier == "de")
+    }
+
+    @Test("de bundle code")
+    func deBundleCode() {
+        #expect(AppLanguage.de.bundleCode == "de")
+    }
+
+    @Test("de display name")
+    func deDisplayName() {
+        #expect(AppLanguage.de.displayName == "Deutsch")
+    }
+
+    @Test("de raw value round-trip")
+    func deRawValueRoundTrip() {
+        #expect(AppLanguage(rawValue: "de") == .de)
+        #expect(AppLanguage.de.rawValue == "de")
     }
 }

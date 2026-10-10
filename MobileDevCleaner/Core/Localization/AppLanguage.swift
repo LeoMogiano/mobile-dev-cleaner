@@ -4,6 +4,10 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     case system
     case es
     case en
+    case ja
+    case zhHans = "zh-Hans"
+    case ptBR = "pt-BR"
+    case de
 
     var id: String { rawValue }
 
@@ -25,6 +29,10 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
         case .system: L10n.string("Del sistema")
         case .es: "Español"
         case .en: "English"
+        case .ja: "日本語"
+        case .zhHans: "简体中文"
+        case .ptBR: "Português (Brasil)"
+        case .de: "Deutsch"
         }
     }
 

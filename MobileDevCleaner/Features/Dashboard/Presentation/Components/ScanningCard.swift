@@ -22,6 +22,7 @@ struct ScanningCard: View {
                 Text("Escaneando tu Mac…").font(.system(size: 17, weight: .semibold)).frame(maxWidth: .infinity, alignment: .leading)
                 Text(percentText).font(.system(size: 13)).monospacedDigit().foregroundStyle(Color.mdcText2)
                     .accessibilityLabel("Progreso del escaneo")
+                    .accessibilityValue(percentText)
             }
             Text(currentPath)
                 .font(.mdcMono(11))
@@ -42,7 +43,9 @@ struct ScanningCard: View {
         let color = Color.mdcTool(item.tool)
         return VStack(spacing: 7) {
             HStack(spacing: 6) {
-                MDCSymbol(name: item.tool.symbolName, size: 13).foregroundStyle(color)
+                MDCSymbol(name: item.tool.symbolName, size: 13)
+                    .foregroundStyle(color)
+                    .accessibilityHidden(true)
                 Text(item.tool.displayName).fontWeight(.semibold)
                 Spacer(minLength: 0)
                 Text(item.foundText).foregroundStyle(Color.mdcText2).monospacedDigit()
@@ -55,6 +58,9 @@ struct ScanningCard: View {
             .frame(height: 5)
             .background(Color.mdcFill, in: Capsule())
             .clipShape(Capsule())
+            .accessibilityElement()
+            .accessibilityLabel(item.tool.displayName)
+            .accessibilityValue("\(Int((item.fraction * 100).rounded()))%")
         }
         .frame(minWidth: 0, maxWidth: .infinity)
     }
@@ -77,6 +83,7 @@ struct ScanningCard: View {
         HStack(spacing: 10) {
             if row.isFound {
                 Image(systemName: row.symbol).font(.system(size: 14)).foregroundStyle(Color.mdcTool(row.tool))
+                    .accessibilityHidden(true)
                 Text(row.name).frame(maxWidth: .infinity, alignment: .leading)
                 Text(row.sizeText)
                     .font(.system(size: 12))
@@ -104,7 +111,7 @@ extension Tool {
         switch self {
         case .xcode: "hammer"
         case .android: "android"
-        case .flutter: "square.stack"
+        case .flutter: "flutter"
         }
     }
 }

@@ -38,19 +38,12 @@ struct ReviewContent: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            Image(systemName: "trash")
-                .font(.system(size: 22))
+            Image(systemName: "trash.fill")
+                .font(.system(size: 20, weight: .medium))
                 .foregroundStyle(.white)
                 .frame(width: 44, height: 44)
-                .background(
-                    LinearGradient(
-                        stops: [
-                            .init(color: Color(red: 0x3A / 255, green: 0xA0 / 255, blue: 1), location: 0),
-                            .init(color: Color(red: 0x5B / 255, green: 0x6C / 255, blue: 1), location: 0.55),
-                            .init(color: Color(red: 0xA3 / 255, green: 0x5B / 255, blue: 1), location: 1),
-                        ],
-                        startPoint: .topLeading, endPoint: .bottomTrailing),
-                    in: RoundedRectangle(cornerRadius: 11, style: .continuous))
+                .accessibilityHidden(true)
+                .background(Color.mdcAccent, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
             VStack(alignment: .leading, spacing: 2) {
                 Text("Vas a liberar \(totalText)")
                     .font(.system(size: 17, weight: .bold))
@@ -67,7 +60,7 @@ struct ReviewContent: View {
     private var footer: some View {
         VStack(alignment: .leading, spacing: 8) {
             checkRow(isOn: movesToTrash, action: onToggleTrash) {
-                Text("Mover a la Papelera ") + Text("(puedes recuperarlos)").foregroundStyle(Color.mdcText3)
+                Text("Mover a la Papelera \(Text("(puedes recuperarlos)").foregroundStyle(Color.mdcText3))")
             }
             if needsUnderstanding {
                 checkRow(isOn: understands, action: onToggleUnderstands) {
@@ -91,13 +84,19 @@ struct ReviewContent: View {
     }
 
     private func checkRow(isOn: Bool, action: @escaping () -> Void, @ViewBuilder label: () -> Text) -> some View {
-        HStack(spacing: 8) {
-            MDCCheckbox(isOn: isOn, action: action)
-            label().font(.system(size: 12.5))
+        Button(action: action) {
+            HStack(spacing: 8) {
+                // Visual only: the row button is the hit target and the focus stop.
+                MDCCheckbox(isOn: isOn, action: action)
+                    .allowsHitTesting(false)
+                    .focusable(false)
+                    .accessibilityHidden(true)
+                label().font(.system(size: 12.5))
+            }
+            .contentShape(Rectangle())
         }
-        .contentShape(Rectangle())
-        .onTapGesture(perform: action)
-        .accessibilityElement(children: .combine)
-        .accessibilityAddTraits(isOn ? [.isButton, .isSelected] : .isButton)
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(.isToggle)
+        .accessibilityValue(isOn ? L10n.string("Marcado") : L10n.string("Sin marcar"))
     }
 }

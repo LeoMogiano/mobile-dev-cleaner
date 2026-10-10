@@ -5,7 +5,7 @@ struct MDCSymbol: View {
     let name: String
     let size: CGFloat
 
-    private static let assets: Set<String> = ["android"]
+    private static let assets: Set<String> = ["android", "flutter"]
 
     var body: some View {
         if Self.assets.contains(name) {

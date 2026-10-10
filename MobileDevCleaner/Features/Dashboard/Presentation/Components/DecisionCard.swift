@@ -11,6 +11,7 @@ struct DecisionCard: View {
                     .font(.system(size: 16))
                     .foregroundStyle(Color.mdcCostInk)
                     .frame(width: 30, height: 30)
+                    .accessibilityHidden(true)
                     .background(Color.mdcCostBg, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Requiere tu decisión").font(.system(size: 14, weight: .semibold))
@@ -26,12 +27,14 @@ struct DecisionCard: View {
                                 .font(.system(size: 14))
                                 .foregroundStyle(Color.mdcText2)
                                 .frame(width: 26)
+                                .accessibilityHidden(true)
                             Text(row.name)
                                 .fontWeight(.medium)
                                 .lineLimit(1)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Text(row.sizeText).font(.system(size: 12)).monospacedDigit().foregroundStyle(Color.mdcText2)
                             Image(systemName: "chevron.right").font(.system(size: 12)).foregroundStyle(Color.mdcText3)
+                                .accessibilityHidden(true)
                         }
                         .padding(.leading, 4).padding(.trailing, 6)
                         .frame(height: 36)

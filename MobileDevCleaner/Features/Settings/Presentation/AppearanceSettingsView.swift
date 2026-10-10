@@ -51,6 +51,7 @@ struct AppearanceSettingsView: View {
                         }
                     }
                     .pickerStyle(.menu)
+                    .labelsHidden()
                 }
                 Text("Algunos textos se actualizan al reiniciar la app.")
                     .font(.system(size: 11))
@@ -64,21 +65,24 @@ struct AppearanceSettingsView: View {
 
     private func themeButton(title: LocalizedStringKey, theme: AppTheme) -> some View {
         let isSelected = settings.theme == theme
-        return VStack(spacing: 6) {
-            ThemeThumbnail(theme: theme)
-                .padding(2)
-                .frame(width: 86, height: 56)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 9, style: .continuous)
-                        .strokeBorder(isSelected ? Color.mdcAccent : .clear, lineWidth: 2.5))
-            Text(title)
-                .font(.system(size: 11.5, weight: isSelected ? .semibold : .regular))
+        return Button {
+            settings.theme = theme
+        } label: {
+            VStack(spacing: 6) {
+                ThemeThumbnail(theme: theme)
+                    .padding(2)
+                    .frame(width: 86, height: 56)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 9, style: .continuous)
+                            .strokeBorder(isSelected ? Color.mdcAccent : .clear, lineWidth: 2.5))
+                Text(title)
+                    .font(.system(size: 11.5, weight: isSelected ? .semibold : .regular))
+            }
+            .contentShape(Rectangle())
         }
-        .contentShape(Rectangle())
-        .onTapGesture { settings.theme = theme }
+        .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
-        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
-        .accessibilityAction { settings.theme = theme }
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 

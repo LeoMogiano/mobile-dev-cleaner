@@ -24,9 +24,8 @@ struct MDCCheckbox: View {
         .disabled(!isEnabled)
         .opacity(isEnabled ? 1 : 0.5)
         .accessibilityElement()
-        .accessibilityLabel(isOn ? L10n.string("Marcado") : L10n.string("Desmarcado"))
         .accessibilityAddTraits(.isToggle)
-        .accessibilityValue(isOn ? L10n.string("Activado") : L10n.string("Desactivado"))
+        .accessibilityValue(isOn ? L10n.string("Marcado") : L10n.string("Sin marcar"))
     }
 }
 

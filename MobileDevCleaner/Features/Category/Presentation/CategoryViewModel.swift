@@ -50,7 +50,7 @@ final class CategoryViewModel {
 
     var sizeText: String {
         guard let report = scan.report(for: category) else { return "" }
-        return ByteFormatter.string(report.totalSize)
+        return ByteFormatter.string(report.totalSize, locale: AppLanguage.current.locale)
     }
 
     var badges: [MDCBadgeKind] {
@@ -111,14 +111,14 @@ final class CategoryViewModel {
                     id: candidate.id,
                     name: candidate.name,
                     path: settings.showTechnicalNames ? candidate.url.path : nil,
-                    sizeText: ByteFormatter.string(candidate.size),
+                    sizeText: ByteFormatter.string(candidate.size, locale: AppLanguage.current.locale),
                     fraction: frac,
                     risk: candidate.risk,
                     showsBadge: showBadgeOnRows,
                     isSelected: selection.isSelected(candidate),
                     isExcluded: isExcl,
                     isInspected: router.inspectedID == candidate.id,
-                    accessibilityLabel: "\(candidate.name), \(ByteFormatter.string(candidate.size)), \(candidate.risk == .regenerates ? L10n.string("Se regenera solo") : L10n.string("Tiene costo"))"
+                    accessibilityLabel: "\(candidate.name), \(ByteFormatter.string(candidate.size, locale: AppLanguage.current.locale)), \(candidate.risk == .regenerates ? L10n.string("Se regenera solo") : L10n.string("Tiene costo"))"
                 )
             }
 
@@ -127,7 +127,7 @@ final class CategoryViewModel {
             result.append(CandidateGroupModel(
                 id: candidateGroup?.rawValue ?? "none",
                 title: groupTitle,
-                sizeText: ByteFormatter.string(groupSize),
+                sizeText: ByteFormatter.string(groupSize, locale: AppLanguage.current.locale),
                 tag: groupTag,
                 rows: rows
             ))

@@ -33,7 +33,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleDevelopmentRegion: es
-        CFBundleLocalizations: [es, en]
+        CFBundleLocalizations: [es, en, ja, zh-Hans, pt-BR, de]
         LSApplicationCategoryType: public.app-category.developer-tools
         LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
         NSHumanReadableCopyright: © 2026 Leo Mogiano. MIT License.

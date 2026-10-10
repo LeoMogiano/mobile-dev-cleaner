@@ -22,11 +22,12 @@ private struct SurfaceModifier: ViewModifier {
     let kind: Kind
     let radius: CGFloat?
     @Environment(\.mdcMaterial) private var material
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     func body(content: Content) -> some View {
         let glass = material.usesGlass
         let shape = RoundedRectangle(cornerRadius: radius ?? (glass ? 999 : 6), style: .continuous)
-        let style = glass ? Self.glass[kind]! : Self.classic[kind]!
+        let style = glass ? (reduceTransparency ? Self.opaque[kind]! : Self.glass[kind]!) : Self.classic[kind]!
         content
             .background(style.fill, in: shape)
             .overlay(shape.strokeBorder(style.border, lineWidth: 0.5))
@@ -52,6 +53,13 @@ private struct SurfaceModifier: ViewModifier {
             fill: Color(light: (0xFFFFFF, 0.55), dark: (0xFFFFFF, 0.05)),
             border: .clear
         ),
+    ]
+
+    /// Solid stand-ins for the glass fills when Reduce Transparency is on; borders are unchanged.
+    private static let opaque: [Kind: Style] = [
+        .card: Style(fill: Color(nsColor: .controlBackgroundColor), border: Self.glass[.card]!.border),
+        .control: Style(fill: Color(nsColor: .controlBackgroundColor), border: Self.glass[.control]!.border),
+        .inner: Style(fill: Color(nsColor: .windowBackgroundColor), border: .clear),
     ]
 
     private static let classic: [Kind: Style] = [

@@ -58,6 +58,7 @@ struct InspectorFooter: View {
             Button(action: onShowInFinder) {
                 HStack(spacing: 5) {
                     Image(systemName: "finder")
+                        .accessibilityHidden(true)
                         .font(.system(size: 12, weight: .regular))
                     Text("Mostrar en Finder")
                 }

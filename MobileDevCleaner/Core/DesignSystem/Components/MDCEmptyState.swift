@@ -15,6 +15,7 @@ struct MDCEmptyState: View {
                 .frame(width: 96, height: 96)
                 .overlay {
                     Image(systemName: symbol)
+                        .accessibilityHidden(true)
                         .font(.system(size: 44, weight: .semibold))
                         .foregroundColor(tint)
                 }
@@ -37,6 +38,7 @@ struct MDCEmptyState: View {
                 Button(action: action) {
                     HStack(spacing: 6) {
                         Image(systemName: "arrow.clockwise")
+                            .accessibilityHidden(true)
                             .font(.system(size: 13, weight: .semibold))
                         Text(actionTitle)
                     }

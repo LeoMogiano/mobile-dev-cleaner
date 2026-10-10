@@ -4,6 +4,7 @@ struct DeviceCard: View, Equatable {
     let card: DeviceCardModel
     let onSelectAction: (DeviceAction) -> Void
     let onInspect: () -> Void
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     static func == (lhs: DeviceCard, rhs: DeviceCard) -> Bool {
         lhs.card == rhs.card
@@ -16,7 +17,7 @@ struct DeviceCard: View, Equatable {
             if let description = card.actionDescription {
                 Text(description)
                     .font(.system(size: 11.5))
-                    .foregroundStyle(card.chosen == .delete ? Color.mdcDestructive : Color.mdcText2)
+                    .foregroundStyle(card.chosen == .delete ? Color.mdcDestructiveInk : Color.mdcText2)
                     .lineLimit(1)
                     .transition(.opacity)
             }
@@ -27,8 +28,8 @@ struct DeviceCard: View, Equatable {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .strokeBorder(ringColor, lineWidth: 1)
         }
-        .animation(.easeOut(duration: 0.2), value: card.chosen)
-        .animation(.easeOut(duration: 0.2), value: card.isInspected)
+        .animation(reduceMotion ? nil : .easeOut(duration: 0.2), value: card.chosen)
+        .animation(reduceMotion ? nil : .easeOut(duration: 0.2), value: card.isInspected)
         .contextMenu {
             Button("Ver detalles", action: onInspect)
         }
@@ -43,6 +44,7 @@ struct DeviceCard: View, Equatable {
                 .font(.system(size: 18))
                 .foregroundStyle(Color.mdcText2)
                 .frame(width: 24)
+                .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 0) {
                 Text(card.name)
                     .font(.system(size: 13.5, weight: .semibold))

@@ -14,6 +14,7 @@ struct MDCExplainerCard: View {
             }}) {
                 HStack(spacing: 8) {
                     Image(systemName: "info.circle.fill")
+                        .accessibilityHidden(true)
                         .font(.system(size: 14))
                         .foregroundColor(.mdcAccent)
 
@@ -23,6 +24,7 @@ struct MDCExplainerCard: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                     Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+                        .accessibilityHidden(true)
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.mdcText3)
                 }
@@ -61,7 +63,7 @@ struct MDCExplainerCard: View {
                     }
                     .mdcInner()
                 }
-                .transition(.opacity.combined(with: .move(edge: .top)))
+                .transition(reduceMotion ? .opacity : .opacity.combined(with: .move(edge: .top)))
             }
         }
         .mdcCard(radius: 12)
@@ -82,6 +84,7 @@ private struct ExplainerColumn: View {
 
                 if hasIcon {
                     Image(systemName: "arrow.2.circlepath")
+                        .accessibilityHidden(true)
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundColor(.mdcText2)
                 }
