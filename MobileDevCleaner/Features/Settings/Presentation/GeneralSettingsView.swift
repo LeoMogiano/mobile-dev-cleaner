@@ -15,7 +15,7 @@ struct GeneralSettingsView: View {
                 ToolToggle(title: "Android", detail: "Gradle, SDK, emuladores y Android Studio",
                            symbol: "android", tint: .mdcAndroid, isOn: $settings.scanAndroid)
                 ToolToggle(title: "Flutter", detail: "Proyectos, caché de pub, SDK y FVM",
-                           symbol: "square.stack", tint: .mdcFlutter, isOn: $settings.scanFlutter)
+                           symbol: "flutter", tint: .mdcFlutter, isOn: $settings.scanFlutter)
             }
             Section {
                 Toggle("Escanear al abrir la app", isOn: $settings.scanOnOpen)

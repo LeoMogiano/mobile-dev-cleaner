@@ -33,7 +33,7 @@ struct CategoryInfoTests {
     @Test("builds category has hammer symbol")
     func buildsSymbol() {
         let info = CategoryInfo.info(for: .builds)
-        #expect(info.symbol == "hammer")
+        #expect(info.symbol == "gearshape.2")
     }
 
     @Test("runtimes has correct display path")

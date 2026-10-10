@@ -111,7 +111,7 @@ extension Tool {
         switch self {
         case .xcode: "hammer"
         case .android: "android"
-        case .flutter: "square.stack"
+        case .flutter: "flutter"
         }
     }
 }
