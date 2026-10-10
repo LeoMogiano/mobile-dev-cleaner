@@ -35,7 +35,10 @@ struct MobileDevCleanerApp: App {
             // The benchmark measures the scan alone; drawing the UI would skew it.
             // As a test host the app must not scan the real disk either.
             if !HeadlessScan.isRequested && !Self.isTestHost {
+                // L10n strings aren't observed by SwiftUI; rebuilding on a language change
+                // re-resolves them. Stores live above this view, so scan state survives.
                 MainWindowContent()
+                    .id(language)
                     .appEnvironment(self)
             }
         }
