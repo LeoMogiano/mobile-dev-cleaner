@@ -12,6 +12,7 @@
 		0352BA3DD33EE9EF94DC399D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D87308B30A6301CBF87A008 /* SettingsView.swift */; };
 		061F24F3DC5EEE64109CE11E /* CategoryReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1620CDF28CE25F0716B3FD /* CategoryReport.swift */; };
 		0751B5F3DA1EAF04A778B986 /* AdvancedSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C4E4DAD47E4D1139C3A6F6 /* AdvancedSettingsViewModel.swift */; };
+		0AC0A8BAE434EAD6DDA3B99E /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = B5099199303A2C745E733DEF /* AppIcon.icon */; };
 		0B38903A991CCA8154D712AC /* GradleDependenciesScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7B192D4871E450F78FB64 /* GradleDependenciesScanner.swift */; };
 		0C1D27351016C2943972FE53 /* AboutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8993FFDC80DA28DAE5C48A /* AboutSettingsView.swift */; };
 		0C2ED24F479944A095D16889 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB70D476D471B0849EDCAC /* DetailView.swift */; };
@@ -145,6 +146,7 @@
 		9E9C1EFD4879AC76DE590024 /* ScanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA842D7BAC38B223B46E78D /* ScanStore.swift */; };
 		9FC7F698FB7E89E9D624BB31 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDAB4305CBC08E1379AACB /* HistoryView.swift */; };
 		9FDC85C98B208E0F2000AA09 /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C481AEA343255DF964F0B7 /* HistoryRow.swift */; };
+		9FE31FD473FD3A941871C61C /* MDCAppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526CCC6A1A61A20DCB84EB2B /* MDCAppIcon.swift */; };
 		A1459C3CBCA8999C15E287B9 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5BCC22A91E16C2CC8D34FE /* Tool.swift */; };
 		A299DFC49021FB6CCDD1A2F6 /* ScanRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA23A4C6BDAE498ED4103B /* ScanRepositoryImpl.swift */; };
 		A3142ED9987548C0E19259B8 /* ExecutionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCFB610C56464B378D8BEB4 /* ExecutionStrategy.swift */; };
@@ -314,6 +316,7 @@
 		4FDF1D15989E37F888C9E09E /* CleanupCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupCandidate.swift; sourceTree = "<group>"; };
 		5072BC6DDC105FBE6D2644A0 /* MDCButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCButtonStyles.swift; sourceTree = "<group>"; };
 		51E4B265068143FEC152B26E /* GeneralSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewModel.swift; sourceTree = "<group>"; };
+		526CCC6A1A61A20DCB84EB2B /* MDCAppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCAppIcon.swift; sourceTree = "<group>"; };
 		53361A36F592ABCBCDB85BBB /* MDCSurfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCSurfaces.swift; sourceTree = "<group>"; };
 		541DA59A100BA044ED7AD8C5 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		56192C0AC16533F72178BB30 /* MDCSwitchToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCSwitchToggleStyle.swift; sourceTree = "<group>"; };
@@ -401,6 +404,7 @@
 		AFD79F9F911374DDAFEFE05A /* HistorySummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySummaryCard.swift; sourceTree = "<group>"; };
 		B005C406150C46C2D4F871E0 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		B3747B285710E7E4352949E1 /* FailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureTests.swift; sourceTree = "<group>"; };
+		B5099199303A2C745E733DEF /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		B5D6C8620CD6C3294A7ABCE8 /* MDCToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCToast.swift; sourceTree = "<group>"; };
 		B75754E21F78F2C39FB45639 /* ScanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRepository.swift; sourceTree = "<group>"; };
 		B784F43C92DD4F22E5A83919 /* ResultFailureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFailureList.swift; sourceTree = "<group>"; };
@@ -1061,6 +1065,7 @@
 		9EBCDD3A7C988F7FABA36426 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				526CCC6A1A61A20DCB84EB2B /* MDCAppIcon.swift */,
 				19D9910C4E16CC891B7D86BC /* MDCBanner.swift */,
 				2D354E165FBAFE53439E9944 /* MDCBreakdownBar.swift */,
 				5072BC6DDC105FBE6D2644A0 /* MDCButtonStyles.swift */,
@@ -1279,6 +1284,7 @@
 		DD7BEB9C865248830F705957 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B5099199303A2C745E733DEF /* AppIcon.icon */,
 				91C4A4B1929AA713C3BF89E6 /* Assets.xcassets */,
 				407BC0EE01DDB9A507AAE342 /* creator.webp */,
 				57E5CDBF7CB4B2ABB72DE2DD /* Localizable.xcstrings */,
@@ -1495,6 +1501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AC0A8BAE434EAD6DDA3B99E /* AppIcon.icon in Resources */,
 				E9F2ECCD0E026B83C670C222 /* Assets.xcassets in Resources */,
 				72114693A386A1C4815CC614 /* Localizable.xcstrings in Resources */,
 				7B79CF6AB84FAF22E80E8FCC /* Montserrat-Variable.ttf in Resources */,
@@ -1602,6 +1609,7 @@
 				8986755CD5EC149E85C4C421 /* L10n.swift in Sources */,
 				668038F0D1D5FDA59BD1E402 /* LoadHistoryUseCase.swift in Sources */,
 				917715F0F06528D7115E4110 /* MDCAnnounce.swift in Sources */,
+				9FE31FD473FD3A941871C61C /* MDCAppIcon.swift in Sources */,
 				BF9831C706425B3287425EC2 /* MDCBanner.swift in Sources */,
 				ABBCFDD84938134C04FB1FA1 /* MDCBreakdownBar.swift in Sources */,
 				205CF30E97F75A563975BB89 /* MDCButtonStyles.swift in Sources */,
