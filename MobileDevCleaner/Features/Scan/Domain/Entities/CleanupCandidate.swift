@@ -16,4 +16,8 @@ struct CleanupCandidate: Identifiable, Sendable, Hashable {
     /// Concrete cost copy for `.hasCost` items.
     let cost: String?
     let execution: ExecutionStrategy
+    /// Run before `execution`, e.g. deleting a runtime's simulators.
+    var prerequisites: [ExecutionStrategy] = []
+
+    var steps: [ExecutionStrategy] { prerequisites + [execution] }
 }

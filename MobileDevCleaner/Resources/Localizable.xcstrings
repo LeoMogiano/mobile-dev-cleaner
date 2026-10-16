@@ -8111,6 +8111,40 @@
         }
       }
     },
+    "Las 2 más recientes de cada plataforma" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The 2 newest per platform"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "各プラットフォームの最新2バージョン"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每个平台最新的 2 个版本"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As 2 mais recentes de cada plataforma"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die 2 neuesten je Plattform"
+          }
+        }
+      }
+    },
     "Leo Mogiano" : {
       "localizations" : {
         "en" : {
@@ -9059,6 +9093,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Was Kosten verursacht, erklären wir vorher."
+          }
+        }
+      }
+    },
+    "Lo usan %lld simuladores: %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Used by %lld simulators: %@."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 台のシミュレータが使用中：%@。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 个模拟器在使用：%@。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usado por %lld simuladores: %@."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von %lld Simulatoren verwendet: %@."
           }
         }
       }
@@ -10317,6 +10385,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kein Projekt verwendet es"
+          }
+        }
+      }
+    },
+    "Ningún simulador lo usa." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No simulator uses it."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用しているシミュレータはありません。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有模拟器在使用。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum simulador o usa."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Simulator verwendet ihn."
           }
         }
       }
@@ -13823,36 +13925,36 @@
         }
       }
     },
-    "Sistemas operativos completos que usan los simuladores (iOS, watchOS…). Los que están en uso no aparecen." : {
+    "Sistemas operativos completos que usan los simuladores (iOS, watchOS…). Las 2 versiones más recientes de cada plataforma quedan aparte." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Full operating systems that simulators use (iOS, watchOS…). In-use ones don't appear."
+            "value" : "Full operating systems used by simulators (iOS, watchOS…). The 2 newest versions of each platform are listed separately."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "シミュレータが使う OS 一式（iOS、watchOS…）。使用中のものは表示されません。"
+            "value" : "シミュレータが使う完全なOS（iOS、watchOS…）。各プラットフォームの最新2バージョンは別に表示されます。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "模拟器使用的完整操作系统（iOS、watchOS…）。使用中的不会显示。"
+            "value" : "模拟器使用的完整操作系统（iOS、watchOS…）。每个平台最新的 2 个版本单独列出。"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sistemas operacionais completos usados pelos simuladores (iOS, watchOS…). Os que estão em uso não aparecem."
+            "value" : "Sistemas operacionais completos usados pelos simuladores (iOS, watchOS…). As 2 versões mais recentes de cada plataforma ficam à parte."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vollständige Betriebssysteme, die Simulatoren verwenden (iOS, watchOS…). Die gerade verwendeten erscheinen nicht."
+            "value" : "Vollständige Betriebssysteme, die Simulatoren nutzen (iOS, watchOS…). Die 2 neuesten Versionen je Plattform stehen separat."
           }
         }
       }
@@ -14057,6 +14159,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iPhone-Unterstützung"
+          }
+        }
+      }
+    },
+    "Sugerido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggested"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "おすすめ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "建议"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugerido"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empfohlen"
           }
         }
       }
@@ -14737,6 +14873,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gesamtgröße"
+          }
+        }
+      }
+    },
+    "También se borran sus %lld simuladores (%@). %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Its %lld simulators are deleted too (%@). %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 台のシミュレータも削除されます（%@）。%@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其 %lld 个模拟器也会被删除（%@）。%@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seus %lld simuladores também são apagados (%@). %@"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seine %lld Simulatoren werden ebenfalls gelöscht (%@). %@"
           }
         }
       }
@@ -15519,6 +15689,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verlauf anzeigen"
+          }
+        }
+      }
+    },
+    "Versiones anteriores" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Older versions"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以前のバージョン"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "旧版本"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versões anteriores"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ältere Versionen"
           }
         }
       }

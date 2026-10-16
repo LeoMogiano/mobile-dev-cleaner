@@ -28,7 +28,8 @@ struct CandidateInspector: View {
                     InspectorField(label: "Qué pasa si lo borro", value: candidate.cost ?? info.ifDeleted)
                     InspectorField(label: "¿Vuelve a aparecer?", value: info.comesBack)
                     if showsCommand {
-                        InspectorField(label: "Comando", value: candidate.execution.commandLine(movesToTrash: movesToTrash), isMono: true)
+                        InspectorField(label: "Comando", value: candidate.steps.map { $0.commandLine(movesToTrash: movesToTrash) }.joined(separator: "\n"),
+                            isMono: true)
                     }
                 }
                 .padding(.vertical, 16)

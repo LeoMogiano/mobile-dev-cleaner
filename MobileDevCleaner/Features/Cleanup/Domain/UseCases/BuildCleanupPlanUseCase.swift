@@ -7,15 +7,16 @@ struct BuildCleanupPlanUseCase: Sendable {
         candidateIDs: Set<String>,
         deviceActions: [String: DeviceAction]
     ) -> [CleanupOperation] {
-        CategoryID.allCases.flatMap { id -> [CleanupOperation] in
-            guard let report = reports[id] else { return [] }
-            let candidates = report.candidates
-                .filter { candidateIDs.contains($0.id) }
-                .map(Self.operation(for:))
-            let devices = report.devices.compactMap { device in
+        let candidates = CategoryID.allCases.map { id in
+            (reports[id]?.candidates ?? []).filter { candidateIDs.contains($0.id) }.map(Self.operation(for:))
+        }
+        // A runtime deletion already removes its simulators; running `simctl delete` twice would fail.
+        let covered = Set(candidates.joined().flatMap(\.steps))
+        return CategoryID.allCases.enumerated().flatMap { index, id -> [CleanupOperation] in
+            let devices = (reports[id]?.devices ?? []).compactMap { device in
                 deviceActions[device.id].flatMap { Self.operation(for: device, action: $0) }
             }
-            return candidates + devices
+            return candidates[index] + devices.filter { !Set($0.steps).isSubset(of: covered) }
         }
     }
 
@@ -28,7 +29,7 @@ struct BuildCleanupPlanUseCase: Sendable {
             risk: candidate.risk,
             note: candidate.cost.map { "\(candidate.name): \($0.lowercasedFirst)" },
             source: .candidate,
-            steps: [candidate.execution],
+            steps: candidate.steps,
             url: candidate.url
         )
     }

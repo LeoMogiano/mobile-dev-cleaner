@@ -430,4 +430,31 @@ struct BuildCleanupPlanUseCaseTests {
         #expect(result[0].source == .candidate)
         #expect(result[1].source == .device(.clean))
     }
+
+    @Test("runtime deletion runs its simulators first and absorbs their delete action")
+    func runtimeAbsorbsDeviceDelete() {
+        let deleteDevice = ExecutionStrategy.command(executable: "/usr/bin/xcrun", arguments: ["simctl", "delete", "D1"])
+        let eraseDevice = ExecutionStrategy.command(executable: "/usr/bin/xcrun", arguments: ["simctl", "erase", "D2"])
+        let deleteRuntime = ExecutionStrategy.command(executable: "/usr/bin/xcrun", arguments: ["simctl", "runtime", "delete", "R16"])
+        let runtime = CleanupCandidate(
+            id: "/runtimes/R16", category: .runtimes, name: "iOS 16.4 Runtime", url: URL(fileURLWithPath: "/runtimes/R16"),
+            size: 5000, risk: .hasCost, group: .olderRuntimes, isOrphan: false, modifiedAt: nil, reason: nil, cost: nil,
+            execution: deleteRuntime, prerequisites: [deleteDevice])
+        func device(_ id: String, _ action: DeviceAction, _ step: ExecutionStrategy) -> DeviceCandidate {
+            DeviceCandidate(
+                id: id, category: .sims, name: id, osVersion: "iOS 16.4", kind: .iphone, url: URL(fileURLWithPath: "/d/\(id)"),
+                sizes: DeviceSizes(data: 10), isRunning: false, isAvailable: true,
+                plans: [DeviceActionPlan(action: action, risk: .hasCost, freedBytes: 10, steps: [step])])
+        }
+        let reports: [CategoryID: CategoryReport] = [
+            .sims: CategoryReport(id: .sims, candidates: [], devices: [device("D1", .delete, deleteDevice), device("D2", .reset, eraseDevice)]),
+            .runtimes: CategoryReport(id: .runtimes, candidates: [runtime], devices: []),
+        ]
+
+        let result = BuildCleanupPlanUseCase()(
+            reports: reports, candidateIDs: [runtime.id], deviceActions: ["D1": .delete, "D2": .reset])
+
+        #expect(result.map(\.id) == ["D2", "/runtimes/R16"])
+        #expect(result.last?.steps == [deleteDevice, deleteRuntime])
+    }
 }

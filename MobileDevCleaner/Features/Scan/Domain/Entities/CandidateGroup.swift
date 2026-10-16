@@ -9,4 +9,6 @@ enum CandidateGroup: String, Sendable, Codable, CaseIterable, Hashable {
     case unusedByEmulators
     case usedByProjects
     case unusedByProjects
+    case olderRuntimes
+    case latestRuntimes
 }

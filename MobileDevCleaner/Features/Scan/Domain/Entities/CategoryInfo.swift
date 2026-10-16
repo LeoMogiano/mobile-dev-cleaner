@@ -72,7 +72,7 @@ extension CategoryInfo {
                 technicalName: L10n.string("CoreSimulator/Runtimes"),
                 displayPath: "/Library/Developer/CoreSimulator/Profiles/Runtimes",
                 symbol: "cube",
-                whatIsIt: L10n.string("Sistemas operativos completos que usan los simuladores (iOS, watchOS…). Los que están en uso no aparecen."),
+                whatIsIt: L10n.string("Sistemas operativos completos que usan los simuladores (iOS, watchOS…). Las 2 versiones más recientes de cada plataforma quedan aparte."),
                 ifDeleted: L10n.string("Si lo necesitas otra vez, Xcode lo vuelve a descargar (varios GB)."),
                 comesBack: L10n.string("Solo si lo vuelves a descargar desde Xcode."),
                 needsFullDiskAccess: true

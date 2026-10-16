@@ -93,6 +93,8 @@ final class CategoryViewModel {
                 case .unusedByEmulators: L10n.string("Ningún emulador la usa")
                 case .usedByProjects: L10n.string("Usadas por tus proyectos")
                 case .unusedByProjects: L10n.string("Ningún proyecto la usa")
+                case .olderRuntimes: L10n.string("Versiones anteriores")
+                case .latestRuntimes: L10n.string("Las 2 más recientes de cada plataforma")
                 }
             }
 
@@ -100,6 +102,7 @@ final class CategoryViewModel {
                 switch candidateGroup {
                 case .orphanProjects: L10n.string("Huérfano: seguro de borrar")
                 case .unusedByEmulators: L10n.string("Sin uso")
+                case .olderRuntimes: L10n.string("Sugerido")
                 default: nil
                 }
             }()
